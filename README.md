@@ -1,5 +1,6 @@
 # Make Digital Images of RC3 galaxies by using SDSS data
 
 ## Authors
-Doris Lee
+Anchal Agrawal  
+Doris Lee  
 Robert J. Brunner
