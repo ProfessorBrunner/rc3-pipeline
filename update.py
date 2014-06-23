@@ -5,25 +5,22 @@ import shutil
 from math import trunc
 import sqlcl
 import sys 
+import fnmatch
 # Assume you are inside directory (gfits/) where you have pulled all the g band fit files 
 # find . -name "SDSS_g_*.fits" -type f -exec cp {} ./gfits \; 
 updated = open("rc3_updated.txt",'a') # 'a' for append #'w')
 updated.write("ra 		dec 		new_ra 		new_dec 		radius \n")
 os.chdir("..")
-gfits=[file for root, dir, files in os.walk("gfits") for file in files if file.endswith(".fits")]
+gfits=[file for root, dir, files in os.walk("gfits") for file in files if fnmatch.fnmatchcase(file, "SDSS_g_*.fits")]
 os.chdir("gfits/")
 debug_count=0
-#Objects: detected 0        / sextracted 0                      
-#> All done (in 0 s)
-#[]
-#if object detect = 0 then break
-
                 
 for file in gfits:
 	#print(file)
 	hdulist = pyfits.open(file)
 	rc3_ra= hdulist[0].header['RA']
 	rc3_dec= hdulist[0].header['DEC']
+	pgc = hdulist[0].header['PGC']
 	#rc3_radius = hdulist[0].header['RADIUS']
 	if (debug_count<100):
 		print (file)
@@ -35,7 +32,7 @@ for file in gfits:
 		radius = []
 		for line in catalog:
 			if (line[0]!='#'):
-				radius.append(line.split()[1])
+				radius.append(float(line.split()[1]))
 		print (radius)
 		#print (max(radius)) #breaks if object detected = 0
 		#special value that indicate empty list (no object detected by SExtractor)
@@ -48,12 +45,6 @@ for file in gfits:
 			print ("MAX RADIUS: " +str(max(radius)))
 		for i in catalog:
 			line = i.split()
-			#print (line)
-			#print ("here?")
-			#print (line[0])   #number
-			#print (line[1])   #radii (pixel)
-			#print (line[2])   #ra
-			#print (line[3])   #dec
 			if (line[0]!='#' and line[1]==str(max(radius))):
 				print ('Biggest Galaxy with radius {} pixels!'.format(line[1]))
 				radii = line[1]
@@ -62,7 +53,7 @@ for file in gfits:
 				# print (radius,new_ra,new_dec)
 				
 		# if (radii!='@'):
-		if (len(radius)!=0 or radii!='@'):
+		if (len(radius)!=0 and radii!='@'):
 			#print ("Radii: "+ str(radii))
 			#radii : pixel to degree conversion
 			radii = 0.00010995650106797878*float(radii)
@@ -72,11 +63,13 @@ for file in gfits:
 			#print ("rc3: {} , updated: {} ".format(rc3_radius,radii))
 			updated.write("{} 		{} 		{} 		{} 		{} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii))
 		else: 
-			print ("No detected sources in image. Call on mosaic program using a larger margin")
-			# call on mosaic program
+			print ("No detected sources in image. Mosaic using a larger margin")
+			# original automated mosaic program default 6*radius
+			# call on mosaic program with +50% original margin
+			# mosaic (rc3_ra,rc3_dec,1.5*margin, radius, pgc)
 			continue
 		#print (radius,new_ra,new_dec)
-	debug_count += 1
+		debug_count += 1
 
 def mosaic (ra,dec,margin,radius,pgc,clean=True):
     DEBUG = True
