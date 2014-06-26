@@ -15,6 +15,7 @@ def mosaic_band(band,ra,dec,margin,radius,pgc):#,clean=True):
     Create a mosaic fit file for the specified band.
     Return: String filename of resulting mosaic
     '''
+    print ("------------------mosaic_band----------------------")
     DEBUG = True
     output = open("rc3_galaxies_outside_SDSS_footprint.txt",'a') # 'a' for append #'w')
     unclean = open("rc3_galaxies_unclean","a")
@@ -79,13 +80,15 @@ def mosaic_band(band,ra,dec,margin,radius,pgc):#,clean=True):
     hdulist[0].header['RA']=ra
     hdulist[0].header['DEC']=dec
     hdulist[0].header['RADIUS']=radius
-    hdulist[0].header['PGC']="PGC{}".format(str(pgc))
+    hdulist[0].header['PGC']=pgc
     hdulist[0].header['NED']=("http://ned.ipac.caltech.edu/cgi-bin/objsearch?objname="+hdulist[0].header['PGC']+"&extend=no&hconst=73&omegam=0.27&omegav=0.73&corr_z=1&out_csys=Equatorial&out_equinox=J2000.0&obj_sort=RA+or+Longitude&of=pre_text&zv_breaker=30000.0&list_limit=5&img_stamp=YES")
     hdulist[0].header['CLEAN']=clean
+    hdulist[0].header['MARGIN']=margin
     outfile="SDSS_{}_{}_{}.fits".format(band,str(ra),str(dec))
+    if (os.path.exists(outfile)):
+        os.system("rm "+ outfile)
     hdulist.writeto(outfile)
     os.system("rm "+outfile_r)
-    # for b in bands:
     os.system("rm -r "+band+"/")
     print ("Completed Mosaic")
     return outfile 
@@ -97,23 +100,23 @@ def source_info(r_fits_filename):
     [ra,dec,margin,radius,pgc] ==> Is margin info necessary(?) YES
     Input: Filename String of R band Mosaic fit file
     Returns the updated [ra,dec,margin,radius,pgc] info about the identified RC3 source as a list
-    If no RC3 source is identified then ['@','@','@','@','@'] is returned
+    If no RC3 source is identified then ['@','@',margin_value,'@','@'] is returned
     If RC3 lie outside of SDSS footprint then [-1,-1,-1,-1,-1] is returned
     '''
-    file = r_fits_filename
+    print ("------------------source_info----------------------")
+    file = r_fits_filename 
     print("Source info for {}".format(file))
-    if (file ==-1):
+    if (file ==-1): #special value reserved for not in SDSS footprint galaxies
         return [-1,-1,-1,-1,-1]
     hdulist = pyfits.open(file)
     rc3_ra= hdulist[0].header['RA']
     rc3_dec= hdulist[0].header['DEC']
     rc3_radius = hdulist[0].header['RADIUS']
+    margin = hdulist[0].header['MARGIN']
     pgc = hdulist[0].header['PGC']
     os.system("sex {} -c default.sex".format(file))
     catalog = open("test.cat",'r')
-    # Find max radius and treat as if it is rc3
-    #Will have to modify this later to account for multiple neighboring large galaxies
-    # Maybe by imposing other RC3-like characteristics (brightness..etc?)
+    #Creating a list of radius
     radius = []
     for line in catalog:
         if (line[0]!='#'):
@@ -124,6 +127,9 @@ def source_info(r_fits_filename):
     new_ra='@'
     new_dec='@'
     catalog = open("test.cat",'r')
+    # Find max radius and treat as if it is rc3
+    #Will have to modify this later to account for multiple neighboring large galaxies
+    # Maybe by imposing other RC3-like characteristics (brightness..etc?)
     for i in catalog:
         line = i.split()
         if (line[0]!='#'  and float(line[1])==max(radius)): 
@@ -131,8 +137,8 @@ def source_info(r_fits_filename):
             radii = line[1]
             new_ra= line[2]
             new_dec = line[3]
-    print (len(radius)!=0)
-    print (radii!='@')
+    # print (len(radius)!=0)
+    # print (radii!='@')
     if (len(radius)!=0 and radii!='@' and float(radii)>4.):
         #treating anything that is 4 pixel or greater as galaxy of interest.
         #radii : pixel to degree conversion
@@ -142,107 +148,21 @@ def source_info(r_fits_filename):
         print ("rc3: {} , updated: {} ".format(rc3_dec,new_dec))
         print ("rc3: {} , updated: {} ".format(rc3_radius,radii))
         updated.write("{}       {}      {}      {}      {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii))
-        return [new_ra,new_dec,6*rc3_radius,radii,pgc] 
+        mosaic_all_bands(new_ra,new_dec,margin,radii,pgc)
+        return [new_ra,new_dec,margin,radii,pgc] 
         # margin was already set as 6*rc3_radius during initial_run
         # all additional mosaicking steps shoudl be 1.5 times this 
     else: 
         print ("No detected RC3 sources in image. Mosaic using a larger margin")
         # original automated mosaic program default 6*radius
         # call on mosaic program with +50% original margin
-        # mosaic_band('r',rc3_ra,rc3_dec,1.5*margin, radius, pgc)
-        return ['@','@','@','@','@']
+        r_mosaic_filename = mosaic_band('r',rc3_ra,rc3_dec,1.5*margin,rc3_radius,pgc)
+        source_info(r_mosaic_filename)
+        #mosaic_band('r',rc3_ra,rc3_dec,1.5*margin, radius, pgc)
+        return ['@','@',1.5*rc3_radius,'@','@']
     #print (radius,new_ra,new_dec)
 
-# if __name__ == "__main__":            
-#     updated = open("rc3_updated.txt",'a') # 'a' for append #'w')
-#     updated.write("ra       dec         new_ra      new_dec         radius \n")
-#     os.chdir("..")
-#     rfits=[file for root, dir, files in os.walk("rfits") for file in files if fnmatch.fnmatchcase(file, "SDSS_r_*.fits")]
-#     os.chdir("rfits/")
-#     debug_count=0
-#     for file in rfits:
-#         print(file)
-#         hdulist = pyfits.open(file)
-#         rc3_ra= hdulist[0].header['RA']
-#         rc3_dec= hdulist[0].header['DEC']
-#         pgc = hdulist[0].header['PGC']
-#         info = source_info(file)
-#         print (info)
-#         print ("------------------------------------------------------")
-#         iteration =0
-#         while (info ==['@','@','@','@','@'] and iteration <=3):
-#             print("#################################################")
-#             print ("No identified RC3 inside field. Mosaic with +50% margin")
-#             mosaic_band('r',float(info[0]),float(info[1]),1.5*float(info[2]),float(info[3]),info[4])
-#             iteration +=1
-#         #final mosaic (g,r,i color)
-#         #rc3_radius = hdulist[0].header['RADIUS']
-        '''
-        if (debug_count<280): #run all for now
-            print (file)
-            os.system("sex {} -c default.sex".format(file))
-            catalog = open("test.cat",'r')
-            #find max radius and treat as if it is rc3
-            #Will have to modify this later to account for multiple neighboring large galaxies
-            # Maybe by imposing other RC3-like characteristics (brightness..etc?)
-            radius = []
-            for line in catalog:
-                if (line[0]!='#'):
-                    radius.append(float(line.split()[1]))
-            print (radius)
-            #print (max(radius)) #breaks if object detected = 0
-            #special value that indicate empty list (no object detected by SExtractor)
-            radii='@'
-            new_ra='@'
-            new_dec='@'
-            #It seems like I need to "reopen" the file after "using it up" in the above loop
-            catalog = open("test.cat",'r')
-            if (len(radius)!=0):
-                print ("MAX RADIUS: " +str(max(radius)))
-            for i in catalog:
-                #print("alo")
-                line = i.split()
-                # print (line[1])
-                #print("here1")
-                #if (len(radius)!=0):
-                    #print("here2")
-    #               print(line[1]==str(max(radius)))
-                    #float(line[1])==max(radius)
-                    #print(float(line[1]))
-                    #print(max(radius))
-                #print (line[1]==str(max(radius)))
-                #print (line[0]!='#')
-                #and len(radius)!=0
-                if (line[0]!='#'  and float(line[1])==max(radius) ): 
-                #treating anything that is 4 pixel or greater as galaxy of interest.
-                    print ('Biggest Galaxy with radius {} pixels!'.format(line[1]))
-                    radii = line[1]
-                    new_ra= line[2]
-                    new_dec = line[3]
-                    # print (radius,new_ra,new_dec)
-            
-            # if (radii!='@'):
-            #print (float(radii)>4.)
-            print (len(radius)!=0)
-            print (radii!='@')
-            if (len(radius)!=0 and radii!='@' and float(radii)>4.):
-                #print ("Radii: "+ str(radii))
-                #radii : pixel to degree conversion
-                radii = 0.00010995650106797878*float(radii)
-                print ("Radii: {} degrees".format(str(radii)))
-                print ("rc3: {} , updated: {} ".format(rc3_ra, new_ra))
-                print ("rc3: {} , updated: {} ".format(rc3_dec,new_dec))
-                #print ("rc3: {} , updated: {} ".format(rc3_radius,radii))
-                updated.write("{}       {}      {}      {}      {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii))
-            else: 
-                print ("No detected RC3 sources in image. Mosaic using a larger margin")
-                # original automated mosaic program default 6*radius
-                # call on mosaic program with +50% original margin
-                #mosaic_band('r',rc3_ra,rc3_dec,1.5*margin, radius, pgc)
-                continue
-            #print (radius,new_ra,new_dec)
-            debug_count += 1
-        '''
+#Unit Tested : Sucess
 def mosaic_all_bands(ra,dec,margin,radius,pgc):
     '''
     Input
@@ -252,21 +172,22 @@ def mosaic_all_bands(ra,dec,margin,radius,pgc):
     inside the new margin and updated center ra,dec and radii
     Return void
     '''
+    print ("------------------mosaic_all_bands----------------------")
     filename = "{},{}".format(str(ra),str(dec))
     os.mkdir(filename)
     os.chdir(filename)
     bands =['u','g','r','i','z']
     for band in bands:
-        mosaic_band(band,ra,dec,margin,radius,pgc,clean=True)
+        mosaic_band(band,ra,dec,margin,radius,pgc)
         #os.chdir("../")
     os.system("stiff  SDSS_i_{0}_{1}.fits  SDSS_r_{0}_{1}.fits SDSS_g_{0}_{1}.fits  -c stiff.conf  -OUTFILE_NAME  SDSS_{0}_{1}_BEST.tiff -MAX_TYPE QUANTILE  -MAX_TYPE QUANTILE  -MAX_LEVEL 0.997 -COLOUR_SAT  7 -MIN_TYPE QUANTILE -MIN_LEVEL 1  -GAMMA_FAC 0.7 ".format(str(ra),str(dec)))
     # Image for emphasizing low-surface sturcture
     os.system("stiff  SDSS_i_{0}_{1}.fits  SDSS_r_{0}_{1}.fits SDSS_g_{0}_{1}.fits  -c stiff.conf  -OUTFILE_NAME  SDSS_{0}_{1}_LOW.tiff  -MAX_TYPE QUANTILE  -MAX_LEVEL 0.99 -COLOUR_SAT  5  -MIN_TYPE QUANTILE -MIN_LEVEL 1 -GAMMA_FAC 0.8 ".format(str(ra),str(dec)))  
     os.system("rm stiff.xml")
-    #os.chdir("../")
+    os.chdir("../")
     print ("Completed Mosaic")
-    print ("--------------------------------------------------------")
-
+    
+#Unit Tested : Sucess
 def initial_run ():
     '''
     Input : void
@@ -275,6 +196,7 @@ def initial_run ():
     Output: r band mosaic fits for all galaxies below '@' inside rc3_ra_dec_diameter_pgc.txt
     Return: void
     '''
+    print ("------------------initial_run----------------------")
     n = 0
     start=False
     output = open("rc3_galaxies_outside_SDSS_footprint.txt",'a') # 'a' for append #'w')
@@ -294,8 +216,56 @@ def initial_run ():
                 radius = float(line.split()[2])/2. #radius = diameter/2
                 pgc=str(line.split()[3]).replace(' ', '')
                 clean=True
-                margin = 6*radius
                 filename = "{},{}".format(str(ra),str(dec))
                 print ("Working on {}th RC3 Galaxy at {}".format(str(n),filename))
                 # Run mosaic on r band with all original rc3 catalog values
-                mosaic_band('r',ra,dec,margin,radius,pgc)
+                mosaic_band('r',ra,dec,2*radius,radius,pgc)
+
+if __name__ == "__main__":            
+    initial_run()
+    updated = open("rc3_updated.txt",'a') # 'a' for append #'w')
+    updated.write("ra       dec         new_ra      new_dec         radius \n")
+    os.chdir("..")
+    rfits=[file for root, dir, files in os.walk("rfits") for file in files if fnmatch.fnmatchcase(file, "SDSS_r_*.fits")]
+    os.chdir("rfits/")
+    for file in rfits:
+        print(file)
+        hdulist = pyfits.open(file)
+        rc3_ra= hdulist[0].header['RA']
+        rc3_dec= hdulist[0].header['DEC']
+        rc3_radius= hdulist[0].header['RADIUS']
+        pgc = hdulist[0].header['PGC']
+        margin = hdulist[0].header['MARGIN']
+        # you feed in the r fit mosaic from the initial run and let the recursion in source_info run wild
+        info = source_info(file) 
+        # If you trust recursion, you will magically get the final updated value here
+        print ("Final updated params : "+str(info))
+        # iteration =0
+        # while (info[0]==info[1]==info[3]==info[4]=='@' ): 
+        # # While RC3 no RC3 is identified inside field.
+        #     if (iteration <=2):
+        #         margin = float(info[2])
+        #         print("#################################################")
+        #         print ("No identified RC3 inside field. Mosaic with +50% margin")
+        #         # r = mosaic_band('r',rc3_ra,rc3_dec,1.5*margin,rc3_radius,pgc)
+        #         # recursive call that spits back final rc3 values
+        #         r = source_info( )
+        #         break #break out of while loop and mosaic_all_bands
+        #     else:
+        #         print("Can not identify RC3 source anywhere nearby")
+        #         return # exit out of function (don't do mosaic_all_bands)
+        #         #Perhaps, write these galaxies into a separate file??
+        #     iteration +=1
+        # mosaic_all_bands(ra,dec,margin,radius,pgc)
+        # #final mosaic (g,r,i color)
+
+        # hdulist = pyfits.open(r)
+        # rc3_ra= hdulist[0].header['RA']
+        # rc3_dec= hdulist[0].header['DEC']
+        # rc3_radius= hdulist[0].header['RADIUS']
+        # pgc = hdulist[0].header['PGC']
+        # margin = hdulist[0].header['MARGIN']
+        # info = source_info(file)
+        # print (info)
+        # iteration =0
+        # rc3_radius = hdulist[0].header['RADIUS']
