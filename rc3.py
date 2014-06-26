@@ -26,8 +26,8 @@ class rc3:
         '''
         print ("------------------mosaic_band----------------------")
         DEBUG = True
-        output = open("rc3_galaxies_outside_SDSS_footprint.txt",'a') # 'a' for append #'w')
-        unclean = open("rc3_galaxies_unclean","a")
+        output = open("../rc3_galaxies_outside_SDSS_footprint.txt",'a') # 'a' for append #'w')
+        unclean = open("../rc3_galaxies_unclean","a")
         filename = "{},{}".format(str(ra),str(dec))
         if (DEBUG) : print ("Querying data that lies inside margin")
         result = sqlcl.query( "SELECT distinct run,camcol,field FROM PhotoObj WHERE  ra between {0}-{1} and  {0}+{1}and dec between {2}-{3} and  {2}+{3}".format(str(ra),str(margin),str(dec),str(margin))).readlines()
@@ -121,11 +121,11 @@ class rc3:
             if (file ==-1): #special value reserved for not in SDSS footprint galaxies
                 return [-1,-1,-1,-1,-1]
             hdulist = pyfits.open(file)
-            rc3_ra= hdulist[0].header['RA']
-            rc3_dec= hdulist[0].header['DEC']
-            rc3_radius = hdulist[0].header['RADIUS']
+            #rc3_ra= hdulist[0].header['RA']
+            #rc3_dec= hdulist[0].header['DEC']
+            #rc3_radius = hdulist[0].header['RADIUS']
             margin = hdulist[0].header['MARGIN']
-            pgc = hdulist[0].header['PGC']
+            #pgc = hdulist[0].header['PGC']
             os.system("sex {} -c default.sex".format(file))
             catalog = open("test.cat",'r')
             #Creating a list of radius
@@ -173,6 +173,10 @@ class rc3:
                 #mosaic_band('r',rc3_ra,rc3_dec,1.5*margin, radius, pgc)
                 return ['@','@',1.5*rc3_radius,'@','@']
             #print (radius,new_ra,new_dec)
+        else : 
+            no_detection = open("../no_detected_rc3_candidate_nearby.txt",'a') # 'a' for append #'w')
+            no_detection.write("rc3_ra       rc3_dec        rc3_radius        pgc \n")
+            no_detection.write("{}       {}        {}        {} \n".format(rc3_ra,rc3_dec,rc3_radius,pgc))
 
     #Unit Tested : Sucess
     def mosaic_all_bands(self,ra,dec,margin,radius,pgc):
