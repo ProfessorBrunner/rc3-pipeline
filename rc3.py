@@ -6,6 +6,7 @@ from math import trunc
 import sqlcl
 import sys 
 import fnmatch
+import numpy as np
 # Assume you are inside directory (rfits/) where you have pulled all the g band fit files 
 # find . -name "SDSS_r_*.fits" -type f -exec cp {} ./rfits \; 
 
@@ -29,10 +30,15 @@ class rc3:
         output = open("../rc3_galaxies_outside_SDSS_footprint.txt",'a') # 'a' for append #'w')
         unclean = open("../rc3_galaxies_unclean","a")
         filename = "{},{}".format(str(ra),str(dec))
+        #print (margin/radius)
         if (DEBUG) : print ("Querying data that lies inside margin")
         result = sqlcl.query( "SELECT distinct run,camcol,field FROM PhotoObj WHERE  ra between {0}-{1} and  {0}+{1}and dec between {2}-{3} and  {2}+{3}".format(str(ra),str(margin),str(dec),str(margin))).readlines()
         clean_result = sqlcl.query( "SELECT distinct run,camcol,field FROM PhotoObj WHERE  CLEAN =1 and ra between {0}-{1} and  {0}+{1}and dec between {2}-{3} and  {2}+{3}".format(str(ra),str(margin),str(dec),str(margin))) .readlines()
         clean = True
+        # A list of other RC3 galaxies that lies in the field
+        other_rc3s = sqlcl.query("SELECT distinct rc3.pgc FROM PhotoObj as po JOIN RC3 as rc3 ON rc3.objid = po.objid  WHERE po.ra between {0}-{1} and  {0}+{1} and po.dec between {2}-{3} and  {2}+{3}".format(str(ra),str(margin),str(dec),str(margin))).readlines()
+        #print ("SELECT distinct rc3.pgc FROM PhotoObj as po JOIN RC3 as rc3 ON rc3.objid = po.objid  WHERE ra between {0}-{1} and  {0}+{1}and dec between {2}-{3} and  {2}+{3}".format(str(ra),str(margin),str(dec),str(margin)))
+        print (other_rc3s)
         print (result)
         if len(result)!=len(clean_result):
             print ("Data contain unclean images")
@@ -90,7 +96,7 @@ class rc3:
         hdulist[0].header['DEC']=dec
         hdulist[0].header['RADIUS']=radius
         hdulist[0].header['PGC']=pgc
-        hdulist[0].header['NED']=("http://ned.ipac.caltech.edu/cgi-bin/objsearch?objname="+hdulist[0].header['PGC']+"&extend=no&hconst=73&omegam=0.27&omegav=0.73&corr_z=1&out_csys=Equatorial&out_equinox=J2000.0&obj_sort=RA+or+Longitude&of=pre_text&zv_breaker=30000.0&list_limit=5&img_stamp=YES")
+        hdulist[0].header['NED']=("http://ned.ipac.caltech.edu/cgi-bin/objsearch?objname="+ str(hdulist[0].header['PGC'])+"&extend=no&hconst=73&omegam=0.27&omegav=0.73&corr_z=1&out_csys=Equatorial&out_equinox=J2000.0&obj_sort=RA+or+Longitude&of=pre_text&zv_breaker=30000.0&list_limit=5&img_stamp=YES")
         hdulist[0].header['CLEAN']=clean
         hdulist[0].header['MARGIN']=margin
         outfile="SDSS_{}_{}_{}.fits".format(band,str(ra),str(dec))
@@ -101,8 +107,6 @@ class rc3:
         os.system("rm -r "+band+"/")
         print ("Completed Mosaic")
         return outfile 
-
-
 
     def source_info(self,r_fits_filename):
         '''
@@ -131,9 +135,16 @@ class rc3:
             #Creating a list of radius
             radius = []
             for line in catalog:
+                #print (line)
+                line = line.split()
                 if (line[0]!='#'):
-                    radius.append(float(line.split()[1]))
-            print (radius)
+                    # print (line[4])
+                    # print (line[5])
+                    # print (line[6])
+                    # print (line[7])
+                    #print ( np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2) )
+                    radius.append(np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2)
+            #print (radius)
             #special value that indicate empty list (no object detected by SExtractor)
             radii='@'
             new_ra='@'
@@ -143,18 +154,27 @@ class rc3:
             #Will have to modify this later to account for multiple neighboring large galaxies
             # Maybe by imposing other RC3-like characteristics (brightness..etc?)
             for i in catalog:
+                #print i
                 line = i.split()
-                if (line[0]!='#'  and float(line[1])==max(radius)): 
-                    print ('Biggest Galaxy with radius {} pixels!'.format(line[1]))
-                    radii = line[1]
-                    new_ra= line[2]
-                    new_dec = line[3]
+                if (line[0]!='#' ):# and radii==max(radius)): 
+                    # print("Pythagorean method")
+                    #print line
+                    radii = np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2
+                    if (radii==max(radius)):
+                        #print radii
+                        #print max(radius)
+                        print ('Biggest Galaxy with radius {} pixels!'.format(str(radii)))
+                        radii = radii
+                        new_ra= line[2]
+                        new_dec = line[3]
+                        break
             # print (len(radius)!=0)
             # print (radii!='@')
             if (len(radius)!=0 and radii!='@' and float(radii)>4.):
                 #treating anything that is 4 pixel or greater as galaxy of interest.
                 #radii : pixel to degree conversion
-                radii = 0.00010995650106797878*float(radii)
+                print ("Radii: {} pixel".format(str(radii)))
+                radii = 0.00010995650106797878*radii
                 print ("Radii: {} degrees".format(str(radii)))
                 print ("rc3: {} , updated: {} ".format(rc3_ra, new_ra))
                 print ("rc3: {} , updated: {} ".format(rc3_dec,new_dec))
@@ -171,7 +191,8 @@ class rc3:
                 r_mosaic_filename = self.mosaic_band('r',rc3_ra,rc3_dec,1.5*margin,rc3_radius,pgc)
                 self.source_info(r_mosaic_filename)
                 #mosaic_band('r',rc3_ra,rc3_dec,1.5*margin, radius, pgc)
-                return ['@','@',1.5*rc3_radius,'@','@']
+                #return ['@','@',1.5*rc3_radius,'@','@']
+                return ['@','@',1.5*margin,'@','@']
             #print (radius,new_ra,new_dec)
         else : 
             no_detection = open("../no_detected_rc3_candidate_nearby.txt",'a') # 'a' for append #'w')
@@ -203,42 +224,43 @@ class rc3:
         os.chdir("../")
         print ("Completed Mosaic")
         
-    #Unit Tested : Sucess
-    def initial_run (self):
-        '''
-        Input : void
-        Create r mosaic_band fit files for source_info to work on 
-        initial_run should only be ran once at the begining of the program
-        Output: r band mosaic fits for all galaxies below '@' inside rc3_ra_dec_diameter_pgc.txt
-        Return: void
-        '''
-        print ("------------------initial_run----------------------")
-        n = 0
-        start=False
-        output = open("rc3_galaxies_outside_SDSS_footprint.txt",'a') # 'a' for append #'w')
-        unclean = open("rc3_galaxies_unclean","a")
-        with open("rc3_ra_dec_diameter_pgc.txt",'r') as f:
-            for line in f:
-                print (line)
-                a = str(line)[0]
-                if a[0] =="@": #Debugging purpose, put this in the rc3(final).txt to start from where you left off (when error)
-                    start=True
-                    print ("Now start")
-                    continue
-                if (start):
-                    n +=1
-                    ra = float(line.split()[0])
-                    dec = float(line.split()[1])
-                    radius = float(line.split()[2])/2. #radius = diameter/2
-                    pgc=str(line.split()[3]).replace(' ', '')
-                    clean=True
-                    filename = "{},{}".format(str(ra),str(dec))
-                    print ("Working on {}th RC3 Galaxy at {}".format(str(n),filename))
-                    # Run mosaic on r band with all original rc3 catalog values
-                    mosaic_band('r',ra,dec,2*radius,radius,pgc)
+#Unit Tested : Sucess
+def initial_run ():
+    '''
+    Input : void
+    Create r mosaic_band fit files for source_info to work on 
+    initial_run should only be ran once at the begining of the program
+    Output: r band mosaic fits for all galaxies below '@' inside rc3_ra_dec_diameter_pgc.txt
+    Return: void
+    '''
+    print ("------------------initial_run----------------------")
+    n = 0
+    start=False
+    output = open("rc3_galaxies_outside_SDSS_footprint.txt",'a') # 'a' for append #'w')
+    unclean = open("rc3_galaxies_unclean","a")
+    with open("rc3_ra_dec_diameter_pgc.txt",'r') as f:
+        for line in f:
+            print (line)
+            a = str(line)[0]
+            if a[0] =="@": #Debugging purpose, put this in the rc3(final).txt to start from where you left off (when error)
+                start=True
+                print ("Now start")
+                continue
+            if (start):
+                n +=1
+                ra = float(line.split()[0])
+                dec = float(line.split()[1])
+                radius = float(line.split()[2])/2. #radius = diameter/2
+                pgc=str(line.split()[3]).replace(' ', '')
+                clean=True
+                filename = "{},{}".format(str(ra),str(dec))
+                print ("Working on {}th RC3 Galaxy at {}".format(str(n),filename))
+                # Run mosaic on r band with all original rc3 catalog values
+                obj= rc3(ra,dec,radius,pgc)
+                obj.mosaic_band('r',ra,dec,3*radius,radius,pgc)
 
 if __name__ == "__main__":            
-    #initial_run()
+    # initial_run()
     updated = open("rc3_updated.txt",'a') # 'a' for append #'w')
     updated.write("ra       dec         new_ra      new_dec         radius \n")
     os.chdir("..")
