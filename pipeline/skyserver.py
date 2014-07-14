@@ -16,7 +16,9 @@ class SkyServer(Server):
         result = sqlcl.query(query).readlines()
         data =[]
         count =0
+        # print (result)
         for i in result:
+            # print(i)
             if count>1:
                 list =i.split(',')
                 list[2]= list[2][:-1]
@@ -33,12 +35,22 @@ class SkyServer(Server):
     #########################
     #    Query Builder		#
     #########################
-    def other_rc3():
+    def otherRC3(self,ra,dec,margin):
     	'''
-    	return a list of other rc3 that lies in the same field
+    	Given ra,dec, pgc of an RC3 galaxy, return a list of other rc3 that lies in the same margin field.
     	'''
+        query = "SELECT distinct rc3.pgc,rc3.ra,rc3.dec FROM PhotoObj as po JOIN RC3 as rc3 ON rc3.objid = po.objid  WHERE po.ra between {0}-{2} and  {0}+{2} and po.dec between {1}-{2} and  {1}+{2}".format(str(ra),str(dec),str(margin))
+        return self.query(query)
+    def runCamcolFieldConverter(self,ra,dec,margin,need_clean=False):
+    	'''
+    	Given ra,dec ,return a list of run camcol field for the given ra,dec
+    	'''
+        if (need_clean):
+            query = "SELECT distinct run,camcol,field FROM PhotoObj WHERE  CLEAN =1 and ra between {0}-{2} and  {0}+{2}and dec between {1}-{2} and  {1}+{2}".format(str(ra),str(dec),str(margin))
+        else:
+            query = "SELECT distinct run,camcol,field FROM PhotoObj WHERE  ra between {0}-{2} and  {0}+{2}and dec between {1}-{2} and  {1}+{2}".format(str(ra),str(dec),str(margin))
+        return self.query(query)
 
-        
 
 
     # def test():
