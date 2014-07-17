@@ -21,8 +21,9 @@ class SkyServer(Server):
             # print(i)
             if count>1:
                 list =i.split(',')
-                list[2]= list[2][:-1]
-                data.append(list)
+                if (len(list)>2):
+			list[2]= list[2][:-1]
+                	data.append(list)
             count += 1 
         #print (result)
         return (data)

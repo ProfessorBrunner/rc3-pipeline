@@ -6,8 +6,8 @@ Instance Attributes:
     - Useful quantities parse columns into list and store as attributes(?) 
 '''
 # import survey
-import mast
-import gator
+# import mast
+# import gator
 from abc import ABCMeta , abstractmethod
 
 class Server(object):

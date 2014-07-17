@@ -1,3 +1,4 @@
+import os
 from catalog import Catalog
 class RC3Catalog(Catalog):
 	'''
@@ -20,9 +21,10 @@ class RC3Catalog(Catalog):
 		output = open("rc3_galaxies_outside_SDSS_footprint.txt",'a') # 'a' for append #'w')
 		unclean = open("rc3_galaxies_unclean","a")
 		# survey=SDSS()
+		
 		with open("rc3_ra_dec_diameter_pgc.txt",'r') as f:
 			for line in f:
-	            #try:
+	        	    #try:
 	            #print (line)
 				a = str(line)[0]
 	            #Debugging purpose, put this in the rc3(final).txt to start from where you left off (when error)
@@ -56,9 +58,26 @@ class RC3Catalog(Catalog):
 		output = open("rc3_galaxies_outside_SDSS_footprint.txt",'a') # 'a' for append #'w')
 		unclean = open("rc3_galaxies_unclean","a")
 		for obj in self.allObj:
-			rfits=obj.mosaic_band('r',obj.rc3_ra,obj.rc3_dec,3*obj.rc3_radius,obj.rc3_radius,obj.pgc,survey)
-			if(rfits!=-1): #Special value for outside footprint or error , no rfits produced
-				obj.source_info(rfits,survey)
+			#try:
+			print("Working on PGC{}, at({} , {})".format(str(obj.pgc), str(obj.rc3_ra),str(obj.rc3_dec)))
+			try:
+				rfits=obj.mosaic_band('r',obj.rc3_ra,obj.rc3_dec,3*obj.rc3_radius,obj.rc3_radius,obj.pgc,survey)
+				if(rfits!=-1): #Special value for outside footprint or error , no rfits produced
+					obj.source_info(rfits,survey)
+			except:
+				print("Something went wrong in mosaicing PGC {}".format(str(obj.pgc)))
+				if (os.getcwd()[18:]!='bulk_run2'):
+				# if we are stuck inside some sort of position directory instead of our running directory. Must get out.
+					print ("Get out of cwd")
+					os.chdir("..")
+				mosaicAll_error=open("mosaicAll_error","a")
+				mosaicAll_error.write("{}       {}        {}        {} \n".format(str(obj.rc3_ra),str(obj.rc3_dec),str(obj.rc3_radius),str(obj.pgc)))
+				pass
+#       except:
+                #               print("Something went wrong when mosaicing PGC{}, just ignore it and keep mosaicing the next galaxy".format(str(obj.pgc)))
+                #               mosaicAll_error=open("mosaicAll_error","a")
+                #               mosaicAll_error.write("{}       {}        {}        {} \n".format(obj.rc3_ra,obj.rc3_dec,obj.rc3_radius,obj.pgc))
+
 	def mosaicAllDebug():
 		'''
 		Produce all band FITS files and color mosaic for every objects inside the Catalog that lies within the footprint of the given survey
