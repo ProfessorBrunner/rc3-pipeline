@@ -430,7 +430,7 @@ if __name__ == "__main__":
 	# 	sconf_obj = rc3(0.184583333333,28.4013888889,0.0132388039385,58)
 	# 	mosaic_example(sconf_obj)
 	###################################
-    initial_run()
+    # initial_run()
     ##################################
     # os.chdir("..")
     # rfits=[file for root, dir, files in os.walk("final_run_info") for file in files if fnmatch.fnmatchcase(file, "SDSS_r_*.fits")]
