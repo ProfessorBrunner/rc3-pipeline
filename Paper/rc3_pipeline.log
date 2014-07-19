@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  18 JUL 2014 22:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  18 JUL 2014 23:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -257,7 +257,7 @@ pipeline.aux) )
 Here is how much of TeX's memory you used:
  2637 strings out of 493117
  36239 string characters out of 6135433
- 109568 words of memory out of 5000000
+ 110568 words of memory out of 5000000
  6070 multiletter control sequences out of 15000+600000
  7327 words of font info for 26 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -270,7 +270,7 @@ cmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 fb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
 b></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on rc3_pipeline.pdf (1 page, 103451 bytes).
+Output written on rc3_pipeline.pdf (1 page, 108212 bytes).
 PDF statistics:
  40 PDF objects out of 1000 (max. 8388607)
  28 compressed objects within 1 object stream

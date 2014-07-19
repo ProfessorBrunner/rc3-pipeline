@@ -15,7 +15,7 @@ abstract
 	%Think of a name to refer to "the program"
 
 		\subsection{Technical Details}
-	The program is written in Python 2.7.6
+	The program was written in Python 2.7.6 to survey-independent and interacts 
  It uses IPAC's Montage  \cite{montage} using the AstroPy Montage wrapper\footnote{\url{http://www.astropy.org/montage-wrapper/}}. The final g,r,i image is created using Astromatic STIFF \cite{stiff} . Our choice of program reflects best feature from both program : STIFF provides the flexibility of changing many variables for the final g,r,i; Montage creates scientifically-calibrated images by retaining astrometric accuracy during image reprojection. The use of two different program in the mosaicing step is due to Montage's ability to create scientifically-calibrated mosaic FITS, but STIFF provided more flexible parameters for combining all bands into color images, so we get the best of both worlds. The STIFF setting needs to be adjusted for each survey depending on specs on the telescope's CCD dependent parameters such as imaging bands. (?) The source extraction is done using SExtractor. If the mosaicing field is chosen correctly, then SExtractor's skylevel estimation is fairly accurate.
 	\subsection{Getting the Data}
 		\subsubsection{Search}
@@ -23,7 +23,17 @@ abstract
 Most surveys have an API that enables you to acess data using SQL querys so that the mosaicing program can interact with so that it doesn't have to  click buttons or type in textboxes in the web GUI. 
 \section{Algorithms}
 \section{Pipeline}
-\section{Known Errors}
+	\subsection{Class Hierarchy}
+\section{Result from SDSS run}
+	\subsection{Known Errors}
+		
+	Even though a series of exception handling and error prevention mechanicsms were put in place, 
+	 	\begin{itemize}
+	 		\item The RC3 galaxies 
+	 	\end{itemize}
+	
+	\subsection{Performance}
+	accelerate the process by ``testing" only on the a single band fit file. For SDSS, that is the r band, best quality (longest wavelength => most photons).  Most of the time is spent on downloading the raw FITS files from the survey's specific server. This process can be dramtically sped up if the investigator has imaging data stored locally on a hardisk. We anticipate that this consist of 	 simply write a subclass of the Server class and fill in some path-dependent detials (where images are stored) to enable this feature.
 
 
 %20.9170833333     33.2561111111     0.0539322762628      5098   
@@ -33,6 +43,7 @@ Most surveys have an API that enables you to acess data using SQL querys so that
 %\bibliographystyle{elsarticle-num}
 %\bibliographystyle{te}
 \bibliographystyle{abbrvnat}
+\section{Conclusion}
 
 \bibliography{bibtex_database}
 
