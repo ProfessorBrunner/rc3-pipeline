@@ -40,7 +40,7 @@ class RC3(RC3Catalog):
         '''
         print ("------------------mosaic_band----------------------")
         DEBUG = True
-        output = open("rc3_galaxies_outside_{}_footprint".format(survey.name),'a') # 'a' for append #'w')
+        output = open("../rc3_galaxies_outside_{}_footprint".format(survey.name),'a') # 'a' for append #'w')
         unclean = open("../rc3_galaxies_unclean","a")
         # filename = "{},{}".format(str(ra),str(dec))
         filename = str(ra)+str(dec)
@@ -270,9 +270,18 @@ class RC3(RC3Catalog):
                         dec= float(i[2][:-1])
                         info[pgc]= [ra,dec]
                     print ("info"+str(info))
-                    print ("The galaxy that we want to mosaic is: "+str(info[self.pgc]))
-                    new_ra= info[self.pgc][0]
-                    new_dec = info[self.pgc][1]
+                    if self.pgc not in info.keys():
+                        print "Strange Error, can not find info about galaxy of interest in searching around its own radius"
+                        strange_error= open("../strange_error.txt",'a')
+                        strange_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
+                        return ['@','@',1.5*margin,'@','@']
+                        #Simply let the new value be the old value and let it die off after 3 iteration
+                        # new_ra=self.rc3_ra
+                        # new_dec=self.rc3_dec
+                    else:
+                        print ("The galaxy that we want to mosaic is: "+str(info[self.pgc]))
+                        new_ra= info[self.pgc][0]
+                        new_dec = info[self.pgc][1]
                 else:
                     print ("Source is Obvious")
                     n=1 # if no source confusion then just keep the maximum radius
