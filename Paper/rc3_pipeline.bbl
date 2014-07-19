@@ -1,0 +1,28 @@
+\begin{thebibliography}{2}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{Berriman} et~al.(2004){Berriman}, {Deelman}, {Good}, {Jacob}, {Katz},
+  {Kesselman}, {Laity}, {Prince}, {Singh}, and {Su}]{montage}
+G.~B. {Berriman}, E.~{Deelman}, J.~C. {Good}, J.~C. {Jacob}, D.~S. {Katz},
+  C.~{Kesselman}, A.~C. {Laity}, T.~A. {Prince}, G.~{Singh}, and M.-H. {Su}.
+\newblock {Montage: a grid-enabled engine for delivering custom science-grade
+  mosaics on demand}.
+\newblock In P.~J. {Quinn} and A.~{Bridger}, editors, \emph{Optimizing
+  Scientific Return for Astronomy through Information Technologies}, volume
+  5493 of \emph{Society of Photo-Optical Instrumentation Engineers (SPIE)
+  Conference Series}, pages 221--232, Sept. 2004.
+\newblock \doi{10.1117/12.550551}.
+
+\bibitem[{Bertin}(2012)]{stiff}
+E.~{Bertin}.
+\newblock {Displaying Digital Deep Sky Images}.
+\newblock In P.~{Ballester}, D.~{Egret}, and N.~P.~F. {Lorente}, editors,
+  \emph{Astronomical Data Analysis Software and Systems XXI}, volume 461 of
+  \emph{Astronomical Society of the Pacific Conference Series}, page 263, Sept.
+  2012.
+
+\end{thebibliography}
