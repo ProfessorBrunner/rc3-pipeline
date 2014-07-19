@@ -40,8 +40,8 @@ class RC3(RC3Catalog):
         '''
         print ("------------------mosaic_band----------------------")
         DEBUG = True
-        output = open("rc3_galaxies_outside_{}_footprint.txt".format(survey.name),'a') # 'a' for append #'w')
-        unclean = open("rc3_galaxies_unclean","a")
+        output = open("../rc3_galaxies_outside_{}_footprint".format(survey.name),'a') # 'a' for append #'w')
+        unclean = open("../rc3_galaxies_unclean","a")
         # filename = "{},{}".format(str(ra),str(dec))
         filename = str(ra)+str(dec)
         #print (margin/radius)
@@ -53,47 +53,23 @@ class RC3(RC3Catalog):
         # clean_result = sqlcl.query( "SELECT distinct run,camcol,field FROM PhotoObj WHERE  CLEAN =1 and ra between "+str(ra)+"-"+str(margin)+" and " +str(ra)+"+"+str(margin)+"and dec between "+str(dec)+"-"+str(margin)+" and "+ str(dec)+"+"+str(margin)).readlines()
         # clean_result = sqlcl.query( "SELECT distinct run,camcol,field FROM PhotoObj WHERE  CLEAN =1 and ra between {0}-{1} and  {0}+{1}and dec between {2}-{3} and  {2}+{3}".format(str(ra),str(margin),str(dec),str(margin))) .readlines()
         clean = True
-        print (result)
-        print (clean_result)
+        print ("result: "+str(result))
+        print ("clean_result: "+str(clean_result))
         
-        if (len(result)>0 or len(clean_result)>0):
-            #if (result[0][:6]=="<html>"):
-                #print("strange error from SQL server")
-                #return -1
-            #if (result[1]=='error_message\n' or clean_result[1]=='error_message\n'):
-            if (result[0][0][1:6]=="ERROR" or clean_result[0][0][1:6]=="ERROR"):
-		#Case where doing more than 60 queries in 1 minute
-                print("ERROR: Too much query in 1 minute. Sleep for 60 second.")
-
-		time.sleep(60)
-                #results are messed up, need to re-query
-                #result = sqlcl.query( "SELECT distinct run,camcol,field FROM PhotoObj WHERE  ra between "+str(ra)+"-"+str(margin)+" and " +str(ra)+"+"+str(margin)+"and dec between "+str(dec)+"-"+str(margin)+" and "+ str(dec)+"+"+str(margin)).readlines()
-                # clean_result = sqlcl.query( "SELECT distinct run,camcol,field FROM PhotoObj WHERE  CLEAN =1 and ra between "+str(ra)+"-"+str(margin)+" and " +str(ra)+"+"+str(margin)+"and dec between "+str(dec)+"-"+str(margin)+" and "+ str(dec)+"+"+str(margin)).readlines()
-                result = survey.data_server.runCamcolFieldConverter(ra,dec,margin)
-                clean_result = survey.data_server.runCamcolFieldConverter(ra,dec,margin,True)
-        
-        if (len(result)!=len(clean_result) and band=='u'):
-            #only print this once in the u band. If it is unclean in u band (ex. cosmic ray, bright star..etc) then it must be unclean in the other bands too.
+        if (len(result)!=len(clean_result)and band=='u'):
+            #only print this once in the u band. 
+            #If it is unclean in u band (ex. cosmic ray, bright star..etc) then it must be unclean in the other bands too.
             print ("Data contain unclean images")
             clean=False
-            unclean.write(str(self.rc3_ra)+"     "+str(self.rc3_dec)+"     "+str(self.rc3_radius)+"     "+str(self.pgc)+"/n")
-            # unclean.write("{}     {}     {}     {} \n".format(str(ra),str(dec),str(radius),pgc))    
-        # data =[]
-        # count =0
-        # for i in result:
-        #     if count>1:
-        #         list =i.split(',')
-        #         list[2]= list[2][:-1]
-        #         data.append(list)
-        #     count += 1 
-        # # print (data)
-        # data=result
-        if (len(result)==0 and band=='r'): #you will only evounter non-footprint galaxy inint run , because after that we just take the footprint gaalxy already mosaiced (init) from rfits
+            unclean.write("{}     {}     {}     {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
+
+        if (len(result)==0):             
             if (DEBUG): print ('The given ra, dec of this galaxy does not lie in the survey footprint. Onto the next galaxy!')#Exit Program.'
-            output.write(str(ra)+ "     "+ str(dec)+"     "+str(radius)+"\n")
-            # output.write("{}     {}     {}     {} \n".format(str(ra),str(dec),str(radius),pgc))
-            output.write(str(ra)+"     "+str(dec)+"     "+str(radius)+"     "+str(pgc))
-            #sys.exit()
+            # if (band=='r'):
+                # not-in-footprint only written when mosaicing first (i.e. r) band
+                # this is only relavant in the case where we call mosaic_band by mosaicAll 
+                # since if you are only mosaicing one galaxy then this print statement is spit back.
+            output.write("{}     {}     {}     {} \n".format(str(ra),str(dec),str(radius),str(pgc)))
             return -1 #special value reserved for not in survey footprint galaxies
         else :
             if (DEBUG): 
@@ -106,6 +82,7 @@ class RC3(RC3Catalog):
         os.mkdir ("projected")
         os.chdir("raw")
         if (DEBUG): print ("Retrieving data from server for "+ band +"band")
+        out=""
         for i in result :  
             survey.data_server.getData(band,str(i[0]), str(i[1]),str(i[2]))
             out = "frame-"+str(band)+"-"+str(i[0]).zfill(6)+"-"+str(i[1])+"-"+str(i[2]).zfill(4)
@@ -165,199 +142,209 @@ class RC3(RC3Catalog):
         If no RC3 source is identified then ['@','@',margin_value,'@','@'] is returned
         If RC3 lie outside of survey footprint then [-1,-1,-1,-1,-1] is returned
         '''
-        try:
-            updated = open("rc3_updated.txt",'a') 
-            self.num_iterations +=1
-            print ("{}th iteration".format(self.num_iterations))
-            if (self.num_iterations < 3): #5 is too much
-                print ("------------------source_info----------------------")
-                file = r_fits_filename 
-                print("Source info for {}".format(file))
-                if (file ==-1): #special value reserved for not in SDSS footprint galaxies
-                    return [-1,-1,-1,-1,-1]
+        # try:
+        updated = open("rc3_updated.txt",'a') 
+        self.num_iterations +=1
+        print ("{}th iteration".format(self.num_iterations))
+        if (self.num_iterations <= 3): #5 is too much
+            print ("------------------source_info----------------------")
+            file = r_fits_filename 
+            print("Source info for {}".format(file))
+            if (file ==-1): #special value reserved for not in SDSS footprint galaxies
+                return [-1,-1,-1,-1,-1]
 
-                # File info 
-                hdulist = pyfits.open(file)
-                rc3_ra= hdulist[0].header['RA']
-                rc3_dec= hdulist[0].header['DEC']
-                rc3_radius = hdulist[0].header['RADIUS']
-                margin = hdulist[0].header['MARGIN']
-                pgc = hdulist[0].header['PGC']
+            # File info 
+            hdulist = pyfits.open(file)
+            rc3_ra= hdulist[0].header['RA']
+            rc3_dec= hdulist[0].header['DEC']
+            rc3_radius = hdulist[0].header['RADIUS']
+            margin = hdulist[0].header['MARGIN']
+            pgc = hdulist[0].header['PGC']
 
-                #Source Extraction
-                os.system("sextractor {} -c default.sex".format(file))
-                # A list of other RC3 galaxies that lies in the field
-                # In the case of source confusion, find all the rc3 that lies in the field.
-                # other_rc3s = sqlcl.query("SELECT distinct rc3.ra, rc3.dec FROM PhotoObj as po JOIN RC3 as rc3 ON rc3.objid = po.objid  WHERE po.ra between {0}-{1} and  {0}+{1} and po.dec between {2}-{3} and  {2}+{3}".format(str(rc3_ra),str(margin),str(rc3_dec),str(margin))).readlines()
-                other_rc3s = survey.data_server.otherRC3(rc3_ra,rc3_dec,margin)
-                other_rc3s_info=other_rc3s
-		print (other_rc3s)
-                print ("ra,dec of catalog sources")
-                #This list contains [pgc,ra,dec] as strings
-                # Cutting away PGC information
-                other_rc3s=[i[1:] for i in other_rc3s]
-                #Convert string to float
-                other_rc3s = [map(float,i) for i in other_rc3s]
-                rc3_data = map (np.array,other_rc3s)
-                print ("rc3_data: "+str(rc3_data))
+            # Source Extraction
+            # Remember to switch to "sextractor" for Ubuntu/ Linux, "sex" for Mac
+            os.system("sex {} -c default.sex".format(file))
+            # A list of other RC3 galaxies that lies in the field
+            # In the case of source confusion, find all the rc3 that lies in the field.
+            # other_rc3s = sqlcl.query("SELECT distinct rc3.ra, rc3.dec FROM PhotoObj as po JOIN RC3 as rc3 ON rc3.objid = po.objid  WHERE po.ra between {0}-{1} and  {0}+{1} and po.dec between {2}-{3} and  {2}+{3}".format(str(rc3_ra),str(margin),str(rc3_dec),str(margin))).readlines()
+            other_rc3s = survey.data_server.otherRC3(rc3_ra,rc3_dec,margin)
+            other_rc3s_info=other_rc3s
+            print (other_rc3s)
+            print ("ra,dec of catalog sources")
+            #This list contains [pgc,ra,dec] as strings
+            # Cutting away PGC information
+            other_rc3s=[i[1:] for i in other_rc3s]
+            #Convert string to float
+            other_rc3s = [map(float,i) for i in other_rc3s]
+            rc3_data = map (np.array,other_rc3s)
+            print ("rc3_data: "+str(rc3_data))
 
-                distances=[]
-                for i in range(len(other_rc3s)-1):#len(data)//2):
-                    if (len(other_rc3s)>1 ): #odd number (unpaired) RC3s that lie in the field is ignored for now 
-                    # (but we have to take it into consideration eventually)
-                    # and len(data)%2==0
-                        d2p= np.array(other_rc3s[i])-np.array(other_rc3s[i+1])
-                        print ("d2p: {}".format(d2p))
-                        distances.append(d2p)       
-                if(len(distances)!=0):
-                    print (distances)
-                if (len(distances)>1):
-                    print ("More than 2 galaxies inside field!")   
-                print (distances)                           
-                #Conduct pairwise comparison
+            distances=[]
+            for i in range(len(other_rc3s)-1):#len(data)//2):
+                if (len(other_rc3s)>1 ): #odd number (unpaired) RC3s that lie in the field is ignored for now 
+                # (but we have to take it into consideration eventually)
+                # and len(data)%2==0
+                    d2p= np.array(other_rc3s[i])-np.array(other_rc3s[i+1])
+                    print ("d2p: {}".format(d2p))
+                    distances.append(d2p)       
+            # if(len(distances)!=0):
+                
+            if (len(distances)>1):
+                print ("More than 2 galaxies inside field!")   
+                print (distances)
+            # print (distances)                           
+            #Conduct pairwise comparison
+            catalog = open("test.cat",'r')
+            #Creating a list of radius
+            radius_list = []
+            # Creating a corresponding list of ra,dec
+            sextract_dict ={}
+            for line in catalog:
+                line = line.split()
+                if (line[0]!='#'):
+                    radius=np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2
+                    radius_list.append(radius)
+                    coord = np.array([float(line[2]),float(line[3])])
+                    sextract_dict[radius]=coord
+            print ("Radius: "+str(radius_list))
+            print ("SExtract_dict: "+str(sextract_dict))
+            if (len(sextract_dict)>0):
+                #special value that indicate empty list (no object detected by SExtractor)
+                radii='@'
+                new_ra='@'
+                new_dec='@'
                 catalog = open("test.cat",'r')
-                #Creating a list of radius
-                radius_list = []
-                # Creating a corresponding list of ra,dec
-                sextract_dict ={}
-                for line in catalog:
-                    line = line.split()
-                    if (line[0]!='#'):
-                        radius=np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2
-                        radius_list.append(radius)
-                        coord = np.array([float(line[2]),float(line[3])])
-                        sextract_dict[radius]=coord
-                print ("Radius: "+str(radius_list))
-                print ("SExtract_dict: "+str(sextract_dict))
-                if (len(sextract_dict)>0):
+                n=-1
+                if (len(distances)!=0):
+                    # if there is source confusion, then we want to keep the nth largest radius
+                    print ("Source Confusion")
+                    n=len(distances)+1
+                    print ("sextract_dict:"+str(sextract_dict))
+                    print ("N-th largest radius:"+str(heapq.nlargest(n,sextract_dict)))
+                    #nth largest radius
+                    nth_largest=heapq.nlargest(n,sextract_dict)
+                    sextract=[]
+                    for i in heapq.nlargest(n,sextract_dict):
+                        sextract.append(np.array(sextract_dict[i]))
+                    print ("sextract:"+str(sextract))
+                    # radius
+                    nth_largest=[i for i in nth_largest if float(i)>15.]
+                    print(nth_largest)
+                    if(len(nth_largest)!=0):
+                        radii = nth_largest[0]
+                    #Coordinate matching by pairs
+                    diff = []
+                    #all possible coordinate pairs 
+                    coord_match=[]
+                    for i in rc3_data : 
+                        #determine shift vector 
+                        for j in sextract:
+                            print (str(i)+" " +str(j))
+                            coord_match.append([i,j])
+                            diff.append((j-i).tolist())  
+                    print ("coord_match: "+str(coord_match))     
+                    print ("diff: "+str(diff))
+                    abs_diff = map (lambda x : map(lambda y:abs(y), x), diff)        
+                    print ("abs_diff: "+str(abs_diff))
+                    tmp = heapq.nsmallest(n,abs_diff)
+                    print ("tmp : "+str(tmp))
+                    # Bascially doing this , the long way, becasuse Python apparently can not do list -by element comparison and complains
+                    #inx=abs_diff.index(np.array(i))
+                    inx=[]
+                    for i in tmp:
+                        for j in abs_diff:
+                            if (i==j):
+                                print (abs_diff.index(j))
+                                inx.append(abs_diff.index(j))
+                    print (inx)
+                    matched=[]
+                    for i in inx:
+                        print coord_match[i]
+                        matched.append(coord_match[i])
+                    print (other_rc3s_info)
+                    info ={}
+                    for i in other_rc3s_info:
+                        # list =i.split(',')
+                        pgc = int(i[0][3:])
+                        ra= float(i[1][:-1])
+                        dec= float(i[2][:-1])
+                        info[pgc]= [ra,dec]
+                    print ("info"+str(info))
+                    if self.pgc not in info.keys():
+                        print "Strange Error, can not find info about galaxy of interest in searching around its own radius"
+                        strange_error= open("../strange_error.txt",'a')
+                        strange_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
+                        return ['@','@',1.5*margin,'@','@']
+                        #Simply let the new value be the old value and let it die off after 3 iteration
+                        # new_ra=self.rc3_ra
+                        # new_dec=self.rc3_dec
+                    else:
+                        print ("The galaxy that we want to mosaic is: "+str(info[self.pgc]))
+                        new_ra= info[self.pgc][0]
+                        new_dec = info[self.pgc][1]
+                else:
+                    print ("Source is Obvious")
+                    n=1 # if no source confusion then just keep the maximum radius
+                    catalog = open("test.cat",'r')
+                    #Creating a list of radius
+                    radius = []
+                    for line in catalog:
+                        #print (line)
+                        line = line.split()
+                        if (line[0]!='#'):
+                            radius.append(np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2)
                     #special value that indicate empty list (no object detected by SExtractor)
                     radii='@'
                     new_ra='@'
                     new_dec='@'
                     catalog = open("test.cat",'r')
-                    n=-1
-                    if (len(distances)!=0):
-                        # if there is source confusion, then we want to keep the nth largest radius
-                        print ("Source Confusion")
-                        n=len(distances)+1
-                        print ("sextract_dict:"+str(sextract_dict))
-                        print ("N-th largest radius:"+str(heapq.nlargest(n,sextract_dict)))
-                        #nth largest radius
-                        nth_largest=heapq.nlargest(n,sextract_dict)
-                        sextract=[]
-                        for i in heapq.nlargest(n,sextract_dict):
-                            sextract.append(np.array(sextract_dict[i]))
-                        print ("sextract:"+str(sextract))
-                        # radius
-                        nth_largest=[i for i in nth_largest if float(i)>15.]
-                        print(nth_largest)
-                        if(len(nth_largest)!=0):
-                            radii = nth_largest[0]
-                        #Coordinate matching by pairs
-                        diff = []
-                        #all possible coordinate pairs 
-                        coord_match=[]
-                        for i in rc3_data : 
-                            #determine shift vector 
-                            for j in sextract:
-                                print (str(i)+" " +str(j))
-                                coord_match.append([i,j])
-                                diff.append((j-i).tolist())  
-                        print ("coord_match: "+str(coord_match))     
-                        print ("diff: "+str(diff))
-                        abs_diff = map (lambda x : map(lambda y:abs(y), x), diff)        
-                        print ("abs_diff: "+str(abs_diff))
-                        tmp = heapq.nsmallest(n,abs_diff)
-                        print ("tmp : "+str(tmp))
-                        # Bascially doing this , the long way, becasuse Python apparently can not do list -by element comparison and complains
-                        #inx=abs_diff.index(np.array(i))
-                        inx=[]
-                        for i in tmp:
-                            for j in abs_diff:
-                                if (i==j):
-                                    print (abs_diff.index(j))
-                                    inx.append(abs_diff.index(j))
-                        print (inx)
-                        matched=[]
-                        for i in inx:
-                            print coord_match[i]
-                            matched.append(coord_match[i])
-			print (other_rc3s_info)
-               		info ={}
-                        for i in other_rc3s_info:
-                            # list =i.split(',')
-                            pgc = int(i[0][3:])
-                            ra= float(i[1][:-1])
-                            dec= float(i[2][:-1])
-                            info[pgc]= [ra,dec]
-                        print ("info"+str(info))
-                        print ("The galaxy that we want to mosaic is: "+str(info[self.pgc]))
-                        new_ra= info[self.pgc][0]
-                        new_dec = info[self.pgc][1]
-                    else:
-                        print ("Source is Obvious")
-                        n=1 # if no source confusion then just keep the maximum radius
-                        catalog = open("test.cat",'r')
-                        #Creating a list of radius
-                        radius = []
-                        for line in catalog:
-                            #print (line)
-                            line = line.split()
-                            if (line[0]!='#'):
-                                radius.append(np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2)
-                        #special value that indicate empty list (no object detected by SExtractor)
-                        radii='@'
-                        new_ra='@'
-                        new_dec='@'
-                        catalog = open("test.cat",'r')
-                        # If there is no other RC3 in the field, it means the largest galaxy in the field is the RC3 we are interested in
-                        # So find max radius and treat as if it is rc3
-                        for i in catalog:
-                            line = i.split()
-                            if (line[0]!='#' ):
-                                #Pythagorean method
-                                radii = np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2
-                                if (radii==max(radius)):
-                                    print ('Biggest Galaxy with radius {} pixels!'.format(str(radii)))
-                                    radii = radii
-                                    new_ra= line[2]
-                                    new_dec = line[3]
-                                    break
-                    print ("new_ra and new_dec: {} , {}  ".format(str(new_ra),str(new_dec)))
-                    if (radii!='@' and float(radii)>15): # There exist 1 or more detected source
-                        print ("Radii: {} pixel".format(str(radii)))
-                        radii = 0.00010995650106797878*radii #pixel to degree conversion
-                        print ("Radii: {} degrees".format(str(radii)))
-                        print ("rc3: {} , updated: {} ".format(rc3_ra, new_ra))
-                        print ("rc3: {} , updated: {} ".format(rc3_dec,new_dec))
-                        print ("rc3: {} , updated: {} ".format(rc3_radius,radii))
-                        updated.write("{}       {}      {}      {}      {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii))
-                        self.mosaic_all_bands(new_ra,new_dec,margin,radii,pgc,survey)
-                        return [float(new_ra),float(new_dec),margin,radii,pgc] 
-                        # margin was already set as 6*rc3_radius during initial_run
-                        # all additional mosaicking steps shoudl be 1.5 times this 
-                # else: #radii =@ if all SExtracted radius is <15 
-                print ("No detected RC3 sources in image. Mosaic using a larger margin")
-                # original automated mosaic program default 6*radius
-                # call on mosaic program with +50% original margin
-                r_mosaic_filename = self.mosaic_band('r',rc3_ra,rc3_dec,1.5*margin,rc3_radius,pgc,survey)
-                self.source_info(r_mosaic_filename,survey)
-                return ['@','@',1.5*margin,'@','@']
-            else : 
-                no_detection = open("../no_detected_rc3_candidate_nearby.txt",'a') # 'a' for append #'w')
-                #no_detection.write("rc3_ra       rc3_dec        rc3_radius        pgc \n")
-                no_detection.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
-        except (IOError):
-            print ("File Not Found Error, if rfits is not found then mosaic an rfits")
-            rfits=self.mosaic_band('r',self.rc3_ra,self.rc3_dec,3*self.rc3_radius,self.rc3_radius,self.pgc,survey)
-            #Should I do source_info here again or autodetect??
-            self.source_info(rfits,survey)
-        except:
-	   
-            print("Something went wrong when mosaicing PGC{}, just ignore it and keep mosaicing the next galaxy".format(str(pgc)))
-            error = open ("sourceinfo_error.txt","a")
-            error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
-            return['x','x','x','x','x']
+                    # If there is no other RC3 in the field, it means the largest galaxy in the field is the RC3 we are interested in
+                    # So find max radius and treat as if it is rc3
+                    for i in catalog:
+                        line = i.split()
+                        if (line[0]!='#' ):
+                            #Pythagorean method
+                            radii = np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2
+                            if (radii==max(radius)):
+                                print ('Biggest Galaxy with radius {} pixels!'.format(str(radii)))
+                                radii = radii
+                                new_ra= line[2]
+                                new_dec = line[3]
+                                break
+                print ("new_ra and new_dec: {} , {}  ".format(str(new_ra),str(new_dec)))
+                if (radii!='@' and float(radii)>15): # There exist 1 or more detected source
+                    print ("Radii: {} pixel".format(str(radii)))
+                    radii = 0.00010995650106797878*radii #pixel to degree conversion
+                    print ("Radii: {} degrees".format(str(radii)))
+                    print ("rc3: {} , updated: {} ".format(rc3_ra, new_ra))
+                    print ("rc3: {} , updated: {} ".format(rc3_dec,new_dec))
+                    print ("rc3: {} , updated: {} ".format(rc3_radius,radii))
+                    updated.write("{}       {}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii, pgc))
+                    self.mosaic_all_bands(new_ra,new_dec,margin,radii,pgc,survey)
+                    return [float(new_ra),float(new_dec),margin,radii,pgc] 
+                    # margin was already set as 6*rc3_radius during initial_run
+                    # all additional mosaicking steps shoudl be 1.5 times this 
+                #else: #radii =@ if all SExtracted radius is <15 
+            print ("No detected RC3 sources in image. Mosaic using a larger margin")
+            # original automated mosaic program default 6*radius
+            # call on mosaic program with +50% original margin
+            r_mosaic_filename = self.mosaic_band('r',rc3_ra,rc3_dec,1.5*margin,rc3_radius,pgc,survey)
+            self.source_info(r_mosaic_filename,survey)
+            return ['@','@',1.5*margin,'@','@']
+        else : # no detection since exceed num_iteration
+            no_detection = open("../no_detected_rc3_candidate_nearby.txt",'a') # 'a' for append #'w')
+            #no_detection.write("rc3_ra       rc3_dec        rc3_radius        pgc \n")
+            no_detection.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
+        # except (IOError):
+        #     print ("File Not Found Error, if rfits is not found then mosaic an rfits")
+        #     rfits=self.mosaic_band('r',self.rc3_ra,self.rc3_dec,3*self.rc3_radius,self.rc3_radius,self.pgc,survey)
+        #     #Should I do source_info here again or autodetect??
+        #     # self.source_info(rfits,survey)
+        # except:
+        #     print("Something went wrong when mosaicing PGC{}, just ignore it and keep mosaicing the next galaxy".format(str(pgc)))
+        #     error = open ("sourceinfo_error.txt","a")
+        #     error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
+        #     return['x','x','x','x','x']
             
     #Unit Tested : Sucess
     def mosaic_all_bands(self,ra,dec,margin,radius,pgc,survey):

@@ -68,6 +68,10 @@ class Gator(Server):
     def otherRC3(self,ra,dec,margin,survey,catalog='default'): 
         '''
         Given ra,dec, pgc of an RC3 galaxy, return a list of other rc3 that lies in the same margin field.
+        in the form 
+
+        [arr([0.158083,28.384556], [0.183333,28.401444])]
+
         Units
         =====
         Search radius (radius): arcsecond
@@ -82,10 +86,41 @@ class Gator(Server):
         #NOTE THIS DOESN'T ACTUALLY FIND ANY OTHER RC3 GALAXY, IT JUST SEARCHES FOR THE TILES INSIDE THE BOX
         #degree to arcsecond conversion 
         margin = margin*3600
-        query = "spatial=box&catalog={}&size={}&outfmt=1&objstr={},{}".format(catalog,str(margin),str(ra),str(dec))
-        print(query)
-        return self.query(query,survey,catalog)
+        #query = "spatial=box&catalog={}&size={}&outfmt=1&objstr={},{}".format(catalog,str(margin),str(ra),str(dec))
+        #print(query)
+
+
+        other_rc3s= self.query(query,survey,catalog)
+        print (other_rc3s)
+        # This list contains [pgc,ra,dec] as strings
+        # Cutting away PGC information
+        other_rc3s=[i[1:] for i in other_rc3s]
+        #Convert string to float
+        other_rc3s = [map(float,i) for i in other_rc3s]
+        other_rc3s = map (np.array,other_rc3s)
+        return other_rc3s
+
         # TILES converter is not necessary because we can just get the image from getData
+    def otherRC3info(self,ra,dec,margin,survey,catalog='default'):
+        '''
+        Given ra,dec, pgc of an RC3 galaxy, return a dict of other rc3 that lies in the same margin field
+        with keys of PGC and value as a list of position ra,dec
+        in the form 
+
+        {58: [0.18333, 28.40144], 54: [0.15808, 28.38455]}
+
+        '''
+        
+        #Converting Table results to dictionary form
+        try :
+            dict = {}
+            for i in range(50): 
+                dict[int(tbl[i]['PGC'][3:])]=(tbl[i]['_RAJ2000'],tbl[i]['_DEJ2000'])
+                #print (tbl[i])
+        except(IndexError):
+            #Intentionally Crash
+            pass
+        return dict
     # def runCamcolFieldConverter(self,ra,dec,margin,need_clean=False):
     #     '''
     #     Given ra,dec ,return a list of run camcol field for the given ra,dec

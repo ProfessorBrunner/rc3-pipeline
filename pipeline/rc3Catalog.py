@@ -18,9 +18,9 @@ class RC3Catalog(Catalog):
 		allObj=[]
 		n = 0
 		start=False
-		output = open("rc3_galaxies_outside_SDSS_footprint.txt",'a') # 'a' for append #'w')
-		unclean = open("rc3_galaxies_unclean","a")
-		# survey=SDSS()
+		# output = open("rc3_galaxies_outside_SDSS_footprint",'a') # 'a' for append #'w')
+		# unclean = open("rc3_galaxies_unclean","a")
+		# # survey=SDSS()
 		
 		with open("rc3_ra_dec_diameter_pgc.txt",'r') as f:
 			for line in f:
@@ -55,10 +55,9 @@ class RC3Catalog(Catalog):
 		DEBUG = True
 		updated = open("rc3_updated.txt",'a') # 'a' for append #'w')
 		updated.write("ra       dec         new_ra      new_dec         radius \n")
-		output = open("rc3_galaxies_outside_SDSS_footprint.txt",'a') # 'a' for append #'w')
-		unclean = open("rc3_galaxies_unclean","a")
+		# output = open("rc3_galaxies_outside_SDSS_footprint",'a') 
+		# unclean = open("rc3_galaxies_unclean","a")
 		for obj in self.allObj:
-			#try:
 			print("Working on PGC{}, at({} , {})".format(str(obj.pgc), str(obj.rc3_ra),str(obj.rc3_dec)))
 			try:
 				rfits=obj.mosaic_band('r',obj.rc3_ra,obj.rc3_dec,3*obj.rc3_radius,obj.rc3_radius,obj.pgc,survey)
@@ -66,17 +65,15 @@ class RC3Catalog(Catalog):
 					obj.source_info(rfits,survey)
 			except:
 				print("Something went wrong in mosaicing PGC {}".format(str(obj.pgc)))
-				if (os.getcwd()[18:]!='bulk_run2'):
-				# if we are stuck inside some sort of position directory instead of our running directory. Must get out.
+				while (not (os.path.exists("rc3Catalog.py"))):
+					# if we are not in the Outer directory where rc3Catalog.py Is located at 
+					# then we are stuck inside some sort of position directory.
+					# Must get out to prevent spiraling recursion.
 					print ("Get out of cwd")
 					os.chdir("..")
 				mosaicAll_error=open("mosaicAll_error","a")
 				mosaicAll_error.write("{}       {}        {}        {} \n".format(str(obj.rc3_ra),str(obj.rc3_dec),str(obj.rc3_radius),str(obj.pgc)))
 				pass
-#       except:
-                #               print("Something went wrong when mosaicing PGC{}, just ignore it and keep mosaicing the next galaxy".format(str(obj.pgc)))
-                #               mosaicAll_error=open("mosaicAll_error","a")
-                #               mosaicAll_error.write("{}       {}        {}        {} \n".format(obj.rc3_ra,obj.rc3_dec,obj.rc3_radius,obj.pgc))
 
 	def mosaicAllDebug():
 		'''
