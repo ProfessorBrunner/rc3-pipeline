@@ -1,0 +1,24 @@
+#   1 NUMBER          Running object number
+#   2 FLUX_RADIUS     Fraction-of-light radii                         [pixel]
+#   3 ALPHA_J2000     Right ascension of barycenter (J2000)           [deg]
+#   4 DELTA_J2000     Declination of barycenter (J2000)               [deg]
+#   5 XMIN_IMAGE      Minimum x-coordinate among detected pixels      [pixel]
+#   6 YMIN_IMAGE      Minimum y-coordinate among detected pixels      [pixel]
+#   7 XMAX_IMAGE      Maximum x-coordinate among detected pixels      [pixel]
+#   8 YMAX_IMAGE      Maximum y-coordinate among detected pixels      [pixel]
+#   9 A_IMAGE         Profile RMS along major axis                    [pixel]
+#  10 B_IMAGE         Profile RMS along minor axis                    [pixel]
+         1      8.636   0.1482466 +33.6015600         38         15         60         65     9.836     3.168
+         2      4.070   0.1467519 +33.5975379         48         20         62         37     3.437     2.242
+         3      8.475   0.1557285 +33.6017420         12         11         61         72    11.233     3.282
+         4      1.033   0.1579540 +33.6005151         13         31         23         47     1.521     1.311
+         5      0.800   0.1585128 +33.5899764         17          1         24          2     0.753     0.491
+         6      0.964   0.1520740 +33.6109702         36         76         38         78     0.711     0.648
+         7      1.357   0.1438394 +33.6041984         60         50         64         55     1.408     0.707
+         8      1.400   0.1638945 +33.6018837          1         40          5         47     1.540     1.020
+         9      3.740   0.1640399 +33.6002460          1         31          4         40     1.555     0.860
+        10      0.993   0.1441233 +33.6095254         59         69         63         74     1.300     0.737
+        11      0.991   0.1398804 +33.5975328         71         27         76         31     1.065     0.989
+        12      1.158   0.1381507 +33.5962406         78         23         80         25     0.877     0.518
+        13      1.022   0.1598983 +33.6109706          3         75         17         86     1.070     0.986
+        14      0.994   0.1635304 +33.6066321          2         60          4         62     0.724     0.616
