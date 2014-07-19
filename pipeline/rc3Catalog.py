@@ -63,14 +63,16 @@ class RC3Catalog(Catalog):
 				rfits=obj.mosaic_band('r',obj.rc3_ra,obj.rc3_dec,3*obj.rc3_radius,obj.rc3_radius,obj.pgc,survey)
 				if(rfits!=-1): #Special value for outside footprint or error , no rfits produced
 					obj.source_info(rfits,survey)
-			except:
+			except(ValueError):
 				print("Something went wrong in mosaicing PGC {}".format(str(obj.pgc)))
 				while (not (os.path.exists("rc3Catalog.py"))):
 					# if we are not in the Outer directory where rc3Catalog.py Is located at 
 					# then we are stuck inside some sort of position directory.
 					# Must get out to prevent spiraling recursion.
+					print (os.getcwd())
 					print ("Get out of cwd")
 					os.chdir("..")
+				print (os.getcwd())
 				mosaicAll_error=open("mosaicAll_error","a")
 				mosaicAll_error.write("{}       {}        {}        {} \n".format(str(obj.rc3_ra),str(obj.rc3_dec),str(obj.rc3_radius),str(obj.pgc)))
 				pass

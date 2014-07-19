@@ -107,7 +107,15 @@ class RC3(RC3Catalog):
             montage.mHdr(str(ra)+" "+str(dec),margin,out+".hdr")
             if (DEBUG): print ("Reprojecting images")
             os.chdir("raw")
-            montage.mProjExec("../images.tbl","../"+out+".hdr","../projected", "../stats.tbl") 
+            print(os.getcwd())
+            montage.mProjExec("../images.tbl","../"+out+".hdr","../projected", "../stats.tbl")#,debug=True) 
+            if os.listdir("../projected") == []: 
+                print "Projection Failed. No projected images produced. Skip to the next galaxy" 
+                os.chdir("../../") #Get out of directory for that galaxy and move on
+                os.system("rm -r r")
+                failed_projection = open ("failed_projection","a")
+                failed_projection.write("{}     {}     {}     {} \n".format(str(ra),str(dec),str(radius),str(pgc)))
+                return -1 # masking with special value reserved for not in survey footprint galaxies
             os.chdir("..")
             montage.mImgtbl("projected","pimages.tbl")
             os.chdir("projected")
@@ -163,7 +171,7 @@ class RC3(RC3Catalog):
 
             # Source Extraction
             # Remember to switch to "sextractor" for Ubuntu/ Linux, "sex" for Mac
-            os.system("sex {} -c default.sex".format(file))
+            os.system("sextractor {} -c default.sex".format(file))
             # A list of other RC3 galaxies that lies in the field
             # In the case of source confusion, find all the rc3 that lies in the field.
             # other_rc3s = sqlcl.query("SELECT distinct rc3.ra, rc3.dec FROM PhotoObj as po JOIN RC3 as rc3 ON rc3.objid = po.objid  WHERE po.ra between {0}-{1} and  {0}+{1} and po.dec between {2}-{3} and  {2}+{3}".format(str(rc3_ra),str(margin),str(rc3_dec),str(margin))).readlines()
