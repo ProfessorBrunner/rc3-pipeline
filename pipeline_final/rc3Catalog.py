@@ -21,7 +21,7 @@ class RC3Catalog(Catalog):
 		# output = open("rc3_galaxies_outside_SDSS_footprint",'a') # 'a' for append #'w')
 		# unclean = open("rc3_galaxies_unclean","a")
 		# # survey=SDSS()
-		
+
 		with open("rc3_ra_dec_diameter_pgc.txt",'r') as f:
 			for line in f:
 	        	    #try:

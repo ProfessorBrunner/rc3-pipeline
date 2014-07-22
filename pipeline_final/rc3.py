@@ -101,6 +101,7 @@ class RC3(RC3Catalog):
             print ("Only one field in region of interest")
             os.chdir("raw")
             try:
+<<<<<<< HEAD
                 montage.mSubimage(out+".fits",outfile,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
             except(montage.status.MontageError):
                 print ("montage_wrapper.status.MontageError: mSubimage: Region outside image.")
@@ -122,6 +123,25 @@ class RC3(RC3Catalog):
                 return -1 # masking with special value reserved for not in survey footprint galaxies
         
             hdulist = pyfits.open(outfile)
+=======
+		montage.mSubimage(out+".fits",outfile,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
+	    except(montage.status.MontageError):
+		print ("montage_wrapper.status.MontageError: mSubimage: Region outside image.")
+		try :#give it one last chance
+		    montage.mSubimage(out+".fits",outfile,ra,dec,margin)
+		except(montage.status.MontageError):
+		    print("doesn't work after trying half the margin")
+		    pass
+		print (os.getcwd())
+                os.chdir("../../") #Get out of directory for that galaxy and move on
+                os.system("rm -r r")
+		print(os.getcwd())
+                failed_msubimage = open ("failed_msubimage","a")
+                failed_msubimage.write("{}     {}     {}     {} \n".format(str(ra),str(dec),str(radius),str(pgc)))
+                return -1 # masking with special value reserved for not in survey footprint galaxies
+	
+	    hdulist = pyfits.open(outfile)
+>>>>>>> e13ef32a6963ae2acb9b2440fcbc8dc9c8ac9c8a
             if (os.path.exists("../../"+outfile)):
                 os.system("rm ../../"+outfile)
             shutil.move(outfile,"../..")
