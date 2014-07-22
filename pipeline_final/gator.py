@@ -1,8 +1,20 @@
 # Class for interacting with IPAC's  Gator API 
+from astropy import *
+from astroquery.vizier import *
+from astroquery.irsa import Irsa
+import astropy.units as u
+from astropy.coordinates import SkyCoord
+#####################
 from  server import Server
 import abc
 import re
 import os
+#####################
+#Supressing warnings due to version differences in astroquery and astropy (dev 0.4)
+import warnings
+warnings.filterwarnings('ignore',message='profile')
+warnings.filterwarnings('ignore',message='_astropy_init')
+warnings.filterwarnings('ignore',message='ConfigurationDefaultMissingWarning ')
 class Gator(Server):
     '''
     Possible surveys: 2MASS, WISE, IRAS
@@ -19,6 +31,7 @@ class Gator(Server):
         print ("querying: "+"wget {}http://irsa.ipac.caltech.edu/cgi-bin/Gator/nph-query?{}{}".format(' "',query,'" '))
         os.system("wget -O result.txt {}http://irsa.ipac.caltech.edu/cgi-bin/Gator/nph-query?{}{}".format(' "',query,'" '))
         # Parse results into a list 
+
     def getData(self,band,ra,dec,margin,survey):	
         '''
         Downloads imaging data from server
@@ -29,7 +42,6 @@ class Gator(Server):
 
 		POS=ra,dec &SIZE = margin
         '''
-
 
         # print ("getData")
         out = "FORMAT=image/fits&band={}&POS={},{}&SIZE={}".format(band,str(ra),str(dec),str(margin))
@@ -44,9 +56,11 @@ class Gator(Server):
                 # print line
                 #The URL is stored in the line two lines after <TR>
                 # print line[:4]
+                # print line
                 if (line[:4] =="<TR>" or n==1):
                     #passing till 2 lines down <TR>
                     n+=1
+                    # print ("pass")
                     pass
                 elif (n==2):
                     n=0
@@ -65,12 +79,12 @@ class Gator(Server):
     #########################
     #    Query Builder		#
     #########################
-    def otherRC3(self,ra,dec,margin,survey,catalog='default'): 
+    def otherRC3(self,ra,dec,margin,survey): 
         '''
         Given ra,dec, pgc of an RC3 galaxy, return a list of other rc3 that lies in the same margin field.
-        in the form 
+        in the form including the original galaxy of interest
 
-        [arr([0.158083,28.384556], [0.183333,28.401444])]
+        [['PGC54', '0.158083', '28.384556'], ['PGC58', '0.183333', '28.401444']]
 
         Units
         =====
@@ -83,44 +97,57 @@ class Gator(Server):
             #prob 3 Cryo ?
             pass
         ##############
-        #NOTE THIS DOESN'T ACTUALLY FIND ANY OTHER RC3 GALAXY, IT JUST SEARCHES FOR THE TILES INSIDE THE BOX
-        #degree to arcsecond conversion 
-        margin = margin*3600
         #query = "spatial=box&catalog={}&size={}&outfmt=1&objstr={},{}".format(catalog,str(margin),str(ra),str(dec))
-        #print(query)
-
-
-        other_rc3s= self.query(query,survey,catalog)
-        print (other_rc3s)
-        # This list contains [pgc,ra,dec] as strings
-        # Cutting away PGC information
-        other_rc3s=[i[1:] for i in other_rc3s]
-        #Convert string to float
-        other_rc3s = [map(float,i) for i in other_rc3s]
-        other_rc3s = map (np.array,other_rc3s)
+        rc3Cat = Vizier(catalog='VII/155/rc3')
+        pos =SkyCoord(ra* u.deg,dec* u.deg, frame='fk5')
+        print(pos)
+        rc3_matches=rc3Cat.query_region(pos, radius=2*margin*u.deg)
+        print (rc3_matches[0])
+        other_rc3s=[]
+        if (len(rc3_matches)!=0):
+            # It is practically impossible for len to beb zero because the galaxy of interest would always detect itself
+            # unless we are using it as a rc3 finder for any ra,dec
+            print (len(rc3_matches[0]['PGC']))
+            for i in range(len(rc3_matches[0]['PGC'])):
+                lst = []
+                # print (rc3_matches[0]['PGC'].data)
+                lst.append(rc3_matches[0]['PGC'].data[i])
+                lst.append(rc3_matches[0]['_RAJ2000'].data[i])
+                lst.append(rc3_matches[0]['_DEJ2000'].data[i])
+                other_rc3s.append(lst)
         return other_rc3s
-
         # TILES converter is not necessary because we can just get the image from getData
-    def otherRC3info(self,ra,dec,margin,survey,catalog='default'):
+    def surveyFieldConverter(self,ra,dec,margin,need_clean=False,cat = 'fp_xsc'):
         '''
-        Given ra,dec, pgc of an RC3 galaxy, return a dict of other rc3 that lies in the same margin field
-        with keys of PGC and value as a list of position ra,dec
-        in the form 
-
-        {58: [0.18333, 28.40144], 54: [0.15808, 28.38455]}
-
+        for 2MASS return the designation for each detected source in search field 
         '''
+        pos =SkyCoord(ra* u.deg,dec* u.deg, frame='fk5')
+        tbl = Irsa.query_region(pos,catalog=cat, spatial='Box',width=2*margin*u.deg)
+        # print (tbl)
+        # print(list(tbl['designation']))
+        return list(tbl['designation'])
         
-        #Converting Table results to dictionary form
-        try :
-            dict = {}
-            for i in range(50): 
-                dict[int(tbl[i]['PGC'][3:])]=(tbl[i]['_RAJ2000'],tbl[i]['_DEJ2000'])
-                #print (tbl[i])
-        except(IndexError):
-            #Intentionally Crash
-            pass
-        return dict
+        #This is actually not necessary because the SExtract_dict and radius is returned by SExtractor value  mpt frp, querying results/
+    # def otherRC3info(self,ra,dec,margin,survey,catalog='default'):
+    #     '''
+    #     Given ra,dec, pgc of an RC3 galaxy, return a dict of other rc3 that lies in the same margin field
+    #     with keys of radius and value as a list of position ra,dec
+    #     in the form 
+
+    #     {58: [0.18333, 28.40144], 54: [0.15808, 28.38455]}
+
+    #     '''
+        
+    #     #Converting Table results to dictionary form
+    #     try :
+    #         dict = {}
+    #         for i in range(50): 
+    #             dict[int(tbl[i]['PGC'][3:])]=(tbl[i]['_RAJ2000'],tbl[i]['_DEJ2000'])
+    #             #print (tbl[i])
+    #     except(IndexError):
+    #         #Intentionally Crash
+    #         pass
+    #     return dict
     # def runCamcolFieldConverter(self,ra,dec,margin,need_clean=False):
     #     '''
     #     Given ra,dec ,return a list of run camcol field for the given ra,dec

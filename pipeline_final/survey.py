@@ -1,5 +1,6 @@
 # __Survey__ implements the abstract methods in the __Data__  class. It can also call on  appropriate methods from Gator or MAST data class. For the program to work properly, survey must have capabilities which is covered by the folowing method.
 # import Gator,MAST
+from gator import Gator
 from skyserver import SkyServer
 from server import Server
 class Survey(object):
@@ -9,7 +10,7 @@ class Survey(object):
         # Preset defaults for the specific survey
         self.bands = []
         self.color_bands= []
-        self.best_band=[]
+        self.best_band='@'
         self.pixel_size= -1
         self.data_server=self._initServer()
         # Mosaic Program Settings
@@ -21,8 +22,7 @@ class Survey(object):
     def _initServer(self):
         #Type Dispatching
         if (self.name =='2MASS' or self.name == 'WISE' or self.name == 'IRAS'):
-            #Not implemented yet
-            # return Gator()
+            return Gator()
             pass
         elif (self.name =='GALEX'):
             #Not implemented yet

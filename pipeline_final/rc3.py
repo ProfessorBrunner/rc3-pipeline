@@ -3,6 +3,7 @@
 # from catalog import Catalog
 from rc3Catalog import RC3Catalog
 from sdss import SDSS
+from twoMass import TwoMass
 import montage_wrapper as montage
 from astropy.io import fits as pyfits
 import os
@@ -14,8 +15,6 @@ import fnmatch
 import numpy as np
 import heapq
 import time
-# Assume you are inside directory (rfits/) where you have pulled all the g band fit files 
-# find . -name "SDSS_r_*.fits" -type f -exec cp {} ./rfits \; 
 
 class RC3(RC3Catalog):
     def __init__(self, rc3_ra, rc3_dec,rc3_radius,pgc, num_iterations=0):
@@ -40,18 +39,16 @@ class RC3(RC3Catalog):
         '''
         print ("------------------mosaic_band----------------------")
         DEBUG = True
-        output = open("../rc3_galaxies_outside_{}_footprint".format(survey.name),'a') # 'a' for append #'w')
-        unclean = open("../rc3_galaxies_unclean","a")
+        output = open("rc3_galaxies_outside_{}_footprint".format(survey.name),'a') # 'a' for append #'w')
+        unclean = open("rc3_galaxies_unclean_{}".format(survey.name),"a")
         # filename = "{},{}".format(str(ra),str(dec))
         filename = str(ra)+str(dec)
         #print (margin/radius)
         if (DEBUG) : print ("Querying data that lies inside margin")
+        print (ra,dec,margin)
         #result = sqlcl.query( "SELECT distinct run,camcol,field FROM PhotoObj WHERE  ra between {0}-{1} and  {0}+{1}and dec between {2}-{3} and  {2}+{3}".format(str(ra),str(margin),str(dec),str(margin))).readlines()
-        result = survey.data_server.runCamcolFieldConverter(ra,dec,margin)
-        clean_result = survey.data_server.runCamcolFieldConverter(ra,dec,margin,True)
-        # result = sqlcl.query( "SELECT distinct run,camcol,field FROM PhotoObj WHERE  ra between "+str(ra)+"-"+str(margin)+" and " +str(ra)+"+"+str(margin)+"and dec between "+str(dec)+"-"+str(margin)+" and "+ str(dec)+"+"+str(margin)).readlines()
-        # clean_result = sqlcl.query( "SELECT distinct run,camcol,field FROM PhotoObj WHERE  CLEAN =1 and ra between "+str(ra)+"-"+str(margin)+" and " +str(ra)+"+"+str(margin)+"and dec between "+str(dec)+"-"+str(margin)+" and "+ str(dec)+"+"+str(margin)).readlines()
-        # clean_result = sqlcl.query( "SELECT distinct run,camcol,field FROM PhotoObj WHERE  CLEAN =1 and ra between {0}-{1} and  {0}+{1}and dec between {2}-{3} and  {2}+{3}".format(str(ra),str(margin),str(dec),str(margin))) .readlines()
+        result = survey.data_server.surveyFieldConverter(float(ra),float(dec),float(margin))
+        clean_result = survey.data_server.surveyFieldConverter(float(ra),float(dec),float(margin),True)
         clean = True
         print ("result: "+str(result))
         print ("clean_result: "+str(clean_result))
@@ -84,19 +81,46 @@ class RC3(RC3Catalog):
         if (DEBUG): print ("Retrieving data from server for "+ band +"band")
         out=""
         for i in result :  
-            survey.data_server.getData(band,str(i[0]), str(i[1]),str(i[2]))
-            out = "frame-"+str(band)+"-"+str(i[0]).zfill(6)+"-"+str(i[1])+"-"+str(i[2]).zfill(4)
+            if (survey.data_server.name=='Gator'):
+                survey.data_server.getData(band,ra,dec,margin,survey)
+                out = i #designation
+                print out
+            elif (survey.data_server.name=='SkyServer'):
+                survey.data_server.getData(band,str(i[0]), str(i[1]),str(i[2]))
+                out = "frame-"+str(band)+"-"+str(i[0]).zfill(6)+"-"+str(i[1])+"-"+str(i[2]).zfill(4)
 
         os.chdir("../")
+        
         if (DEBUG) : print("Creating mosaic for "+band+" band.")
-        outfile_r="SDSS_"+band+"_"+str(ra)+"_"+str(dec)+"r.fits"
-        outfile="SDSS_"+band+"_"+str(ra)+"_"+str(dec)+".fits"
+        outfile_r = "{}_{}_{}_{}r.fits".format(survey.name,band,ra,dec)
+        outfile = "{}_{}_{}_{}.fits".format(survey.name,band,ra,dec)
+
         if (len(result)==1):
             #With header info, len of processed result list is 1 if there is only 1 field lying in the margin, simply do mSubImage without mosaicing
             #This patch should not be necessary but the program is aparently not mosaicing for the case where there is only one field.
             print ("Only one field in region of interest")
             os.chdir("raw")
-            montage.mSubimage(out+".fits",outfile,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
+            try:
+                montage.mSubimage(out+".fits",outfile,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
+            except(montage.status.MontageError):
+                print ("montage_wrapper.status.MontageError: mSubimage: Region outside image.")
+                try :#give it one last chance
+                    montage.mSubimage(out+".fits",outfile,ra,dec,margin)
+                except(montage.status.MontageError):
+                    print("Doesn't work after trying half the margin, just keep the raw FITS file")
+                    # And continue source infoing, don't mask as not in footprint
+                    shutil.move(outfile,"../..")
+                    os.chdir("../../")
+                    os.system("rm -r {}".format(survey.best_band))
+                    return outfile
+                print (os.getcwd())
+                os.chdir("../../") #Get out of directory for that galaxy and move on
+                os.system("rm -r {}".format(survey.best_band))
+                print(os.getcwd())
+                failed_msubimage = open ("failed_msubimage","a")
+                failed_msubimage.write("{}     {}     {}     {} \n".format(str(ra),str(dec),str(radius),str(pgc)))
+                return -1 # masking with special value reserved for not in survey footprint galaxies
+        
             hdulist = pyfits.open(outfile)
             if (os.path.exists("../../"+outfile)):
                 os.system("rm ../../"+outfile)
@@ -112,19 +136,20 @@ class RC3(RC3Catalog):
             if os.listdir("../projected") == []: 
                 print "Projection Failed. No projected images produced. Skip to the next galaxy" 
                 os.chdir("../../") #Get out of directory for that galaxy and move on
-                os.system("rm -r r")
+                os.system("rm -r {}".format(survey.best_band))
                 failed_projection = open ("failed_projection","a")
                 failed_projection.write("{}     {}     {}     {} \n".format(str(ra),str(dec),str(radius),str(pgc)))
                 return -1 # masking with special value reserved for not in survey footprint galaxies
             os.chdir("..")
             montage.mImgtbl("projected","pimages.tbl")
             os.chdir("projected")
-            montage.mAdd("../pimages.tbl","../"+out+".hdr","SDSS_"+out+".fits")
+            montage.mAdd("../pimages.tbl","../"+out+".hdr","{}_{}.fits".format(survey.name,out))
             montage.mSubimage("{}_{}.fits".format(survey.name,out),outfile_r,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
             shutil.move(outfile_r,os.getcwd()[:-11] )#if change to :-11 then move out of u,g,r,i,z directory, may be more convenient for mJPEG
             if (DEBUG) : print ("Completed Mosaic for " + band)
             os.chdir("../..")
             hdulist = pyfits.open(outfile_r)
+
         hdulist[0].header['RA']=ra
         hdulist[0].header['DEC']=dec
         hdulist[0].header['RADIUS']=radius
@@ -132,13 +157,13 @@ class RC3(RC3Catalog):
         hdulist[0].header['NED']=("http://ned.ipac.caltech.edu/cgi-bin/objsearch?objname="+ str(hdulist[0].header['PGC'])+"&extend=no&hconst=73&omegam=0.27&omegav=0.73&corr_z=1&out_csys=Equatorial&out_equinox=J2000.0&obj_sort=RA+or+Longitude&of=pre_text&zv_breaker=30000.0&list_limit=5&img_stamp=YES")
         hdulist[0].header['CLEAN']=clean
         hdulist[0].header['MARGIN']=margin
-        
+
         if (os.path.exists(outfile)):
             os.system("rm "+ outfile)
         hdulist.writeto(outfile)
         if (os.path.exists(outfile_r)):
             os.system("rm "+outfile_r)
-        os.system("rm -r "+band+"/")
+        os.system("rm -r {}".format(band))
         print ("Completed Mosaic")
         return outfile 
 
@@ -158,35 +183,45 @@ class RC3(RC3Catalog):
             print ("------------------source_info----------------------")
             file = r_fits_filename 
             print("Source info for {}".format(file))
-            if (file ==-1): #special value reserved for not in SDSS footprint galaxies
+            if (file ==-1): #special value reserved for not in survey footprint galaxies
                 return [-1,-1,-1,-1,-1]
-
-            # File info 
-            hdulist = pyfits.open(file)
-            rc3_ra= hdulist[0].header['RA']
-            rc3_dec= hdulist[0].header['DEC']
-            rc3_radius = hdulist[0].header['RADIUS']
-            margin = hdulist[0].header['MARGIN']
-            pgc = hdulist[0].header['PGC']
-
+            try:
+                # Try writing , if not then just pass. 
+                # Key Error in the case when raw FITS from survey, not mosaiced by us.
+                print("Trying to write info into fits file")
+                # File info 
+                hdulist = pyfits.open(file)
+                rc3_ra= hdulist[0].header['RA']
+                rc3_dec= hdulist[0].header['DEC']
+                rc3_radius = hdulist[0].header['RADIUS']
+                margin = hdulist[0].header['MARGIN']
+                pgc = hdulist[0].header['PGC']
+            except(KeyError):
+                print("keyword not found")
+                rc3_ra = self.rc3_ra
+                rc3_dec = self.rc3_dec
+                rc3_radius = self.rc3_radius
+                margin = 2*self.rc3_radius
+                pgc = self.pgc
+                pass
             # Source Extraction
             # Remember to switch to "sextractor" for Ubuntu/ Linux, "sex" for Mac
-            os.system("sextractor {} -c default.sex".format(file))
+            os.system("sex {} -c {}.sex".format(file,survey.name))
             # A list of other RC3 galaxies that lies in the field
             # In the case of source confusion, find all the rc3 that lies in the field.
             # other_rc3s = sqlcl.query("SELECT distinct rc3.ra, rc3.dec FROM PhotoObj as po JOIN RC3 as rc3 ON rc3.objid = po.objid  WHERE po.ra between {0}-{1} and  {0}+{1} and po.dec between {2}-{3} and  {2}+{3}".format(str(rc3_ra),str(margin),str(rc3_dec),str(margin))).readlines()
-            other_rc3s = survey.data_server.otherRC3(rc3_ra,rc3_dec,margin)
+            other_rc3s = survey.data_server.otherRC3(rc3_ra,rc3_dec,margin,survey)
             other_rc3s_info=other_rc3s
             print (other_rc3s)
             print ("ra,dec of catalog sources")
             #This list contains [pgc,ra,dec] as strings
-            # Cutting away PGC information
-            other_rc3s=[i[1:] for i in other_rc3s]
-            #Convert string to float
-            other_rc3s = [map(float,i) for i in other_rc3s]
-            rc3_data = map (np.array,other_rc3s)
+            # Cutting away PGC information ,convert string to float 
+            other_rc3s=[[int(lst[0][3:]),float(lst[1]),float(lst[2])] for lst in other_rc3s]
+            # print(other_rc3s)
+            # rc3_data = map (np.array,other_rc3s)
+            rc3_data = other_rc3s
             print ("rc3_data: "+str(rc3_data))
-
+            other_rc3s=[np.array([float(lst[1]),float(lst[2])]) for lst in other_rc3s]
             distances=[]
             for i in range(len(other_rc3s)-1):#len(data)//2):
                 if (len(other_rc3s)>1 ): #odd number (unpaired) RC3s that lie in the field is ignored for now 
@@ -200,7 +235,7 @@ class RC3(RC3Catalog):
             if (len(distances)>1):
                 print ("More than 2 galaxies inside field!")   
                 print (distances)
-            # print (distances)                           
+                          
             #Conduct pairwise comparison
             catalog = open("test.cat",'r')
             #Creating a list of radius
@@ -215,13 +250,12 @@ class RC3(RC3Catalog):
                     coord = np.array([float(line[2]),float(line[3])])
                     sextract_dict[radius]=coord
             print ("Radius: "+str(radius_list))
-            print ("SExtract_dict: "+str(sextract_dict))
             if (len(sextract_dict)>0):
                 #special value that indicate empty list (no object detected by SExtractor)
                 radii='@'
                 new_ra='@'
                 new_dec='@'
-                catalog = open("test.cat",'r')
+                # catalog = open("test.cat",'r')
                 n=-1
                 if (len(distances)!=0):
                     # if there is source confusion, then we want to keep the nth largest radius
@@ -244,7 +278,7 @@ class RC3(RC3Catalog):
                     diff = []
                     #all possible coordinate pairs 
                     coord_match=[]
-                    for i in rc3_data : 
+                    for i in other_rc3s : 
                         #determine shift vector 
                         for j in sextract:
                             print (str(i)+" " +str(j))
@@ -272,28 +306,17 @@ class RC3(RC3Catalog):
                     print (other_rc3s_info)
                     info ={}
                     for i in other_rc3s_info:
-                        # list =i.split(',')
                         pgc = int(i[0][3:])
-                        ra= float(i[1][:-1])
-                        dec= float(i[2][:-1])
+                        ra= float(i[1])
+                        dec= float(i[2])
                         info[pgc]= [ra,dec]
                     print ("info"+str(info))
-                    if self.pgc not in info.keys():
-                        print "Strange Error, can not find info about galaxy of interest in searching around its own radius"
-                        strange_error= open("../strange_error.txt",'a')
-                        strange_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
-                        return ['@','@',1.5*margin,'@','@']
-                        #Simply let the new value be the old value and let it die off after 3 iteration
-                        # new_ra=self.rc3_ra
-                        # new_dec=self.rc3_dec
-                    else:
-                        print ("The galaxy that we want to mosaic is: "+str(info[self.pgc]))
-                        new_ra= info[self.pgc][0]
-                        new_dec = info[self.pgc][1]
+                    print ("The galaxy that we want to mosaic is: "+str(info[self.pgc]))
+                    new_ra= info[self.pgc][0]
+                    new_dec = info[self.pgc][1]
                 else:
                     print ("Source is Obvious")
                     n=1 # if no source confusion then just keep the maximum radius
-                    catalog = open("test.cat",'r')
                     #Creating a list of radius
                     radius = []
                     for line in catalog:
@@ -305,7 +328,6 @@ class RC3(RC3Catalog):
                     radii='@'
                     new_ra='@'
                     new_dec='@'
-                    catalog = open("test.cat",'r')
                     # If there is no other RC3 in the field, it means the largest galaxy in the field is the RC3 we are interested in
                     # So find max radius and treat as if it is rc3
                     for i in catalog:
@@ -330,13 +352,11 @@ class RC3(RC3Catalog):
                     updated.write("{}       {}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii, pgc))
                     self.mosaic_all_bands(new_ra,new_dec,margin,radii,pgc,survey)
                     return [float(new_ra),float(new_dec),margin,radii,pgc] 
-                    # margin was already set as 6*rc3_radius during initial_run
+                    # margin was already set as 2*rc3_radius during the first run
                     # all additional mosaicking steps shoudl be 1.5 times this 
                 #else: #radii =@ if all SExtracted radius is <15 
             print ("No detected RC3 sources in image. Mosaic using a larger margin")
-            # original automated mosaic program default 6*radius
-            # call on mosaic program with +50% original margin
-            r_mosaic_filename = self.mosaic_band('r',rc3_ra,rc3_dec,1.5*margin,rc3_radius,pgc,survey)
+            r_mosaic_filename = self.mosaic_band(survey.best_band,rc3_ra,rc3_dec,1.5*margin,rc3_radius,pgc,survey)
             self.source_info(r_mosaic_filename,survey)
             return ['@','@',1.5*margin,'@','@']
         else : # no detection since exceed num_iteration
@@ -368,13 +388,13 @@ class RC3(RC3Catalog):
         filename = "{},{}".format(str(ra),str(dec))
         os.mkdir(filename)
         os.chdir(filename)
-        bands =['u','g','r','i','z']
+        bands =survey.bands #['u','g','r','i','z']
         for band in bands:
             self.mosaic_band(band,ra,dec,margin,radius,pgc,survey)
             #os.chdir("../")
-        os.system("stiff  SDSS_i_{0}_{1}.fits  SDSS_r_{0}_{1}.fits SDSS_g_{0}_{1}.fits  -c stiff.conf  -OUTFILE_NAME  SDSS_{0}_{1}_BEST.tiff -MAX_TYPE QUANTILE  -MAX_TYPE QUANTILE  -MAX_LEVEL 0.997 -COLOUR_SAT  7 -MIN_TYPE QUANTILE -MIN_LEVEL 1  -GAMMA_FAC 0.7 ".format(str(ra),str(dec)))
+        os.system("stiff  {2}_{5}_{0}_{1}.fits  {2}_{4}_{0}_{1}.fits {2}_{3}_{0}_{1}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{0}_{1}_BEST.tiff {7}".format(ra,dec,survey.name,survey.color_bands[0],survey.color_bands[1],survey.color_bands[2],survey.name,survey.stiff_param_low))
         # Image for emphasizing low-surface sturcture
-        os.system("stiff  SDSS_i_{0}_{1}.fits  SDSS_r_{0}_{1}.fits SDSS_g_{0}_{1}.fits  -c stiff.conf  -OUTFILE_NAME  SDSS_{0}_{1}_LOW.tiff  -MAX_TYPE QUANTILE  -MAX_LEVEL 0.99 -COLOUR_SAT  5  -MIN_TYPE QUANTILE -MIN_LEVEL 1 -GAMMA_FAC 0.8 ".format(str(ra),str(dec))) 
+        os.system("stiff  {2}_{5}_{0}_{1}.fits  {2}_{4}_{0}_{1}.fits {2}_{3}_{0}_{1}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{0}_{1}_LOW.tiff  {7}".format(ra,dec,survey.name,survey.color_bands[0],survey.color_bands[1],survey.color_bands[2],survey.name,survey.stiff_param_best)) 
         if (not(os.path.exists("stiff.xml"))):
             #If stiff file exist then it means stiff run is sucessful
             #sometimes stiff doesn't run because 
@@ -382,10 +402,10 @@ class RC3(RC3Catalog):
             # I will just write these into a file and do post processing on them, they shouldn't be that many of them
             stiff_error = open("../stiff_error.txt",'a') # 'a' for append #'w')
             stiff_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
- 
+        # Deletion done in each single mosaic_band 
+        # for band in bands:
+        #     os.system("rm -r {}".format(band))
         os.system("rm stiff.xml")
         os.chdir("../")
-        # Move the finished rfit files outside so that, if terminate during the program, easier to recongnize which is already done and which is not.
-        # shutil.move("SDSS_r_{0}_{1}.fits".format(str(self.rc3_ra),str(self.rc3_dec)),"../finished_rfits")
         print ("Completed Mosaic")
   

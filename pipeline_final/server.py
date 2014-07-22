@@ -38,3 +38,14 @@ class Server(object):
     
     def __str__(self):
         return "The {} Server Object".format(self.name)
+
+    @abstractmethod
+    def surveyFieldConverter(self,ra,dec,*args):
+        '''
+        Returns which field the object lies in the survey
+        the output and implementation of this method is hihgly dependent on survey structure
+        ex) SDSS => run,camcol,field
+            2MASS => Tiles number / ID
+        '''
+        raise NotImplementedError()
+

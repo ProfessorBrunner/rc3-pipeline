@@ -1,3 +1,4 @@
+
 # Class for interacting with SDSS's SkyServer
 from  server import Server
 import sqlcl
@@ -40,16 +41,27 @@ class SkyServer(Server):
         os.system("wget http://mirror.sdss3.org/sas/dr10/boss/photoObj/frames/301/{}/{}/{}.fits.bz2".format(str(run),str(camcol),out) )
         os.system("bunzip2 {}.fits.bz2".format(out))
 
+    # def getData(self,band,ra,dec,margin,survey):    
+    #     '''
+    #     wrapper for  the real getData function with survey dependent params
+    #     '''
+    #     _getData()
     #########################
     #    Query Builder		#
     #########################
-    def otherRC3(self,ra,dec,margin):
+    def otherRC3(self,ra,dec,margin,survey):
+        # Note: Survey is not actually used, it is just to conform with the same param for convience in rc3.py
     	'''
     	Given ra,dec, pgc of an RC3 galaxy, return a list of other rc3 that lies in the same margin field.
+        >>> from sdss import SDSS
+        >>> from skyserver import SkyServer
+        >>> s = SkyServer()
+        >>> s.otherRC3(0.0891,-2.6105,1,SDSS())
+        [['PGC    23', '0.089583', '-2.612056'], ['PGC   205', '0.773583', '-1.913806']]
     	'''
         query = "SELECT distinct rc3.pgc,rc3.ra,rc3.dec FROM PhotoObj as po JOIN RC3 as rc3 ON rc3.objid = po.objid  WHERE po.ra between {0}-{2} and  {0}+{2} and po.dec between {1}-{2} and  {1}+{2}".format(str(ra),str(dec),str(margin))
         return self.query(query)
-    def runCamcolFieldConverter(self,ra,dec,margin,need_clean=False):
+    def surveyFieldConverter(self,ra,dec,margin,need_clean=False):
     	'''
     	Given ra,dec ,return a list of run camcol field for the given ra,dec
     	'''

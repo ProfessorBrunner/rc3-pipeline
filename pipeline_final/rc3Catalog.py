@@ -60,12 +60,13 @@ class RC3Catalog(Catalog):
 		for obj in self.allObj:
 			print("Working on PGC{}, at({} , {})".format(str(obj.pgc), str(obj.rc3_ra),str(obj.rc3_dec)))
 			try:
-				rfits=obj.mosaic_band('r',obj.rc3_ra,obj.rc3_dec,3*obj.rc3_radius,obj.rc3_radius,obj.pgc,survey)
+				# rfits=obj.mosaic_band('r',obj.rc3_ra,obj.rc3_dec,3*obj.rc3_radius,obj.rc3_radius,obj.pgc,survey)
+				rfits=obj.mosaic_band(survey.best_band,obj.rc3_ra,obj.rc3_dec,3*obj.rc3_radius,obj.rc3_radius,obj.pgc,survey)
 				if(rfits!=-1): #Special value for outside footprint or error , no rfits produced
 					obj.source_info(rfits,survey)
-			except:
+			except(AssertionError):
 				print("Something went wrong in mosaicing PGC {}".format(str(obj.pgc)))
-				while (not (os.path.exists("rc3Catalog.py"))):
+				if (not (os.path.exists("rc3Catalog.py"))):
 					# if we are not in the Outer directory where rc3Catalog.py Is located at 
 					# then we are stuck inside some sort of position directory.
 					# Must get out to prevent spiraling recursion.
@@ -77,11 +78,11 @@ class RC3Catalog(Catalog):
 				mosaicAll_error.write("{}       {}        {}        {} \n".format(str(obj.rc3_ra),str(obj.rc3_dec),str(obj.rc3_radius),str(obj.pgc)))
 				pass
 
-	def mosaicAllDebug():
-		'''
-		Produce all band FITS files and color mosaic for every objects inside the Catalog that lies within the footprint of the given survey
-		after the @ sign.
-		'''
+	# def mosaicAllDebug(self):
+	# 	'''
+	# 	Produce all band FITS files and color mosaic for every objects inside the Catalog that lies within the footprint of the given survey
+	# 	after the @ sign.
+	# 	'''
 
 	def printAll(self):
 		pass
