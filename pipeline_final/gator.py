@@ -123,9 +123,15 @@ class Gator(Server):
         '''
         pos =SkyCoord(ra* u.deg,dec* u.deg, frame='fk5')
         tbl = Irsa.query_region(pos,catalog=cat, spatial='Box',width=2*margin*u.deg)
-        # print (tbl)
-        # print(list(tbl['designation']))
-        return list(tbl['designation'])
+        lst=[]
+        if (need_clean and len(tbl)>0):
+            for i in range(len(tbl['designation'])):
+                if (tbl[0]['cc_flg']=='0'):
+                    lst.append(tbl[i]['designation'])
+            return lst
+        else:
+            return list(tbl['designation'])
+
         
         #This is actually not necessary because the SExtract_dict and radius is returned by SExtractor value  mpt frp, querying results/
     # def otherRC3info(self,ra,dec,margin,survey,catalog='default'):
