@@ -66,21 +66,7 @@ class DSSServer(Server):
 
     #########################
     #    Query Builder		#
-    #########################
-    def otherRC3(self,ra,dec,margin,survey): 
-        '''
-        Given ra,dec, pgc of an RC3 galaxy, return a list of other rc3 that lies in the same margin field.
-        in the form including the original galaxy of interest
-
-        [['PGC54', '0.158083', '28.384556'], ['PGC58', '0.183333', '28.401444']]
-
-        '''
-        g = gator()
-        # Mask as 2MASS and using Vizier (Can not find DSS data in Vizier --> scattered in multiple catalog?)
-        tm = TwoMASS()
-        return g.other_rc3s(ra,dec,margin,tm)
-
-        # TILES converter is not necessary because we can just get the image from getData
+    ######################### 
     def surveyFieldConverter(self,ra,dec,margin,need_clean=False,cat = 'fp_xsc'):
         '''
         for 2MASS return the designation for each detected source in search field 

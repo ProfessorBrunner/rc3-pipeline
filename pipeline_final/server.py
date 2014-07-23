@@ -8,17 +8,14 @@ Instance Attributes:
 # import survey
 # import mast
 # import gator
+import astropy.units as u
+from astroquery.vizier import *
+from astropy.coordinates import SkyCoord
 from abc import ABCMeta , abstractmethod
 
 class Server(object):
     __metaclass__= ABCMeta
-	#Optional 
-    # def process():
-    #     #Processing data
-    #     '''
-    #     Implemented by Catalog 
-    #     '''
-    #     #return null
+
     def __init__(self):
         self.name = 'Server'
     
@@ -48,4 +45,46 @@ class Server(object):
             2MASS => Tiles number / ID
         '''
         raise NotImplementedError()
+
+
+    #########################
+    #    Query Builder      #
+    #########################
+    def otherRC3(self,ra,dec,margin):#survey): 
+        '''
+        Given ra,dec, pgc of an RC3 galaxy, use  Vizier to find a list of other rc3 that lies in the same margin field.
+        in the form including the original galaxy of interest
+
+        [['PGC54', 0.158083, 28.384556], ['PGC58', 0.183333, 28.401444]]
+
+        Units
+        =====
+        Search radius (radius): arcsecond
+        Search box (size): arcsecond
+        '''
+        # if (survey.name=='2MASS'):
+        #     catalog = 'fp_xsc' #Default as extended source catalog
+        # elif(survey.name=='WISE'):
+        #     #prob 3 Cryo ?
+        #     pass
+        ##############
+        #query = "spatial=box&catalog={}&size={}&outfmt=1&objstr={},{}".format(catalog,str(margin),str(ra),str(dec))
+        rc3Cat = Vizier(catalog='VII/155/rc3')
+        pos =SkyCoord(ra* u.deg,dec* u.deg, frame='fk5')
+        # print(pos)
+        rc3_matches=rc3Cat.query_region(pos, radius=2*margin*u.deg)
+        # print (rc3_matches[0])
+        other_rc3s=[]
+        if (len(rc3_matches)!=0):
+            # It is practically impossible for len to beb zero because the galaxy of interest would always detect itself
+            # unless we are using it as a rc3 finder for any ra,dec
+            print (len(rc3_matches[0]['PGC']))
+            for i in range(len(rc3_matches[0]['PGC'])):
+                lst = []
+                # print (rc3_matches[0]['PGC'].data)
+                lst.append(rc3_matches[0]['PGC'].data[i])
+                lst.append(rc3_matches[0]['_RAJ2000'].data[i])
+                lst.append(rc3_matches[0]['_DEJ2000'].data[i])
+                other_rc3s.append(lst)
+        return other_rc3s
 

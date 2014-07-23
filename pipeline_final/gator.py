@@ -79,43 +79,15 @@ class Gator(Server):
     #########################
     #    Query Builder		#
     #########################
-    def otherRC3(self,ra,dec,margin,survey): 
-        '''
-        Given ra,dec, pgc of an RC3 galaxy, return a list of other rc3 that lies in the same margin field.
-        in the form including the original galaxy of interest
+    #Should just inherit otherRC3 from Server
+    # def otherRC3(self,ra,dec,margin,survey): 
+    #     '''
+    #     Given ra,dec, pgc of an RC3 galaxy, return a list of other rc3 that lies in the same margin field.
+    #     in the form including the original galaxy of interest
 
-        [['PGC54', '0.158083', '28.384556'], ['PGC58', '0.183333', '28.401444']]
-
-        Units
-        =====
-        Search radius (radius): arcsecond
-        Search box (size): arcsecond
-        '''
-        if (survey.name=='2MASS'):
-            catalog = 'fp_xsc' #Default as extended source catalog
-        elif(survey.name=='WISE'):
-            #prob 3 Cryo ?
-            pass
-        ##############
-        #query = "spatial=box&catalog={}&size={}&outfmt=1&objstr={},{}".format(catalog,str(margin),str(ra),str(dec))
-        rc3Cat = Vizier(catalog='VII/155/rc3')
-        pos =SkyCoord(ra* u.deg,dec* u.deg, frame='fk5')
-        print(pos)
-        rc3_matches=rc3Cat.query_region(pos, radius=2*margin*u.deg)
-        print (rc3_matches[0])
-        other_rc3s=[]
-        if (len(rc3_matches)!=0):
-            # It is practically impossible for len to beb zero because the galaxy of interest would always detect itself
-            # unless we are using it as a rc3 finder for any ra,dec
-            print (len(rc3_matches[0]['PGC']))
-            for i in range(len(rc3_matches[0]['PGC'])):
-                lst = []
-                # print (rc3_matches[0]['PGC'].data)
-                lst.append(rc3_matches[0]['PGC'].data[i])
-                lst.append(rc3_matches[0]['_RAJ2000'].data[i])
-                lst.append(rc3_matches[0]['_DEJ2000'].data[i])
-                other_rc3s.append(lst)
-        return other_rc3s
+    #     [['PGC54', '0.158083', '28.384556'], ['PGC58', '0.183333', '28.401444']]
+    #     '''
+    #     return other_rc3s
         # TILES converter is not necessary because we can just get the image from getData
     def surveyFieldConverter(self,ra,dec,margin,need_clean=False,cat = 'fp_xsc'):
         '''
