@@ -13,7 +13,6 @@ abstract
 	
 	Some parts of the program needs to be adjusted for survey-specific , but the core concept (and bulk of the code) should stay the same. 
 	%Think of a name to refer to "the program"
-
 		\subsection{Technical Details}
 	The program was written in Python 2.7.6 to survey-independent and interacts 
  It uses IPAC's Montage  \cite{montage} using the AstroPy Montage wrapper\footnote{\url{http://www.astropy.org/montage-wrapper/}}. The final g,r,i image is created using Astromatic STIFF \cite{stiff} . Our choice of program reflects best feature from both program : STIFF provides the flexibility of changing many variables for the final g,r,i; Montage creates scientifically-calibrated images by retaining astrometric accuracy during image reprojection. The use of two different program in the mosaicing step is due to Montage's ability to create scientifically-calibrated mosaic FITS, but STIFF provided more flexible parameters for combining all bands into color images, so we get the best of both worlds. The STIFF setting needs to be adjusted for each survey depending on specs on the telescope's CCD dependent parameters such as imaging bands. (?) The source extraction is done using SExtractor. If the mosaicing field is chosen correctly, then SExtractor's skylevel estimation is fairly accurate.

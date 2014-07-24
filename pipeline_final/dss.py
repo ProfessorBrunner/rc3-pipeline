@@ -1,11 +1,11 @@
-# 2MASS Class can not be named starting with number 
-from survey import Survey
-class TwoMass(Survey):
+# Survey Class for the Digitized Sky Survey
+from survey import *
+class DSS(Survey):
     def __init__(self):
-        self.name = '2MASS'
-        self.bands=['j','h','k']
-        self.color_bands=[''j','h','k'']
-        self.best_band ='j' #not sure about this 
+        self.name = 'DSS'
+        self.bands=['1b','1r','2b','2r','2ir']
+        self.color_bands=['2b','2r','2ir']
+        self.best_band ='2r'
         # self.pixel_size = 2.0 
         self.data_server = Survey._initServer(self)
         # Mosaic Program Settings

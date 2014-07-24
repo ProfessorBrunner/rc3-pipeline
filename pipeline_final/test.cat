@@ -1,17 +1,10 @@
-#   1 NUMBER                 Running object number                                     
-#   2 FLUX_RADIUS            Fraction-of-light radii                                    [pixel]
-#   3 ALPHA_J2000            Right ascension of barycenter (J2000)                      [deg]
-#   4 DELTA_J2000            Declination of barycenter (J2000)                          [deg]
-#   5 XMIN_IMAGE             Minimum x-coordinate among detected pixels                 [pixel]
-#   6 YMIN_IMAGE             Minimum y-coordinate among detected pixels                 [pixel]
-#   7 XMAX_IMAGE             Maximum x-coordinate among detected pixels                 [pixel]
-#   8 YMAX_IMAGE             Maximum y-coordinate among detected pixels                 [pixel]
-#   9 A_IMAGE                Profile RMS along major axis                               [pixel]
-#  10 B_IMAGE                Profile RMS along minor axis                               [pixel]
-         1      6.970  38.9128570  +6.2727194          1         14         83         85     9.780     8.960
-         2      1.258  38.8995299  +6.2690530         46         22         67         44     1.711     1.673
-         3      0.709  38.9048011  +6.2627068         37          9         39         11     0.751     0.647
-         4      0.881  38.9141855  +6.2898753          1        105          7        109     1.015     0.947
-         5      0.931  38.8869394  +6.2852228        101         90        103         92     0.747     0.670
-         6      0.738  38.8908353  +6.2675227         86         25         90         29     0.916     0.893
-         7      0.867  38.8994089  +6.2833608         53         80         61         88     1.110     1.062
+#   1 NUMBER          Running object number
+#   2 FLUX_RADIUS     Fraction-of-light radii                         [pixel]
+#   3 ALPHA_J2000     Right ascension of barycenter (J2000)           [deg]
+#   4 DELTA_J2000     Declination of barycenter (J2000)               [deg]
+#   5 XMIN_IMAGE      Minimum x-coordinate among detected pixels      [pixel]
+#   6 YMIN_IMAGE      Minimum y-coordinate among detected pixels      [pixel]
+#   7 XMAX_IMAGE      Maximum x-coordinate among detected pixels      [pixel]
+#   8 YMAX_IMAGE      Maximum y-coordinate among detected pixels      [pixel]
+#   9 A_IMAGE         Profile RMS along major axis                    [pixel]
+#  10 B_IMAGE         Profile RMS along minor axis                    [pixel]

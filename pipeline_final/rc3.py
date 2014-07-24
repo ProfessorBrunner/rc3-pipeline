@@ -88,6 +88,13 @@ class RC3(RC3Catalog):
             elif (survey.data_server.name=='SkyServer'):
                 survey.data_server.getData(band,str(i[0]), str(i[1]),str(i[2]))
                 out = "frame-"+str(band)+"-"+str(i[0]).zfill(6)+"-"+str(i[1])+"-"+str(i[2]).zfill(4)
+            elif (survey.data_server.name=='DSSServer'):
+                survey.data_server.getData(band,ra,dec,margin)
+                # Keeping just the number not the string portion of PhotoPlate
+                out = str(i[10:])
+                print ("dss_out: "+out)
+            else:
+                raise TypeError("Missing implementation for data retrieval")
 
         os.chdir("../")
         
@@ -100,17 +107,21 @@ class RC3(RC3Catalog):
             #This patch should not be necessary but the program is aparently not mosaicing for the case where there is only one field.
             print ("Only one field in region of interest")
             os.chdir("raw")
+            print ("m:{}".format(margin))
             try:
-                montage.mSubimage(out+".fits",outfile,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
+                print ("2m:{}".format(2*margin))
+                print ([outfile,outfile,ra,dec,2*margin])
+                montage.mSubimage(outfile,outfile,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
             except(montage.status.MontageError):
                 print ("montage_wrapper.status.MontageError: mSubimage: Region outside image.")
                 try :#give it one last chance
+                    print ("lastchancem:{}".format(margin))
                     montage.mSubimage(out+".fits",outfile,ra,dec,margin)
                 except(montage.status.MontageError):
                     print("Doesn't work after trying half the margin, just keep the raw FITS file")
                     # And continue source infoing, don't mask as not in footprint
-                    if (os.path.exists("../../{}".format(outfile))):
-                        os.system("rm -r {}".format("../../{}".format(outfile)))
+                    # if (os.path.exists("../../{}".format(outfile))):
+                    #     os.system("rm -r {}".format("../../{}".format(outfile)))
                     shutil.move(outfile,"../..")
                     os.chdir("../../")
                     os.system("rm -r {}".format(survey.best_band))
@@ -146,6 +157,7 @@ class RC3(RC3Catalog):
             montage.mImgtbl("projected","pimages.tbl")
             os.chdir("projected")
             montage.mAdd("../pimages.tbl","../"+out+".hdr","{}_{}.fits".format(survey.name,out))
+            #<Insert Background Rectification procedure here>
             montage.mSubimage("{}_{}.fits".format(survey.name,out),outfile_r,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
             shutil.move(outfile_r,os.getcwd()[:-11] )#if change to :-11 then move out of u,g,r,i,z directory, may be more convenient for mJPEG
             if (DEBUG) : print ("Completed Mosaic for " + band)
@@ -320,20 +332,27 @@ class RC3(RC3Catalog):
                     print ("Source is Obvious")
                     n=1 # if no source confusion then just keep the maximum radius
                     #Creating a list of radius
+                    catalog = open("test.cat",'r')
                     radius = []
                     for line in catalog:
                         #print (line)
                         line = line.split()
                         if (line[0]!='#'):
                             radius.append(np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2)
+                    print (radius)
                     #special value that indicate empty list (no object detected by SExtractor)
                     radii='@'
                     new_ra='@'
                     new_dec='@'
                     # If there is no other RC3 in the field, it means the largest galaxy in the field is the RC3 we are interested in
                     # So find max radius and treat as if it is rc3
+                    # Note that catalog needs to be reopened everytime after use.
+                    # print ("catalog: {}".format(catalog))
+                    catalog = open("test.cat",'r')
                     for i in catalog:
+                        # print ("i : {}".format(i))
                         line = i.split()
+                        # print ("line: {}".format(line))
                         if (line[0]!='#' ):
                             #Pythagorean method
                             radii = np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2
@@ -394,9 +413,9 @@ class RC3(RC3Catalog):
         for band in bands:
             self.mosaic_band(band,ra,dec,margin,radius,pgc,survey)
             #os.chdir("../")
-        os.system("stiff  {2}_{5}_{0}_{1}.fits  {2}_{4}_{0}_{1}.fits {2}_{3}_{0}_{1}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{0}_{1}_BEST.tiff {7}".format(ra,dec,survey.name,survey.color_bands[0],survey.color_bands[1],survey.color_bands[2],survey.name,survey.stiff_param_low))
+        os.system("stiff  {2}_{5}_{0}_{1}.fits  {2}_{4}_{0}_{1}.fits {2}_{3}_{0}_{1}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{0}_{1}_BEST.tiff {7}".format(ra,dec,survey.name,survey.color_bands[2],survey.color_bands[1],survey.color_bands[0],survey.name,survey.stiff_param_low))
         # Image for emphasizing low-surface sturcture
-        os.system("stiff  {2}_{5}_{0}_{1}.fits  {2}_{4}_{0}_{1}.fits {2}_{3}_{0}_{1}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{0}_{1}_LOW.tiff  {7}".format(ra,dec,survey.name,survey.color_bands[0],survey.color_bands[1],survey.color_bands[2],survey.name,survey.stiff_param_best)) 
+        os.system("stiff  {2}_{5}_{0}_{1}.fits  {2}_{4}_{0}_{1}.fits {2}_{3}_{0}_{1}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{0}_{1}_LOW.tiff  {7}".format(ra,dec,survey.name,survey.color_bands[2],survey.color_bands[1],survey.color_bands[0],survey.name,survey.stiff_param_best)) 
         if (not(os.path.exists("stiff.xml"))):
             #If stiff file exist then it means stiff run is sucessful
             #sometimes stiff doesn't run because 
@@ -404,9 +423,9 @@ class RC3(RC3Catalog):
             # I will just write these into a file and do post processing on them, they shouldn't be that many of them
             stiff_error = open("../stiff_error.txt",'a') # 'a' for append #'w')
             stiff_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
-        # Deletion done in each single mosaic_band 
-        # for band in bands:
-        #     os.system("rm -r {}".format(band))
+        # Deletion done in each single mosaic_band , but not properly done if exited out of edge cases (ex. only single field in search region)
+        for band in bands:
+            os.system("rm -r {}".format(band))
         os.system("rm stiff.xml")
         os.chdir("../")
         print ("Completed Mosaic")
