@@ -4,7 +4,7 @@ class TwoMass(Survey):
     def __init__(self):
         self.name = '2MASS'
         self.bands=['j','h','k']
-        self.color_bands=[''j','h','k'']
+        self.color_bands=['j','h','k']
         self.best_band ='j' #not sure about this 
         # self.pixel_size = 2.0 
         self.data_server = Survey._initServer(self)
