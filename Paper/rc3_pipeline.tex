@@ -10,7 +10,7 @@ abstract
 \section{Introduction}
 \section{Automation Program}
 	The rc3 class creates an rc3 object containing its ``basic info" \footnote{ ra,dec,radius, pgc} for each galaxy in the RC3 catalog. The practical purpose of the class (other than the use of OOP that actually makes sense) is to keep tract of the number of iterations in the recursive step using the instance variable num\_iterations. 
-	
+
 	Some parts of the program needs to be adjusted for survey-specific , but the core concept (and bulk of the code) should stay the same. 
 	%Think of a name to refer to "the program"
 		\subsection{Technical Details}
@@ -29,10 +29,13 @@ Most surveys have an API that enables you to acess data using SQL querys so that
 	Even though a series of exception handling and error prevention mechanicsms were put in place, 
 	 	\begin{itemize}
 	 		\item mProjectExec is the montage Mosaic procedure that creates the reprojected image from the raw FITS files. Sometimes reprojected images are not created even when Montages' debug statement clearly shows that the reprojection was successful and table and header files are corrupted. This results in an error in later mosaicing steps. We have implemented error prevention mechanism to ensure that mosaic procedures terminates correctly in such cases and wrote the problematic galaxy into failed\_projection, which can be examined later.
+	 		\item Sometimes in the step "apply background model to images"takes a long time and produce huge files in coordir (~)
 	 	\end{itemize}
 	
 	\subsection{Performance}
-	accelerate the process by ``testing" only on the a single band fit file. For SDSS, that is the r band, best quality (longest wavelength => most photons).  Most of the time is spent on downloading the raw FITS files from the survey's specific server. This process can be dramtically sped up if the investigator has imaging data stored locally on a hardisk. We anticipate that this consist of 	 simply write a subclass of the Server class and fill in some path-dependent detials (where images are stored) to enable this feature.
+	accelerate the process by ``testing" only on the a single band fit file. For SDSS, that is the r band, best quality (longest wavelength => most photons).  Most of the time is spent on downloading the raw FITS files from the survey's specific server. This process can be dramatically sped up if the investigator has imaging data stored locally on a hardisk. We anticipate that this consist of 	 simply write a subclass of the Server class and fill in some path-dependent details (where images are stored) to enable this feature.
+	Computation time significantly increases 
+The Montage 	mBgExec takes a long time . 
 
 
 %20.9170833333     33.2561111111     0.0539322762628      5098   
