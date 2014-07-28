@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>RC3 Database Search</title>
+    </head>
+ 
+    <body>
+ 	<!--Make sure that you are running this on http://localhost:8888/search.html and not the static file file:///Applications/MAMP/htdocs/search.htm so that the php variabel redirect works-->
+    <form action="result.php" method="post">
+    Search by PGC number :
+    <br/>
+    <input type="text" name="pgc" />
+    <br/>
+    <input type="submit" name="submit" value="Submit" />
+    <br/>
+    OR Search by coordinate around region (degrees): 
+    <br/>
+    ra: <input type="text" name="ra" />
+    <br/>
+    dec: <input type="text" name="dec" />
+    <br/>
+    Box search region size :<input type="text" name="region" />
+    <br/>
+    <input type="submit" name="submit" value="Submit" />
+    </form>
+ 
+ 
+    </body>
+</html>
