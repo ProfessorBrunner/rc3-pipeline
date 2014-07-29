@@ -18,8 +18,7 @@
     	echo "Search by coordinate around region (degrees)</br>";
 	    $db = new PDO('sqlite:rc3.db');
 		// $query = "SELECT  ID,PGC_number, ra,dec , radius FROM rc3 WHERE ra BETWEEN 10 AND 11";
-		echo $ra+$region;
-		echo $dec+$region;
+
 		$query = "SELECT   PGC_number, ra,dec , radius FROM rc3 
 		WHERE ra  BETWEEN ".(string)($ra-$region)." AND ".(string)($ra+$region).
 		" AND dec BETWEEN ".(string)($dec-$region)." AND ".(string)($dec+$region);

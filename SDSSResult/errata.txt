@@ -1,0 +1,2 @@
+# (rc3_updated.txt) Anything before 35.975       -6.70972222222       20.9563808       +33.1562385       0.0124888998577       9105 (PGC9105) has the wrong new_radius value.
+# (mosaicALl_error) Lost information from ra 0-20 for this because there was an error that causes everything to be written into mosaicAll_error.

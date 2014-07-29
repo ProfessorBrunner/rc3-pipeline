@@ -8,14 +8,21 @@ abstract
 
 
 \section{Introduction}
+The Third Reference Catalog of Bright Galaxies (RC3) \cite{rc3} contains a  complete listing of 23,022 galaxies with $D_25$ apparent major isophotal diameter  greater than 1 arcminute and with a total B-band magnitude greater than 15.5. There has been existing literature on this subject using data from the Sloan Digital Sky Survey(SDSS). Hogg and Blanton made g,r,i colored images by using data from the SDSS DR6.\footnote{\url{http://cosmo.nyu.edu/hogg/rc3/}} The EFIGI catalog \cite{efigi},dedicated to studying morphology of galaxies , also  provide a subset of 4458 RC3 galaxies with FITS and color images using SDSS DR4 data and dicarding artifacted or missing data by visual inspection. We perform the mosaicing procedures on the whole RC3 catalog using  an automated positional update algorithm  on the most recent SDSS DR 10 imaging data. In addition, we designed a mosaicing pipeline that creates scientifically-calibrated mosaics, color-band images, as well as a set of updated position values, which can be easily suited for  existing surveys such as 2MASS, DSS, or  new imaging data release from  Dark Energy Survey and Large Synoptic Survey Telescope for larger sky coverage and multi-band (?) mosaics.
+% The resulting set of data product can be used for 
 \section{Automation Program}
+	\subsection{Positional Inaccuracy in RC3 Catalog}
+	The principle motivation behind the automation algorithm is to resolve the problem of centering the galaxy and finding RC3 galaxy in an image.
+	\subsection{Algorithm}
 	The rc3 class creates an rc3 object containing its ``basic info" \footnote{ ra,dec,radius, pgc} for each galaxy in the RC3 catalog. The practical purpose of the class (other than the use of OOP that actually makes sense) is to keep tract of the number of iterations in the recursive step using the instance variable num\_iterations. 
 
 	Some parts of the program needs to be adjusted for survey-specific , but the core concept (and bulk of the code) should stay the same. 
 	%Think of a name to refer to "the program"
+		\subsection{Parameters of Interest }
+	We have decided to record the The Catalogue of Principal Galaxies (PGC) number to idenitfy the RC3 galaxy of interest for cases of source confusion, since every RC3 galaxy has a unique PGC number. 
+
 		\subsection{Technical Details}
-	The program was written in Python 2.7.6 to survey-independent and interacts 
- It uses IPAC's Montage  \cite{montage} using the AstroPy Montage wrapper\footnote{\url{http://www.astropy.org/montage-wrapper/}}. The final g,r,i image is created using Astromatic STIFF \cite{stiff} . Our choice of program reflects best feature from both program : STIFF provides the flexibility of changing many variables for the final g,r,i; Montage creates scientifically-calibrated images by retaining astrometric accuracy during image reprojection. The use of two different program in the mosaicing step is due to Montage's ability to create scientifically-calibrated mosaic FITS, but STIFF provided more flexible parameters for combining all bands into color images, so we get the best of both worlds. The STIFF setting needs to be adjusted for each survey depending on specs on the telescope's CCD dependent parameters such as imaging bands. (?) The source extraction is done using SExtractor. If the mosaicing field is chosen correctly, then SExtractor's skylevel estimation is fairly accurate.
+		As the usage of Python for astronomy become more popular in recent years, we wrote the program in Python 2.7.6 so that the pipeline support future datasets.	 It uses IPAC's Montage  \cite{montage} using the AstroPy Montage wrapper\footnote{\url{http://www.astropy.org/montage-wrapper/}}.  The final g,r,i image is created using Astromatic STIFF \cite{stiff} . Our choice of program reflects best feature from both program : STIFF provides the flexibility of changing many variables for the final g,r,i; Montage creates scientifically-calibrated images by retaining astrometric accuracy during image reprojection. The use of two different program in the mosaicing step is due to Montage's ability to create scientifically-calibrated mosaic FITS, but STIFF provided more flexible parameters for combining all bands into color images, so we get the best of both worlds. The STIFF setting needs to be adjusted for each survey depending on specs on the telescope's CCD dependent parameters such as imaging bands. (?) The source extraction is done using SExtractor. If the mosaicing field is chosen correctly, then SExtractor's skylevel estimation is fairly accurate.
 	\subsection{Getting the Data}
 		\subsubsection{Search}
 			Figure out how to convert positional values (ra,dec) to record-keeping parameters dependent on the survey's telescope. (tiles, frames...etc) \footnote{Since SDSS images are taken in drift-scan mode, we need the run,camcol,field values to acess each iamge frame} Usually this step can be done using the SQL search. 
@@ -24,37 +31,33 @@ Most surveys have an API that enables you to acess data using SQL querys so that
 \section{Pipeline}
 	\subsection{Class Hierarchy}
 \section{Result from SDSS run}
+There are \_ RC3 galaxies within the footprint. 
+on average the program processes 1.21 galaxies per minute
 	\subsection{Known Errors}
 		
-	Even though a series of exception handling and error prevention mechanicsms were put in place, 
+	Even though a series of exception handling and error prevention mechanisms were put in place, 
 	 	\begin{itemize}
 	 		\item mProjectExec is the montage Mosaic procedure that creates the reprojected image from the raw FITS files. Sometimes reprojected images are not created even when Montages' debug statement clearly shows that the reprojection was successful and table and header files are corrupted. This results in an error in later mosaicing steps. We have implemented error prevention mechanism to ensure that mosaic procedures terminates correctly in such cases and wrote the problematic galaxy into failed\_projection, which can be examined later.
-	 		\item Sometimes in the step "apply background model to images"takes a long time and produce huge files in coordir (~)
+	 		\item Sometimes in the step "apply background model to images"takes a long time and produce huge files in coordir (\~)
 	 	\end{itemize}
 	
 	\subsection{Performance}
-	accelerate the process by ``testing" only on the a single band fit file. For SDSS, that is the r band, best quality (longest wavelength => most photons).  Most of the time is spent on downloading the raw FITS files from the survey's specific server. This process can be dramatically sped up if the investigator has imaging data stored locally on a hardisk. We anticipate that this consist of 	 simply write a subclass of the Server class and fill in some path-dependent details (where images are stored) to enable this feature.
+	We accelerate the process by ``testing" only on the a single band fit file. For SDSS, that is the r band, best quality(\cite{photopaper}) (longest wavelength => most photons).  Most of the time is spent on downloading the raw FITS files from the survey's specific server. Therefore the process would not be significantly sped up even if it is ran in parallel. This process can be dramatically sped up if the investigator has imaging data stored locally on a hardisk. We anticipate that this consist of simply write a subclass of the Server class and fill in some path-dependent details (where images are stored) to enable this feature.
 	Computation time significantly increases 
 The Montage 	mBgExec takes a long time . 
 
 
 %20.9170833333     33.2561111111     0.0539322762628      5098   
 %20.9191666667     33.2811111111     0.0230064044561      5099 
-\section{Algorithm}
-
-%\bibliographystyle{elsarticle-num}
-%\bibliographystyle{te}
-\bibliographystyle{abbrvnat}
-\section{Conclusion}
-
+ \bibliographystyle{abbrvnat}
+ \section{Conclusion}
+<Can talk about here how LSST and future telescope can mask theses so that image not saturated>
 \section{Acknowledgements}
 This research has made use of the NASA/IPAC Extragalactic Database (NED) which is operated by the Jet Propulsion Laboratory, California Institute of Technology, under contract with the National Aeronautics and Space Administration.
 
 This research made use of Astropy, a community-developed core Python package for Astronomy (Astropy Collaboration, 2013).
 
-Funding for SDSS-III has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, and the U.S. Department of Energy Office of Science. The SDSS-III web site is http://www.sdss3.org/.
-
-SDSS-III is managed by the Astrophysical Research Consortium for the Participating Institutions of the SDSS-III Collaboration including the University of Arizona, the Brazilian Participation Group, Brookhaven National Laboratory, University of Cambridge, Carnegie Mellon University, University of Florida, the French Participation Group, the German Participation Group, Harvard University, the Instituto de Astrofisica de Canarias, the Michigan State/Notre Dame/JINA Participation Group, Johns Hopkins University, Lawrence Berkeley National Laboratory, Max Planck Institute for Astrophysics, Max Planck Institute for Extraterrestrial Physics, New Mexico State University, New York University, Ohio State University, Pennsylvania State University, University of Portsmouth, Princeton University, the Spanish Participation Group, University of Tokyo, University of Utah, Vanderbilt University, University of Virginia, University of Washington, and Yale University
+Funding for SDSS-III has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, and the U.S. Department of Energy Office of Science. The SDSS-III web site is http://www.sdss3.org/. SDSS-III is managed by the Astrophysical Research Consortium for the Participating Institutions of the SDSS-III Collaboration including the University of Arizona, the Brazilian Participation Group, Brookhaven National Laboratory, University of Cambridge, Carnegie Mellon University, University of Florida, the French Participation Group, the German Participation Group, Harvard University, the Instituto de Astrofisica de Canarias, the Michigan State/Notre Dame/JINA Participation Group, Johns Hopkins University, Lawrence Berkeley National Laboratory, Max Planck Institute for Astrophysics, Max Planck Institute for Extraterrestrial Physics, New Mexico State University, New York University, Ohio State University, Pennsylvania State University, University of Portsmouth, Princeton University, the Spanish Participation Group, University of Tokyo, University of Utah, Vanderbilt University, University of Virginia, University of Washington, and Yale University
 \bibliography{bibtex_database}
 
 \end{document}
