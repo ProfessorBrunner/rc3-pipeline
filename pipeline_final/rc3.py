@@ -157,29 +157,11 @@ class RC3(RC3Catalog):
             montage.mImgtbl("projected","pimages.tbl")
             os.chdir("projected")
             montage.mAdd("../pimages.tbl","../"+out+".hdr","{}_{}.fits".format(survey.name,out))
-            outfile_r="{}_{}_{}_{}r.fits".format(survey.name,band,str(ra),str(dec))
-            montage.mSubimage("{}_{}.fits".format(survey.name,out),outfile_r,ra,dec,2*margin) 
-            # Background Rectification Procedures
-            print("Computing overlapping differences")
-            os.chdir("..")
-            montage.mOverlaps("pimages.tbl","diffs.tbl")
-            os.mkdir ("diffdir")
-            print ("mDiffExec")
-            print (os.getcwd())
-            os.system("mDiffExec -p projected diffs.tbl "+out+".hdr  diffdir")
-            print ("mFitExec")
-            montage.mFitExec("diffs.tbl","fits.tbl","diffdir")
-            print ("Modelling the background")
-            montage.mBgModel("pimages.tbl","fits.tbl","corrections.tbl")
-            print ("Apply Background model to images")
-            os.mkdir("corrdir")
-            montage.mBgExec("pimages.tbl","corrections.tbl","corrdir",proj_dir="projected")
-            montage.mAdd("pimages.tbl",out+".hdr","SDSS_"+out+".fits","corrdir")
-            # montage.mSubimage("{}_{}.fits".format(survey.name,out),outfile_r,ra,dec,2*margin) 
-            print ('After mSubimage'+os.getcwd())
-            shutil.move(outfile_r,".." )#if change to :-11 then move out of u,g,r,i,z directory, may be more convenient for mJPEG
+            #<Insert Background Rectification procedure here>
+            montage.mSubimage("{}_{}.fits".format(survey.name,out),outfile_r,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
+            shutil.move(outfile_r,os.getcwd()[:-11] )#if change to :-11 then move out of u,g,r,i,z directory, may be more convenient for mJPEG
             if (DEBUG) : print ("Completed Mosaic for " + band)
-            os.chdir("..")
+            os.chdir("../..")
             hdulist = pyfits.open(outfile_r)
 
         hdulist[0].header['RA']=ra
@@ -198,6 +180,7 @@ class RC3(RC3Catalog):
         os.system("rm -r {}".format(band))
         print ("Completed Mosaic")
         return outfile 
+
 
     def source_info(self,r_fits_filename,survey):
         '''
