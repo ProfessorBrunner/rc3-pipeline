@@ -1,2 +1,0 @@
-| plus|minus|       a    |      b     |      c     | crpix1  | crpix2  | xmin | xmax | ymin | ymax | xcenter | ycenter |  npixel |    rms     |    boxx    |    boxy    |  boxwidth  | boxheight  |   boxang   |
-     0     1 -1.14664e-06  2.87709e-07 -2.90142e-05    -37.00    104.00     38     91   -104    101     64.37     -2.98      8261  6.91560e-04         64.0         -1.5        205.0         54.0         90.0
