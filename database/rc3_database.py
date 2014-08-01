@@ -9,7 +9,8 @@ def tableCreate():
 	#Using BIT to represent boolean 1=True and False = 0
 	
 def dataEntry():
-	# for sdss in file('rc3_galaxies_outside_SDSS_footprint'):
+	survey = 'sdss'
+	SURVEY = 'SDSS'
 	n=0
 	with open("rc3_ra_dec_diameter_pgc.txt",'r') as f:
 		for line in f:
@@ -30,7 +31,7 @@ def dataEntry():
 					if (int(i.split()[3])==pgc):
 						clean=0
 
-
+			# Updated Coordinate Information
 			with open("rc3_updated.txt")as new:
 				#if no updated value, use 0
 				new_ra = 0
@@ -43,6 +44,22 @@ def dataEntry():
 						new_dec = float(line[3])
 						new_radius = float(line[4])
 
+			# Path to Data Products
+			path = "/Volumes/data/rc3/{}/{}".format(pgc,survey)
+			# Scientifically calibrated fits are named in form
+			#  "{}_{}_{}_{}.fits".format(survey.name,band,ra,dec)
+			#  where ra,dec are new positional values passed into mosaic_band
+			#  NEED TO PASS IN SURVEY NAME LATER
+			u_fits = "{}{}_{}_{}_{}.fits".(path,SURVEY,'u',new_ra,new_dec)
+			g_fits = "{}{}_{}_{}_{}.fits".(path,SURVEY,'g',new_ra,new_dec)
+			r_fits = "{}{}_{}_{}_{}.fits".(path,SURVEY,'r',new_ra,new_dec)
+			i_fits = "{}{}_{}_{}_{}.fits".(path,SURVEY,'i',new_ra,new_dec)
+			z_fits = "{}{}_{}_{}_{}.fits".(path,SURVEY,'z',new_ra,new_dec)
+			# -OUTFILE_NAME  {2}_{0}_{1}_BEST.tiff {7}".format(ra,dec,survey.name,
+			best = "{}{}_{0}_{1}_BEST.tiff ".format(path,SURVEY,ra,dec)
+			low  =  "{}{}_{0}_{1}_LOW.tiff ".format(path,SURVEY,ra,dec)
+
+
 			# Error Information
 			# 0 = no error
 			# 1 = mosaicAll error
@@ -50,8 +67,6 @@ def dataEntry():
 			# 3 = strange error (when sql region search does not included the galaxy itself)
 			# 4 = Montage image reprojection failure
 			# 5= msubimage failure (cropping image outside of image field)
-			
-
 			error =0
 			with open("mosaicAll_error")as e:
 				for i in e: 
