@@ -3,6 +3,7 @@ from astropy import *
 from astroquery.vizier import *
 from astroquery.irsa import Irsa
 import astropy.units as u
+from astropy import coordinates
 #from astropy.coordinates import SkyCoord
 #####################
 from  server import Server
