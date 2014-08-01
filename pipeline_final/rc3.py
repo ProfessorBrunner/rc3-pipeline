@@ -157,6 +157,8 @@ class RC3(RC3Catalog):
             montage.mImgtbl("projected","pimages.tbl")
             os.chdir("projected")
             montage.mAdd("../pimages.tbl","../"+out+".hdr","{}_{}.fits".format(survey.name,out))
+            outfile_r="{}_{}_{}_{}r.fits".format(survey.name,band,str(ra),str(dec))
+            montage.mSubimage("{}_{}.fits".format(survey.name,out),outfile_r,ra,dec,2*margin) 
             # Background Rectification Procedures
             print("Computing overlapping differences")
             os.chdir("..")
@@ -173,8 +175,7 @@ class RC3(RC3Catalog):
             os.mkdir("corrdir")
             montage.mBgExec("pimages.tbl","corrections.tbl","corrdir",proj_dir="projected")
             montage.mAdd("pimages.tbl",out+".hdr","SDSS_"+out+".fits","corrdir")
-            outfile_r="{}_{}_{}_{}r.fits".format(survey.name,band,str(ra),str(dec))
-            montage.mSubimage("{}_{}.fits".format(survey.name,out),outfile_r,ra,dec,2*margin) 
+            # montage.mSubimage("{}_{}.fits".format(survey.name,out),outfile_r,ra,dec,2*margin) 
             print ('After mSubimage'+os.getcwd())
             shutil.move(outfile_r,".." )#if change to :-11 then move out of u,g,r,i,z directory, may be more convenient for mJPEG
             if (DEBUG) : print ("Completed Mosaic for " + band)
@@ -235,12 +236,13 @@ class RC3(RC3Catalog):
                 margin = 2*self.rc3_radius
                 pgc = self.pgc
                 pass
+
             # Source Extraction
-            # Remember to switch to "sextractor" for Ubuntu/ Linux, "sex" for Mac
-            os.system("sextractor {} -c {}.sex".format(file,survey.name))
+            # Remember to switch to command "sextractor" for Ubuntu/ Linux, "sex" for Mac
+            os.system("sextractor {} {}".format(survey.sextractor_params, file))
+
             # A list of other RC3 galaxies that lies in the field
             # In the case of source confusion, find all the rc3 that lies in the field.
-            # other_rc3s = sqlcl.query("SELECT distinct rc3.ra, rc3.dec FROM PhotoObj as po JOIN RC3 as rc3 ON rc3.objid = po.objid  WHERE po.ra between {0}-{1} and  {0}+{1} and po.dec between {2}-{3} and  {2}+{3}".format(str(rc3_ra),str(margin),str(rc3_dec),str(margin))).readlines()
             other_rc3s = survey.data_server.otherRC3(rc3_ra,rc3_dec,margin)#,survey)
             other_rc3s_info=other_rc3s
             print (other_rc3s)
