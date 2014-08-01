@@ -4,6 +4,7 @@ from astroquery.vizier import *
 from astroquery.irsa import Irsa
 import astropy.units as u
 from astropy import coordinates
+from astropy.coordinates import FK5
 #from astropy.coordinates import SkyCoord
 #####################
 from  server import Server
@@ -94,7 +95,8 @@ class Gator(Server):
         '''
         for 2MASS return the designation for each detected source in search field 
         '''
-	pos = coordinates.SkyFrame(ra*u.deg,dec*u,deg, frame='fk5')
+	pos = FK5(ra*u.degree, dec*u.degree)
+	#pos = coordinates.SkyFrame(ra*u.deg,dec*u,deg, frame='fk5')
         #pos =SkyCoord(ra* u.deg,dec* u.deg, frame='fk5')
         tbl = Irsa.query_region(pos,catalog=cat, spatial='Box',width=2*margin*u.deg)
         lst=[]

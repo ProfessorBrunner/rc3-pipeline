@@ -11,6 +11,7 @@ Instance Attributes:
 import astropy.units as u
 from astroquery.vizier import *
 #from astropy.coordinates import SkyCoord
+from astropy.coordinates import FK5
 from astropy import coordinates
 from abc import ABCMeta , abstractmethod
 
@@ -73,7 +74,8 @@ class Server(object):
         ##############
         #query = "spatial=box&catalog={}&size={}&outfmt=1&objstr={},{}".format(catalog,str(margin),str(ra),str(dec))
         rc3Cat = Vizier(catalog='VII/155/rc3')
-        pos = coordinates.SkyFrame(ra*u.deg, dec*u.deg, frame='fk5')
+        pos = FK5(ra*u.deg,dec*u.deg)
+	#pos = coordinates.SkyFrame(ra*u.deg, dec*u.deg, frame='fk5')
 #	pos =SkyCoord(ra* u.deg,dec* u.deg, frame='fk5')
         # print(pos)
         rc3_matches=rc3Cat.query_region(pos, radius=2*margin*u.deg)
