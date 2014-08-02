@@ -409,7 +409,12 @@ class RC3(RC3Catalog):
         '''
         print ("------------------mosaic_all_bands----------------------")
         #filename = "{},{}".format(str(ra),str(dec)        
-	filename  = str(pgc)
+	source_confusion__error = open("../source_confusion_error.txt",'a') 
+        source_confusion_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
+	if os.path.isfile(filename):
+		filename = "{}_{}".format(str(pgc),n)
+	else:
+		filename = str(pgc)
 	os.mkdir(filename)
         os.chdir(filename)
         bands =survey.bands #['u','g','r','i','z']
