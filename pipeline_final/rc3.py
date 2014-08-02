@@ -408,8 +408,9 @@ class RC3(RC3Catalog):
         Return void
         '''
         print ("------------------mosaic_all_bands----------------------")
-        filename = "{},{}".format(str(ra),str(dec))
-        os.mkdir(filename)
+        #filename = "{},{}".format(str(ra),str(dec)        
+	filename  = str(pgc)
+	os.mkdir(filename)
         os.chdir(filename)
         bands =survey.bands #['u','g','r','i','z']
         for band in bands:
