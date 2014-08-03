@@ -16,18 +16,6 @@ A.~{Baillard}, E.~{Bertin}, V.~{de Lapparent}, P.~{Fouqu{\'e}}, S.~{Arnouts},
 \newblock 532:\penalty0 A74, Aug. 2011.
 \newblock \doi{10.1051/0004-6361/201016423}.
 
-\bibitem[{Berriman} et~al.(2004){Berriman}, {Deelman}, {Good}, {Jacob}, {Katz},
-  {Kesselman}, {Laity}, {Prince}, {Singh}, and {Su}]{montage}
-G.~B. {Berriman}, E.~{Deelman}, J.~C. {Good}, J.~C. {Jacob}, D.~S. {Katz},
-  C.~{Kesselman}, A.~C. {Laity}, T.~A. {Prince}, G.~{Singh}, and M.-H. {Su}.
-\newblock {Montage: a grid-enabled engine for delivering custom science-grade
-  mosaics on demand}.
-\newblock In P.~J. {Quinn} and A.~{Bridger}, editors, \emph{Optimizing
-  Scientific Return for Astronomy through Information Technologies}, volume
-  5493 of \emph{Society of Photo-Optical Instrumentation Engineers (SPIE)
-  Conference Series}, pages 221--232, Sept. 2004.
-\newblock \doi{10.1117/12.550551}.
-
 \bibitem[{Bertin}(2012)]{stiff}
 E.~{Bertin}.
 \newblock {Displaying Digital Deep Sky Images}.
@@ -44,12 +32,87 @@ G.~{de Vaucouleurs}, A.~{de Vaucouleurs}, H.~G. {Corwin}, R.~J. {Buta},
   1991)}.
 \newblock \emph{VizieR Online Data Catalog}, 7155:\penalty0 0, Feb. 1995.
 
-\bibitem[{Lupton} et~al.(2001){Lupton}, {Gunn}, {Ivezi{\'c}}, {Knapp}, and
-  {Kent}]{photopaper}
-R.~{Lupton}, J.~E. {Gunn}, Z.~{Ivezi{\'c}}, G.~R. {Knapp}, and S.~{Kent}.
-\newblock {The SDSS Imaging Pipelines}.
-\newblock In F.~R. {Harnden}, Jr., F.~A. {Primini}, and H.~E. {Payne}, editors,
-  \emph{Astronomical Data Analysis Software and Systems X}, volume 238 of
-  \emph{Astronomical Society of the Pacific Conference Series}, page 269, 2001.
+\bibitem[{Jacob} et~al.(2010){Jacob}, {Katz}, {Berriman}, {Good}, {Laity},
+  {Deelman}, {Kesselman}, {Singh}, {Su}, {Prince}, and {Williams}]{montage}
+J.~C. {Jacob}, D.~S. {Katz}, G.~B. {Berriman}, J.~{Good}, A.~C. {Laity},
+  E.~{Deelman}, C.~{Kesselman}, G.~{Singh}, M.-H. {Su}, T.~A. {Prince}, and
+  R.~{Williams}.
+\newblock {Montage: a grid portal and software toolkit for science-grade
+  astronomical image mosaicking}.
+\newblock \emph{ArXiv e-prints}, May 2010.
+
+\bibitem[{Stoughton} et~al.(2002){Stoughton}, {Lupton}, {Bernardi}, {Blanton},
+  {Burles}, {Castander}, {Connolly}, {Eisenstein}, {Frieman}, {Hennessy},
+  {Hindsley}, {Ivezi{\'c}}, {Kent}, {Kunszt}, {Lee}, {Meiksin}, {Munn},
+  {Newberg}, {Nichol}, {Nicinski}, {Pier}, {Richards}, {Richmond}, {Schlegel},
+  {Smith}, {Strauss}, {SubbaRao}, {Szalay}, {Thakar}, {Tucker}, {Vanden Berk},
+  {Yanny}, {Adelman}, {Anderson}, {Anderson}, {Annis}, {Bahcall}, {Bakken},
+  {Bartelmann}, {Bastian}, {Bauer}, {Berman}, {B{\"o}hringer}, {Boroski},
+  {Bracker}, {Briegel}, {Briggs}, {Brinkmann}, {Brunner}, {Carey}, {Carr},
+  {Chen}, {Christian}, {Colestock}, {Crocker}, {Csabai}, {Czarapata},
+  {Dalcanton}, {Davidsen}, {Davis}, {Dehnen}, {Dodelson}, {Doi}, {Dombeck},
+  {Donahue}, {Ellman}, {Elms}, {Evans}, {Eyer}, {Fan}, {Federwitz}, {Friedman},
+  {Fukugita}, {Gal}, {Gillespie}, {Glazebrook}, {Gray}, {Grebel}, {Greenawalt},
+  {Greene}, {Gunn}, {de Haas}, {Haiman}, {Haldeman}, {Hall}, {Hamabe},
+  {Hansen}, {Harris}, {Harris}, {Harvanek}, {Hawley}, {Hayes}, {Heckman},
+  {Helmi}, {Henden}, {Hogan}, {Hogg}, {Holmgren}, {Holtzman}, {Huang}, {Hull},
+  {Ichikawa}, {Ichikawa}, {Johnston}, {Kauffmann}, {Kim}, {Kimball}, {Kinney},
+  {Klaene}, {Kleinman}, {Klypin}, {Knapp}, {Korienek}, {Krolik}, {Kron},
+  {Krzesi{\'n}ski}, {Lamb}, {Leger}, {Limmongkol}, {Lindenmeyer}, {Long},
+  {Loomis}, {Loveday}, {MacKinnon}, {Mannery}, {Mantsch}, {Margon}, {McGehee},
+  {McKay}, {McLean}, {Menou}, {Merelli}, {Mo}, {Monet}, {Nakamura},
+  {Narayanan}, {Nash}, {Neilsen}, {Newman}, {Nitta}, {Odenkirchen}, {Okada},
+  {Okamura}, {Ostriker}, {Owen}, {Pauls}, {Peoples}, {Peterson}, {Petravick},
+  {Pope}, {Pordes}, {Postman}, {Prosapio}, {Quinn}, {Rechenmacher}, {Rivetta},
+  {Rix}, {Rockosi}, {Rosner}, {Ruthmansdorfer}, {Sandford}, {Schneider},
+  {Scranton}, {Sekiguchi}, {Sergey}, {Sheth}, {Shimasaku}, {Smee}, {Snedden},
+  {Stebbins}, {Stubbs}, {Szapudi}, {Szkody}, {Szokoly}, {Tabachnik},
+  {Tsvetanov}, {Uomoto}, {Vogeley}, {Voges}, {Waddell}, {Walterbos}, {Wang},
+  {Watanabe}, {Weinberg}, {White}, {White}, {Wilhite}, {Wolfe}, {Yasuda},
+  {York}, {Zehavi}, and {Zheng}]{edr}
+C.~{Stoughton}, R.~H. {Lupton}, M.~{Bernardi}, M.~R. {Blanton}, S.~{Burles},
+  F.~J. {Castander}, A.~J. {Connolly}, D.~J. {Eisenstein}, J.~A. {Frieman},
+  G.~S. {Hennessy}, R.~B. {Hindsley}, {\v Z}.~{Ivezi{\'c}}, S.~{Kent}, P.~Z.
+  {Kunszt}, B.~C. {Lee}, A.~{Meiksin}, J.~A. {Munn}, H.~J. {Newberg}, R.~C.
+  {Nichol}, T.~{Nicinski}, J.~R. {Pier}, G.~T. {Richards}, M.~W. {Richmond},
+  D.~J. {Schlegel}, J.~A. {Smith}, M.~A. {Strauss}, M.~{SubbaRao}, A.~S.
+  {Szalay}, A.~R. {Thakar}, D.~L. {Tucker}, D.~E. {Vanden Berk}, B.~{Yanny},
+  J.~K. {Adelman}, J.~E. {Anderson}, Jr., S.~F. {Anderson}, J.~{Annis}, N.~A.
+  {Bahcall}, J.~A. {Bakken}, M.~{Bartelmann}, S.~{Bastian}, A.~{Bauer},
+  E.~{Berman}, H.~{B{\"o}hringer}, W.~N. {Boroski}, S.~{Bracker}, C.~{Briegel},
+  J.~W. {Briggs}, J.~{Brinkmann}, R.~{Brunner}, L.~{Carey}, M.~A. {Carr},
+  B.~{Chen}, D.~{Christian}, P.~L. {Colestock}, J.~H. {Crocker}, I.~{Csabai},
+  P.~C. {Czarapata}, J.~{Dalcanton}, A.~F. {Davidsen}, J.~E. {Davis},
+  W.~{Dehnen}, S.~{Dodelson}, M.~{Doi}, T.~{Dombeck}, M.~{Donahue},
+  N.~{Ellman}, B.~R. {Elms}, M.~L. {Evans}, L.~{Eyer}, X.~{Fan}, G.~R.
+  {Federwitz}, S.~{Friedman}, M.~{Fukugita}, R.~{Gal}, B.~{Gillespie},
+  K.~{Glazebrook}, J.~{Gray}, E.~K. {Grebel}, B.~{Greenawalt}, G.~{Greene},
+  J.~E. {Gunn}, E.~{de Haas}, Z.~{Haiman}, M.~{Haldeman}, P.~B. {Hall},
+  M.~{Hamabe}, B.~{Hansen}, F.~H. {Harris}, H.~{Harris}, M.~{Harvanek}, S.~L.
+  {Hawley}, J.~J.~E. {Hayes}, T.~M. {Heckman}, A.~{Helmi}, A.~{Henden}, C.~J.
+  {Hogan}, D.~W. {Hogg}, D.~J. {Holmgren}, J.~{Holtzman}, C.-H. {Huang},
+  C.~{Hull}, S.-I. {Ichikawa}, T.~{Ichikawa}, D.~E. {Johnston}, G.~{Kauffmann},
+  R.~S.~J. {Kim}, T.~{Kimball}, E.~{Kinney}, M.~{Klaene}, S.~J. {Kleinman},
+  A.~{Klypin}, G.~R. {Knapp}, J.~{Korienek}, J.~{Krolik}, R.~G. {Kron},
+  J.~{Krzesi{\'n}ski}, D.~Q. {Lamb}, R.~F. {Leger}, S.~{Limmongkol},
+  C.~{Lindenmeyer}, D.~C. {Long}, C.~{Loomis}, J.~{Loveday}, B.~{MacKinnon},
+  E.~J. {Mannery}, P.~M. {Mantsch}, B.~{Margon}, P.~{McGehee}, T.~A. {McKay},
+  B.~{McLean}, K.~{Menou}, A.~{Merelli}, H.~J. {Mo}, D.~G. {Monet},
+  O.~{Nakamura}, V.~K. {Narayanan}, T.~{Nash}, E.~H. {Neilsen}, Jr., P.~R.
+  {Newman}, A.~{Nitta}, M.~{Odenkirchen}, N.~{Okada}, S.~{Okamura}, J.~P.
+  {Ostriker}, R.~{Owen}, A.~G. {Pauls}, J.~{Peoples}, R.~S. {Peterson},
+  D.~{Petravick}, A.~{Pope}, R.~{Pordes}, M.~{Postman}, A.~{Prosapio}, T.~R.
+  {Quinn}, R.~{Rechenmacher}, C.~H. {Rivetta}, H.-W. {Rix}, C.~M. {Rockosi},
+  R.~{Rosner}, K.~{Ruthmansdorfer}, D.~{Sandford}, D.~P. {Schneider},
+  R.~{Scranton}, M.~{Sekiguchi}, G.~{Sergey}, R.~{Sheth}, K.~{Shimasaku},
+  S.~{Smee}, S.~A. {Snedden}, A.~{Stebbins}, C.~{Stubbs}, I.~{Szapudi},
+  P.~{Szkody}, G.~P. {Szokoly}, S.~{Tabachnik}, Z.~{Tsvetanov}, A.~{Uomoto},
+  M.~S. {Vogeley}, W.~{Voges}, P.~{Waddell}, R.~{Walterbos}, S.-i. {Wang},
+  M.~{Watanabe}, D.~H. {Weinberg}, R.~L. {White}, S.~D.~M. {White},
+  B.~{Wilhite}, D.~{Wolfe}, N.~{Yasuda}, D.~G. {York}, I.~{Zehavi}, and
+  W.~{Zheng}.
+\newblock {Sloan Digital Sky Survey: Early Data Release}.
+\newblock 123:\penalty0 485--548, Jan. 2002.
+\newblock \doi{10.1086/324741}.
 
 \end{thebibliography}

@@ -2,17 +2,23 @@
 \usepackage{natbib}
 \usepackage{url}
 \begin{document}
+\title{Creating updated, scientifically-calibrated mosaics for the RC3 Catalogue}
+\maketitle
 \begin{abstract}
 abstract
 \end{abstract}
 
 
 \section{Introduction}
-The Third Reference Catalog of Bright Galaxies (RC3) \cite{rc3} contains a  complete listing of 23,022 galaxies with $D_25$ apparent major isophotal diameter  greater than 1 arcminute and with a total B-band magnitude greater than 15.5. There has been existing literature on this subject using data from the Sloan Digital Sky Survey(SDSS). Hogg and Blanton made g,r,i colored images by using data from the SDSS DR6.\footnote{\url{http://cosmo.nyu.edu/hogg/rc3/}} The EFIGI catalog \cite{efigi},dedicated to studying morphology of galaxies , also  provide a subset of 4458 RC3 galaxies with FITS and color images using SDSS DR4 data and dicarding artifacted or missing data by visual inspection. We perform the mosaicing procedures on the whole RC3 catalog using  an automated positional update algorithm  on the most recent SDSS DR 10 imaging data. In addition, we designed a mosaicing pipeline that creates scientifically-calibrated mosaics, color-band images, as well as a set of updated position values, which can be easily suited for  existing surveys such as 2MASS, DSS, or  new imaging data release from  Dark Energy Survey and Large Synoptic Survey Telescope for larger sky coverage and multi-band (?) mosaics.
-% The resulting set of data product can be used for 
+The Third Reference Catalog of Bright Galaxies (RC3) (\citet{rc3}) contains a  complete listing of 23,022 galaxies with $D_25$ apparent major isophotal diameter  greater than 1 arcminute and with a total B-band magnitude greater than 15.5. There has been existing literature on this subject using data from the Sloan Digital Sky Survey(SDSS). Hogg and Blanton made g,r,i colored images by using data from the SDSS DR6.\footnote{\url{http://cosmo.nyu.edu/hogg/rc3/}} The EFIGI catalog (\citet{efigi}),dedicated to studying morphology of galaxies , also  obtained a subset of 4458 RC3 FITS and color images by discarding artifacted or missing data by visual inspection and using SDSS DR4 data and . We perform the mosaicing procedures on the whole RC3 catalog using  an automated positional update algorithm  on the most recent SDSS DR 10 imaging data. In addition, we designed a mosaicing pipeline that creates scientifically-calibrated mosaics, color-band images, as well as a set of updated position values, which can be easily suited for  existing surveys such as 2MASS, DSS, or  new imaging data release from  Dark Energy Survey and Large Synoptic Survey Telescope for larger sky coverage and multiband images.
 \section{Automation Program}
+
 	\subsection{Positional Inaccuracy in RC3 Catalog}
-	The principle motivation behind the automation algorithm is to resolve the problem of centering the galaxy and finding RC3 galaxy in an image.
+	The principle motivation behind the automation algorithm is to resolve the problem of centering the galaxy and finding RC3 galaxy in an image. Initially using the standard mosaicing steps in Montage, we obtained many images whose galaxy are off center or can not found, we found that this was not due to wrong coordinate frame converison/ equinox precession issue since the effects should be negligible in terms of centering a galaxy but due to the inherent inaccuracy of the positions given by the RC3 Catalog. The J2000  
+        Two different levels of precision shown in RC3:  HH MM.m, DD MM for  
+the inaccurately known positions(Accuracy of 1-2 arcmin), and HH MM SS.s, DD MM SS for 
+the more  
+accurately known positions (Accuracy of 5-8 arcsec) 
 	\subsection{Algorithm}
 	The rc3 class creates an rc3 object containing its ``basic info" \footnote{ ra,dec,radius, pgc} for each galaxy in the RC3 catalog. The practical purpose of the class (other than the use of OOP that actually makes sense) is to keep tract of the number of iterations in the recursive step using the instance variable num\_iterations. 
 
@@ -41,23 +47,32 @@ on average the program processes 1.21 galaxies per minute
 	 		\item Sometimes in the step "apply background model to images"takes a long time and produce huge files in coordir (\~)
 	 	\end{itemize}
 	
-	\subsection{Performance}
-	We accelerate the process by ``testing" only on the a single band fit file. For SDSS, that is the r band, best quality(\cite{photopaper}) (longest wavelength => most photons).  Most of the time is spent on downloading the raw FITS files from the survey's specific server. Therefore the process would not be significantly sped up even if it is ran in parallel. This process can be dramatically sped up if the investigator has imaging data stored locally on a hardisk. We anticipate that this consist of simply write a subclass of the Server class and fill in some path-dependent details (where images are stored) to enable this feature.
-	Computation time significantly increases 
+	\subsection{Performance}	We accelerate the mosaicing process by performing the recursive algorithm on only a single band FITS file designated as $\texttt{best\_band}$, and then mosacking all bands only once per object. For SDSS, we use the image obtained by the r band filter since transmission curve in \citet{edr} shows that r band has the highest quantum efficiency.  Most of the computation time is spent on downloading the raw FITS files from the survey's specific server. Therefore, even though Montage's (Drizzle Algorithm?) performance scales with number of processor on a cluster (\citet{montage}) the process would not be significantly sped up even if ran in parallel. This process would be significantly sped up if the investigator already has imaging data stored locally on a disk or have access to running the mosaic program alongside the survey's datacenter. We have designed our class hierarchy such that this can be written as a subclass of $\texttt{Server}$ with user-defined details of where the images are stored.
 The Montage 	mBgExec takes a long time . 
 
+\section{Possible Uses of Data Product}
+Can be incorporated in the photo pipeline in future survey to make pretty rc3 images.
+with larger focal plane 
+more photon
+such as the LSST
+saturation
+especially with the DSS data, full coverage of the sky
+map out where bright objects are. 
 
-%20.9170833333     33.2561111111     0.0539322762628      5098   
-%20.9191666667     33.2811111111     0.0230064044561      5099 
- \bibliographystyle{abbrvnat}
+
+The scientifically calibrated FITS images can be used as for indivudual studies . It can be used for improved astrometry (as we did) in updating the catalog. Can also do photometry to determine galaxy property
+
+Another possible usage is to combine the calibrated mosaics into multiband color images with mosaics from single/double band surveys such as POSS-I and GALEX.
+
  \section{Conclusion}
-<Can talk about here how LSST and future telescope can mask theses so that image not saturated>
+Can talk about here how LSST and future telescope can mask theses so that image not saturated
 \section{Acknowledgements}
 This research has made use of the NASA/IPAC Extragalactic Database (NED) which is operated by the Jet Propulsion Laboratory, California Institute of Technology, under contract with the National Aeronautics and Space Administration.
 
 This research made use of Astropy, a community-developed core Python package for Astronomy (Astropy Collaboration, 2013).
 
 Funding for SDSS-III has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, and the U.S. Department of Energy Office of Science. The SDSS-III web site is http://www.sdss3.org/. SDSS-III is managed by the Astrophysical Research Consortium for the Participating Institutions of the SDSS-III Collaboration including the University of Arizona, the Brazilian Participation Group, Brookhaven National Laboratory, University of Cambridge, Carnegie Mellon University, University of Florida, the French Participation Group, the German Participation Group, Harvard University, the Instituto de Astrofisica de Canarias, the Michigan State/Notre Dame/JINA Participation Group, Johns Hopkins University, Lawrence Berkeley National Laboratory, Max Planck Institute for Astrophysics, Max Planck Institute for Extraterrestrial Physics, New Mexico State University, New York University, Ohio State University, Pennsylvania State University, University of Portsmouth, Princeton University, the Spanish Participation Group, University of Tokyo, University of Utah, Vanderbilt University, University of Virginia, University of Washington, and Yale University
-\bibliography{bibtex_database}
 
+\bibliography{bibtex_database}
+ \bibliographystyle{abbrvnat}
 \end{document}

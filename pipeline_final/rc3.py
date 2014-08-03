@@ -22,16 +22,17 @@ class RC3(RC3Catalog):
         self.rc3_ra = rc3_ra
         self.rc3_dec  = rc3_dec
         self.rc3_radius = rc3_radius
-        # Patching up for a particular object with strange pgc only in the RC3 Catalog
-        if (pgc=='6186a+b'):
-            pgc='6186'      
+        # This instance is manually removed inside the parsed textfile
+        # # Patching up for a particular object with strange pgc only in the RC3 Catalog
+        # if (pgc=='6186a+b'):
+        #     pgc='6186'      
         self.pgc = int(pgc)        
         self.num_iterations = num_iterations
         #updated positions
         self.new_ra='@'
         self.new_dec='@'
 
-    def mosaic_band(self,band,ra,dec,margin,radius,pgc,survey):#,clean=True):
+   def mosaic_band(self,band,ra,dec,margin,radius,pgc,survey):#,clean=True):
         '''
         Input: source info param
         Create a mosaic fit file for the specified band.
@@ -408,9 +409,9 @@ class RC3(RC3Catalog):
         Return void
         '''
         print ("------------------mosaic_all_bands----------------------")
-        #filename = "{},{}".format(str(ra),str(dec)        
-	filename  = str(pgc)
-	os.mkdir(filename)
+        # filename = "{},{}".format(str(ra),str(dec))
+        filename  = str(pgc)
+        os.mkdir(filename)
         os.chdir(filename)
         bands =survey.bands #['u','g','r','i','z']
         for band in bands:

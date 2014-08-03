@@ -4,45 +4,46 @@ The top-level auxiliary file: rc3_pipeline.aux
 The style file: abbrvnat.bst
 Database file #1: bibtex_database.bib
 Warning--empty journal in efigi
+Warning--empty journal in edr
 You've used 5 entries,
             2773 wiz_defined-function locations,
-            632 strings with 6123 characters,
-and the built_in function-call counts, 3822 in all, are:
-= -- 286
-> -- 367
-< -- 7
-+ -- 121
-- -- 116
-* -- 371
-:= -- 609
+            626 strings with 9452 characters,
+and the built_in function-call counts, 12859 in all, are:
+= -- 823
+> -- 2040
+< -- 3
++ -- 680
+- -- 675
+* -- 1469
+:= -- 2263
 add.period$ -- 17
 call.type$ -- 5
-change.case$ -- 51
+change.case$ -- 239
 chr.to.int$ -- 5
-cite$ -- 11
-duplicate$ -- 139
-empty$ -- 216
-format.name$ -- 121
-if$ -- 777
+cite$ -- 12
+duplicate$ -- 114
+empty$ -- 184
+format.name$ -- 680
+if$ -- 2374
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 5
 newline$ -- 35
-num.names$ -- 26
-pop$ -- 107
+num.names$ -- 22
+pop$ -- 478
 preamble$ -- 1
-purify$ -- 46
+purify$ -- 234
 quote$ -- 0
-skip$ -- 125
+skip$ -- 289
 stack$ -- 0
-substring$ -- 53
-swap$ -- 40
-text.length$ -- 6
+substring$ -- 40
+swap$ -- 18
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 55
-warning$ -- 1
-while$ -- 23
+warning$ -- 2
+while$ -- 19
 width$ -- 0
-write$ -- 78
-(There was 1 warning)
+write$ -- 74
+(There were 2 warnings)
