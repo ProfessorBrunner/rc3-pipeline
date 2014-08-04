@@ -3,47 +3,49 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: rc3_pipeline.aux
 The style file: abbrvnat.bst
 Database file #1: bibtex_database.bib
+Warning--I didn't find a database entry for "sextractor"
 Warning--empty journal in efigi
+Warning--empty publisher in rc31991
 Warning--empty journal in edr
-You've used 5 entries,
+You've used 7 entries,
             2773 wiz_defined-function locations,
-            626 strings with 9452 characters,
-and the built_in function-call counts, 12859 in all, are:
-= -- 823
-> -- 2040
-< -- 3
-+ -- 680
-- -- 675
-* -- 1469
-:= -- 2263
-add.period$ -- 17
-call.type$ -- 5
-change.case$ -- 239
-chr.to.int$ -- 5
-cite$ -- 12
-duplicate$ -- 114
-empty$ -- 184
-format.name$ -- 680
-if$ -- 2374
+            640 strings with 10706 characters,
+and the built_in function-call counts, 14375 in all, are:
+= -- 925
+> -- 2210
+< -- 5
++ -- 736
+- -- 729
+* -- 1626
+:= -- 2512
+add.period$ -- 23
+call.type$ -- 7
+change.case$ -- 261
+chr.to.int$ -- 7
+cite$ -- 17
+duplicate$ -- 163
+empty$ -- 262
+format.name$ -- 736
+if$ -- 2673
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 5
-newline$ -- 35
-num.names$ -- 22
-pop$ -- 478
+missing$ -- 8
+newline$ -- 45
+num.names$ -- 32
+pop$ -- 531
 preamble$ -- 1
-purify$ -- 234
+purify$ -- 255
 quote$ -- 0
-skip$ -- 289
+skip$ -- 331
 stack$ -- 0
-substring$ -- 40
-swap$ -- 18
-text.length$ -- 2
+substring$ -- 46
+swap$ -- 27
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 55
-warning$ -- 2
-while$ -- 19
+type$ -- 72
+warning$ -- 3
+while$ -- 27
 width$ -- 0
-write$ -- 74
-(There were 2 warnings)
+write$ -- 99
+(There were 4 warnings)

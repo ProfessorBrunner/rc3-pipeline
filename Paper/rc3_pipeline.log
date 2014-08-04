@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  3 AUG 2014 06:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  4 AUG 2014 16:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -243,55 +243,64 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 12.
+(Font)              <7> on input line 9.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 12.
+(Font)              <5> on input line 9.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 13.
+(Font)              <8> on input line 10.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 13.
+(Font)              <6> on input line 10.
+
+Package natbib Warning: Citation `sextractor' on page 1 undefined on input line
+ 27.
+
+<pipeline.jpg, id=1, 757.83125pt x 899.36pt>
+File: pipeline.jpg Graphic file (type jpg)
+ <use pipeline.jpg>
+Package pdftex.def Info: pipeline.jpg used on input line 33.
+(pdftex.def)             Requested size: 261.0pt x 309.74432pt.
+
+Overfull \hbox (9.0pt too wide) in paragraph at lines 33--34
+[][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 46.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 47.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 46.
-
-Overfull \hbox (15.75041pt too wide) in paragraph at lines 72--73
-[]\OT1/cmr/m/n/10 This re-search made use of As-tropy, a community-developed
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 47.
+ [2 <./pipeline.jpg>]
+Overfull \hbox (3.57176pt too wide) in paragraph at lines 77--84
+\OT1/cmr/m/n/8 Foun-da-tion, the Par-tic-i-pat-ing In-sti-tu-tions, the Na-tion
+al Sci-ence Foun-
  []
 
+(./rc3_pipeline.bbl)
 
-Overfull \hbox (2.86171pt too wide) in paragraph at lines 74--75
-\OT1/cmr/m/n/10 Brookhaven Na-tional Lab-o-ra-tory, Uni-ver-sity of Cam-bridge,
+Package natbib Warning: There were undefined citations.
 
- []
-
-
-Overfull \hbox (9.25047pt too wide) in paragraph at lines 74--75
-\OT1/cmr/m/n/10 Carnegie Mel-lon Uni-ver-sity, Uni-ver-sity of Florida, the Fre
-nch
- []
-
-(./rc3_pipeline.bbl [2]) [3
-
-] (./rc3_pipeline.aux) ) 
+[3] (./rc3_pipeline.aux) ) 
 Here is how much of TeX's memory you used:
- 2672 strings out of 493117
- 36728 string characters out of 6135433
- 115991 words of memory out of 5000000
- 6100 multiletter control sequences out of 15000+600000
+ 2687 strings out of 493117
+ 36914 string characters out of 6135433
+ 124087 words of memory out of 5000000
+ 6112 multiletter control sequences out of 15000+600000
  7793 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,30p,2150b,299s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2014/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/am
+ 38i,8n,30p,2150b,297s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2014/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/
@@ -302,10 +311,10 @@ y10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 .pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.
 pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pf
 b>
-Output written on rc3_pipeline.pdf (3 pages, 164543 bytes).
+Output written on rc3_pipeline.pdf (3 pages, 248051 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
+ 67 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
