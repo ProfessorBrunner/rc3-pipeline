@@ -19,7 +19,7 @@
 	    $db = new PDO('sqlite:rc3.db');
 		// $query = "SELECT  ID,PGC_number, ra,dec , radius FROM rc3 WHERE ra BETWEEN 10 AND 11";
 
-		$query = "SELECT   PGC_number, ra,dec , radius FROM rc3 
+		$query = "SELECT   PGC_number, ra,dec , radius,new_ra,new_dec,clean,error FROM rc3 
 		WHERE ra  BETWEEN ".(string)($ra-$region)." AND ".(string)($ra+$region).
 		" AND dec BETWEEN ".(string)($dec-$region)." AND ".(string)($dec+$region);
 		echo "<br>Result for:<br>".$query."<br>";
@@ -31,7 +31,11 @@
 		echo "<td>PGC_number</td>";
 		echo "<td>ra</td>";
 		echo "<td>dec</td>";
-		echo "<td>Radius</td>";
+		echo "<td>radius</td>";
+		echo "<td>new_ra</td>";
+		echo "<td>new_dec</td>";
+		echo "<td>clean</td>";
+		echo "<td>error</td>";
 		echo "</tr>";
 		while($row = $result->fetchObject())
 		{  
@@ -44,6 +48,10 @@
 			echo " <td>".htmlspecialchars($row->ra)."</td>";
 			echo " <td>".htmlspecialchars($row->dec)."</td>";
 			echo " <td>".htmlspecialchars($row->radius)."</td>";
+			echo " <td>".htmlspecialchars($row->new_ra)."</td>";
+			echo " <td>".htmlspecialchars($row->new_dec)."</td>";
+			echo " <td>".htmlspecialchars($row->clean)."</td>";
+			echo " <td>".htmlspecialchars($row->error)."</td>";
 			echo "</tr>";
 
 		}
