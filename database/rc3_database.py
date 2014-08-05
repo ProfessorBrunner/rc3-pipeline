@@ -43,6 +43,7 @@ def dataEntry():
 						new_ra = float(line[2])
 						new_dec = float(line[3])
 						new_radius = float(line[4])
+
 			# Path to Data Products
 			if (in_SDSS_footprint==1):
 				# Write only if covered by survey
@@ -66,8 +67,7 @@ def dataEntry():
 				zfits = ""
 				best = ""
 				low = ""
-
-
+				
 			# Error Information
 			# 0 = no error
 			# 1 = mosaicAll error
