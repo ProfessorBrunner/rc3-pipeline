@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  6 AUG 2014 00:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  6 AUG 2014 02:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -251,76 +251,84 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 9.
 
-Overfull \hbox (3.97272pt too wide) in paragraph at lines 20--27
-[]\OT1/cmr/m/n/10 (Something about galax-ies liv-ing close to each other==>
+Overfull \hbox (2.86052pt too wide) in paragraph at lines 18--21
+\OT1/cmr/m/n/10 Galax-ies (PGC) num-ber, up-dated and cat-a-log ra,dec,radius
+ []
+
+
+Overfull \hbox (16.50047pt too wide) in paragraph at lines 22--29
+[]\OT1/cmr/m/n/10 (One line in-tro about galax-ies liv-ing close to each other=
+=>
  []
 
 [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Overfull \hbox (14.3615pt too wide) in paragraph at lines 33--35
-[]\OT1/cmr/m/n/10 we de-signed a mo-saic-ing pipeline that cre-ates scientifica
-lly-
- []
-
 <pipeline.jpg, id=16, 757.83125pt x 899.36pt>
 File: pipeline.jpg Graphic file (type jpg)
  <use pipeline.jpg>
-Package pdftex.def Info: pipeline.jpg used on input line 37.
+Package pdftex.def Info: pipeline.jpg used on input line 35.
 (pdftex.def)             Requested size: 261.0pt x 309.74432pt.
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 37--38
+Overfull \hbox (9.0pt too wide) in paragraph at lines 35--36
 [][] 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 52.
+[2 <./pipeline.jpg>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 54.
+
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 52.
- [2 <./pipeline.jpg>]
-Overfull \hbox (6.41603pt too wide) in paragraph at lines 68--69
-[]\OT1/cmr/m/n/10 For the DPOSS Run, on av-er-age 0.31galax-ies per minute.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 54.
+
+Overfull \hbox (8.63824pt too wide) in paragraph at lines 68--72
+[]\OT1/cmr/m/n/10 For the DPOSS Run, on av-er-age 0.31 galax-ies per minute.
  []
 
 
-Overfull \hbox (10.08372pt too wide) in paragraph at lines 73--79
-[]\OT1/cmr/m/n/10 answer fun-da-men-tal ques-tions re-gard-ing large-scale stru
-c-
+Overfull \hbox (4.26436pt too wide) in paragraph at lines 74--85
+[]\OT1/cmr/m/n/10 We have pro-vided doc-u-men-ta-tion on GitHub that guides
  []
 
 
-Overfull \hbox (3.57176pt too wide) in paragraph at lines 96--99
+Overfull \hbox (20.7485pt too wide) in paragraph at lines 74--85
+\OT1/cmr/m/n/10 project repos-i-tory: $\OT1/cmtt/m/n/10 https : / / github . co
+m / ProfessorBrunner /
+ []
+
+[3]
+Overfull \hbox (3.57176pt too wide) in paragraph at lines 88--91
 \OT1/cmr/m/n/8 Foun-da-tion, the Par-tic-i-pat-ing In-sti-tu-tions, the Na-tion
 al Sci-ence Foun-
  []
 
-[3] (./rc3_pipeline.bbl) [4] (./rc3_pipeline.aux) ) 
+(./rc3_pipeline.bbl) [4] (./rc3_pipeline.aux) ) 
 Here is how much of TeX's memory you used:
  2698 strings out of 493117
  37094 string characters out of 6135433
- 122645 words of memory out of 5000000
+ 125422 words of memory out of 5000000
  6123 multiletter control sequences out of 15000+600000
  7793 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,8n,30p,2151b,305s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2014/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmtt8.pfb>
-Output written on rc3_pipeline.pdf (4 pages, 256241 bytes).
+</usr/local/texlive/2014/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2014/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmtt8.pfb>
+Output written on rc3_pipeline.pdf (4 pages, 257920 bytes).
 PDF statistics:
  70 PDF objects out of 1000 (max. 8388607)
  49 compressed objects within 1 object stream
