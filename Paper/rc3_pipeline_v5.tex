@@ -6,17 +6,46 @@
 \maketitle 
 
 \section{Introduction}
-The Third Reference Catalog of Bright Galaxies (RC3) (\citet{rc3}) contains a  complete listing of 23,022 galaxies with $D_25$ apparent major isophotal diameter  greater than 1 arcminute and with a total B-band magnitude greater than 15.5 nanomaggies. There has been existing literature on this subject using data from the Sloan Digital Sky Survey(SDSS). Hogg and Blanton made g,r,i colored images by using data from the SDSS DR6.\footnote{\url{http://cosmo.nyu.edu/hogg/rc3/}} The EFIGI catalog (\citet{efigi}), dedicated to studying morphology of galaxies, also  obtained a subset of 4458 RC3 FITS and color images by discarding artifacted or missing data via visual inspection and using SDSS DR4 data. We perform the mosaicing procedures on the whole RC3 catalog using  an automated positional update algorithm  on the most recent SDSS DR10 imaging data. In addition, we designed a mosaicing pipeline that creates scientifically-calibrated mosaics, color-band images, as well as a set of updated positions, which can be easily adapted for existing surveys such as Two Micron All Sky Survey  (2MASS),The Palomar Digital Sky Survey (DPOSS), or future imaging data release from  Dark Energy Survey (DES) and Large Synoptic Survey Telescope (LSST) for larger sky coverage and multiband images.
+Astronomical catalogs such as the famous Messier Catalog and New General Catalog has a historical usage in helping  astronomers who are studying object of some particular property.
+astronomers . This is particularly important in the days when all-sky information was not avaliable, so data was taken by , since
+common property.
+Astronomical catalog usage in the age of sky surveys
+for studies 
+ 
+before the era of large surveys like SDSS, DSS and 2MASS that scanned large portions of the sky  instead of target-based imaging.
+%RC3 Completeness versus accuracy
+With large sky surveys such as the SDSS, the job of target-based imaging is alot easier since the position values of objects of interest are readily accesible via NED/ SIMBAD.
+%The role of astronomical catalog as evolved into 
+%Data mining and machine learning training sets 
+
+The Third Reference Catalog of Bright Galaxies (RC3) (\citet{rc3}) contains a  complete listing of 23,022 galaxies with $D\_25$ apparent major isophotal diameter  greater than 1 arcminute and with a total B-band magnitude greater than 15.5 nanomaggies. There has been existing literature on making mosaics for RC3 galaxies using data from the Sloan Digital Sky Survey(SDSS). Hogg and Blanton made g,r,i colored images of selected RC3 galaxies by using data from the SDSS DR6.\footnote{\url{http://cosmo.nyu.edu/hogg/rc3/}} The EFIGI catalog (\citet{efigi}), dedicated to studying morphology of galaxies, also  obtained a subset of 4458 RC3 FITS and color images using SDSS DR4 data and discarded artifacted or missing data via visual inspection. We perform the mosaicing procedures on the whole RC3 catalog using an automated positional update algorithm on the most recent SDSS DR10 imaging data. In addition, we designed a mosaicing pipeline that creates scientifically-calibrated mosaics, color-band images, as well as a set of updated positions, which can be easily adapted for existing surveys such as Two Micron All Sky Survey  (2MASS),The Palomar Digital Sky Survey (DPOSS), or future imaging data release from  Dark Energy Survey (DES) and Large Synoptic Survey Telescope (LSST) for larger sky coverage and multiband images.
+%tools such as Aladin, NED/SIMBAD, VizieR. 
 \section{Data}
 	\section{The RC3 Catalog}
-\section{Automation Program}
+	% Stuff from Corwin's email (maybe use a section to discuss disadvantages of RC3 data)
+ %what the RC3 doesn't have is the faint stuff that some astronomers are more interested in 
+ %it ismissing all the big, nearby dwarf galaxies and "star streams" that SDSS has been finding -- to say nothing of the other faint Local Group galaxies thatpeople are turning up -- and it relies on the Johnson-Cousins system for its basic photometric calibration (diameters as well as magnitudes and colors).
+
+	Since the RC3 catalog is a reasonably complete representation of large, bright nearby galaxies in the extragalactic sky, its 
+%The value of the RC3 catalog 
+value is still evident in its usage in literature. Selected galaxies or complete subsets are used in astrophysical studies of  quasars and X-ray sources (CITE) or  galaxy morphology and properties(CITE).  The RC3 catalog is also statistical studies  for cosmology purposes Cross correlated also used in  Updated Catalog, such as the New York University-Value Added Galaxy Catalog (NYU-VAGC)
 
 	\subsection{Positional Inaccuracy in RC3 Catalog}
 	The principle motivation behind the automation algorithm is to resolve the problem of centering galaxies and finding RC3 galaxy in a given field of view. Initially, using the standard mosaicking steps in Montage, we obtained many images with  off-centered or missing galaxies due to the inherent inaccuracy of the positions in the catalog. 
-	%This was not due to wrong coordinate frame conversion from B2000 to J2000 since the effects should be negligible in terms of centering a galaxy but due to the inherent inaccuracy of the positions given by the RC3 Catalog. 
-The B2000 coordinates in the RC3 catalog are denoted with two different levels of accuracy: HH MM SS.s, DD MM SS for the positions that has been updated  (with accuracy of about 5-8 arcsec) and  HH MM.m, DD MM for galaxies whose positional accuracy remain  1-2 arcminutes in the original catalog.  In the latest version of the catalog (\citet{rc31991}), there remains 5492 RC3 galaxies that fall in the latter group.
+	%This was not due to wrong coordinate frame conversion from B2000 to J2000 since the effects should be negligible in terms of centering a galaxy but due to the inherent inaccuracy of the positions given by the RC3 Catalog
+There is an ununiform update of the catalog over the years (-----) after the catalog was publish, more accurate position was collected from whatever sources/data they had access to.
+The B2000 coordinates (FK4 frame) in the RC3 catalog are denoted with two different levels of accuracy: HH MM SS.s, DD MM SS for the positions that has been updated  (with accuracy of about 5-8 arcsec) and  HH MM.m, DD MM for galaxies whose positional accuracy remain  1-2 arcminutes in the original catalog.  In the latest version of the catalog (\citet{rc31991}), there remains 5492 RC3 galaxies that fall in the latter group.
+\subsection{Data}
+	\subsubsection{SDSS}
+	\subsection{2MASS}
+	 The Two Micron All Sky Survey (2MASS; CITE) is a infared survey in the J,H,K (WRITE repsective wavelengths) bands.
+	 - problem with low resolution large tile background
+	 - 
+	\subsubsection{DPOSS}
+\section{Automation Program}
 
 	\subsection{Algorithm}
+	To address the problem of inaccurate positions discussed in section (?), we develop an algortihm that first updates the position by ``finding" the galaxy in the imaging data. 
 	An  $\texttt{RC3}$ object contains its The Catalogue of Principal Galaxies (PGC) number, updated and catalog ra,dec,radius for each galaxy in the RC3 catalog. Since every RC3 galaxy has a unique PGC number, we record  its PGC number in order to identify the RC3 galaxy of interest for cases of source confusion. The method $\texttt{source\_info}$ updates the position of individual RC3 objects by first creating a single band mosaic with a field of view 6 times the radius of the galaxy, then SExtractor detects all sources in the mosaic and select only the ones with a radius greater than 5.94 arcseconds.  If the mosaicking field is chosen correctly, then SExtractor's skylevel estimation is fairly accurate.  Nevertheless, this size cut is large enough such that it eliminates most of stellar point sources and mistakened background noises  but retains the subset of RC2 galaxies inside the RC3 Catalog that are smaller than 1 arcminute as described in \citet{rc2}. 
 \\
 \indent If there are multiple galaxies in the field of view that satisfy this criteria, then it is passed into the source confusion algorithm to verify which one is the galaxy of interest. Then we record the single source of interest and generate mosaic FITS file for all bands and color images. If no sources are detected, then we mosaic  the single band FITS using a larger field of view. This is done recursively, while keeping track of the number of iterations in each recursive steps. The process is terminated at the 5th recursive step. %The practical purpose of modularizing the algorithm in an object-oriented manner is to keep track of the number of iterations in the recursive steps.  

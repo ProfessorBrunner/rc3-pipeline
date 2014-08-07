@@ -5,13 +5,15 @@
  
     <body>
  	<!--Make sure that you are running this on http://localhost:8888/search.html and not the static file file:///Applications/MAMP/htdocs/search.htm so that the php variabel redirect works-->
-    <form action="result.php" target='_blank' method="post">
+    <form action="pgc.php" target='_blank' method="post">
     Search by PGC number :
     <br/>
     <input type="text" name="pgc" />
     <br/>
     <input type="submit" name="submit" value="Submit" />
     <br/>
+    </form>
+    <form action="region.php" target='_blank' method="post">
     OR Search by coordinate around region (degrees): 
     <br/>
     ra: <input type="text" name="ra" />
@@ -22,11 +24,14 @@
     <br/>
     <input type="submit" name="submit" value="Submit" />
     <br/>
+    </form>
+    <form action="sql.php" target='_blank' method="post">
     OR Search by SQL Query:
     <br/>
     <textarea type="text" name="sql" rows="4" cols="50">
-   </textarea>
+    </textarea>
      <input type="submit" name="submit" value="Submit" />
     </form> 
+    
     </body>
 </html>
