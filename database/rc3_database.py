@@ -40,25 +40,26 @@ def dataEntry():
 				for i in new: 
 					line = i.split()
 					if (int(line[5])==pgc):
-						new_ra = float(line[2])
+						new_ra =float(line[2])
 						new_dec = float(line[3])
 						new_radius = float(line[4])
-
+	
 			# Path to Data Products
+			#require new_ra,new_dec in their string form so that + and trailing 0 is not truncated
 			if (in_SDSS_footprint==1):
 				# Write only if covered by survey
 				path = "{}/{}/".format(pgc,survey)
 				# Scientifically calibrated fits are named in form
 				#  "{}_{}_{}_{}.fits".format(survey.name,band,ra,dec)
 				#  where ra,dec are new positional values passed into mosaic_band
-				ufits = "{}{}_{}_{}_{}.fits".format(path,SURVEY,'u',new_ra,new_dec)
-				gfits = "{}{}_{}_{}_{}.fits".format(path,SURVEY,'g',new_ra,new_dec)
-				rfits = "{}{}_{}_{}_{}.fits".format(path,SURVEY,'r',new_ra,new_dec)
-				ifits = "{}{}_{}_{}_{}.fits".format(path,SURVEY,'i',new_ra,new_dec)
-				zfits = "{}{}_{}_{}_{}.fits".format(path,SURVEY,'z',new_ra,new_dec)
+				ufits = "{}{}_{}_{}.fits".format(path,SURVEY,'u',pgc)
+				gfits = "{}{}_{}_{}.fits".format(path,SURVEY,'g',pgc)
+				rfits = "{}{}_{}_{}.fits".format(path,SURVEY,'r',pgc)
+				ifits = "{}{}_{}_{}.fits".format(path,SURVEY,'i',pgc)
+				zfits = "{}{}_{}_{}.fits".format(path,SURVEY,'z',pgc)
 				# -OUTFILE_NAME  {2}_{0}_{1}_BEST.tiff {7}".format(ra,dec,survey.name,
-				best = "{}{}_{}_{}_BEST.tiff ".format(path,SURVEY,new_ra,new_dec)
-				low  =  "{}{}_{}_{}_LOW.tiff ".format(path,SURVEY,new_ra,new_dec)
+				best = "{}{}_{}_BEST.tiff ".format(path,SURVEY,new_ra,new_dec)
+				low  =  "{}{}_{}_LOW.tiff ".format(path,SURVEY,new_ra,new_dec)
 			else:
 				ufits = ""
 				gfits = ""
@@ -67,7 +68,11 @@ def dataEntry():
 				zfits = ""
 				best = ""
 				low = ""
-				
+			# Storing new_ra, new_dec as float .
+			#new_ra = float(new_ra)
+			#new_dec = float(new_dec) 
+			#new_radius = float(new_radius)
+
 			# Error Information
 			# 0 = no error
 			# 1 = mosaicAll error
