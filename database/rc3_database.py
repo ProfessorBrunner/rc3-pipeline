@@ -47,7 +47,7 @@ def dataEntry():
 			# Path to Data Products
 			if (in_SDSS_footprint==1):
 				# Write only if covered by survey
-				path = "data/rc3/{}/{}/".format(pgc,survey)
+				path = "{}/{}/".format(pgc,survey)
 				# Scientifically calibrated fits are named in form
 				#  "{}_{}_{}_{}.fits".format(survey.name,band,ra,dec)
 				#  where ra,dec are new positional values passed into mosaic_band
