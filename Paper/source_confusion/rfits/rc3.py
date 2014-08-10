@@ -222,7 +222,7 @@ class RC3(RC3Catalog):
 
             # Source Extraction
             # Remember to switch to command "sextractor" for Ubuntu/ Linux, "sex" for Mac
-            os.system("sex {} {}".format(survey.sextractor_params, file))
+            os.system("sextractor {} {}".format(survey.sextractor_params, file))
 
             # A list of other RC3 galaxies that lies in the field
             # In the case of source confusion, find all the rc3 that lies in the field.
