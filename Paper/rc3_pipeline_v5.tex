@@ -2,6 +2,7 @@
 \documentclass[5p]{elsarticle}
 \usepackage{natbib}
 \usepackage{url}
+\usepackage{subcaption}
 \begin{document}
 \title{Creating updated, scientifically-calibrated mosaics for the RC3 Catalogue}
 \maketitle 
@@ -75,6 +76,36 @@ The B2000 coordinates (FK4 frame) in the RC3 catalog are denoted with two differ
 \\
 \indent If there are multiple galaxies in the field of view that satisfy this criteria, then it is passed into the source confusion algorithm to verify which one is the galaxy of interest. Then we record the single source of interest and generate mosaic FITS file for all bands and color images. If no sources are detected, then we mosaic  the single band FITS using a larger field of view. This is done recursively, while keeping track of the number of iterations in each recursive steps. The process is terminated at the 5th recursive step. %The practical purpose of modularizing the algorithm in an object-oriented manner is to keep track of the number of iterations in the recursive steps.  
 	\subsection{Source Confusion}
+		\begin{figure}[h]
+		\includegraphics[width=0.5\textwidth]{figures/navigator}
+		\caption{3 source confused RC3 Galaxies; Green marker denotes coordinates denoted in the RC3 catalog, red marker denotes coordinates updated by the algorithm}
+	\end{figure}
+	\subsection{Source Confusion}
+%	\begin{figure}[h]
+%
+%		\begin{subfigure}{.5\textwidth}		
+%		\includegraphics{figures/PGC58b4SC}		
+%		\end{subfigure}		
+%
+%		\begin{subfigure}{.5\textwidth}		
+%		\includegraphics{figures/PGC58afterSC}
+%		\end{subfigure}		
+%
+%	\end{figure}
+\begin{figure}
+\begin{subfigure}{.3\textwidth}
+\centering
+  \includegraphics[width=.4\linewidth]{figures/PGC58b4SC}
+  \caption{Before}
+\end{subfigure}%
+\begin{subfigure}{.3\textwidth}
+\centering
+  \includegraphics[width=.4\linewidth]{figures/PGC58afterSC}
+  \caption{After}
+\end{subfigure}
+\caption{Using source confusion algorithm to generate mosaic centered at PGC58}
+\label{fig:SCdemo}
+\end{figure}
 	(One line intro about galaxies living close to each other==> galaxy cluster,gravity stuff?)
 \indent The source confusion algorithm works on the assumption that the only galaxies that are large enough to cause source confusion also lie in the RC3 catalog, since the catalog is reasonably complete for galaxies having apparent diameters larger than 1 arcmin. First, the program retrieves a list of n number of RC3 galaxies that may lie in the field of view of the generated mosaic. The $\texttt{otherRC3}$ method in the $\texttt{Server}$ class queries this information using the Vizier Catalog. If this information is provided by a survey's query service (such as the RC3 Table in SDSS's SkyServer), it can be overridden. The goal is to match the results returned by the server with the list of n largest sources detected by SExtractor. 
 \\
@@ -88,7 +119,7 @@ Therefore, we compute all the possible distances between any two RC3 galaxies th
 %We desgined a mosaicking pipeline that can 
 	\subsection{Class Hierarchy}
 	\begin{figure}[h]
-		\includegraphics[width=0.5\textwidth]{pipeline}
+		\includegraphics[width=0.5\textwidth]{figures/pipeline.jpg}
 		\caption{Greyed out boxes are possible extensions of this pipeline}
 	\end{figure}
  	The motivation behind building a class hierarchy is to establish a mosaicking pipeline for any given catalog and survey data. We identify the essential components required for mosaicking program to work. The relationship between these essential steps are reflected in our design of the abstract $\texttt{Survey}$,$\texttt{Catalog}$, and $\texttt{Server}$ classes. 
