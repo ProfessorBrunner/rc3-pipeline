@@ -1,3 +1,4 @@
+
 \documentclass[5p]{elsarticle}
 \usepackage{natbib}
 \usepackage{url}
@@ -6,19 +7,22 @@
 \maketitle 
 
 \section{Introduction}
-Astronomical catalogs such as the famous Messier Catalog and New General Catalog has a historical usage in helping  astronomers who are studying object of some particular property.
-astronomers . This is particularly important in the days when all-sky information was not avaliable, so data was taken by , since
-common property.
-Astronomical catalog usage in the age of sky surveys
-for studies 
- 
-before the era of large surveys like SDSS, DSS and 2MASS that scanned large portions of the sky  instead of target-based imaging.
+Astronomical catalogs such as the famous Messier Catalog and New General Catalog (NGC) has its historical usage in helping  astronomers who are studying objects that shares some common property. This was particularly important in the days when all-sky information was not available, so data was taken by pointing the telescope at some particular location.  
+%before the era of large surveys like SDSS, DSS and 2MASS that scanned large portions of the sky  instead of target-based imaging.
+Wide sky surveys such as the Sloan Digital Sky Survey(SDSS), Digitized Sky Survey (DSS), and Two Micron Sky Survey (2MASS) not only provide improved astrometry for finding these objects, but also photometric ,(other info?) on detected sources, such as those generated through SDSS's $\texttt{photo}$ pipeline (CITE).
+%Astronomical catalog usage in the age of sky surveys for studies 
 %RC3 Completeness versus accuracy
-With large sky surveys such as the SDSS, the job of target-based imaging is alot easier since the position values of objects of interest are readily accesible via NED/ SIMBAD.
-%The role of astronomical catalog as evolved into 
-%Data mining and machine learning training sets 
+With large sky surveys such as the SDSS, the job of target-based imaging is alot easier since the position values of objects of interest are readily accesible via NED/ SIMBAD. The role of the astronomical catalogue has evolved into sample for statistical studies for some particular type of object (QSO, pulsars,LRG...etc) or cosmology studies.
+%can also be used for data mining and machine learning training sets (??)
+\\
+\indent 
+The Third Reference Catalog of Bright Galaxies (RC3) compiled by \citet{rc3}, contains a  complete listing of 23,022 galaxies with $D\_25$ apparent major isophotal diameter  greater than 1 arcminute and with a total B-band magnitude greater than 15.5 nanomaggies.
 
-The Third Reference Catalog of Bright Galaxies (RC3) (\citet{rc3}) contains a  complete listing of 23,022 galaxies with $D\_25$ apparent major isophotal diameter  greater than 1 arcminute and with a total B-band magnitude greater than 15.5 nanomaggies. There has been existing literature on making mosaics for RC3 galaxies using data from the Sloan Digital Sky Survey(SDSS). Hogg and Blanton made g,r,i colored images of selected RC3 galaxies by using data from the SDSS DR6.\footnote{\url{http://cosmo.nyu.edu/hogg/rc3/}} The EFIGI catalog (\citet{efigi}), dedicated to studying morphology of galaxies, also  obtained a subset of 4458 RC3 FITS and color images using SDSS DR4 data and discarded artifacted or missing data via visual inspection. We perform the mosaicing procedures on the whole RC3 catalog using an automated positional update algorithm on the most recent SDSS DR10 imaging data. In addition, we designed a mosaicing pipeline that creates scientifically-calibrated mosaics, color-band images, as well as a set of updated positions, which can be easily adapted for existing surveys such as Two Micron All Sky Survey  (2MASS),The Palomar Digital Sky Survey (DPOSS), or future imaging data release from  Dark Energy Survey (DES) and Large Synoptic Survey Telescope (LSST) for larger sky coverage and multiband images.
+The RC3 Catalog is an update of the original Reference Catalog of Bright Galaxies. It is 
+<TALK ABOUT DATA, ViZier. HOW OFTEN UPDATED..etc?> 
+\\
+\indent
+There has been existing literature on making mosaics for RC3 galaxies using data from the Sloan Digital Sky Survey(SDSS). Hogg and Blanton made g,r,i colored images of selected RC3 galaxies by using data from the SDSS DR6.\footnote{\url{http://cosmo.nyu.edu/hogg/rc3/}} The EFIGI catalog (\citet{efigi}), dedicated to studying morphology of galaxies, also  obtained a subset of 4458 RC3 FITS and color images using SDSS DR4 data and discarded artifacted or missing data via visual inspection. We perform the mosaicing procedures on the whole RC3 catalog using an automated positional update algorithm on the most recent SDSS DR10 imaging data. In addition, we designed a mosaicing pipeline that creates scientifically-calibrated mosaics, color-band images, as well as a set of updated positions, which can be easily adapted for existing surveys such as Two Micron All Sky Survey  (2MASS),The Palomar Digital Sky Survey (DPOSS), or future imaging data release from  Dark Energy Survey (DES) and Large Synoptic Survey Telescope (LSST) for larger sky coverage and multiband images.
 %tools such as Aladin, NED/SIMBAD, VizieR. 
 \section{Data}
 	\section{The RC3 Catalog}
@@ -28,20 +32,41 @@ The Third Reference Catalog of Bright Galaxies (RC3) (\citet{rc3}) contains a  c
 
 	Since the RC3 catalog is a reasonably complete representation of large, bright nearby galaxies in the extragalactic sky, its 
 %The value of the RC3 catalog 
-value is still evident in its usage in literature. Selected galaxies or complete subsets are used in astrophysical studies of  quasars and X-ray sources (CITE) or  galaxy morphology and properties(CITE).  The RC3 catalog is also statistical studies  for cosmology purposes Cross correlated also used in  Updated Catalog, such as the New York University-Value Added Galaxy Catalog (NYU-VAGC)
+value is still evident in its usage in literature. Selected galaxies or complete subsets are used in astrophysical studies of  quasars and X-ray sources% (\citett{xray})
+ or  galaxy morphology and properties(CITE).  The RC3 catalog is also statistical studies  for cosmology purposes Cross correlated also used in  Updated Catalog, such as the New York University-Value Added Galaxy Catalog (NYU-VAGC)
 
 	\subsection{Positional Inaccuracy in RC3 Catalog}
+Original Reference Catalogue of Bright Galaxies (CITE)
+	uniform update ``collected from 150 different sources" ,each telescsope has different acccuratcy precision..etc
 	The principle motivation behind the automation algorithm is to resolve the problem of centering galaxies and finding RC3 galaxy in a given field of view. Initially, using the standard mosaicking steps in Montage, we obtained many images with  off-centered or missing galaxies due to the inherent inaccuracy of the positions in the catalog. 
 	%This was not due to wrong coordinate frame conversion from B2000 to J2000 since the effects should be negligible in terms of centering a galaxy but due to the inherent inaccuracy of the positions given by the RC3 Catalog
-There is an ununiform update of the catalog over the years (-----) after the catalog was publish, more accurate position was collected from whatever sources/data they had access to.
+There is an non-uniform update of the catalog over the years (-----) after the catalog was publish, more accurate position was collected from whatever sources/data they had access to.
 The B2000 coordinates (FK4 frame) in the RC3 catalog are denoted with two different levels of accuracy: HH MM SS.s, DD MM SS for the positions that has been updated  (with accuracy of about 5-8 arcsec) and  HH MM.m, DD MM for galaxies whose positional accuracy remain  1-2 arcminutes in the original catalog.  In the latest version of the catalog (\citet{rc31991}), there remains 5492 RC3 galaxies that fall in the latter group.
 \subsection{Data}
 	\subsubsection{SDSS}
+	SDSS is a optical 
+	2.5m telescope at the Apache Point Observatory in New Mexico. We use the imaging data from Data release 10 which is part of the SDSS-III. SDSS-III is dedicated to studying galaxy clustering by looking at signatures of Baryon Acoustic Oscillation,structure and history of the galaxy , and the population of expolanets. Feeding the SDSS data into the mosaicing pipeline has several advantages over data from other surveys, 
+1) It is  one of the newest all-sky survey so has improved instrumentation and telescope compared to DPOSS. 
+2)On a related note, the resolution of SDSS is better than 2MASS and DPOSS.  2MASS has a ``Tile" size, each Tile, so each pixel represents ----degree, whihc is much larger than  SDSS's pixel size of ----. SDSS imaging is also superior to DPOSS since its CCD-based imaging does not suffer from the same  boundary edge distortion (WHAT IS THE NAME FOR THIS??) typical artifact of photographic plate imaging.
+3) SDSS is an optical survey, so obviously ``looks" much better than 2MASS's infrared data since mapping g,r,i band to R,G,B is approximately accurate in value. However when mapping 2MASS's J,H,K band, the relative values show up (which is longest wavelength and shortest), so the contrast in feature is shown. But it is not true color.
+	
+(TALK ABOUT HOW SDSS IMAGING DATA IS PROCESSED; SEE PHOTOLITE PAPER LUTPON) 	 The SDSS data is pass through ----pipline, deblending, source , 
+	SKyServer provide many info
+	
+
 	\subsection{2MASS}
-	 The Two Micron All Sky Survey (2MASS; CITE) is a infared survey in the J,H,K (WRITE repsective wavelengths) bands.
+	 The Two Micron All Sky Survey (2MASS; CITE) is a infared survey in the J(1.25 mm), H(1.67 mm), and K(2.17 mm) bands.
+	 1.3m telescope in 
+	 (Does 2MASS have more advantage in seeeing ``cooler" object that give off thermal radiation? )
 	 - problem with low resolution large tile background
-	 - 
-	\subsubsection{DPOSS}
+	 - The benefit of smoother larger pixels (why?)
+	\subsubsection{POSS-II}
+	The Second Palomar Observatory Sky Survey (POSS-II) was a photographic survey that covered most of the northern nightsky  in the B, R, IR bands.
+	It is a second generation survey 	1980s update of POSS-I which was 	was one of the first major all-sky photographic survey. 	We also serve FITS mosaics from POSS-I which contains only the B and R band data taken in the 1950s to serve as comparison. This data can also be joined with another single band survey and create colored mosaics..
+
+
+ The photographic plates used to create our data product are made acccesible through  STScI's effort in Digital Sky Survey (DSS) project.
+	large photographic plates 
 \section{Automation Program}
 
 	\subsection{Algorithm}
@@ -107,7 +132,7 @@ The finished data product occupies 31 GB of diskspace.
 \indent Feeding in the new data enables a greater  sky coverage and higher resolution images of objects inside the catalog. The scientifically calibrated FITS images can be used as for individual studies, as well as used for improved astrometry in updating the catalog. It can also be combined with the calibrated mosaics of different wavelengths into multiband color images with mosaics from single/double band surveys such as POSS-I and GALEX.  %Can also do photometry to determine galaxy property 
 %Another possible usage is to
 \\
-\indent The data product may also be useful  during  the target selection/commissioning stage of new sky survey programmes such as the LSST. With the trend of future telescope having larger aperture(focal plane?), large nearby galaxies needs to be properly masked to prevent the loss of imaging details from saturated CCDs. The updated RC3 coordinates tells us  which regions of the sky may be affected by these large galaxies, and the FITS files can be used for model-fitting the galaxy's light distribution. The FITS images can be used along with existing tools for scientific analysis, such as Astrometry.net(\citet{astrometry.net}) , SExtractor, APLpy(\citet{aplpy}). This can also be extended for other astronomical catalog such as the Messier Catalog or New General Catalog (NGC), as well as catalogs with user-defined selection limit. %user-defined catalogs used for (group, cluster,target??) studies. 
+\indent The data product may also be useful  during  the target selection/commissioning stage of new sky survey programmes such as the LSST. With the trend of future telescope having larger aperture(focal plane?), large nearby galaxies needs to be properly masked to prevent the loss of imaging details from saturated CCDs. The updated RC3 coordinates tells us  which regions of the sky may be affected by these large galaxies, and the FITS files can be used for model-fitting the galaxy's light distribution. The FITS images can be used along with existing tools for scientific analysis, such as Astrometry.net(\citet{astrometry.net}) , SExtractor, APLpy(\citet{aplpy}). The program is designed such that other API with Programs interface such as HEASARC's SkyView, NED ..etc can easily be latched on (REFERENCE Fig1). This can also be extended for other astronomical catalog such as the Messier Catalog or New General Catalog (NGC), as well as catalogs with user-defined selection limit. %user-defined catalogs used for (group, cluster,target??) studies. 
 %Can be incorporated in the photo pipeline in future survey to make pretty rc3 images.
 %especially with the DSS data, full coverage of the sky
 %map out where bright objects are. 

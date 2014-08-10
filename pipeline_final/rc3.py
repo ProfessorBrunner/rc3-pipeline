@@ -31,8 +31,7 @@ class RC3(RC3Catalog):
         #updated positions
         self.new_ra='@'
         self.new_dec='@'
-
-   def mosaic_band(self,band,ra,dec,margin,radius,pgc,survey):#,clean=True):
+    def mosaic_band(self,band,ra,dec,margin,radius,pgc,survey):
         '''
         Input: source info param
         Create a mosaic fit file for the specified band.
@@ -223,7 +222,7 @@ class RC3(RC3Catalog):
 
             # Source Extraction
             # Remember to switch to command "sextractor" for Ubuntu/ Linux, "sex" for Mac
-            os.system("sextractor {} {}".format(survey.sextractor_params, file))
+            os.system("sex {} {}".format(survey.sextractor_params, file))
 
             # A list of other RC3 galaxies that lies in the field
             # In the case of source confusion, find all the rc3 that lies in the field.
@@ -409,20 +408,17 @@ class RC3(RC3Catalog):
         Return void
         '''
         print ("------------------mosaic_all_bands----------------------")
-<<<<<<< HEAD
         # filename = "{},{}".format(str(ra),str(dec))
         filename  = str(pgc)
         os.mkdir(filename)
-=======
         #filename = "{},{}".format(str(ra),str(dec)        
-	source_confusion__error = open("../source_confusion_error.txt",'a') 
+        source_confusion_error = open("../source_confusion_error.txt",'a') 
         source_confusion_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
-	if os.path.isfile(filename):
-		filename = "{}_{}".format(str(pgc),n)
-	else:
-		filename = str(pgc)
-	os.mkdir(filename)
->>>>>>> 53426eda3ec56912e40c859e2109f2200bba2790
+        if os.path.isfile(filename):
+            filename = "{}_{}".format(str(pgc),n)
+        else:
+            filename = str(pgc)
+        # os.mkdir(filename)
         os.chdir(filename)
         bands =survey.bands #['u','g','r','i','z']
         for band in bands:

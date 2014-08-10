@@ -1,0 +1,165 @@
+\begin{thebibliography}{11}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{Alexov} et~al.(2005){Alexov}, {Berriman}, {Chiu}, {Good}, {Jarrett},
+  {Kong}, {Laity}, {Monkewitz}, {Tahir-Kheli}, {Norton}, and {Zhang}]{irsa}
+A.~{Alexov}, G.~B. {Berriman}, N.-M. {Chiu}, J.~C. {Good}, T.~H. {Jarrett},
+  M.~{Kong}, A.~C. {Laity}, S.~M. {Monkewitz}, N.~D. {Tahir-Kheli}, S.~W.
+  {Norton}, and A.~{Zhang}.
+\newblock {The NASA/IPAC Infrared Science Archive (IRSA): The Demo}.
+\newblock In P.~{Shopbell}, M.~{Britton}, and R.~{Ebert}, editors,
+  \emph{Astronomical Data Analysis Software and Systems XIV}, volume 347 of
+  \emph{Astronomical Society of the Pacific Conference Series}, page~7, Dec.
+  2005.
+
+\bibitem[{Baillard} et~al.(2011){Baillard}, {Bertin}, {de Lapparent},
+  {Fouqu{\'e}}, {Arnouts}, {Mellier}, {Pell{\'o}}, {Leborgne}, {Prugniel},
+  {Makarov}, {Makarova}, {McCracken}, {Bijaoui}, and {Tasca}]{efigi}
+A.~{Baillard}, E.~{Bertin}, V.~{de Lapparent}, P.~{Fouqu{\'e}}, S.~{Arnouts},
+  Y.~{Mellier}, R.~{Pell{\'o}}, J.-F. {Leborgne}, P.~{Prugniel}, D.~{Makarov},
+  L.~{Makarova}, H.~J. {McCracken}, A.~{Bijaoui}, and L.~{Tasca}.
+\newblock {The EFIGI catalogue of 4458 nearby galaxies with detailed
+  morphology}.
+\newblock 532:\penalty0 A74, Aug. 2011.
+\newblock \doi{10.1051/0004-6361/201016423}.
+
+\bibitem[{Bertin}(2012)]{stiff}
+E.~{Bertin}.
+\newblock {Displaying Digital Deep Sky Images}.
+\newblock In P.~{Ballester}, D.~{Egret}, and N.~P.~F. {Lorente}, editors,
+  \emph{Astronomical Data Analysis Software and Systems XXI}, volume 461 of
+  \emph{Astronomical Society of the Pacific Conference Series}, page 263, Sept.
+  2012.
+
+\bibitem[{Bertin} and {Arnouts}(1996)]{sextractor}
+E.~{Bertin} and S.~{Arnouts}.
+\newblock {SExtractor: Software for source extraction.}
+\newblock \emph{Astronomy and Astrophysics Supplement}, 117:\penalty0 393--404,
+  June 1996.
+
+\bibitem[{de Vaucouleurs} et~al.(1976){de Vaucouleurs}, {de Vaucouleurs}, and
+  {Corwin}]{rc2}
+G.~{de Vaucouleurs}, A.~{de Vaucouleurs}, and J.~R. {Corwin}.
+\newblock {Second reference catalogue of bright galaxies}.
+\newblock In \emph{Second reference catalogue of bright galaxies, 1976, Austin:
+  University of Texas Press.}, page~0, 1976.
+
+\bibitem[{de Vaucouleurs} et~al.(1991){de Vaucouleurs}, {de Vaucouleurs},
+  {Corwin}, {Buta}, {Paturel}, and {Fouqu{\'e}}]{rc31991}
+G.~{de Vaucouleurs}, A.~{de Vaucouleurs}, H.~G. {Corwin}, Jr., R.~J. {Buta},
+  G.~{Paturel}, and P.~{Fouqu{\'e}}.
+\newblock \emph{{Third Reference Catalogue of Bright Galaxies. Volume I:
+  Explanations and references. Volume II: Data for galaxies between 0$^{h}$ and
+  12$^{h}$. Volume III: Data for galaxies between 12$^{h}$ and 24$^{h}$.}}
+\newblock 1991.
+
+\bibitem[{de Vaucouleurs} et~al.(1995){de Vaucouleurs}, {de Vaucouleurs},
+  {Corwin}, {Buta}, {Paturel}, and {Fouque}]{rc3}
+G.~{de Vaucouleurs}, A.~{de Vaucouleurs}, H.~G. {Corwin}, R.~J. {Buta},
+  G.~{Paturel}, and P.~{Fouque}.
+\newblock {Third Reference Cat. of Bright Galaxies (RC3) (de Vaucouleurs+
+  1991)}.
+\newblock \emph{VizieR Online Data Catalog}, 7155:\penalty0 0, Feb. 1995.
+
+\bibitem[{Jacob} et~al.(2010){Jacob}, {Katz}, {Berriman}, {Good}, {Laity},
+  {Deelman}, {Kesselman}, {Singh}, {Su}, {Prince}, and {Williams}]{montage}
+J.~C. {Jacob}, D.~S. {Katz}, G.~B. {Berriman}, J.~{Good}, A.~C. {Laity},
+  E.~{Deelman}, C.~{Kesselman}, G.~{Singh}, M.-H. {Su}, T.~A. {Prince}, and
+  R.~{Williams}.
+\newblock {Montage: a grid portal and software toolkit for science-grade
+  astronomical image mosaicking}.
+\newblock \emph{ArXiv e-prints}, May 2010.
+
+\bibitem[{Lang} et~al.(2010){Lang}, {Hogg}, {Mierle}, {Blanton}, and
+  {Roweis}]{astrometry.net}
+D.~{Lang}, D.~W. {Hogg}, K.~{Mierle}, M.~{Blanton}, and S.~{Roweis}.
+\newblock {Astrometry.net: Blind Astrometric Calibration of Arbitrary
+  Astronomical Images}.
+\newblock \emph{The Astronomical Journal, Volume 139, Issue 5, pp. 1782-1800
+  (2010)}, 139:\penalty0 1782--1800, May 2010.
+\newblock \doi{10.1088/0004-6256/139/5/1782}.
+
+\bibitem[{Robitaille} and {Bressert}(2012)]{aplpy}
+T.~{Robitaille} and E.~{Bressert}.
+\newblock {APLpy: Astronomical Plotting Library in Python}, Aug. 2012.
+\newblock Astrophysics Source Code Library.
+
+\bibitem[{Stoughton} et~al.(2002){Stoughton}, {Lupton}, {Bernardi}, {Blanton},
+  {Burles}, {Castander}, {Connolly}, {Eisenstein}, {Frieman}, {Hennessy},
+  {Hindsley}, {Ivezi{\'c}}, {Kent}, {Kunszt}, {Lee}, {Meiksin}, {Munn},
+  {Newberg}, {Nichol}, {Nicinski}, {Pier}, {Richards}, {Richmond}, {Schlegel},
+  {Smith}, {Strauss}, {SubbaRao}, {Szalay}, {Thakar}, {Tucker}, {Vanden Berk},
+  {Yanny}, {Adelman}, {Anderson}, {Anderson}, {Annis}, {Bahcall}, {Bakken},
+  {Bartelmann}, {Bastian}, {Bauer}, {Berman}, {B{\"o}hringer}, {Boroski},
+  {Bracker}, {Briegel}, {Briggs}, {Brinkmann}, {Brunner}, {Carey}, {Carr},
+  {Chen}, {Christian}, {Colestock}, {Crocker}, {Csabai}, {Czarapata},
+  {Dalcanton}, {Davidsen}, {Davis}, {Dehnen}, {Dodelson}, {Doi}, {Dombeck},
+  {Donahue}, {Ellman}, {Elms}, {Evans}, {Eyer}, {Fan}, {Federwitz}, {Friedman},
+  {Fukugita}, {Gal}, {Gillespie}, {Glazebrook}, {Gray}, {Grebel}, {Greenawalt},
+  {Greene}, {Gunn}, {de Haas}, {Haiman}, {Haldeman}, {Hall}, {Hamabe},
+  {Hansen}, {Harris}, {Harris}, {Harvanek}, {Hawley}, {Hayes}, {Heckman},
+  {Helmi}, {Henden}, {Hogan}, {Hogg}, {Holmgren}, {Holtzman}, {Huang}, {Hull},
+  {Ichikawa}, {Ichikawa}, {Johnston}, {Kauffmann}, {Kim}, {Kimball}, {Kinney},
+  {Klaene}, {Kleinman}, {Klypin}, {Knapp}, {Korienek}, {Krolik}, {Kron},
+  {Krzesi{\'n}ski}, {Lamb}, {Leger}, {Limmongkol}, {Lindenmeyer}, {Long},
+  {Loomis}, {Loveday}, {MacKinnon}, {Mannery}, {Mantsch}, {Margon}, {McGehee},
+  {McKay}, {McLean}, {Menou}, {Merelli}, {Mo}, {Monet}, {Nakamura},
+  {Narayanan}, {Nash}, {Neilsen}, {Newman}, {Nitta}, {Odenkirchen}, {Okada},
+  {Okamura}, {Ostriker}, {Owen}, {Pauls}, {Peoples}, {Peterson}, {Petravick},
+  {Pope}, {Pordes}, {Postman}, {Prosapio}, {Quinn}, {Rechenmacher}, {Rivetta},
+  {Rix}, {Rockosi}, {Rosner}, {Ruthmansdorfer}, {Sandford}, {Schneider},
+  {Scranton}, {Sekiguchi}, {Sergey}, {Sheth}, {Shimasaku}, {Smee}, {Snedden},
+  {Stebbins}, {Stubbs}, {Szapudi}, {Szkody}, {Szokoly}, {Tabachnik},
+  {Tsvetanov}, {Uomoto}, {Vogeley}, {Voges}, {Waddell}, {Walterbos}, {Wang},
+  {Watanabe}, {Weinberg}, {White}, {White}, {Wilhite}, {Wolfe}, {Yasuda},
+  {York}, {Zehavi}, and {Zheng}]{edr}
+C.~{Stoughton}, R.~H. {Lupton}, M.~{Bernardi}, M.~R. {Blanton}, S.~{Burles},
+  F.~J. {Castander}, A.~J. {Connolly}, D.~J. {Eisenstein}, J.~A. {Frieman},
+  G.~S. {Hennessy}, R.~B. {Hindsley}, {\v Z}.~{Ivezi{\'c}}, S.~{Kent}, P.~Z.
+  {Kunszt}, B.~C. {Lee}, A.~{Meiksin}, J.~A. {Munn}, H.~J. {Newberg}, R.~C.
+  {Nichol}, T.~{Nicinski}, J.~R. {Pier}, G.~T. {Richards}, M.~W. {Richmond},
+  D.~J. {Schlegel}, J.~A. {Smith}, M.~A. {Strauss}, M.~{SubbaRao}, A.~S.
+  {Szalay}, A.~R. {Thakar}, D.~L. {Tucker}, D.~E. {Vanden Berk}, B.~{Yanny},
+  J.~K. {Adelman}, J.~E. {Anderson}, Jr., S.~F. {Anderson}, J.~{Annis}, N.~A.
+  {Bahcall}, J.~A. {Bakken}, M.~{Bartelmann}, S.~{Bastian}, A.~{Bauer},
+  E.~{Berman}, H.~{B{\"o}hringer}, W.~N. {Boroski}, S.~{Bracker}, C.~{Briegel},
+  J.~W. {Briggs}, J.~{Brinkmann}, R.~{Brunner}, L.~{Carey}, M.~A. {Carr},
+  B.~{Chen}, D.~{Christian}, P.~L. {Colestock}, J.~H. {Crocker}, I.~{Csabai},
+  P.~C. {Czarapata}, J.~{Dalcanton}, A.~F. {Davidsen}, J.~E. {Davis},
+  W.~{Dehnen}, S.~{Dodelson}, M.~{Doi}, T.~{Dombeck}, M.~{Donahue},
+  N.~{Ellman}, B.~R. {Elms}, M.~L. {Evans}, L.~{Eyer}, X.~{Fan}, G.~R.
+  {Federwitz}, S.~{Friedman}, M.~{Fukugita}, R.~{Gal}, B.~{Gillespie},
+  K.~{Glazebrook}, J.~{Gray}, E.~K. {Grebel}, B.~{Greenawalt}, G.~{Greene},
+  J.~E. {Gunn}, E.~{de Haas}, Z.~{Haiman}, M.~{Haldeman}, P.~B. {Hall},
+  M.~{Hamabe}, B.~{Hansen}, F.~H. {Harris}, H.~{Harris}, M.~{Harvanek}, S.~L.
+  {Hawley}, J.~J.~E. {Hayes}, T.~M. {Heckman}, A.~{Helmi}, A.~{Henden}, C.~J.
+  {Hogan}, D.~W. {Hogg}, D.~J. {Holmgren}, J.~{Holtzman}, C.-H. {Huang},
+  C.~{Hull}, S.-I. {Ichikawa}, T.~{Ichikawa}, D.~E. {Johnston}, G.~{Kauffmann},
+  R.~S.~J. {Kim}, T.~{Kimball}, E.~{Kinney}, M.~{Klaene}, S.~J. {Kleinman},
+  A.~{Klypin}, G.~R. {Knapp}, J.~{Korienek}, J.~{Krolik}, R.~G. {Kron},
+  J.~{Krzesi{\'n}ski}, D.~Q. {Lamb}, R.~F. {Leger}, S.~{Limmongkol},
+  C.~{Lindenmeyer}, D.~C. {Long}, C.~{Loomis}, J.~{Loveday}, B.~{MacKinnon},
+  E.~J. {Mannery}, P.~M. {Mantsch}, B.~{Margon}, P.~{McGehee}, T.~A. {McKay},
+  B.~{McLean}, K.~{Menou}, A.~{Merelli}, H.~J. {Mo}, D.~G. {Monet},
+  O.~{Nakamura}, V.~K. {Narayanan}, T.~{Nash}, E.~H. {Neilsen}, Jr., P.~R.
+  {Newman}, A.~{Nitta}, M.~{Odenkirchen}, N.~{Okada}, S.~{Okamura}, J.~P.
+  {Ostriker}, R.~{Owen}, A.~G. {Pauls}, J.~{Peoples}, R.~S. {Peterson},
+  D.~{Petravick}, A.~{Pope}, R.~{Pordes}, M.~{Postman}, A.~{Prosapio}, T.~R.
+  {Quinn}, R.~{Rechenmacher}, C.~H. {Rivetta}, H.-W. {Rix}, C.~M. {Rockosi},
+  R.~{Rosner}, K.~{Ruthmansdorfer}, D.~{Sandford}, D.~P. {Schneider},
+  R.~{Scranton}, M.~{Sekiguchi}, G.~{Sergey}, R.~{Sheth}, K.~{Shimasaku},
+  S.~{Smee}, S.~A. {Snedden}, A.~{Stebbins}, C.~{Stubbs}, I.~{Szapudi},
+  P.~{Szkody}, G.~P. {Szokoly}, S.~{Tabachnik}, Z.~{Tsvetanov}, A.~{Uomoto},
+  M.~S. {Vogeley}, W.~{Voges}, P.~{Waddell}, R.~{Walterbos}, S.-i. {Wang},
+  M.~{Watanabe}, D.~H. {Weinberg}, R.~L. {White}, S.~D.~M. {White},
+  B.~{Wilhite}, D.~{Wolfe}, N.~{Yasuda}, D.~G. {York}, I.~{Zehavi}, and
+  W.~{Zheng}.
+\newblock {Sloan Digital Sky Survey: Early Data Release}.
+\newblock 123:\penalty0 485--548, Jan. 2002.
+\newblock \doi{10.1086/324741}.
+
+\end{thebibliography}
