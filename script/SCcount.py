@@ -33,7 +33,7 @@ for i in ra:
 			print p
 			print ("Source confusion")
 			sc = sc.union([p])
-		
+print sc		
 		# else:
 		# 	print ("--")
 			# ra=[]
