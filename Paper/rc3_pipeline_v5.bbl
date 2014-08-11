@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{12}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -87,6 +87,22 @@ D.~{Lang}, D.~W. {Hogg}, K.~{Mierle}, M.~{Blanton}, and S.~{Roweis}.
 T.~{Robitaille} and E.~{Bressert}.
 \newblock {APLpy: Astronomical Plotting Library in Python}, Aug. 2012.
 \newblock Astrophysics Source Code Library.
+
+\bibitem[{Skrutskie} et~al.(2006){Skrutskie}, {Cutri}, {Stiening}, {Weinberg},
+  {Schneider}, {Carpenter}, {Beichman}, {Capps}, {Chester}, {Elias}, {Huchra},
+  {Liebert}, {Lonsdale}, {Monet}, {Price}, {Seitzer}, {Jarrett}, {Kirkpatrick},
+  {Gizis}, {Howard}, {Evans}, {Fowler}, {Fullmer}, {Hurt}, {Light}, {Kopan},
+  {Marsh}, {McCallon}, {Tam}, {Van Dyk}, and {Wheelock}]{2mass}
+M.~F. {Skrutskie}, R.~M. {Cutri}, R.~{Stiening}, M.~D. {Weinberg},
+  S.~{Schneider}, J.~M. {Carpenter}, C.~{Beichman}, R.~{Capps}, T.~{Chester},
+  J.~{Elias}, J.~{Huchra}, J.~{Liebert}, C.~{Lonsdale}, D.~G. {Monet},
+  S.~{Price}, P.~{Seitzer}, T.~{Jarrett}, J.~D. {Kirkpatrick}, J.~E. {Gizis},
+  E.~{Howard}, T.~{Evans}, J.~{Fowler}, L.~{Fullmer}, R.~{Hurt}, R.~{Light},
+  E.~L. {Kopan}, K.~A. {Marsh}, H.~L. {McCallon}, R.~{Tam}, S.~{Van Dyk}, and
+  S.~{Wheelock}.
+\newblock {The Two Micron All Sky Survey (2MASS)}.
+\newblock \emph{The Astronomical Journal}, 131:\penalty0 1163--1183, Feb. 2006.
+\newblock \doi{10.1086/498708}.
 
 \bibitem[{Stoughton} et~al.(2002){Stoughton}, {Lupton}, {Bernardi}, {Blanton},
   {Burles}, {Castander}, {Connolly}, {Eisenstein}, {Frieman}, {Hennessy},

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  10 AUG 2014 21:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  11 AUG 2014 09:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -273,35 +273,40 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 10.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 26.
+(Font)              <8> on input line 25.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 26.
+(Font)              <6> on input line 25.
 
-Overfull \hbox (7.80615pt too wide) in paragraph at lines 22--28
+Overfull \hbox (7.80615pt too wide) in paragraph at lines 11--27
 \OT1/cmr/m/n/10 Sur-vey (2MASS),The Palo-mar Dig-i-tal Sky Sur-vey (DPOSS),
  []
 
 
-Overfull \hbox (3.62543pt too wide) in paragraph at lines 40--46
+Overfull \hbox (3.62543pt too wide) in paragraph at lines 39--45
 []\OT1/cmr/m/n/10 Original Ref-er-ence Cat-a-logue of Bright Galax-ies (CITE)
  []
 
 
-Overfull \hbox (0.4449pt too wide) in paragraph at lines 40--46
+Overfull \hbox (0.4449pt too wide) in paragraph at lines 39--45
 \OT1/cmr/m/n/10 uni-form up-date ``col-lected from 150 dif-fer-ent sources" ,ea
 ch
+ []
+
+
+Overfull \hbox (2.09213pt too wide) in paragraph at lines 46--47
+[]\OT1/cmr/m/n/10 (INSERT FIG-URE WITH ONE OB-JECT MO-SAICED
  []
 
 [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Overfull \hbox (5.90932pt too wide) in paragraph at lines 54--56
+Overfull \hbox (5.90932pt too wide) in paragraph at lines 53--55
 []\OT1/cmr/m/n/10 (TALK ABOUT HOW SDSS IMAG-ING DATA IS PRO-
  []
 
 
-Overfull \hbox (6.74608pt too wide) in paragraph at lines 54--56
+Overfull \hbox (6.74608pt too wide) in paragraph at lines 53--55
 \OT1/cmr/m/n/10 CESSED; SEE PHO-TO-LITE PA-PER LUT-PON) The SDSS
  []
 
@@ -309,79 +314,79 @@ Overfull \hbox (6.74608pt too wide) in paragraph at lines 54--56
 File: figures/navigator.png Graphic file (type png)
 
 <use figures/navigator.png>
-Package pdftex.def Info: figures/navigator.png used on input line 80.
+Package pdftex.def Info: figures/navigator.png used on input line 75.
 (pdftex.def)             Requested size: 261.0pt x 231.67044pt.
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 80--81
-[][] 
- []
-
-<figures/PGC58b4SC.jpg, id=18, 61.22874pt x 61.22874pt>
-File: figures/PGC58b4SC.jpg Graphic file (type jpg)
-
-<use figures/PGC58b4SC.jpg>
-Package pdftex.def Info: figures/PGC58b4SC.jpg used on input line 98.
-(pdftex.def)             Requested size: 62.63968pt x 62.64119pt.
-
-<figures/PGC58afterSC.jpg, id=19, 143.53625pt x 143.53625pt>
-File: figures/PGC58afterSC.jpg Graphic file (type jpg)
-
-<use figures/PGC58afterSC.jpg>
-Package pdftex.def Info: figures/PGC58afterSC.jpg used on input line 103.
-(pdftex.def)             Requested size: 62.63968pt x 62.63925pt.
-
-Overfull \hbox (61.20319pt too wide) in paragraph at lines 96--106
-[]$[]$$[]$ 
- []
-
-
-Overfull \hbox (16.50047pt too wide) in paragraph at lines 109--116
-[]\OT1/cmr/m/n/10 (One line in-tro about galax-ies liv-ing close to each other=
-=>
- []
-
-[2 <./figures/navigator.png>]
-<figures/pipeline.jpg, id=25, 757.83125pt x 899.36pt>
-File: figures/pipeline.jpg Graphic file (type jpg)
-
-<use figures/pipeline.jpg>
-Package pdftex.def Info: figures/pipeline.jpg used on input line 122.
-(pdftex.def)             Requested size: 261.0pt x 309.74432pt.
-
-Overfull \hbox (9.0pt too wide) in paragraph at lines 122--123
+Overfull \hbox (9.0pt too wide) in paragraph at lines 75--76
 [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3 <./figures/PGC58b4SC.jpg> <./figures/PGC58afterSC.jpg> <./figures/pipeline.j
-pg>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 141.
+<figures/PGC58b4SC.jpg, id=18, 61.22874pt x 61.22874pt>
+File: figures/PGC58b4SC.jpg Graphic file (type jpg)
 
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 141.
+<use figures/PGC58b4SC.jpg>
+Package pdftex.def Info: figures/PGC58b4SC.jpg used on input line 93.
+(pdftex.def)             Requested size: 62.63968pt x 62.64119pt.
 
-Overfull \hbox (8.63824pt too wide) in paragraph at lines 155--159
-[]\OT1/cmr/m/n/10 For the DPOSS Run, on av-er-age 0.31 galax-ies per minute.
+<figures/PGC58afterSC.jpg, id=19, 143.53625pt x 143.53625pt>
+File: figures/PGC58afterSC.jpg Graphic file (type jpg)
+
+<use figures/PGC58afterSC.jpg>
+Package pdftex.def Info: figures/PGC58afterSC.jpg used on input line 98.
+(pdftex.def)             Requested size: 62.63968pt x 62.63925pt.
+
+Overfull \hbox (61.20319pt too wide) in paragraph at lines 91--101
+[]$[]$$[]$ 
  []
 
 
-Overfull \hbox (4.26436pt too wide) in paragraph at lines 161--172
+Overfull \hbox (6.19496pt too wide) in paragraph at lines 105--111
+[]\OT1/cmr/m/n/10 Large galax-ies tends to form grav-i-ta-tion-ally bound struc
+-
+ []
+
+[2] <figures/pipeline.jpg, id=23, 757.83125pt x 899.36pt>
+File: figures/pipeline.jpg Graphic file (type jpg)
+
+<use figures/pipeline.jpg>
+Package pdftex.def Info: figures/pipeline.jpg used on input line 117.
+(pdftex.def)             Requested size: 261.0pt x 309.74432pt.
+
+Overfull \hbox (9.0pt too wide) in paragraph at lines 117--118
+[][] 
+ []
+
+[3 <./figures/navigator.png> <./figures/PGC58b4SC.jpg> <./figures/PGC58afterSC.
+jpg> <./figures/pipeline.jpg>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 136.
+
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 136.
+
+Overfull \hbox (8.63824pt too wide) in paragraph at lines 150--154
+[]\OT1/cmr/m/n/10 For the DPOSS Run, on av-er-age 0.31 galax-ies per minute.
+ []
+
+[4]
+Overfull \hbox (4.26436pt too wide) in paragraph at lines 156--167
 []\OT1/cmr/m/n/10 We have pro-vided doc-u-men-ta-tion on GitHub that guides
  []
 
 
-Overfull \hbox (20.7485pt too wide) in paragraph at lines 161--172
+Overfull \hbox (20.7485pt too wide) in paragraph at lines 156--167
 \OT1/cmr/m/n/10 project repos-i-tory: $\OT1/cmtt/m/n/10 https : / / github . co
 m / ProfessorBrunner /
  []
 
-[4]
-Overfull \hbox (3.57176pt too wide) in paragraph at lines 175--178
+
+Overfull \hbox (3.57176pt too wide) in paragraph at lines 170--173
 \OT1/cmr/m/n/8 Foun-da-tion, the Par-tic-i-pat-ing In-sti-tu-tions, the Na-tion
 al Sci-ence Foun-
  []
@@ -390,10 +395,10 @@ al Sci-ence Foun-
 
 ] (./rc3_pipeline_v5.aux) ) 
 Here is how much of TeX's memory you used:
- 3814 strings out of 493117
- 57398 string characters out of 6135433
- 145033 words of memory out of 5000000
- 7225 multiletter control sequences out of 15000+600000
+ 3817 strings out of 493117
+ 57437 string characters out of 6135433
+ 140400 words of memory out of 5000000
+ 7228 multiletter control sequences out of 15000+600000
  8092 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,8n,40p,2154b,458s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -412,7 +417,7 @@ r9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
 fb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pf
 b></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
 
-Output written on rc3_pipeline_v5.pdf (6 pages, 437639 bytes).
+Output written on rc3_pipeline_v5.pdf (6 pages, 439370 bytes).
 PDF statistics:
  85 PDF objects out of 1000 (max. 8388607)
  57 compressed objects within 1 object stream

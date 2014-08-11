@@ -6,45 +6,45 @@ Database file #1: bibtex_database.bib
 Warning--empty journal in efigi
 Warning--empty publisher in rc31991
 Warning--empty journal in edr
-You've used 11 entries,
+You've used 12 entries,
             2773 wiz_defined-function locations,
-            662 strings with 11445 characters,
-and the built_in function-call counts, 16285 in all, are:
-= -- 1089
-> -- 2330
+            670 strings with 12112 characters,
+and the built_in function-call counts, 18210 in all, are:
+= -- 1221
+> -- 2612
 < -- 8
-+ -- 776
-- -- 765
-* -- 1784
-:= -- 2802
-add.period$ -- 36
-call.type$ -- 11
-change.case$ -- 285
-chr.to.int$ -- 11
-cite$ -- 25
-duplicate$ -- 246
-empty$ -- 418
-format.name$ -- 780
-if$ -- 3079
++ -- 870
+- -- 858
+* -- 2002
+:= -- 3135
+add.period$ -- 40
+call.type$ -- 12
+change.case$ -- 319
+chr.to.int$ -- 12
+cite$ -- 27
+duplicate$ -- 267
+empty$ -- 460
+format.name$ -- 874
+if$ -- 3441
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 11
-newline$ -- 66
-num.names$ -- 48
-pop$ -- 582
+missing$ -- 12
+newline$ -- 72
+num.names$ -- 52
+pop$ -- 647
 preamble$ -- 1
-purify$ -- 275
+purify$ -- 308
 quote$ -- 0
-skip$ -- 395
+skip$ -- 437
 stack$ -- 0
-substring$ -- 104
-swap$ -- 38
+substring$ -- 133
+swap$ -- 40
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 116
+type$ -- 127
 warning$ -- 3
-while$ -- 42
+while$ -- 46
 width$ -- 0
-write$ -- 152
+write$ -- 167
 (There were 3 warnings)
