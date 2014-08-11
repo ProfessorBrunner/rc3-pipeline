@@ -5,7 +5,7 @@ class TwoMass(Survey):
         self.name = '2MASS'
         self.bands=['j','h','k']
         self.color_bands=['j','h','k']
-        self.best_band ='j' #not sure about this 
+        self.best_band ='k' #see Fig 2 (Skrutskie et al. 2006)
         # self.pixel_size = 2.0 
         self.data_server = Survey._initServer(self)
         # Mosaic Program Settings
