@@ -198,7 +198,7 @@ class RC3(RC3Catalog):
         updated = open("rc3_updated.txt",'a') 
         self.num_iterations +=1
         print ("{}th iteration".format(self.num_iterations))
-        if (self.num_iterations <= 3): #5 is too much
+        if (self.num_iterations <= 5): #5 is too much
             print ("------------------source_info----------------------")
             file = r_fits_filename 
             print("Source info for {}".format(file))
@@ -207,7 +207,7 @@ class RC3(RC3Catalog):
             try:
                 # Try writing , if not then just pass. 
                 # Key Error in the case when raw FITS from survey, not mosaiced by us.
-                print("Trying to write info into fits file")
+                print("Trying to read info from FITS file")
                 # File info 
                 hdulist = pyfits.open(file)
                 rc3_ra= hdulist[0].header['RA']
@@ -223,8 +223,8 @@ class RC3(RC3Catalog):
                 margin = 2*self.rc3_radius
                 pgc = self.pgc
                 pass
-	    print("Inside source_info , read from hdulist pgc= {}".format(pgc))
-	    print ("Inside source_info, read from self rc3 object pgc = {}".format(self.pgc))
+            print("Inside source_info , read from hdulist pgc= {}".format(pgc))
+            print ("Inside source_info, read from self rc3 object pgc = {}".format(self.pgc))
             # Source Extraction
             # Remember to switch to command "sextractor" for Ubuntu/ Linux, "sex" for Mac
             os.system("sextractor {} {}".format(survey.sextractor_params, file))
@@ -381,7 +381,7 @@ class RC3(RC3Catalog):
                     print ("rc3: {} , updated: {} ".format(rc3_radius,radii))
                     updated.write("{}       {}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii, self.pgc))
                     print ("Mosaic_all on {} ".format(self.pgc))
-		    self.mosaic_all_bands(new_ra,new_dec,margin,radii,self.pgc,survey)
+                    self.mosaic_all_bands(new_ra,new_dec,margin,radii,self.pgc,survey)
                     return [float(new_ra),float(new_dec),margin,radii,self.pgc] 
                     # margin was already set as 3*rc3_radius during the first run
                     # all additional mosaicking steps shoudl be 1.5 times this 
@@ -416,7 +416,7 @@ class RC3(RC3Catalog):
         Return void
         '''
         print ("------------------mosaic_all_bands----------------------")
-    	print ("Working on {}".format(self.pgc))
+        print ("Working on {}".format(self.pgc))
 	    # filename = "{},{}".format(str(ra),str(dec))
         filename  = str(self.pgc)
 	print (filename)
