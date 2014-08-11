@@ -373,8 +373,8 @@ class RC3(RC3Catalog):
                     print ("rc3: {} , updated: {} ".format(rc3_dec,new_dec))
                     print ("rc3: {} , updated: {} ".format(rc3_radius,radii))
                     updated.write("{}       {}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii, pgc))
-                    self.mosaic_all_bands(new_ra,new_dec,margin,radii,pgc,survey)
-                    return [float(new_ra),float(new_dec),margin,radii,pgc] 
+                    self.mosaic_all_bands(new_ra,new_dec,margin,radii,self.pgc,survey)
+                    return [float(new_ra),float(new_dec),margin,radii,self.pgc] 
                     # margin was already set as 3*rc3_radius during the first run
                     # all additional mosaicking steps shoudl be 1.5 times this 
                 #else: #radii =@ if all SExtracted radius is <15 

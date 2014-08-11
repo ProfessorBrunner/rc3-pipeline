@@ -58,8 +58,8 @@ def dataEntry():
 				ifits = "{}{}_{}_{}.fits".format(path,SURVEY,'i',pgc)
 				zfits = "{}{}_{}_{}.fits".format(path,SURVEY,'z',pgc)
 				# -OUTFILE_NAME  {2}_{0}_{1}_BEST.tiff {7}".format(ra,dec,survey.name,
-				best = "{}{}_{}_BEST.tiff ".format(path,SURVEY,new_ra,new_dec)
-				low  =  "{}{}_{}_LOW.tiff ".format(path,SURVEY,new_ra,new_dec)
+				best = "{}{}_{}_BEST.tiff ".format(path,SURVEY,pgc)
+				low  =  "{}{}_{}_LOW.tiff ".format(path,SURVEY,pgc)
 			else:
 				ufits = ""
 				gfits = ""
