@@ -278,9 +278,11 @@ class RC3(RC3Catalog):
                 new_dec='@'
                 # catalog = open("test.cat",'r')
                 n=-1
+		sc = open ("../source_confused_rc3.txt","a")
                 if (len(distances)!=0):
                     # if there is source confusion, then we want to keep the nth largest radius
-                    print ("Source Confusion")
+	  	    #sc.write("{}       {}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii, self.pgc))
+ 		    print ("Source Confusion")
                     n=len(distances)+1
                     print ("sextract_dict:"+str(sextract_dict))
                     print ("N-th largest radius:"+str(heapq.nlargest(n,sextract_dict)))
@@ -337,6 +339,7 @@ class RC3(RC3Catalog):
                     print ("The galaxy that we want to mosaic is: "+str(info[self.pgc]))
                     new_ra= info[self.pgc][0]
                     new_dec = info[self.pgc][1]
+		    sc.write("{}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,self.pgc))
                 else:
                     print ("Source is Obvious")
                     n=1 # if no source confusion then just keep the maximum radius
