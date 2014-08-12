@@ -20,6 +20,7 @@ with open("rc3_ra_dec_diameter_pgc.txt",'r') as f:
 			pgci=int(str(line.split()[3]).replace(' ', ''))
 			pgc.append(pgci)
 			rc3[pgci]=[rai,deci,radi]
+print ("Done preparing data")
 sc=set()
 for i in ra:
 	deci= dec[ra.index(i)]

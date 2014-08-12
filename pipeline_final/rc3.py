@@ -38,7 +38,8 @@ class RC3(RC3Catalog):
         Return: String filename of resulting mosaic
         '''
         print ("------------------mosaic_band----------------------")
-        DEBUG = True
+        print ("Now mosaic_band on {}".format(pgc))
+	DEBUG = True
         output = open("../rc3_galaxies_outside_{}_footprint".format(survey.name),'a') # 'a' for append #'w')
         unclean = open("../rc3_galaxies_unclean_{}".format(survey.name),"a")
         # filename = "{},{}".format(str(ra),str(dec))
@@ -83,25 +84,27 @@ class RC3(RC3Catalog):
         for i in result :  
             if (survey.data_server.name=='Gator'):
                 survey.data_server.getData(band,ra,dec,margin,survey)
-                out = i #designation
-                print out
+                #out = i #designation
+                #print out
             elif (survey.data_server.name=='SkyServer'):
                 survey.data_server.getData(band,str(i[0]), str(i[1]),str(i[2]))
-                out = "frame-"+str(band)+"-"+str(i[0]).zfill(6)+"-"+str(i[1])+"-"+str(i[2]).zfill(4)
+                #out = "frame-"+str(band)+"-"+str(i[0]).zfill(6)+"-"+str(i[1])+"-"+str(i[2]).zfill(4)
             elif (survey.data_server.name=='DSSServer'):
                 survey.data_server.getData(band,ra,dec,margin)
                 # Keeping just the number not the string portion of PhotoPlate
-                out = str(i[10:])
-                print ("dss_out: "+out)
+                #out = str(i[10:])
+                #print ("dss_out: "+out)
             else:
                 raise TypeError("Missing implementation for data retrieval")
+	out = str(self.pgc)
 
         os.chdir("../")
         
         if (DEBUG) : print("Creating mosaic for "+band+" band.")
-        outfile_r = "{}_{}_{}_{}r.fits".format(survey.name,band,ra,dec)
-        outfile = "{}_{}_{}_{}.fits".format(survey.name,band,ra,dec)
-
+        #outfile_r = "{}_{}_{}_{}r.fits".format(survey.name,band,ra,dec)
+        #outfile = "{}_{}_{}_{}.fits".format(survey.name,band,ra,dec)
+	outfile_r = "{}_{}_{}r.fits".format(survey.name,band,self.pgc)
+	outfile = "{}_{}_{}.fits".format(survey.name,band,self.pgc)
         if (len(result)==1):
             #With header info, len of processed result list is 1 if there is only 1 field lying in the margin, simply do mSubImage without mosaicing
             #This patch should not be necessary but the program is aparently not mosaicing for the case where there is only one field.
@@ -167,7 +170,8 @@ class RC3(RC3Catalog):
         hdulist[0].header['RA']=ra
         hdulist[0].header['DEC']=dec
         hdulist[0].header['RADIUS']=radius
-        hdulist[0].header['PGC']=pgc
+        print ("Finished mosaic_band on {}".format(pgc))
+	hdulist[0].header['PGC']=pgc
         hdulist[0].header['NED']=("http://ned.ipac.caltech.edu/cgi-bin/objsearch?objname="+ str(hdulist[0].header['PGC'])+"&extend=no&hconst=73&omegam=0.27&omegav=0.73&corr_z=1&out_csys=Equatorial&out_equinox=J2000.0&obj_sort=RA+or+Longitude&of=pre_text&zv_breaker=30000.0&list_limit=5&img_stamp=YES")
         hdulist[0].header['CLEAN']=clean
         hdulist[0].header['MARGIN']=margin
@@ -219,10 +223,11 @@ class RC3(RC3Catalog):
                 margin = 2*self.rc3_radius
                 pgc = self.pgc
                 pass
-
+	    print("Inside source_info , read from hdulist pgc= {}".format(pgc))
+	    print ("Inside source_info, read from self rc3 object pgc = {}".format(self.pgc))
             # Source Extraction
             # Remember to switch to command "sextractor" for Ubuntu/ Linux, "sex" for Mac
-            os.system("sex {} {}".format(survey.sextractor_params, file))
+            os.system("sextractor {} {}".format(survey.sextractor_params, file))
 
             # A list of other RC3 galaxies that lies in the field
             # In the case of source confusion, find all the rc3 that lies in the field.
@@ -273,9 +278,11 @@ class RC3(RC3Catalog):
                 new_dec='@'
                 # catalog = open("test.cat",'r')
                 n=-1
+		sc = open ("../source_confused_rc3.txt","a")
                 if (len(distances)!=0):
                     # if there is source confusion, then we want to keep the nth largest radius
-                    print ("Source Confusion")
+	  	    #sc.write("{}       {}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii, self.pgc))
+ 		    print ("Source Confusion")
                     n=len(distances)+1
                     print ("sextract_dict:"+str(sextract_dict))
                     print ("N-th largest radius:"+str(heapq.nlargest(n,sextract_dict)))
@@ -321,15 +328,18 @@ class RC3(RC3Catalog):
                         matched.append(coord_match[i])
                     print (other_rc3s_info)
                     info ={}
+		    #print ("BEFORE:{} ,{}".format(pgc,self.pgc))
                     for i in other_rc3s_info:
                         pgc = int(i[0][3:])
                         ra= float(i[1])
                         dec= float(i[2])
                         info[pgc]= [ra,dec]
+		    #print ("AFTER:{} ,{}".format(pgc,self.pgc))
                     print ("info"+str(info))
                     print ("The galaxy that we want to mosaic is: "+str(info[self.pgc]))
                     new_ra= info[self.pgc][0]
                     new_dec = info[self.pgc][1]
+		    sc.write("{}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,self.pgc))
                 else:
                     print ("Source is Obvious")
                     n=1 # if no source confusion then just keep the maximum radius
@@ -372,14 +382,15 @@ class RC3(RC3Catalog):
                     print ("rc3: {} , updated: {} ".format(rc3_ra, new_ra))
                     print ("rc3: {} , updated: {} ".format(rc3_dec,new_dec))
                     print ("rc3: {} , updated: {} ".format(rc3_radius,radii))
-                    updated.write("{}       {}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii, pgc))
-                    self.mosaic_all_bands(new_ra,new_dec,margin,radii,self.pgc,survey)
+                    updated.write("{}       {}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii, self.pgc))
+                    print ("Mosaic_all on {} ".format(self.pgc))
+		    self.mosaic_all_bands(new_ra,new_dec,margin,radii,self.pgc,survey)
                     return [float(new_ra),float(new_dec),margin,radii,self.pgc] 
                     # margin was already set as 3*rc3_radius during the first run
                     # all additional mosaicking steps shoudl be 1.5 times this 
                 #else: #radii =@ if all SExtracted radius is <15 
             print ("No detected RC3 sources in image. Mosaic using a larger margin")
-            r_mosaic_filename = self.mosaic_band(survey.best_band,rc3_ra,rc3_dec,1.5*margin,rc3_radius,pgc,survey)
+            r_mosaic_filename = self.mosaic_band(survey.best_band,rc3_ra,rc3_dec,1.5*margin,rc3_radius,self.pgc,survey)
             self.source_info(r_mosaic_filename,survey)
             return ['@','@',1.5*margin,'@','@']
         else : # no detection since exceed num_iteration
@@ -408,25 +419,27 @@ class RC3(RC3Catalog):
         Return void
         '''
         print ("------------------mosaic_all_bands----------------------")
-        # filename = "{},{}".format(str(ra),str(dec))
-        filename  = str(pgc)
+    	print ("Working on {}".format(self.pgc))
+	    # filename = "{},{}".format(str(ra),str(dec))
+        filename  = str(self.pgc)
+	print (filename)
         os.mkdir(filename)
         #filename = "{},{}".format(str(ra),str(dec)        
-        source_confusion_error = open("../source_confusion_error.txt",'a') 
-        source_confusion_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
-        if os.path.isfile(filename):
-            filename = "{}_{}".format(str(pgc),n)
-        else:
-            filename = str(pgc)
-        # os.mkdir(filename)
+    	source_confusion_error = open("../source_confusion_error.txt",'a') 
+    	if os.path.isfile(filename):
+		source_confusion_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
+    		filename = "{}_{}".format(str(pgc),n)
+    	else:
+    		filename = str(pgc)
+    	# os.mkdir(filename)
         os.chdir(filename)
         bands =survey.bands #['u','g','r','i','z']
         for band in bands:
             self.mosaic_band(band,ra,dec,margin,radius,pgc,survey)
             #os.chdir("../")
-        os.system("stiff  {2}_{5}_{0}_{1}.fits  {2}_{4}_{0}_{1}.fits {2}_{3}_{0}_{1}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{0}_{1}_BEST.tiff {7}".format(ra,dec,survey.name,survey.color_bands[2],survey.color_bands[1],survey.color_bands[0],survey.name,survey.stiff_param_low))
+        os.system("stiff  {2}_{5}_{8}.fits  {2}_{4}_{8}.fits {2}_{3}_{8}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{8}_BEST.tiff {7}".format(ra,dec,survey.name,survey.color_bands[2],survey.color_bands[1],survey.color_bands[0],survey.name,survey.stiff_param_low,self.pgc))
         # Image for emphasizing low-surface sturcture
-        os.system("stiff  {2}_{5}_{0}_{1}.fits  {2}_{4}_{0}_{1}.fits {2}_{3}_{0}_{1}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{0}_{1}_LOW.tiff  {7}".format(ra,dec,survey.name,survey.color_bands[2],survey.color_bands[1],survey.color_bands[0],survey.name,survey.stiff_param_best)) 
+        os.system("stiff  {2}_{5}_{8}.fits  {2}_{4}_{8}.fits {2}_{3}_{8}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{8}_LOW.tiff  {7}".format(ra,dec,survey.name,survey.color_bands[2],survey.color_bands[1],survey.color_bands[0],survey.name,survey.stiff_param_best,self.pgc)) 
         if (not(os.path.exists("stiff.xml"))):
             #If stiff file exist then it means stiff run is sucessful
             #sometimes stiff doesn't run because 
