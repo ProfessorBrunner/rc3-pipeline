@@ -1,0 +1,2262 @@
+SIMPLE  =                    T /FITS: Compliance                                BITPIX  =                   16 /FITS: I*2 Data                                  NAXIS   =                    2 / FITS: 2-D Image Data                           NAXIS1  =                  112 / FITS: X Dimension                              NAXIS2  =                  112 / FITS: Y Dimension                              EXTEND  =                    T /FITS: File can contain extensions               DATE    = '2014-08-13        '  /FITS: Creation Date                            ORIGIN  = 'STScI/MAST'         /GSSS: STScI Digitized Sky Survey                SURVEY  = 'POSSI-E '           /GSSS: Sky Survey                                REGION  = 'XE705   '           /GSSS: Region Name                               PLATEID = '0EFP    '           /GSSS: Plate ID                                  SCANNUM = '00      '           /GSSS: Scan Number                               DSCNDNUM= '00      '           /GSSS: Descendant Number                         TELESCID=                    1 /GSSS: Telescope ID                              BANDPASS=                    8 /GSSS: Bandpass Code                             COPYRGHT= 'STScI/AURA'         /GSSS: Copyright Holder                          SITELAT =               33.356 /Observatory: Latitude                           SITELONG=              116.863 /Observatory: Longitude                          TELESCOP= 'Palomar Schmidt   ' /Observatory: Telescope                          INSTRUME= 'Photographic Plate' /Detector: Photographic Plate                    EMULSION= '103aE   '           /Detector: Emulsion                              FILTER  = 'plexi   '           /Detector: Filter                                PLTSCALE=                67.20 /Detector: Plate Scale arcsec per mm             PLTSIZEX=              355.000 /Detector: Plate X Dimension mm                  PLTSIZEY=              355.000 /Detector: Plate Y Dimension mm                  PLATERA =        7.80663280000 /Observation: Field centre RA degrees            PLATEDEC=       -11.2340610000 /Observation: Field centre Dec degrees           PLTLABEL= 'E1203   '           /Observation: Plate Label                        DATE-OBS= '1954-09-06T08:25:00' /Observation: Date/Time                         EXPOSURE=                 50.0 /Observation: Exposure Minutes                   PLTGRADE= '0       '           /Observation: Plate Grade                        OBSHA   =             0.983333 /Observation: Hour Angle                         OBSZD   =              46.7933 /Observation: Zenith Distance                    AIRMASS =              1.45894 /Observation: Airmass                            REFBETA =        61.8196600000 /Observation: Refraction Coeff                   REFBETAP=     -0.0820000000000 /Observation: Refraction Coeff                   REFK1   =       -36218.5000000 /Observation: Refraction Coeff                   REFK2   =        205413.330000 /Observation: Refraction Coeff                   CNPIX1  =                10956 /Scan: X Corner                                  CNPIX2  =                12580 /Scan: Y Corner                                  XPIXELS =                14000 /Scan: X Dimension                               YPIXELS =                13999 /Scan: Y Dimension                               XPIXELSZ=              25.2845 /Scan: Pixel Size microns                        YPIXELSZ=              25.2845 /Scan: Pixel Size microns                        PPO1    =       0.000000000000 /Scan: Orientation Coeff                         PPO2    =       0.000000000000 /Scan: Orientation Coeff                         PPO3    =        177500.000000 /Scan: Orientation Coeff                         PPO4    =       0.000000000000 /Scan: Orientation Coeff                         PPO5    =       0.000000000000 /Scan: Orientation Coeff                         PPO6    =        177500.000000 /Scan: Orientation Coeff                         PLTRAH  =                    0 /Astrometry: Plate Centre H                      PLTRAM  =                   31 /Astrometry: Plate Centre M                      PLTRAS  =                13.50 /Astrometry: Plate Centre S                      PLTDECSN= '-       '           /Astrometry: Plate Centre +/-                    PLTDECD =                   11 /Astrometry: Plate Centre D                      PLTDECM =                   14 /Astrometry: Plate Centre M                      PLTDECS =                  0.6 /Astrometry: Plate Centre S                      EQUINOX =               2000.0 /Astrometry: Equinox                             AMDX1   =        67.2465885501 /Astrometry: GSC1 Coeff                          AMDX2   =     0.00171715117441 /Astrometry: GSC1 Coeff                          AMDX3   =       -32.9224534783 /Astrometry: GSC1 Coeff                          AMDX4   =   1.38173543145E-006 /Astrometry: GSC1 Coeff                          AMDX5   =  -1.79814682765E-005 /Astrometry: GSC1 Coeff                          AMDX6   =   8.63877689804E-006 /Astrometry: GSC1 Coeff                          AMDX7   =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDX8   =   2.24356182219E-006 /Astrometry: GSC1 Coeff                          AMDX9   =  -2.75145334399E-008 /Astrometry: GSC1 Coeff                          AMDX10  =   2.50289709167E-006 /Astrometry: GSC1 Coeff                          AMDX11  =  -1.39485520271E-008 /Astrometry: GSC1 Coeff                          AMDX12  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDX13  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDX14  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDX15  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDX16  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDX17  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDX18  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDX19  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDX20  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDY1   =        67.2692700399 /Astrometry: GSC1 Coeff                          AMDY2   =    -0.00647396291386 /Astrometry: GSC1 Coeff                          AMDY3   =        33.0357664686 /Astrometry: GSC1 Coeff                          AMDY4   =  -7.75489251003E-006 /Astrometry: GSC1 Coeff                          AMDY5   =   4.46688337387E-006 /Astrometry: GSC1 Coeff                          AMDY6   =  -1.45326283906E-005 /Astrometry: GSC1 Coeff                          AMDY7   =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDY8   =   2.13974363339E-006 /Astrometry: GSC1 Coeff                          AMDY9   =  -9.50515889190E-008 /Astrometry: GSC1 Coeff                          AMDY10  =   2.54863263473E-006 /Astrometry: GSC1 Coeff                          AMDY11  =  -2.66607627682E-008 /Astrometry: GSC1 Coeff                          AMDY12  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDY13  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDY14  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDY15  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDY16  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDY17  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDY18  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDY19  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDY20  =       0.000000000000 /Astrometry: GSC1 Coeff                          AMDREX1 =        67.2464627157 /Astrometry: GSC2 Coeff                          AMDREX2 =     0.00896829541449 /Astrometry: GSC2 Coeff                          AMDREX3 =       -32.9023567921 /Astrometry: GSC2 Coeff                          AMDREX4 =   2.69324237351E-006 /Astrometry: GSC2 Coeff                          AMDREX5 =  -2.17240325561E-005 /Astrometry: GSC2 Coeff                          AMDREX6 =   7.92115371440E-006 /Astrometry: GSC2 Coeff                          AMDREX7 =       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREX8 =  -1.36582101288E-007 /Astrometry: GSC2 Coeff                          AMDREX9 =  -3.16028351047E-008 /Astrometry: GSC2 Coeff                          AMDREX10=   9.39222974712E-008 /Astrometry: GSC2 Coeff                          AMDREX11=  -1.62701733543E-008 /Astrometry: GSC2 Coeff                          AMDREX12=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREX13=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREX14=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREX15=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREX16=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREX17=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREX18=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREX19=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREX20=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREY1 =        67.2502442766 /Astrometry: GSC2 Coeff                          AMDREY2 =    -0.00645593765816 /Astrometry: GSC2 Coeff                          AMDREY3 =        33.0415834543 /Astrometry: GSC2 Coeff                          AMDREY4 =   1.61550550595E-006 /Astrometry: GSC2 Coeff                          AMDREY5 =   4.71024361441E-006 /Astrometry: GSC2 Coeff                          AMDREY6 =  -1.05293950424E-005 /Astrometry: GSC2 Coeff                          AMDREY7 =       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREY8 =  -2.64234564676E-007 /Astrometry: GSC2 Coeff                          AMDREY9 =  -8.84341766357E-008 /Astrometry: GSC2 Coeff                          AMDREY10=   1.06991397128E-007 /Astrometry: GSC2 Coeff                          AMDREY11=  -3.13279610161E-008 /Astrometry: GSC2 Coeff                          AMDREY12=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREY13=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREY14=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREY15=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREY16=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREY17=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREY18=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREY19=       0.000000000000 /Astrometry: GSC2 Coeff                          AMDREY20=       0.000000000000 /Astrometry: GSC2 Coeff                          ASTRMASK= 'xe.mask '           /Astrometry: GSC2 Mask                           WCSAXES =                    2 /GetImage: Number WCS axes                       WCSNAME = 'DSS               ' /GetImage: Local WCS approximation from full platRADESYS = 'ICRS              ' /GetImage: GSC-II calibration using ICRS system  CTYPE1  = 'RA---TAN          ' /GetImage: RA-Gnomic projection                  CRPIX1  =                 56.5 / GetImage: X reference pixel                    CRVAL1  =             5.817182 /GetImage: RA of reference pixel                 CUNIT1  = 'deg               ' /GetImage: degrees                               CTYPE2  = 'DEC--TAN          ' /GetImage: Dec-Gnomic projection                 CRPIX2  =                 56.5 / GetImage: Y reference pixel                    CRVAL2  =            -8.491249 /GetImage: Dec of reference pixel                CUNIT2  = 'deg               ' /Getimage: degrees                               CD1_1   =        -0.0004720770 /GetImage: rotation matrix coefficient           CD1_2   =         0.0000029949 /GetImage: rotation matrix coefficient           CD2_1   =         0.0000026997 /GetImage: rotation matrix coefficient           CD2_2   =         0.0004722497 /GetImage: rotation matrix coefficient           OBJECT  = 'data              ' /GetImage: Requested Object Name                 DATAMIN =                 2193 /GetImage: Minimum returned pixel value          DATAMAX =                13741 /GetImage: Maximum returned pixel value          OBJCTRA = '00 23 16.020      ' /GetImage: Requested Right Ascension (J2000)     OBJCTDEC= '-08 29 26.95      ' /GetImage: Requested Declination (J2000)         OBJCTX  =             11168.85 /GetImage: Requested X on plate (pixels)         OBJCTY  =             12792.85 /GetImage: Requested Y on plate (pixels)         RA      = '5.8167444'                                                           DEC     = '-8.4908234'                                                          RADIUS  =  0.01099908571072699                                                  PGC     =                 1496                                                  NED     = 'http://ned.ipac.caltech.edu/cgi-bin/objsearch?objname=1496&extend=n&'CONTINUE  'o&hconst=73&omegam=0.27&omegav=0.73&corr_z=1&out_csys=Equatorial&ou&'CONTINUE  't_equinox=J2000.0&obj_sort=RA+or+Longitude&of=pre_text&zv_breaker=3&'CONTINUE  '0000.0&list_limit=5&img_stamp=YES&'                                  CLEAN   =                    T                                                  MARGIN  =      0.0261782137536                                                  END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             vvýý¹¹
+«
+«
+«
+«¹¹ý
+ï
+ï
+ï­­­»iiii‹‹‹‹UUGG
+Ñ
+Ñ
+Ñ
+Ñßßß
+Ñ
+ŽœœœXX
+Ñ
+Ñ&&&
+
+[
+[ð
+âð
+âi
+[&&
+Ÿ­zz77¾¾¾¾77zzzz“¡¡“rrrrµµµµ¤
+–¤¤
+–¤++++¤²vvýý¹¹¹¹¹¹
+«
+«ý
+ï
+ï
+ï­­»­iiii‹‹‹‹UUGG
+Ñ
+Ñ
+Ñ
+Ñ
+Ñ
+Ñß
+Ñ
+ŽœœœXX
+Ñ
+Ñ&&4&ii
+âðð
+âi
+[&&­»ˆˆ
+ó
+ó
+)
+)¾¾
+°
+°77zzzz
+…““
+…rrrrµµµµ
+–¤¤¤
+–¤++99²¤vvv
+h¹¹222222vvýý&444ððþð ÎÎUUXXXX
+Ñßß
+Ñœœ
+Ñ
+ÑXX&&&&
+â
+â
+[iðð
+â
+â&&­­zz
+°
+°7E77
+°
+°z
+l
+ó
+ó““““““
+ëù
+ë
+ë
+§
+§µµ¤¤+²²²²+9vvv
+h¹¹222222vvýý&444ððð
+â ÎÎGGXXXX
+Ñßß
+Ñœœ
+Ñ
+ÑXX&&&&
+â
+âiwþþ
+â
+â&&­­zz
+°
+°7E77Ì
+°z
+l
+ó
+ó““““““
+ëùùù
+§
+§µµ
+–
+–+²²¤¤+ÛÛTTTTTT
+«
+«22vvý
+ï777Ezz77¾¾
+ó
+ózz¾¾¾
+°7777zzzz7777
+[i
+âð4&44™™
+}‹
+Ÿ
+Ÿ&44&
+Ÿ­ 
+À
+ÀGGÆÆ??ÆÆ
+1
+1
+Saaa¤¤¤¤
+
+
+ƒƒ
+ü
+ü
+ü
+üÛÛTTTTTT
+«
+«22vvý
+ï777Ezz77¾¾
+ó
+ózz¾¾¾
+°7777zzzz7777iwð
+â&444‹‹‹™­­&44&
+Ÿ­
+À
+ÀGGÆÆ??ÆÆ??aoaa¤¤¤¤+
+
+ƒƒ
+ü
+ü
+ü
+ü
+ÍÛTTTTTT
+«
+«
+«
+«
+ï
+ï
+ï
+ï77¾¾zzzz¾¾77
+ó
+ó¾¾
+°
+°77E7zzzz
+°¾
+°¾iiii
+Ÿ
+Ÿ­­‹‹PB44­­44™‹‹‹ÎÎGG??
+¸
+¸ÆÆM?èèoa¤²+++¤
+–ƒƒ‘‘
+
+
+ü
+üéÛTTTTTT¹¹
+«
+«
+ï
+ï
+ï
+ï77¾¾zzzz¾¾77¾¾¾¾EEE7zzzz
+°¾
+°¾w
+[ii­­­­‹‹B4&&­­44™‹‹‹ÎÎGG??
+¸
+¸ÆÆ?Mèèoa¤²+G+¤
+–ƒƒƒƒ
+
+
+ü
+übbTT2222¹¹22
+óˆˆ
+ó
+ó
+ózzEE¾¾ˆˆ77¾¾zz
+ó
+ó44­­wwiiUGGGii
+âð&&­­‹‹
+uƒ‘ƒÆÆÆÆooao++¤²+++aaaa
+
+
+ü
+ü?M??bbTT2222¹¹22
+ó
+ó
+ózz
+ó
+ó
+ózz77¾¾
+ó
+ózz
+ó
+ó77¾¾zz
+ó
+ó44­­iiiiUGGGii
+âð44­­	ö‹‹ƒ‘‘ƒÆÆÆÆoooa
+–¤+++aaaa
+ü
+ü
+ü
+üM???bbÛÛ22¹Ç¹¹¹¹zzzz
+óˆzzz
+ó7777
+ó
+ózzzzz
+l	¢
+°¾¾ˆ
+lzˆ4&&&
+âð
+â
+â‹‹‹‹ÎÎ
+ÀÎiiii­­­­
+}‹™‹
+
+‘‘??M?èèaa+¤¤¤¤a
+S
+Saƒƒ‘ƒÆÆ
+¸
+¸TTÛÛ22Ç¹¹¹ÇÇzzzz
+óˆzˆˆ
+ó7777
+ó
+ózzzzz
+l	¢
+°¾¾zzzˆ4&&&
+âð
+â
+â‹‹‹‹ÎÎ
+ÀÎiiii­­­­
+}‹‹
+}
+ü
+üƒƒ??
+1?èèaa+++¤¤²²a
+S
+Saƒƒ‘ƒÆÆÆÆTTÛÛ
+Š˜TTéé˜˜ßßfXœœ##œœ##fXXX
+Ñ
+ÑXX#####XXXXðð6þ­­&&­
+Ÿ
+Ÿ­
+â
+â
+â
+â
+
+&&&4
+Ÿ­‹‹GGGG¤¤¤¤aaèè¤¤¤¤ƒƒ
+üƒƒƒƒ¤¤¤¤¤¤TTÛÛ
+Š˜TTÛÛ˜˜ßßX
+Jœœ##œœ##fXXXßßXX#####XXXXððDð
+Ÿ
+Ÿ&&­
+Ÿ
+Ÿ­ðð
+â
+â&&&&&4­»‹‹GGGG¤¤¤¤aaèè¤¤¤¤ƒƒ
+
+ƒƒƒƒ
+–
+–¤¤¤¤TT
+FT˜˜˜˜TT
+ÍÛ˜˜X
+JXXœœœœ##fXfffffXœœ##œœ
+JXß
+Ñiiþð
+Ÿ
+Ÿ
+&­­­­ððii­­&&&4­­‹‹‹
+}
+ÀÎGG¤¤+
+Ú
+Ú
+Úè
+ü
+üƒ‘ƒ‘‘ƒ+TTT
+F˜˜˜˜TT
+ÍÛ
+Š
+Š
+JXXXœœœœ##fXffttfXœœœœXfß
+Ñiiþð­­&4­­­­ððii­­&&
+&
+Ÿ
+Ÿ‹‹
+}‹Î
+ÀGG¤¤+
+Ú
+Úè
+Ú
+ü
+ü
+uƒƒ‘‘ƒ+++TTÛ
+Í
+JXßßßßßßœœ##ªªª¸1#
+JXXXXXXXßßXX&&4&­­­­44­­ii
+â
+âii
+[i
+Ÿ
+Ÿ&&‹
+}‹
+}
+}
+}aaaaèè
+Ú
+Ú+ƒƒ
+ü
+ü
+ü
+
+
+¤
+–
+–¤+9²¤TTÛ
+Í
+
+
+JXßßßß
+Ñ
+Ñœœœœœª#
+JXXXXXXXßßXX&&&
+­­­­44­­
+[
+[ððii
+[i­­&&
+}‹‹
+}
+}
+}aaaaèèèè+++++‘‘
+ü
+ü
+ü
+
+
+¤
+–¤²+²¤TTTT˜¦˜˜XXXXßßXXœ
+Ž
+Žœœœœ
+Ž
+Ñ
+ÑXX
+Ñ
+Ñ
+Ñ
+Ñßíßß­
+Ÿ&&­­­­­­&&
+[
+[ððiiii­­&&‹‹‹‹‹‹èöaaaaao¤¤++++¤¤‘‘‘ƒƒƒ
+ü
+ü¤
+–
+–¤++TTTT
+Š˜˜˜XXXXßßXXœ
+Ž
+Žœœœœ
+Ž
+Ñ
+ÑXX
+Ñ
+Ñ
+Ñ
+Ñßíßß­
+Ÿ&&­­­­­­&&
+[
+[ððwwii
+Ÿ
+Ÿ&&‹‹‹‹™™èöaaaaao¤¤++¤¤ƒƒ‘ƒƒƒ
+ü
+ü²¤
+–¤++¬¬%%%%%%hhhh
+á
+áhh[[ââââ[[
+ö
+ö
+ö
+³Á::ŽŽœŽ
+Ä
+ÄKKYYÒÒ
+Ä
+ÄÒÒYY
+Ä
+Ä))))
+
+
+¢¾¾°)
+
+¢°°°ŽŽàÒÒÒ33
+ž
+ž%%¬ºTTÍÍ6666½½½½DD
+¯
+¯66½Ë¬¬%%%%%%hhhh
+á
+áhh[[ââââ[[
+ö
+ö
+ö
+³Á::ŽŽŽœÒÒYYYY
+Ä
+Ä
+Ä
+Ä
+Ä
+ÄKK
+Ä
+Ä
+7))))°°°¾)
+
+¢°°°ŽŽàÒÒÒ%%
+ž
+ž33¬ºTTÍÍ
+(
+(66½½½½66
+¯
+¯66
+¯½¬º3%%%
+ž
+ž
+Zhïïh
+Zhh[[âââââ
+Ô
+ö
+ö
+ö
+ö::::
+€Ž
+€ŽŽœÒÒÒÒÒ
+ÄK
+=KK
+Ä
+Ä
+=K
+Ä
+Ä
+¢°°
+¢
+¢°)))7°°))°
+¢ŽŽYKÒ
+Ä%%
+ž
+ž
+ž¬¬¬TFFFŠŠ6D
+¯½6D½½6666½½
+¯
+¯¬º3%33
+ž
+ž
+Zhïïvhvv[[âââââ
+Ô
+ö
+ö::::Žœ
+€ŽŽœ
+Ä
+ÄÒÒÒ
+ÄYKKK
+Ä
+Ä
+=K
+Ä
+Ä
+¢°
+¢°
+¢°)))7¾¾77°
+¢ŽŽYKÒ
+Ä%%¬¬
+ž¬
+žºTFFFŠŠD6
+¯½6D½½6666½½½½ïïhhvh
+Z
+Zhhhh
+áïhv[[ââ
+Ô
+Ô[[:HÁÁ
+öÒÒKKÒÒÒÒKK
+ÄÒÒÒKK
+€
+€Žœ)
+))))))llóóóóó
+åŽŽÒÒKKhhvvhhhhÛÍFFyy
+ky  ‡y6666
+¯½½½ïïhhvhhhhhhh
+áïh
+Z[[ââââ[[:HÁÁ
+ö
+ö
+Ä
+ÄKKÒÒÒÒKK
+ÄÒÒÒYY
+€
+€Žœ)
+))))))ll
+å
+åóóóŽŽÒÒKKhhvvhhhhÍ
+¿FF
+k
+k
+ky  y
+k6666½
+¯½½ïï
+á
+áï
+áhhhhïï
+áïv
+Z
+Ô
+Ô
+Ôâi[
+Ô
+Ô::H:}}KK
+ÄÒÒÒYKÒ
+ÄKKKKYY#°°))))))
+å
+å
+å
+åózzŽŽ
+=KKKhhhh
+á
+á
+á
+á
+8
+8FFŠŠy
+k
+ò
+òyy
+ò
+ò666DËË66
+á
+á
+á
+áï
+áhhhh
+á
+á
+áïhh
+Ô
+Ô
+Ôâi[
+Ô
+ÔHHH:}}KK
+ÄÒÒÒYK
+ÄÒKKKKYY°°))))))
+å
+å
+å
+åó
+ållŽŽ
+=KKKhhhh
+á
+á
+á
+áFFFFŠŠy
+k
+ò
+òyy
+ò
+òDDD6ËË66ŠŠ˜ŠFFFFŠŠŠŠFFÍ
+¿ŸŸŸŸ
+Ô
+Ôââ[[
+Ôâ&&­Ÿ
+€
+€KKÒ
+Ä
+ÄÒÒÒ))°°°°
+¢°))))llll)
+
+)°
+¢
+)
+å
+ållllllhhïïhh
+á
+áFFFFŠŠŠŠ
+
+
+Ð
+Ð
+Ð
+Ð½½½½DD½
+¯˜˜˜ŠFFFF
+|
+|ŠŠTTÍ
+¿ŸŸŸŸââââ[[
+Ôâ&&Ÿ
+‘
+€
+€KKÒ
+Ä
+ÄÒÒÒ))
+¢
+¢
+¢
+¢°
+¢))))llll)
+
+)°
+¢
+)
+å
+ållllllhhïïhh
+á
+áFFFFŠŠŠŠ››
+Ð
+Ð
+Ð
+Ð½½
+¯
+¯66
+¯½˜˜FF
+¿
+¿ÛÍÍ
+¿
+‘Ÿi[
+Ô
+Ô[[[[ŸŸŽŽYKÒÒŽŽŽŽÒ
+ÄKK))°°
+¢
+¢
+
+
+¢°°°zzóó))))))
+¢
+¢ll
+å
+ålló
+å
+á
+áïï
+áï
+á
+áÍÍÍÍ˜Š""""ÞÞÞÞ½½½
+¯½
+¯6DŠŠ
+8
+8
+¿
+¿Í
+¿Í
+¿
+‘Ÿ[
+M
+Ô
+Ô[[[[ŸŸŽŽ#KYÒÒŽŽŽŽÒàKK))
+¢
+¢
+¢
+¢))°¾°°llóó))))))
+¢
+¢ll
+å
+åll
+åó
+á
+á
+á
+á
+áï
+á
+áÍÍÍÍ˜Š""""ÞÞÞÞËËË½½
+¯6D
+¿
+¿
+¿
+¿
+¿ÍÍÍ
+|
+|[[ââ
+Ô
+Ô
+Ôâ&&&ŽŽKKKK
+ÄàYK°°))ll
+å
+å
+åózz°
+¢°°°°°°)7)
+
+å
+åll
+å
+ålzï
+á
+á
+á%3º
+ž
+¿ÍFFFFFF"""›››©  666D
+¿
+¿
+¿
+¿
+¿ÍÍÍ
+|
+|[[
+Ô
+Ô
+Ô
+Ô
+Ôâ&&&ŽŽKKKK##ÒÒKY°°))ll
+å
+å
+åózz¾°°°°°°°)77)óóll
+å
+ålzï
+á
+á
+á%3¬¬
+¿ÍFFFFFF"›››©  
+ò
+ò666DÍ
+¿FFTTÍÍŠ
+|â
+Ô[[
+M
+M
+Ô
+ÔŸŸ
+‘ŸŸŸKKKK#œŽKKÒÒ))°°
+å
+å
+^
+^
+å
+åóó°°))°°7)°°77l
+^l
+^
+å
+åóóï
+á
+á
+á%%%%ÍÍÍÍÍ
+¿FF››"››yy
+ò
+ò66½ËÍ
+¿FFTTÍÍŠ
+|
+Ôâ[[
+M
+M
+Ô
+ÔŸŸŸ­ŸŸKKKK#œŽKK
+Ä
+Ä))°°óóll
+å
+åóó
+¢
+¢))°°7)°°77l
+^l
+^
+å
+åóóï
+á
+á
+á%%%%ÍÍÍÍÍ
+¿FF
+
+"
+
+yy  66½
+¯FTFFFFÍÍÍÍÍ
+¿
+€ŽŽŽŽŽ	ùlzó
+ållll	ùŽŽŽ
+€°°°°llllŽŽŽŽKKKKŽŽ
+Ä
+ÄÒÒ
+‘
+‘
+Ô
+Ôââ
+‘
+‘&Ë½66
+ò  
+ò  ‡‡‡yyyhh
+á
+á
+á
+á
+Z
+Z%%¬¬%%%%F
+8FFFF
+¿
+¿ÍÍÍ
+¿
+€ŽŽŽŽŽzló
+ållll	ùŽŽŽ
+€°°°°llllŽŽŽŽKK
+=
+=ŽŽ
+Ä
+ÄÒÒ
+‘
+‘
+Ô
+Ôââ
+‘
+‘&4Ë½66
+ò  
+ò  ‡‡‡yyyhh
+á
+á
+á
+áhh%%¬¬%%%%FFÍ
+¿
+¿
+¿FFÍÍFFŠ
+|
+€
+€Ž
+€zzll
+åóllŽ
+€ŽŽŽŽ°°
+¢
+¢
+å
+å
+åóŽŽŽŽ
+Ä
+Ä
+Ä
+ÄŽœŽŽ
+Ä
+Ä
+Ä
+ÄŸŸ
+‘Ÿ
+‘Ÿ
+M[[i&&ËË66yyyyyyyyyyyyhhhh
+Zhïïº¬¬¬¬¬%%FFÍ
+¿	±ÍTTÍÍFFŠ
+|
+€
+€Ž
+€llll
+åóll
+€Ž
+€
+€ŽŽ°°
+¢
+¢	×	×
+åóŽŽŽŽÒÒ
+Ä
+ÄŽœŽŽ
+Ä
+Äü
+ÄŸŸ
+‘Ÿ
+‘Ÿ
+M[[i½½66yyyy
+k
+kyyyy
+k
+khh
+Z
+Z
+Zhïïº¬¬¬¬¬33FFÍÍŠŠŠŠKKÒÒŽŽ))°
+¢
+å
+ållŽŽ
+Ä
+ÄÒÒzl
+^	P
+^
+^
+åóYK
+Ä
+ÄÒàYKÒÒYKÒÒgK&&
+‘
+‘
+Ô
+Ô[[[[i
+M66
+¯
+¯
+(6
+¯
+¯
+¯
+¯½½½Ë66¬
+ž
+ž
+ž¬¬33¬¬¬¬¬¬3%FFÍÍ	õŠŠŠŠ
+=
+=
+Ä
+ÄŽŽ))°
+¢
+å
+åll
+€
+€ÒÒÒÒl
+^l
+^ll
+åóYK
+Ä
+ÄÒàYKÒÒYKÒÒKK&&
+‘
+‘
+Ô
+Ô[[[[[[66
+¯
+¯
+(6
+¯
+¯½½½½
+¯½
+(
+(
+ž¬
+ž
+ž¬¬33¬¬¬¬¬¬A3ÍÍFFŠŠ	õŠŠ
+|
+|
+=
+=KK))))
+^
+^
+å
+åŽŽŽŽ
+ÄÒYKll
+^ló
+å
+åóYgÒÒYYKKKKKKKKYKŸŸŸŸ
+‘
+‘&
+Ô
+Ô[[
+Ô
+ÔâðD6
+(
+(
+(
+(6
+(6666
+¯
+¯
+(6%3%%¬¬%%¬¬¬¬33¬¬ÍÍFFŠŠŠŠŠŠKKKK))))
+^
+^
+å
+åŽŽŽŽÒ
+ÄKYlllzó
+åóYgÒÒKKKKKKKKYYYKŸŸŸŸŸŸ&
+Ô
+Ô[[âââðD6
+(
+(666
+(
+(
+(66
+¯
+¯
+(63%%%¬¬%%¬¬¬¬33¬¬
+¿
+¿Í
+¿FFÍÍ
+á
+á
+á
+á¬¬3%))°°óóóó°°°°))7)ÒÒKYŽœÒ
+ÄKKKKÒàóóllll
+å
+åKKÒÒ#ÁÁ
+³
+³::
+³
+³
+,:ÏÏÁÁHHyy
+ò
+ò  
+ò
+ò››››
+
+ŠŠŠŠŠŠhhhhvhhhÍÍÍ
+¿FF
+¿Û
+á
+á
+á
+á¬¬3%77°°
+å
+åóó°°°°)EE7ÒÒKYŽœÒ
+ÄKKKKÒàóóllllóóYYÒÒÁÁÁÁ::
+³
+³:HÏÏÁÁHHyy
+ò
+ò
+ò
+ò
+ò
+ò››››
+
+ŠŠŠŠŠŠhhhhvh
+Z
+ZFFFFÍ
+¿
+8Fhhhh%%%%°°))llll°°°°)7E7KK
+ÄÒœŽŽŽKKKK
+Ä
+ÄKKóózzzzóààYYœŽœœÏÏÏÁÁÁ
+³
+³::ÁÁ::ÁÁyy  ‡y
+ò
+ò""©©ŠŠŠŠ
+á
+áhhhhhhFFFFÍ
+¿
+8Fhhhh%%%%
+¢
+¢))zzll°°°°)77)KK
+ÄÒŽœŽŽKKKKÒÒKKóózzzzóÒÒYYªœœœÏÏÏÁ
+³
+³
+³
+³::ÁÁ::ÁÁyy  y
+k
+ò
+ò››ŠŠŠŠ
+á
+á
+Z
+ZhhhhÍÍ
+¿
+¿FFFF¬
+ž%%¬¬¬¬
+å
+å
+^
+^77°
+¢
+¢°))lll
+^KK
+=KYYÒ
+ÄŽŽŽŽŽŽ77ÌÌEE¾¾ÒÒÒàªª##‹‹‹}}}
+ö
+ö::Á
+³}
+o
+o}½½6Dy
+k
+ky
+Ð
+Ð
+Ð
+Ð››FFFFTTÍ
+¿	Ó
+á
+á
+áïïhhÍÍ
+¿
+¿FFFF¬
+ž%%¬¬¬¬
+å
+åll))°
+¢°
+¢))lll
+^KKKYYY
+ÄÒŽŽ#œœŽŽ77ÌÌEE¾¾ÒÒàÒªª##‹‹‹}}}
+ö
+ö::Á
+³}
+o
+o}
+¯
+¯
+(6y
+k
+ky
+Ð
+ÐÞÞ››FFFFFFÍ
+¿
+áïïïïïhhbTFF
+8FÍÍ¬
+ž%%¬¬¬¬óóll))°
+¢))))óóllÒÒKYÒÒÒÒŽŽŽœ7E¾ÌÌÚEEàààà##œœ}}}}
+³
+³::}‹
+ö
+ö66
+¯½y
+k	ä
+òWeeW
+›ÍÍÍ
+¿FTFFïïïïï
+áhhFTFFFTÛÛ¬
+ž%%
+ž
+ž
+ž
+ž
+å
+åll77°
+¢))))óóllÒÒKYÒÒÒÒŽŽœŽ##E7¾ÌÌÚSS
+îîî##œœ}}}}ÁÁ::}‹
+ö
+ö66
+¯½y
+k
+ò WeW
+I
+›""ÍÍÍÛTFFF
+á
+áïïýïhhFFÍÛ˜ŠŠŠ	õ
+o
+o
+o}ÏÁÁÁ
+‘Ÿ&
+Ôââ
+Ô::::}}
+öŸ­&&44&&»»444BBPùÝddëÝÝÝœœŽ
+€#YYKK
+€Ž	ù
+¿
+¿ÍÍŠŠÍÍF
+8
+|ŠŠ˜˜ŠTTFF
+¿
+¿
+¿Í˜˜FFÍÛ˜ŠŠŠ	õ
+o
+o
+o}Á
+³
+³
+³
+‘Ÿ&
+Ôââ
+Ô::::}}
+ö­»444444»»44B4BPùùddëÝëëªªœŽ#YYKK
+€Ž
+¿
+¿ÍÍŠŠÍÍTFŠ
+|
+|ŠŠ
+|TTTT
+¿
+¿
+¿ÍŠŠ
+|
+|FFÍÍ
+|
+|
+o
+o
+ö
+ö:::HŸŸ&&[[[[
+³ÁH:4BPB4&»»4444»ÉB^ùùddrd11œŽŽŽYYKKœœTFÍ
+¿FFFFŠŠŠŠÍÛÍÛTF
+¿
+¿
+|
+|FF
+¿
+¿	õŠŠ
+o
+o
+ö
+ö:::HŸŸ&&[[[[ÁÏH:4BBP4&­­BB44»ÉPˆ[?dddV##Žœœœ##YYKKŽŽFTÛÍTTFFŠŠŠŠ
+¿ÍÍÛTFÍÍÍ
+¿FFFFFFŠŠŠŠ
+³
+³::}}
+ö
+öâðââi[[[HHVH}}}}iiw…­­»»þðð4PåÈ¬	Ñµ§™™ààÒÒ##YYÒÒŽŽÍÍÍÍŠŠ
+|
+|TFÍÍFFFF
+8FTTTFÍÛ˜ŠÍ
+¿FFFFFFŠŠŠŠ
+³
+³::}}
+ö
+öâðââi[[[HHHV}}}}[[iw­­ÉÉþððB^9äÈÃµ§™™ààÒÒYYÒÒŽŽ
+¿
+¿ÍÍŠŠ
+|
+|TFÍÍFFTTFTTTTFÍÛ˜ŠFFFF
+¿
+¿ÍÍ
+,:ÁÁ}}[[[[[iâ
+ÔHHHH‹}
+ö
+ö[[[i­­»»wwðþÉ×z²OA	Ãµ§§§ààÒÒŽŽYYàÒŽŽŽŽFFÍÍ˜ŠFF
+¿
+¿
+8FTTÍÍÍÍÍÍTbFFFF
+¿
+¿ÍÍ:HÁÁ}}[[ii[iâ
+ÔHH::}‹
+ö
+ö[[[i­­­­iiðþ×ÉlˆûíÑ§§™™™ààÒÒœœggàÒŽŽŽŽFFÍÍŠ˜
+8
+8
+¿
+¿
+8FTTÍÍÍÍ
+¿
+¿Tb	õh
+Zhh¬¬%%
+á
+á
+á
+á¬º¬¬Ÿ­ŸŸââ[[ÁÁH:‹‹
+ö&&ŸŸââââ}}­»44w…“¡¯¯(wwððÒÒÒÒÒÒÒà¾¾77zl
+å
+å
+%¬¬%%¬¬
+ž
+ž
+ž
+ž%%¬¬¬¬3%33%%ŠŠŠŠ
+¿
+¿FF
+Zhhh
+ž
+ž%%
+á
+á
+á
+á¬ººº­Ÿ
+‘
+‘
+Ô
+Ô[[ÁÁH:}}
+öŸŸââââ‹‹­»44w…“¡““þwwððÒÒÒÒààÒà°°77zl
+å
+å
+%¬¬33¬¬¬¬¬¬33ºº¬¬3%3333ŠŠŠŠ
+¿
+¿FFhhïï
+ž
+ž%%h
+Z
+á
+á%3ºº&
+
+
+
+	Æ
+ÔââÁÁH:}}}
+o
+‘
+‘&ââââ}‹}‹‹™™‹44­»ððþ…“…wþððâÒÒÒÒààYY77°°zll
+^
+%¬¬¬¬¬¬¬¬¬¬3333%%%%¬¬33ŠŠŠŠÍÍFFhhïï
+ž
+ž33h
+Z
+á
+á%3ºº&
+ÔâââÁÁH:}}
+o}
+‘
+‘&ââââ‹}}‹‹™§™44»­ðððþiww…þðâ
+ÔÒÒÒÒÒÒYY77¾¾zll
+^
+%¬¬¬¬¬¬¬¬¬¬%%33%%%%¬¬33ŠŠŠŠÛÛTT¬¬¬¬
+á
+áïï
+á
+á
+á
+á
+ž¬33­ŸŸŸŸŸ}}}}}}}}[
+Mââ
+Ô
+Ô
+Ôâ}}‹‹HVVV­­»­iiðð­­&B44Ÿ­ŽŽŽŽŽŽŽŽ°°¾¾777)¬
+ž33ïïhh
+á
+áïïvhïý%%¬¬¬
+ž%3˜ŠTTTT¬¬¬¬
+á
+áïïïï
+á
+á
+ž¬%%­ŸŸŸŸŸ}}}}}}}}[
+Mââ
+Ô
+Ô
+Ôâ}}‹‹:HHHŸ»»­iiðð­­4444Ÿ­ŽŽŽŽŽŽŽŽ°°°°))7)¬
+ž33ïïhh
+á
+áïïvhýï%%¬¬¬
+ž%3˜ŠTTTT¬¬%%hh
+áïïýïï333%
+‘
+‘&&ŸŸŸŸ}
+o}‹™‹}}â	Æ[i
+Ô
+Ôââ}}}}::
+³Á
+‘­Ÿ­ðâii»­4&Ÿ­Ÿ­ŽŽœŽ¾¾°°
+¢°°°3%¬¬ïïhh
+Zhïïvvïï33¬¬¬¬
+ž¬¦˜TTTT¬¬33hh
+áïïýïïAAA3ŸŸ&&ŸŸŸŸ}
+o}‹‹}}}
+Ô
+Ô[iââââ}}}}::ÁÏŸŸŸ­
+Ôâii­»4&Ÿ­­ŸŽŽ
+€Ž°°°°°¾°°3%¬¬ïïhhhvýývvïï33¬¬ºº¬º¦˜TTTTDDDD
+¯
+¯
+¯½eeeeÅýL"
+Ä
+ÄÒÒYYÒ
+Ä))))lllz[[[[ŸŸ}}::HH[[[[ŸŸ&&HVÏÁ}‹}}YKKK
+=KÒ
+ÄŽŽYYKYÍÍÍÍ33ººýýhhWWWWÞÞWe½½DD  ‡y6666
+¯
+¯½Ëeee5mh"ÒÒÒÒKKÒ
+Ä))))lllz[[[[ŸŸ‹‹::::[[[[ŸŸ&&HVÏÁ}
+o}}KYY
+=
+=KÒ
+ÄŽŽYYKYÛÛÍÍ33ººïïhhWWeeììeW½½66  y‡
+(6Ë½
+(6½½WWWeáýZ0YYKYYYÒÒ))))llllâ
+Ô
+Ôâ&}}
+öÁ
+³
+³Áâ
+Ô[[&&­­HVHH}
+o
+ö
+öÒàYKÒÒÒ
+ÄœŽÒ
+ÄÒÒŠ˜˜˜ÛéÛÍºº33vh
+áïWWWWeeìÞ6666  
+(6½
+¯
+(6½½WWWe©©0"YYKYYYÒÒ))))llzzâ
+Ôâ
+Ô&}}
+ö
+³	¥
+³Áâ
+Ô[[&&­­HVHH}
+o
+ö
+öÒàKYÒÒÒ
+ÄœŽÒ
+ÄÒÒŠ˜˜˜ÍÛÍÛºº33h
+Z
+áïWWeeeeÞ
+Ð6666 
+ò 
+ò66½½66½½WWWW"YY
+ÄÒŽŽzzó
+å
+å
+ålz[[ââ&
+‘
+‘}‹
+ö
+o
+o
+o
+oââââ[iââ‹‹H:::YYKKŽŽKYYYÒÒKKÍÍTTÍÍÍÍºº¬¬ï
+áhh"""ÞÞÞ
+Ð66
+¯
+¯6DË
+¯66½½DD½½WWe
+I"KK
+ÄÒŽŽzzó
+åóólz[[ââ
+
+ŸŸ‹™
+ö}}}}ââââ
+M[ââ‹‹
+ö:H::YYKKŽŽ
+=KKKÒÒKKÍÍTTÍÍ
+¿
+¿¬¬¬¬ï
+áhh"ÞÞÞ
+Ð66
+¯
+¯6D½½66DD6D½½WWÞ
+Ð
+›
+
+ÒÒ
+Ä
+Ä
+å
+å
+å
+ållzˆiiiiŸŸ&‹µ}}}}i[
+Ôâ
+Ô
+Ô[
+M}}:HÁÁYYKYŽŽKYKKYYÒÒFFFbFFÍÍ33¬¬hhhh››
+ÐÞÞÞ66
+¯½½½6D66666D½½WWÞ
+Ð›
+
+
+
+Ä
+Ä
+Ä
+Ä
+å
+å
+å
+ållzˆii[[ŸŸ&
+o}}}‹‹[
+M
+Ôâ
+Ô
+Ôi[}}HVÁÁKKKYŽŽKYKKYYÒÒFFFFFFÍÍ33¬¬vvvv››""
+ÐÞÞÞ66½Ë½½6DìÞWW››©›yyyy66
+¯
+¯
+^lóóll
+å
+å
+^lll°°7)ŸŸ&::ÁÁ::::
+‘ŸŸŸ
+ö
+ö}}
+å
+å
+åóóóll
+ÄÒYKŽŽÍÍTT¬º¬¬ýïýïWWWW"››››""""ìÞee
+
+©·‡‡yy66½½lzóóllóó
+^lll°°)7ŸŸ&::ÁÁ::::
+‘Ÿ
+‘
+‘
+ö
+ö}}
+å
+å
+åóóóllÒàYKŽŽÍÍTT
+ž¬¬¬
+áïýïWWWW0"©
+››""ÞÞWe›
+" yy6
+(
+¯
+¯óóllóólz
+å
+å
+^
+^))
+¢¾&ŸŸ
+‘ŸÁÁHHH:Ï
+³
+
+	è
+ö‹‹‹}
+o
+o
+å
+ållzˆóóÒÒÒÒ
+€ŽŠŠFFÍÍ%%33hhïïWeWW"""›››
+
+Ð
+ÐWe›
+" 
+òyyD6½½óóllóózl
+å
+ål	P
+
+°°&ŸŸ
+‘ŸÁÁHHH:ÁÁ
+
+üÚ	è}}‹}
+o
+o
+å
+ålllzóóÒÒÒÒŽ
+€ŠŠFFÍÍ%%33vv
+á
+á
+IWWW""""
+""›››
+WWWW
+IWÞ
+Ð	ä	ä
+ò
+ò½½DDzlllóóóóll
+å
+å
+^
+^óó[[
+ÔâŸŸ&ÏÁH:}}}}ŸŸŸŸ
+‘
+‘
+³
+³::}}
+o
+o)))7óóllÒÒÒÒŽŽFFFFhhhhvv
+á
+á
+››©©©©©WWÞÞ››©›WWWWWeÞ
+Ð	ä	ä
+ò
+ò½½DDzlllóóóóll
+å
+å
+^zóó[[
+ÔâŸŸ&ÏÁH:
+o
+o
+o
+oŸŸŸŸ
+‘
+‘ÁÁHH}}
+o
+o)))7óóllÒÒÒÒŽŽ#TTFFhhhhhh
+á
+á
+›©›››©©WWÞÞ››©›
+Ð
+Ð
+Ð
+ÐWWÞ
+Ð
+k
+kyyDD
+¯½zzóózzll
+å
+ållllzlââ[[ÁÁ::
+ö	è
+ö
+öŸ­ŸŸÏÏHH}
+o))))llzlKK
+=KœœTFFF
+áïï
+á
+á
+á
+á
+á"©›""›©ÞÞWW"››
+Ð
+Ð
+Ð
+ÐWWÞ
+Ð
+k
+kyy66
+¯½zzóózzll
+å
+ållzzzl
+Ô
+Ô[[ÁÁ::
+ö
+ö
+ö­ŸŸŸ&&&&ÏÏHH}
+o))
+
+lˆˆzKKKYœœTFFF
+áïï
+á
+á
+á
+á
+á"›
+""
+›ÞÞWW"0››
+ú
+ú
+·
+·
+·
+·>>
+·Åzl
+åó77))
+å
+åll
+¢¾))
+Ä
+Ä
+ÄÒŽŽŽŽlllzó
+å
+å
+å
+‰—¥¥————
+™
+™
+
+§µ<.ë
+Ýddëëëë—¥——
+ª
+ª¸¸
+ª
+ª11uuü
+î11
+ª¸11¸¸ƒƒ
+î
+î
+ú
+ú
+·
+·
+·
+·>>ÅÓl
+^
+åó))))
+å
+åll
+¢¾))
+Ä
+Ä
+ÄÒœœŽŽlllzó
+å
+å
+å
+‰———————
+™
+™
+
+§µ.<ë
+Ýddëëëë¥———,¸¸¸¸¸¸11uuü
+î11
+ª¸??¸¸uu	à	à
+ú
+ú>>>>L>>>
+å
+å
+^
+^))7)
+^
+^ll))°°ÒÒÒ
+ÄœœœŽ
+å
+åll
+å
+åll—¥¥¥———¥§
+™
+™
+™
+™
+™§Ã
+Ý
+Ý
+Ý
+Ýëdd¥————¥¸¸11?111
+î
+î
+î
+î¸
+ª
+ª¸????üü
+g
+g
+s
+s
+ú
+ú>>>>L>>>
+ú
+ú
+å
+åll77E7llll))°°àààÒœœœŽ
+å
+åll
+å
+åll—¥—————¥§
+™
+™
+™
+™
+™§§ë
+Ý
+Ý
+Ý
+Ýër
+V—¥———¥¸¸11
+#111
+î
+î
+î
+î¸
+ª
+ª¸????üü
+g
+g
+·
+·>>>>>
+0
+úÅÅÅÅ
+å
+åll77°°))))l
+^llœŽ#))°
+¢ll
+åó——ÚÚSS————rd
+V
+V
+Ý
+Ýrd
+Ý
+Ýdd .µ§SaÚÚ———¥¸¸11üüü
+îuuuu¸¸??
+
+uuuuü
+î
+·
+·>>>>
+0>
+ú
+sÅÅÅÅ
+å
+åll77°°))77zlll##Ž
+€1#))
+¢°ll
+åó¥¥ÚÚSS——¥¥rddd
+Ý
+Ýrd
+Ý
+Ýdd .µ§SaÚÚ¥¥¥—
+ª
+ª11üüü
+îuuuu¸¸11üüuuuuü
+î
+0>>>ÅÅ
+·Å
+s
+s
+s
+s>>>>
+å
+åll°¾
+¢
+¢
+)77óll#Ž
+€wÆŽ¾
+¢)7
+å
+åll—¥¥¥aaÚÚ———¥€r
+Ý
+Ýdddd
+Ý
+Ýdd  
+™
+™SaÚÚ¥¥³—11¸¸ü
+ü
+î
+îüuu¸¸
+ª¸uuuu
+îü
+î
+î
+0>>>ÅÅÅ
+·
+s
+s
+s
+s>>>>
+å
+åll¾°
+¢
+¢
+)77óllŽ
+€ŽŽ°°)7
+å
+å
+^
+^—¥——SS	¾Ú———¥€r
+Ý
+Ýdddd
+Ý
+Ýdd  
+™
+™SaÚÚ————11ÆÆ
+ü
+î	à
+îüuu
+ª
+ª
+ª¸uuuuü
+
+î
+î
+s
+sÅ
+·>>
+Ù
+Ù
+R
+R
+°
+¢°°7)
+¢
+¢
+Ä
+Ä
+ÄÒœœŽ
+€
+Ä
+ÄÒÒŽŽYKKK
+Ä
+Ä
+=
+=
+î
+ü
+î
+ª
+ª
+ª¸uuuu
+gu
+î
+îµµ....§§
+™
+™
+™
+™dd
+Vd??¸¸uuuu¸
+ª11??
+ª
+ª—¥——
+Ì
+ÌSSÚÚSa¥
+‰
+s
+sÅ
+·>>
+Ù
+Ù``*°
+¢°°)
+
+¢
+¢
+Ä
+Ä
+ÄÒœœŽ
+€
+Ä
+ÄÒÒŽŽ#YKKK
+Ä
+ÄKKüüü
+î
+ª
+ª¸Æuuuuu
+g
+î
+î
+™
+™....§§§§
+™
+™dd
+Vd??¸¸uuuu¸
+ª1111¸¸—¥
+‰¥ÚÚaaÚöaS——
+s
+s
+úÅÅÅÅ
+Ù
+Ù
+Ùç£
+•
+¢°7)
+¢
+¢¾°
+Ä
+Ä
+ÄÒœŽ
+Ä
+Ä
+Ä
+ÄYKKKKKKKƒƒƒu1111
+î
+îu
+guuuu  §§§§  .   ddddÆ¸¸¸uuuu?11
+#
+ª
+ª11——,ÚÚaaÚèÚÚ¥———
+úÅÅÅÅ
+Ù
+Ùçõ£
+•	”
+¢)
+
+¢¾°
+¢
+Ä
+Ä
+ÄÒŽ
+€	ù
+Ä
+Ä
+Ä
+ÄYKKKKKKKƒƒƒu1111
+î
+îu
+guuuu  §§§§  <...rrddÆ¸¸¸uuuu?11
+#
+ª
+ª11——ÚÚaaÚèÚÚ¥———
+0>
+·
+·
+ú
+ú££
+•
+•££))°°
+¢¾7)ŽŽÒ
+Ä
+Ä
+Ä
+€
+€
+€
+€ÒÒYYœŽŽŽŽœ1?¸¸
+îüüüu
+g
+î
+îƒƒ
+î
+î  §§drëùŽrrrëùëë11¸¸u
+guu??¸
+ª
+î
+î
+î
+îaaaa———¥ÚÚaSaaaa>L
+·
+·
+ú
+ú££
+•
+•££))
+¢
+¢°°)7ŽŽÒ
+Ä
+Ä
+Ä
+€
+€
+€
+€ÒÒggœŽ
+€
+€
+€Ž1?¸¸
+îüüüƒuüüuu
+î
+î  §§drùërrddëùëë11¸¸uƒuu11
+ª¸
+î
+î
+î
+îSSSS
+‰
+‰—¥ÚÚaSaaaaL>>>
+s
+s
+s*££*±£)))))7°°ÒÒKK
+€
+€	ù	ù
+ÄàYYŽŽ¸¸¸¸uu
+î
+îuu
+îüuuü
+î§§  ddëëddddddëë1?11uuü
+î11
+ª¸u
+g
+g
+gS
+EÚ
+Ì
+‰—ÚÚaSÚÚÚÚL>>>
+s
+s
+s
+££*£
+•)))))7°°ÒÒKKŽŽ	ù	ùÒîYYŽŽ¸¸¸¸uu
+î
+îuu
+îüuuü
+î§§  ddëëddddddëë1?11uu
+îü??
+ª¸u
+guuaSÚ
+Ì
+‰—ÚÚaSÚÚÚÚqqqq----
+È
+È
+È
+È
+ÈÖäÖ
+ö
+ö
+ö‹™&ŸŸ&&ŸŸ[[[[âððâ
+ö
+ö}}}}}}1?¸
+ª
+î
+îuu?111
+ª
+ª11
+‰—SSSSuuüüüüü
+î††
+ÿBB
+»É.   
+Ý
+Ýdd——,,¥—¥—aaÚÚqqqq----ÖÖ
+È
+ÈÖääÖ
+ö
+ö<ß	t<4&ŸŸ&&
+‘
+‘[[[[âðâ
+Ô
+ö
+ö}}}}}}1?¸
+ª
+î
+îuu?111¸¸
+#
+#
+‰—SSSSuuüü
+
+
+ü††
+ÿBB
+»É.   
+Ý
+Ýdd——,¥—¥—SSÚÚqqqq
+¦
+¦
+¦
+¦OO
+È
+ÈÖä]]
+öµ%#¿*%Û3^4­ŸŸ­ŸŸ
+Ô
+Ô
+Ô
+Ô[[[[
+ö
+ö}}
+ö}}¸¸1?ƒuuu¸
+ª11??
+ª
+ª
+SSÚÚuuüüuƒüü††ÉÉBB§§  dddd
+‰—,SSSSqqqq
+¦
+¦
+¦
+¦OO
+È
+ÈäÖOO.3,/3‘5­3‘"±ˆB­Ÿ
+‘ŸŸŸ
+Ô
+Ô
+Ô
+Ô[[
+M
+M
+ö
+ö}}
+ö}}¸¸?Mƒuuu¸
+ª????
+ª
+ª
+SS
+Ì
+Ìuuüüƒu
+î
+î
+ÿ
+ÿ††
+»
+»BB§§  ddrr
+‰—,SSSS
+ê
+êqq´´´´OOOOOOÖä‹µ¬-Ä444*šÉ­­ŸŸŸŸ&â
+Ô
+Ô
+Ô
+ö	è
+ö
+ö}}
+ö
+öƒƒüüM?¸¸11
+ª¸??¸
+ªSSaa
+E
+E
+Ì
+Ìuƒüü¸¸11
+x
+x††BBÉÉ <§§  ..ÚÚÚ
+Ì
+ÌÚ
+ÌÚèèaSSS
+Ì
+Ì
+ê
+êqq´´´´OOOOOOÖä‹µ¬)Œ1ü41ü å­­­­­ŸŸ&&&â
+Ô
+Ô
+Ô
+ö
+ö
+ö}}uuüü?1
+ª
+ª11
+ª¸??¸
+ªSSSSSS
+Ì
+Ìuƒüü
+ª
+ª11††
+x
+xBBÉÉ..§§  ..ÚÚ
+ÌÚÚ
+Ì
+ÌÚÚÚ
+ESSSÚÚqqøø----OOOOÖ
+ÈÖäÃ3)Œ0î-Ääl4ŸŸ&&ŸŸŸŸŸŸ[[
+Ô
+Ô
+ö
+ö
+ö
+ö
+o
+o}}üüuu11111111¸¸Æ¸
+ÌÚÚ
+Ì
+Ì
+Ì
+E
+E
+îüuu
+ª
+ª
+ª
+ª
+x
+x
+ÿ
+ÿÉ
+»	­
+»..§§  
+™§aaÚÚSSSSSS
+Ì
+ÌaSSaqqøø----OOOOÖ
+ÈÖä§ßÈ ÈXB&ŸŸ&&ŸŸŸŸŸŸ[[
+Ô
+Ô
+ö
+ö
+ö
+ö
+o
+o}}
+î
+îƒ
+g11111111¸ÔÆ¸
+ÌÚèÚ
+Ì
+ÌSSü
+îuu
+ª
+ª
+ª
+ª††
+ÿ
+ÿ
+»É
+»É..§§  
+™§aaÚÚSSSSSSÚÚaSSa;;--´´´´
+È
+È
+È
+È
+Ôâðþ^zlPðð[[ŸŸŸ
+‘::Á
+³
+,
+,
+³
+³
+³
+³::
+ö
+ö}}
+E
+ES
+E
+‰—SSÚÚ¥Á:——S
+E
+ÌÚüüüü¸
+ª
+#
+#BPBB
+ÿ
+ÿ†††”††††††¥———uu
+
+‘uuu;;--´´´´
+È
+È
+È
+Èâ
+Ô
+Ôâ4444ââ[[ŸŸŸ
+‘::Á
+³
+,
+,ÁÁ
+³
+³::
+ö
+ö}}SSaS—
+‰SSÚÚ————aS
+ÌÚüüüü¸
+ª
+#
+#BPBB
+ÿ
+ÿ†††”††††††—¥——uu
+&Ÿƒuu´Â---;;-OOÖ
+È’’’’
+Ô
+Ô
+M[Ÿ­&&[[[[ŸŸÁÁH:
+³
+³::::ÁÁ}
+o
+ö
+öÚ
+ÌÚÚ————SS
+ÌÚ——————aSSaüü
+î
+î1111BBÉ
+»††††††
+ÿ††————¥—
+‰—üü
+&&ü
+î
+¦´;;-;;-OOÖ
+È’’’’ââ[i­Ÿ[[[[ŸŸÁÁ:HÁÁ::::ÁÁ‹}
+ö
+öÚ
+ÌÚÚ————
+E
+E
+ÌÚ————¥¥aSaSüü
+î
+î1111BB×É††””””
+ÿ
+ÿ
+ÿ††————¥——¥
+
+
+
+
+ü
+î                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
