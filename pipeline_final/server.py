@@ -1,13 +1,7 @@
-#Data object is an abstract class for accessing raw data from survey and feed it into program in the appropraite format.
 '''
-Instance Attributes:
-    - str raw : unprocessed raw data in CSV or HTML format
-    - str processed: processed data in desirable format (list?, or just text file and do readline())
-    - Useful quantities parse columns into list and store as attributes(?) 
+The Server object is an abstract class for accessing raw data from survey and feeds it into program in the appropraite format.
 '''
-# import survey
-# import mast
-# import gator
+
 import astropy.units as u
 from astroquery.vizier import *
 #from astropy.coordinates import SkyCoord
@@ -37,18 +31,6 @@ class Server(object):
     
     def __str__(self):
         return "The {} Server Object".format(self.name)
-
-    @abstractmethod
-    def surveyFieldConverter(self,ra,dec,clean,*args):
-        '''
-        Returns which field the object lies in the survey
-        the output and implementation of this method is hihgly dependent on survey structure
-        Note: even though "clean" is optional, the parameter field stil needs to be written in to conform to method calls in rc3.py
-        
-        ex) SDSS => run,camcol,field
-            2MASS => Tiles designation
-        '''
-        raise NotImplementedError()
 
 
     #########################
@@ -93,4 +75,16 @@ class Server(object):
                 lst.append(rc3_matches[0]['_DEJ2000'].data[i])
                 other_rc3s.append(lst)
         return other_rc3s
+        
+    @abstractmethod
+    def surveyFieldConverter(self,ra,dec,clean,*args):
+        '''
+        Returns which field the object lies in the survey
+        the output and implementation of this method is hihgly dependent on survey structure
+        Note: even though "clean" is optional, the parameter field stil needs to be written in to conform to method calls in rc3.py
+        
+        ex) SDSS => run,camcol,field
+            2MASS => Tiles designation
+        '''
+        raise NotImplementedError()
 
