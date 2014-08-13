@@ -84,22 +84,20 @@ class RC3(RC3Catalog):
         for i in result :  
             if (survey.data_server.name=='Gator'):
                 survey.data_server.getData(band,ra,dec,margin,survey)
-                #out = i #designation
-                #print out
+                out = i #designation
+                print out
             elif (survey.data_server.name=='SkyServer'):
                 survey.data_server.getData(band,str(i[0]), str(i[1]),str(i[2]))
-                #out = "frame-"+str(band)+"-"+str(i[0]).zfill(6)+"-"+str(i[1])+"-"+str(i[2]).zfill(4)
+                out = "frame-"+str(band)+"-"+str(i[0]).zfill(6)+"-"+str(i[1])+"-"+str(i[2]).zfill(4)
             elif (survey.data_server.name=='DSSServer'):
                 survey.data_server.getData(band,ra,dec,margin)
                 # Keeping just the number not the string portion of PhotoPlate
-                #out = str(i[10:])
-                #print ("dss_out: "+out)
+                out = str(i[10:])
+                print ("dss_out: "+out)
             else:
                 raise TypeError("Missing implementation for data retrieval")
-	out = str(self.pgc)
-
+	#out = str(self.pgc)
         os.chdir("../")
-        
         if (DEBUG) : print("Creating mosaic for "+band+" band.")
         #outfile_r = "{}_{}_{}_{}r.fits".format(survey.name,band,ra,dec)
         #outfile = "{}_{}_{}_{}.fits".format(survey.name,band,ra,dec)
@@ -125,8 +123,11 @@ class RC3(RC3Catalog):
                     # And continue source infoing, don't mask as not in footprint
                     # if (os.path.exists("../../{}".format(outfile))):
                     #     os.system("rm -r {}".format("../../{}".format(outfile)))
-                    shutil.move(outfile,"../..")
+		    print (out+".fits")
+		    print (outfile)
+                    shutil.move(out+".fits","../..")
                     os.chdir("../../")
+		    os.rename(out+".fits",outfile)
                     os.system("rm -r {}".format(survey.best_band))
                     return outfile
                 print (os.getcwd())
@@ -336,10 +337,14 @@ class RC3(RC3Catalog):
                         info[pgc]= [ra,dec]
 		    #print ("AFTER:{} ,{}".format(pgc,self.pgc))
                     print ("info"+str(info))
-                    print ("The galaxy that we want to mosaic is: "+str(info[self.pgc]))
-                    new_ra= info[self.pgc][0]
-                    new_dec = info[self.pgc][1]
-		    sc.write("{}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,self.pgc))
+                    try:
+		    	print ("The galaxy that we want to mosaic is: "+str(info[self.pgc]))
+                        new_ra= info[self.pgc][0]
+                        new_dec = info[self.pgc][1]
+	       	        sc.write("{}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,self.pgc))
+		    except(KeyError):
+			print ("KeyError can not find this pgc")
+ 			return [-1,-1,-1,-1,-1]
                 else:
                     print ("Source is Obvious")
                     n=1 # if no source confusion then just keep the maximum radius
@@ -425,7 +430,7 @@ class RC3(RC3Catalog):
 	print (filename)
         os.mkdir(filename)
         #filename = "{},{}".format(str(ra),str(dec)        
-    	source_confusion_error = open("../source_confusion_error.txt",'a') 
+    	source_confusion_error = open("../source_confusion_unresolved_error.txt",'a') 
     	if os.path.isfile(filename):
 		source_confusion_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
     		filename = "{}_{}".format(str(pgc),n)
