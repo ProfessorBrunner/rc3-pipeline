@@ -97,9 +97,11 @@ def XMLparse(band,ra,dec,margin):
                 print (url)
                 if (i/5>1): # Assuming the highly unlikely case that there are more than 2 photographic plates spanning the search area
                     #preventing other downloads to override the initial file
-                    filename = "DSS_{}_{}_{}_{}.fits".format(band,str(ra),str(dec),str(i/5))
+                    #filename = "DSS_{}_{}_{}_{}.fits".format(band,str(ra),str(dec),str(i/5))
+		    filename = "DSS_{}_{}.fits".format(band,str(i/5))
                 else:
-                    filename = "DSS_{}_{}_{}.fits".format(band,str(ra),str(dec))
+                    #filename = "DSS_{}_{}_{}.fits".format(band,str(ra),str(dec))
+		    filename = "DSS_{}.fits".format(band)
                 b = url.split("/")[-1][:-9]
                 # print ("{},{}".format(b,i))
                 # Assigning url to only Band Filters specified by param
