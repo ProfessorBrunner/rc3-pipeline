@@ -9,6 +9,7 @@ from astropy.io import fits as pyfits
 import os
 import shutil
 from math import trunc
+import glob
 import sqlcl
 import sys 
 import fnmatch
