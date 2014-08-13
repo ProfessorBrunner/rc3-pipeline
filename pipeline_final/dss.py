@@ -1,4 +1,4 @@
-# Survey Class for the Digitized Sky Survey
+# Survey Class for the Digitized Sky Survey (Digitized Palomar Observatory Sky Survey)
 from survey import *
 class DSS(Survey):
     def __init__(self):
@@ -13,6 +13,6 @@ class DSS(Survey):
         self.pixel_scale = 1.7
         # Mosaic Program Settings
         self.sextractor_params= " -PIXEL_SCALE {}".format(self.pixel_scale)
-        # Changes to STIFF param tested in 07-31-2014 Notebook 
-        self.stiff_param_low = " -COPY_HEADER Y -MAX_TYPE QUANTILE   -MAX_LEVEL 0.99 -COLOUR_SAT  1 -MIN_TYPE QUANTILE -MIN_LEVEL 0.001  -GAMMA_FAC 1 "
-        self.stiff_param_best = " -COPY_HEADER Y -MAX_TYPE QUANTILE  -MAX_LEVEL 1 -COLOUR_SAT  1 -MIN_TYPE QUANTILE -MIN_LEVEL 0.7 -GAMMA_FAC 0.9" 
+        # Changes to STIFF param tested in 07-31-2014 Notebook (Switching around low and best parameter from visual comparison)
+        self.stiff_param_low =  " -COPY_HEADER Y -MAX_TYPE QUANTILE  -MAX_LEVEL 1 -COLOUR_SAT  1 -MIN_TYPE QUANTILE -MIN_LEVEL 0.7 -GAMMA_FAC 0.9"
+        self.stiff_param_best = " -COPY_HEADER Y -MAX_TYPE QUANTILE   -MAX_LEVEL 0.99 -COLOUR_SAT  1 -MIN_TYPE QUANTILE -MIN_LEVEL 0.001  -GAMMA_FAC 1 "

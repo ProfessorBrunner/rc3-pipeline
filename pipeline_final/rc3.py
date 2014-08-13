@@ -180,8 +180,8 @@ class RC3(RC3Catalog):
         hdulist[0].header['RA']=ra
         hdulist[0].header['DEC']=dec
         hdulist[0].header['RADIUS']=radius
-        print ("Finished mosaic_band on {}".format(pgc))
-	hdulist[0].header['PGC']=pgc
+        # print ("Finished mosaic_band on {}".format(pgc))
+        hdulist[0].header['PGC']=pgc
         hdulist[0].header['NED']=("http://ned.ipac.caltech.edu/cgi-bin/objsearch?objname="+ str(hdulist[0].header['PGC'])+"&extend=no&hconst=73&omegam=0.27&omegav=0.73&corr_z=1&out_csys=Equatorial&out_equinox=J2000.0&obj_sort=RA+or+Longitude&of=pre_text&zv_breaker=30000.0&list_limit=5&img_stamp=YES")
         hdulist[0].header['CLEAN']=clean
         hdulist[0].header['MARGIN']=margin
@@ -288,7 +288,7 @@ class RC3(RC3Catalog):
                 new_dec='@'
                 # catalog = open("test.cat",'r')
                 n=-1
-                sc = open ("../source_confused_rc3.txt","a")
+                sc = open ("../{}_source_confused_rc3.txt".format(survey),"a")
                 if (len(distances)!=0):
                     # if there is source confusion, then we want to keep the nth largest radius
 	  	    #sc.write("{}       {}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii, self.pgc))
@@ -439,7 +439,7 @@ class RC3(RC3Catalog):
 	print (filename)
         os.mkdir(filename)
         #filename = "{},{}".format(str(ra),str(dec)        
-    	source_confusion_error = open("../source_confusion_unresolved_error.txt",'a') 
+    	source_confusion_error = open("../{}_source_confusion_unresolved_error.txt".format(survey),'a') 
     	if os.path.isfile(filename):
 		source_confusion_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
     		filename = "{}_{}".format(str(pgc),n)

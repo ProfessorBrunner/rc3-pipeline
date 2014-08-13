@@ -67,7 +67,7 @@ class RC3Catalog(Catalog):
 			except(AssertionError):
 				print("Something went wrong in mosaicing PGC {}".format(str(obj.pgc)))
 				if (not (os.path.exists("rc3Catalog.py"))):
-					# if we are not in the Outer directory where rc3Catalog.py Is located at 
+					# if we are not in the outer directory where rc3Catalog.py is located at 
 					# then we are stuck inside some sort of position directory.
 					# Must get out to prevent spiraling recursion.
 					print (os.getcwd())
