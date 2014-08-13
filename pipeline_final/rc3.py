@@ -288,7 +288,7 @@ class RC3(RC3Catalog):
                 new_dec='@'
                 # catalog = open("test.cat",'r')
                 n=-1
-                sc = open ("../{}_source_confused_rc3.txt".format(survey),"a")
+                sc = open ("../{}_source_confused_rc3.txt".format(survey.name),"a")
                 if (len(distances)!=0):
                     # if there is source confusion, then we want to keep the nth largest radius
 	  	    #sc.write("{}       {}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii, self.pgc))
@@ -439,7 +439,7 @@ class RC3(RC3Catalog):
 	print (filename)
         os.mkdir(filename)
         #filename = "{},{}".format(str(ra),str(dec)        
-    	source_confusion_error = open("../{}_source_confusion_unresolved_error.txt".format(survey),'a') 
+    	source_confusion_error = open("../{}_source_confusion_unresolved_error.txt".format(survey.name),'a') 
     	if os.path.isfile(filename):
 		source_confusion_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
     		filename = "{}_{}".format(str(pgc),n)
