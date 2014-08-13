@@ -91,12 +91,20 @@ class RC3(RC3Catalog):
                 out = "frame-"+str(band)+"-"+str(i[0]).zfill(6)+"-"+str(i[1])+"-"+str(i[2]).zfill(4)
             elif (survey.data_server.name=='DSSServer'):
                 survey.data_server.getData(band,ra,dec,margin)
+                # since we can not pass in th pgc number in getData of dssServer class, we rename the file here to conform with RC3's filename expectation for the imaging data
+                # may have to glob glob all raw*.fits later
+                raw_data = glob.glob("raw_*.fits")
+                print (raw_data)
+                for i in raw_data:
+                    os.rename(i,"DSS_{}_{}.fits".format(band, self.pgc))    
+                
                 # Keeping just the number not the string portion of PhotoPlate
-                out = str(i[10:])
+                # out = str(i[10:])
+                out = "raw_{}_{}".format(band,self.pgc)
                 print ("dss_out: "+out)
             else:
                 raise TypeError("Missing implementation for data retrieval")
-	#out = str(self.pgc)
+        #out = str(self.pgc)
         os.chdir("../")
         if (DEBUG) : print("Creating mosaic for "+band+" band.")
         #outfile_r = "{}_{}_{}_{}r.fits".format(survey.name,band,ra,dec)
@@ -111,7 +119,7 @@ class RC3(RC3Catalog):
             print ("m:{}".format(margin))
             try:
                 print ("2m:{}".format(2*margin))
-                print ([outfile,outfile,ra,dec,2*margin])
+                print ([outfile_r,outfile,ra,dec,2*margin])
                 montage.mSubimage(outfile,outfile,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
             except(montage.status.MontageError):
                 print ("montage_wrapper.status.MontageError: mSubimage: Region outside image.")
@@ -123,11 +131,11 @@ class RC3(RC3Catalog):
                     # And continue source infoing, don't mask as not in footprint
                     # if (os.path.exists("../../{}".format(outfile))):
                     #     os.system("rm -r {}".format("../../{}".format(outfile)))
-		    print (out+".fits")
-		    print (outfile)
+                    print (out+".fits")
+                    print (outfile)
                     shutil.move(out+".fits","../..")
                     os.chdir("../../")
-		    os.rename(out+".fits",outfile)
+                    os.rename(out+".fits",outfile)
                     os.system("rm -r {}".format(survey.best_band))
                     return outfile
                 print (os.getcwd())
@@ -279,7 +287,7 @@ class RC3(RC3Catalog):
                 new_dec='@'
                 # catalog = open("test.cat",'r')
                 n=-1
-		sc = open ("../source_confused_rc3.txt","a")
+                sc = open ("../source_confused_rc3.txt","a")
                 if (len(distances)!=0):
                     # if there is source confusion, then we want to keep the nth largest radius
 	  	    #sc.write("{}       {}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii, self.pgc))
@@ -338,7 +346,7 @@ class RC3(RC3Catalog):
 		    #print ("AFTER:{} ,{}".format(pgc,self.pgc))
                     print ("info"+str(info))
                     try:
-		    	print ("The galaxy that we want to mosaic is: "+str(info[self.pgc]))
+                        print ("The galaxy that we want to mosaic is: "+str(info[self.pgc]))
                         new_ra= info[self.pgc][0]
                         new_dec = info[self.pgc][1]
 	       	        sc.write("{}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,self.pgc))
