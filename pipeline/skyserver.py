@@ -29,11 +29,13 @@ class SkyServer(Server):
             count += 1 
         #print (result)
         if (len(data)>0):
-            while (data[0][0][1:6]=="ERROR"):
-                #Case where doing more than 60 queries in 1 minute
-                print("ERROR: Too much query in 1 minute. Sleep for 60 second.")
-                time.sleep(60)
-                data = self.query(query)
+            if (len(data[0])>0):
+                # print (data)
+                while (data[0][0][1:6]=="ERROR"):
+                    #Case where doing more than 60 queries in 1 minute
+                    print("ERROR: Too much query in 1 minute. Sleep for 60 second.")
+                    time.sleep(60)
+                    data = self.query(query)
         return (data)
 
     def getData(self,band,run, camcol,field,rerun=301):	

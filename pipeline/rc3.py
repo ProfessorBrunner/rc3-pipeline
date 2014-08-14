@@ -436,7 +436,6 @@ class RC3(RC3Catalog):
     	print ("Working on {}".format(self.pgc))
 	    # filename = "{},{}".format(str(ra),str(dec))
         filename  = str(self.pgc)
-	print (filename)
         os.mkdir(filename)
         #filename = "{},{}".format(str(ra),str(dec)        
     	source_confusion_error = open("../{}_source_confusion_unresolved_error.txt".format(survey.name),'a') 
