@@ -109,9 +109,9 @@ def XMLparse(band,ra,dec,margin):
                     print('POSSIIIR')
                     break
                 i+=1
-        if DEBUG):print (filename)
+        if (DEBUG): print (filename)
         if (DEBUG): print (url)
-        if (DEBUG):print (i)
+        if (DEBUG): print (i)
         os.system("rm result.txt")
         return [filename,url,i]    
 

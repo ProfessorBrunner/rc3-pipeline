@@ -219,7 +219,7 @@ class RC3(RC3Catalog):
             # Remember to switch to command "sextractor" for Ubuntu/ Linux, "sex" for Mac
             # Use this for Mac instead :
             # os.system("sex {} {}".format(survey.sextractor_params, file))
-            os.system("sextractor {} {}".format(survey.sextractor_params, file))
+            os.system("sex {} {}".format(survey.sextractor_params, file))
 
             # A list of other RC3 galaxies that lies in the field
             # In the case of source confusion, find all the rc3 that lies in the field.
@@ -257,7 +257,7 @@ class RC3(RC3Catalog):
                     radius_list.append(radius)
                     coord = np.array([float(line[2]),float(line[3])])
                     sextract_dict[radius]=coord
-            print ("Radius: "+str(radius_list))
+            if (DEBUG): print ("Radius: "+str(radius_list))
             if (len(sextract_dict)>0):
                 #special value that indicate empty list (no object detected by SExtractor)
                 radii='@'
