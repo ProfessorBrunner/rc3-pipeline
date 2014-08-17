@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: rc3_pipeline_v6.aux
+The style file: abbrvnat.bst
+Database file #1: bibtex_database.bib
+Warning--empty journal in efigi
+Warning--empty publisher in rc31991
+Warning--empty journal in edr
+You've used 14 entries,
+            2773 wiz_defined-function locations,
+            685 strings with 12540 characters,
+and the built_in function-call counts, 19481 in all, are:
+= -- 1324
+> -- 2710
+< -- 10
++ -- 902
+- -- 888
+* -- 2123
+:= -- 3330
+add.period$ -- 47
+call.type$ -- 14
+change.case$ -- 334
+chr.to.int$ -- 14
+cite$ -- 31
+duplicate$ -- 320
+empty$ -- 549
+format.name$ -- 906
+if$ -- 3708
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 14
+newline$ -- 83
+num.names$ -- 62
+pop$ -- 677
+preamble$ -- 1
+purify$ -- 321
+quote$ -- 0
+skip$ -- 478
+stack$ -- 0
+substring$ -- 170
+swap$ -- 53
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 149
+warning$ -- 3
+while$ -- 55
+width$ -- 0
+write$ -- 196
+(There were 3 warnings)

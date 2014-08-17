@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  14 AUG 2014 00:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  18 AUG 2014 00:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**rc3_pipeline_v5.tex
-(./rc3_pipeline_v5.tex
+**rc3_pipeline_v6.tex
+(./rc3_pipeline_v6.tex
 LaTeX2e <2014/05/01>
 Babel <3.9k> and hyphenation patterns for 78 languages loaded.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/elsarticle/elsarticle.cls
@@ -88,7 +88,7 @@ File: upsy.fd 2001/06/04 font definitions for U/psy.
 \@sep=\skip43
 \@@sep=\skip44
 
-(./rc3_pipeline_v5.spl)
+(./rc3_pipeline_v6.spl)
 (/usr/local/texlive/2014/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip45
@@ -97,7 +97,7 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count94
 )
 \splwrite=\write3
-\openout3 = `rc3_pipeline_v5.spl'.
+\openout3 = `rc3_pipeline_v6.spl'.
 
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/geometry/geometry.sty
@@ -157,8 +157,8 @@ Package caption3 Info: TeX engine: e-TeX on input line 57.
 \c@subfigure=\count99
 \c@subtable=\count100
 )
-(./rc3_pipeline_v5.aux)
-\openout1 = `rc3_pipeline_v5.aux'.
+(./rc3_pipeline_v6.aux)
+\openout1 = `rc3_pipeline_v6.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
@@ -269,170 +269,175 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 10.
+(Font)              <7> on input line 15.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 10.
+(Font)              <5> on input line 15.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 25.
+(Font)              <8> on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 25.
+(Font)              <6> on input line 26.
 
-Overfull \hbox (7.80615pt too wide) in paragraph at lines 11--27
+Overfull \hbox (7.80615pt too wide) in paragraph at lines 16--31
 \OT1/cmr/m/n/10 Sur-vey (2MASS),The Palo-mar Dig-i-tal Sky Sur-vey (DPOSS),
- []
-
-
-Overfull \hbox (3.62543pt too wide) in paragraph at lines 38--44
-[]\OT1/cmr/m/n/10 Original Ref-er-ence Cat-a-logue of Bright Galax-ies (CITE)
- []
-
-
-Overfull \hbox (0.4449pt too wide) in paragraph at lines 38--44
-\OT1/cmr/m/n/10 uni-form up-date ``col-lected from 150 dif-fer-ent sources" ,ea
-ch
- []
-
-
-Overfull \hbox (2.09213pt too wide) in paragraph at lines 45--46
-[]\OT1/cmr/m/n/10 (INSERT FIG-URE WITH ONE OB-JECT MO-SAICED
  []
 
 [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Overfull \hbox (5.90932pt too wide) in paragraph at lines 52--54
-[]\OT1/cmr/m/n/10 (TALK ABOUT HOW SDSS IMAG-ING DATA IS PRO-
+Overfull \hbox (2.09213pt too wide) in paragraph at lines 49--50
+[]\OT1/cmr/m/n/10 (INSERT FIG-URE WITH ONE OB-JECT MO-SAICED
  []
 
+<figures/SDSS_120_LOW.jpg, id=16, 211.79124pt x 211.79124pt>
+File: figures/SDSS_120_LOW.jpg Graphic file (type jpg)
 
-Overfull \hbox (6.74608pt too wide) in paragraph at lines 52--54
+<use figures/SDSS_120_LOW.jpg>
+Package pdftex.def Info: figures/SDSS_120_LOW.jpg used on input line 67.
+(pdftex.def)             Requested size: 78.29681pt x 78.29689pt.
+
+<figures/DSS_120_BEST.jpg, id=17, 300.12125pt x 300.12125pt>
+File: figures/DSS_120_BEST.jpg Graphic file (type jpg)
+
+<use figures/DSS_120_BEST.jpg>
+Package pdftex.def Info: figures/DSS_120_BEST.jpg used on input line 68.
+(pdftex.def)             Requested size: 78.29681pt x 78.29529pt.
+
+<figures/2MASS_120_BEST.jpg, id=18, 211.79124pt x 211.79124pt>
+File: figures/2MASS_120_BEST.jpg Graphic file (type jpg)
+
+<use figures/2MASS_120_BEST.jpg>
+Package pdftex.def Info: figures/2MASS_120_BEST.jpg used on input line 69.
+(pdftex.def)             Requested size: 78.29681pt x 78.29689pt.
+
+Overfull \hbox (6.74608pt too wide) in paragraph at lines 51--74
 \OT1/cmr/m/n/10 CESSED; SEE PHO-TO-LITE PA-PER LUT-PON) The SDSS
  []
 
-<figures/pipeline.png, id=16, 711.65875pt x 940.51375pt>
+<figures/pipeline.png, id=19, 711.65875pt x 940.51375pt>
 File: figures/pipeline.png Graphic file (type png)
 
 <use figures/pipeline.png>
-Package pdftex.def Info: figures/pipeline.png used on input line 69.
+Package pdftex.def Info: figures/pipeline.png used on input line 92.
 (pdftex.def)             Requested size: 261.0pt x 344.92786pt.
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 69--71
+Overfull \hbox (9.0pt too wide) in paragraph at lines 92--94
 [][] 
  []
 
-[2 <./figures/pipeline.png>]
-<figures/navigator.png, id=23, 636.6987pt x 565.1514pt>
+[2 <./figures/SDSS_120_LOW.jpg> <./figures/DSS_120_BEST.jpg> <./figures/2MASS_1
+20_BEST.jpg>] <figures/navigator.png, id=25, 636.6987pt x 565.1514pt>
 File: figures/navigator.png Graphic file (type png)
 
 <use figures/navigator.png>
-Package pdftex.def Info: figures/navigator.png used on input line 81.
+Package pdftex.def Info: figures/navigator.png used on input line 100.
 (pdftex.def)             Requested size: 261.0pt x 231.67044pt.
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 81--82
+Overfull \hbox (9.0pt too wide) in paragraph at lines 100--101
 [][] 
  []
 
-<figures/PGC58b4SC.jpg, id=24, 61.22874pt x 61.22874pt>
+<figures/PGC58b4SC.jpg, id=26, 61.22874pt x 61.22874pt>
 File: figures/PGC58b4SC.jpg Graphic file (type jpg)
 
 <use figures/PGC58b4SC.jpg>
-Package pdftex.def Info: figures/PGC58b4SC.jpg used on input line 99.
+Package pdftex.def Info: figures/PGC58b4SC.jpg used on input line 118.
 (pdftex.def)             Requested size: 62.63968pt x 62.64119pt.
 
-<figures/PGC58afterSC.jpg, id=25, 143.53625pt x 143.53625pt>
+<figures/PGC58afterSC.jpg, id=27, 143.53625pt x 143.53625pt>
 File: figures/PGC58afterSC.jpg Graphic file (type jpg)
 
 <use figures/PGC58afterSC.jpg>
-Package pdftex.def Info: figures/PGC58afterSC.jpg used on input line 104.
+Package pdftex.def Info: figures/PGC58afterSC.jpg used on input line 123.
 (pdftex.def)             Requested size: 62.63968pt x 62.63925pt.
 
-Overfull \hbox (61.20319pt too wide) in paragraph at lines 97--107
+Overfull \hbox (61.20319pt too wide) in paragraph at lines 116--126
 []$[]$$[]$ 
  []
 
 
-Overfull \hbox (6.19496pt too wide) in paragraph at lines 111--120
+Overfull \hbox (6.19496pt too wide) in paragraph at lines 130--139
 []\OT1/cmr/m/n/10 Large galax-ies tends to form grav-i-ta-tion-ally bound struc
 -
  []
 
-<figures/hierarchy.jpg, id=26, 667.49374pt x 804.00375pt>
+[3 <./figures/pipeline.png> <./figures/navigator.png>]
+<figures/hierarchy.jpg, id=33, 667.49374pt x 804.00375pt>
 File: figures/hierarchy.jpg Graphic file (type jpg)
 
 <use figures/hierarchy.jpg>
-Package pdftex.def Info: figures/hierarchy.jpg used on input line 122.
+Package pdftex.def Info: figures/hierarchy.jpg used on input line 141.
 (pdftex.def)             Requested size: 261.0pt x 314.38217pt.
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 122--123
+Overfull \hbox (9.0pt too wide) in paragraph at lines 141--142
 [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3 <./figures/navigator.png> <./figures/PGC58b4SC.jpg> <./figures/PGC58afterSC.
-jpg>] [4 <./figures/hierarchy.jpg>]
-Overfull \hbox (0.1393pt too wide) in paragraph at lines 151--152
-[]\OT1/cmr/m/n/10 In the source con-fu-sion al-go-r-thim, we store the galax-
+[4 <./figures/PGC58b4SC.jpg> <./figures/PGC58afterSC.jpg> <./figures/hierarchy.
+jpg>]
+Overfull \hbox (0.1393pt too wide) in paragraph at lines 170--171
+[]\OT1/cmr/m/n/10 In the source con-fu-sion al-go-rithm, we store the galax-
  []
 
 
-Overfull \hbox (2.25034pt too wide) in paragraph at lines 152--153
+Overfull \hbox (2.25034pt too wide) in paragraph at lines 171--172
 \OT1/cmr/m/n/10 ter-mi-nates cor-rectly in such cases and wrote the prob-
  []
 
-
-Overfull \hbox (8.63824pt too wide) in paragraph at lines 168--172
+[5]
+Overfull \hbox (8.63824pt too wide) in paragraph at lines 186--190
 []\OT1/cmr/m/n/10 For the DPOSS Run, on av-er-age 0.31 galax-ies per minute.
  []
 
 
-Overfull \hbox (4.26436pt too wide) in paragraph at lines 174--185
+Overfull \hbox (4.26436pt too wide) in paragraph at lines 192--203
 []\OT1/cmr/m/n/10 We have pro-vided doc-u-men-ta-tion on GitHub that guides
  []
 
 
-Overfull \hbox (20.7485pt too wide) in paragraph at lines 174--185
+Overfull \hbox (20.7485pt too wide) in paragraph at lines 192--203
 \OT1/cmr/m/n/10 project repos-i-tory: $\OT1/cmtt/m/n/10 https : / / github . co
 m / ProfessorBrunner /
  []
 
-[5]
-Overfull \hbox (3.57176pt too wide) in paragraph at lines 188--191
+
+Overfull \hbox (3.57176pt too wide) in paragraph at lines 206--209
 \OT1/cmr/m/n/8 Foun-da-tion, the Par-tic-i-pat-ing In-sti-tu-tions, the Na-tion
 al Sci-ence Foun-
  []
 
-(./rc3_pipeline_v5.bbl [6]) [7
-
-] (./rc3_pipeline_v5.aux) ) 
+(./rc3_pipeline_v6.bbl [6]) [7] (./rc3_pipeline_v6.aux) ) 
 Here is how much of TeX's memory you used:
- 3805 strings out of 493117
- 57251 string characters out of 6135433
- 144400 words of memory out of 5000000
- 7218 multiletter control sequences out of 15000+600000
+ 3826 strings out of 493117
+ 57744 string characters out of 6135433
+ 140562 words of memory out of 5000000
+ 7236 multiletter control sequences out of 15000+600000
  8092 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,8n,40p,2154b,456s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2014/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmi7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9
-.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
-pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pf
-b></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
-></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on rc3_pipeline_v5.pdf (7 pages, 478783 bytes).
+ 42i,8n,40p,2154b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2014/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2014/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmtt8.pfb>
+Output written on rc3_pipeline_v6.pdf (7 pages, 623454 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 61 compressed objects within 1 object stream
+ 99 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

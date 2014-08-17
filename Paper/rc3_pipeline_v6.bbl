@@ -1,4 +1,4 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{14}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -82,6 +82,14 @@ D.~{Lang}, D.~W. {Hogg}, K.~{Mierle}, M.~{Blanton}, and S.~{Roweis}.
 \newblock \emph{The Astronomical Journal, Volume 139, Issue 5, pp. 1782-1800
   (2010)}, 139:\penalty0 1782--1800, May 2010.
 \newblock \doi{10.1088/0004-6256/139/5/1782}.
+
+\bibitem[{Lupton} et~al.(2001){Lupton}, {Gunn}, {Ivezi{\'c}}, {Knapp}, and
+  {Kent}]{photopaper}
+R.~{Lupton}, J.~E. {Gunn}, Z.~{Ivezi{\'c}}, G.~R. {Knapp}, and S.~{Kent}.
+\newblock {The SDSS Imaging Pipelines}.
+\newblock In F.~R. {Harnden}, Jr., F.~A. {Primini}, and H.~E. {Payne}, editors,
+  \emph{Astronomical Data Analysis Software and Systems X}, volume 238 of
+  \emph{Astronomical Society of the Pacific Conference Series}, page 269, 2001.
 
 \bibitem[{Robitaille} and {Bressert}(2012)]{aplpy}
 T.~{Robitaille} and E.~{Bressert}.
@@ -177,5 +185,11 @@ C.~{Stoughton}, R.~H. {Lupton}, M.~{Bernardi}, M.~R. {Blanton}, S.~{Burles},
 \newblock {Sloan Digital Sky Survey: Early Data Release}.
 \newblock 123:\penalty0 485--548, Jan. 2002.
 \newblock \doi{10.1086/324741}.
+
+\bibitem[{Walton} et~al.(2011){Walton}, {Roberts}, {Mateos}, and {Heard}]{xray}
+D.~J. {Walton}, T.~P. {Roberts}, S.~{Mateos}, and V.~{Heard}.
+\newblock {2XMM ultraluminous X-ray source candidates in nearby galaxies}.
+\newblock \emph{MNRAS}, 416:\penalty0 1844--1861, Sept. 2011.
+\newblock \doi{10.1111/j.1365-2966.2011.19154.x}.
 
 \end{thebibliography}
