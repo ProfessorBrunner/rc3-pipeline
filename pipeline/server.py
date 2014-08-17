@@ -48,23 +48,14 @@ class Server(object):
         Search radius (radius): arcsecond
         Search box (size): arcsecond
         '''
-        # if (survey.name=='2MASS'):
-        #     catalog = 'fp_xsc' #Default as extended source catalog
-        # elif(survey.name=='WISE'):
-        #     #prob 3 Cryo ?
-        #     pass
-        ##############
-        #query = "spatial=box&catalog={}&size={}&outfmt=1&objstr={},{}".format(catalog,str(margin),str(ra),str(dec))
         rc3Cat = Vizier(catalog='VII/155/rc3')
         pos = FK5(ra*u.deg,dec*u.deg)
-	#pos = coordinates.SkyFrame(ra*u.deg, dec*u.deg, frame='fk5')
-#	pos =SkyCoord(ra* u.deg,dec* u.deg, frame='fk5')
-        # print(pos)
+	    #pos = coordinates.SkyFrame(ra*u.deg, dec*u.deg, frame='fk5')
+        #pos =SkyCoord(ra* u.deg,dec* u.deg, frame='fk5')
         rc3_matches=rc3Cat.query_region(pos, radius=2*margin*u.deg)
-        # print (rc3_matches[0])
         other_rc3s=[]
         if (len(rc3_matches)!=0):
-            # It is practically impossible for len to beb zero because the galaxy of interest would always detect itself
+            # It is practically impossible for len to be zero because the galaxy of interest would always detect itself
             # unless we are using it as a rc3 finder for any ra,dec
             print (len(rc3_matches[0]['PGC']))
             for i in range(len(rc3_matches[0]['PGC'])):

@@ -20,8 +20,6 @@ class Catalog(object):
 		'''
 		raise NotImplementedError()
 
-
-
 	@abstractmethod
 	def mosaicAll(self,survey):
 		'''

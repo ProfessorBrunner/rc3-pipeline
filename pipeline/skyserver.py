@@ -1,36 +1,32 @@
-
 # Class for interacting with SDSS's SkyServer
 from  server import Server
 import sqlcl
 import abc 
 import os
 import time
+DEBUG = False
 class SkyServer(Server):
 	#Default constructor
     def __init__ (self):
-    	# print("SkyServer constructor")
+    	if (DEBUG):print("SkyServer constructor")
     	super(SkyServer,self).__init__()
         self.name = 'SkyServer'
 
-	
     def query(self,query):
-        # other_rc3s = sqlcl.query("SELECT distinct rc3.pgc,rc3.ra,rc3.dec FROM PhotoObj as po JOIN RC3 as rc3 ON rc3.objid = po.objid  WHERE po.ra between {0}-{1} and  {0}+{1} and po.dec between {2}-{3} and  {2}+{3}".format(str(rc3_ra),str(margin),str(rc3_dec),str(margin))).readlines()
         result = sqlcl.query(query).readlines()
         data =[]
         count =0
-        # print (result)
+        if (DEBUG): print (result)
         for i in result:
-            # print(i)
             if count>1:
                 list =i.split(',')
                 if (len(list)>2):
                     list[2]= list[2][:-1]
                     data.append(list)
             count += 1 
-        #print (result)
+        if (DEBUG):print (result)
         if (len(data)>0):
             if (len(data[0])>0):
-                # print (data)
                 while (data[0][0][1:6]=="ERROR"):
                     #Case where doing more than 60 queries in 1 minute
                     print("ERROR: Too much query in 1 minute. Sleep for 60 second.")
@@ -71,9 +67,3 @@ class SkyServer(Server):
             query = "SELECT distinct run,camcol,field FROM PhotoObj WHERE  ra between {0}-{2} and  {0}+{2}and dec between {1}-{2} and  {1}+{2}".format(str(ra),str(dec),str(margin))
         return self.query(query)
 
-
-
-    # def test():
-    # 	print ("test")
-    # def str(self):
-    #    super.str(self)
