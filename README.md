@@ -1,5 +1,17 @@
 # Make Digital Images of RC3 galaxies by using SDSS data
+## Software Dependencies
+- Montage : Stitches images togther
+  - AstroPy Montage wrapper
+- SExtractor: Source extraction inside the positional update algorithm
+- STIFF: Generating color images
+- Python v2.7: other versions is fine but minor changes to the code may be necessary
+  ###Packages
+  - NumPy
+  - AstroPy preferably v4 dev for the SkyCoord procedures in the source confusion algorithm, but other AstroPy v3.* is fine, I have included the patch as a comment inside rc3.py
+  - sqlite3 : generates the searchable database. Not necessary for the mosaicing program to run.
+  - Astroquery
 
+Here are [some notes](https://github.com/dorislee0309/workarea-rc3-project/wiki/Installation-on-Factory-Resetted-Mac-OSx-Mavericks) that I made on installing these software on MacOSx
 ##Documentation
 - [Class Information](http://nbviewer.ipython.org/github/ProfessorBrunner/rc3-sdss/blob/master/Documentation/Class%20Information.ipynb)
 - [SDSS Example](http://nbviewer.ipython.org/github/ProfessorBrunner/rc3-sdss/blob/master/Documentation/SDSS%20Example.ipynb)
