@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  18 AUG 2014 20:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  19 AUG 2014 02:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -382,184 +382,167 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 29.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 29.
-
-Overfull \hbox (7.80615pt too wide) in paragraph at lines 20--31
-\OT1/cmr/m/n/10 Sur-vey (2MASS),The Palo-mar Dig-i-tal Sky Sur-vey (DPOSS),
- []
-
-
-Overfull \hbox (11.55606pt too wide) in paragraph at lines 32--44
-\OT1/cmr/m/n/10 1932) which con-tained 1249 ob-jects (mostly galax-ies) brighte
-r
- []
-
-[1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+ [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Overfull \hbox (20.32199pt too wide) in paragraph at lines 69--69
-[][][]\OT1/cmr/m/n/8 http://skyserver.sdss3.org/dr10/en/help/cooking/general/fl
-ags6.aspx| 
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+[][][][]$\OT1/cmtt/m/n/8 http : / / skyserver . sdss3 . org / dr10 / en / help 
+/ cooking /
  []
 
 
-Overfull \hbox (3.0457pt too wide) in paragraph at lines 79--86
-\OT1/cmr/m/n/10 (IRSA) Finder Pro-gram In-ter-face. Each pho-to-graphic plate
+Overfull \hbox (5.97266pt too wide) in paragraph at lines 65--72
+\OT1/cmr/m/n/10 which is re-spon-si-ble for source de-tec-tion, de-blend-ing, m
+odel-
  []
 
-[2] <figures/algorithm.png, id=124, 711.65875pt x 940.51375pt>
+[2] <figures/algorithm.png, id=139, 711.65875pt x 940.51375pt>
 File: figures/algorithm.png Graphic file (type png)
 
 <use figures/algorithm.png>
-Package pdftex.def Info: figures/algorithm.png used on input line 93.
+Package pdftex.def Info: figures/algorithm.png used on input line 90.
 (pdftex.def)             Requested size: 261.0pt x 344.92786pt.
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 93--94
+Overfull \hbox (9.0pt too wide) in paragraph at lines 90--91
 [][] 
  []
 
-<figures/navigator.png, id=129, 636.6987pt x 565.1514pt>
-File: figures/navigator.png Graphic file (type png)
-
-<use figures/navigator.png>
-Package pdftex.def Info: figures/navigator.png used on input line 102.
-(pdftex.def)             Requested size: 261.0pt x 231.67044pt.
-
-Overfull \hbox (9.0pt too wide) in paragraph at lines 102--103
-[][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figures/PGC58b4SC.jpg, id=130, 61.22874pt x 61.22874pt>
+<figures/PGC58b4SC.jpg, id=144, 61.22874pt x 61.22874pt>
 File: figures/PGC58b4SC.jpg Graphic file (type jpg)
 
 <use figures/PGC58b4SC.jpg>
-Package pdftex.def Info: figures/PGC58b4SC.jpg used on input line 121.
+Package pdftex.def Info: figures/PGC58b4SC.jpg used on input line 102.
 (pdftex.def)             Requested size: 83.51744pt x 83.51941pt.
 
-<figures/PGC58afterSC.jpg, id=131, 143.53625pt x 143.53625pt>
+<figures/PGC58afterSC.jpg, id=145, 143.53625pt x 143.53625pt>
 File: figures/PGC58afterSC.jpg Graphic file (type jpg)
 
 <use figures/PGC58afterSC.jpg>
-Package pdftex.def Info: figures/PGC58afterSC.jpg used on input line 127.
+Package pdftex.def Info: figures/PGC58afterSC.jpg used on input line 108.
 (pdftex.def)             Requested size: 83.51744pt x 83.51828pt.
 
-Overfull \hbox (6.19496pt too wide) in paragraph at lines 134--143
+<figures/navigator.png, id=146, 636.6987pt x 565.1514pt>
+File: figures/navigator.png Graphic file (type png)
+
+<use figures/navigator.png>
+Package pdftex.def Info: figures/navigator.png used on input line 125.
+(pdftex.def)             Requested size: 261.0pt x 231.67044pt.
+
+Overfull \hbox (9.0pt too wide) in paragraph at lines 125--126
+[][] 
+ []
+
+
+Overfull \hbox (6.19496pt too wide) in paragraph at lines 115--128
 []\OT1/cmr/m/n/10 Large galax-ies tends to form grav-i-ta-tion-ally bound struc
 -
  []
 
 [3 <./figures/algorithm.png>]
-<figures/hierarchy.jpg, id=141, 667.49374pt x 804.00375pt>
+<figures/hierarchy.jpg, id=156, 667.49374pt x 804.00375pt>
 File: figures/hierarchy.jpg Graphic file (type jpg)
 
 <use figures/hierarchy.jpg>
-Package pdftex.def Info: figures/hierarchy.jpg used on input line 145.
+Package pdftex.def Info: figures/hierarchy.jpg used on input line 130.
 (pdftex.def)             Requested size: 261.0pt x 314.38217pt.
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 145--147
+Overfull \hbox (9.0pt too wide) in paragraph at lines 130--132
 [][]
  []
 
 [4 <./figures/PGC58b4SC.jpg> <./figures/PGC58afterSC.jpg> <./figures/navigator.
 png> <./figures/hierarchy.jpg>]
-Overfull \hbox (1.1776pt too wide) in paragraph at lines 153--154
- []\OT1/cmr/m/it/10 Catalog Ob-jects.[] \OT1/cmr/m/n/10 For the pur-pose of mo-
-saick-ing RC3 galax-
- []
-
-<figures/SDSS_120_LOW.jpg, id=154, 211.79124pt x 211.79124pt>
+<figures/SDSS_120_LOW.jpg, id=168, 211.79124pt x 211.79124pt>
 File: figures/SDSS_120_LOW.jpg Graphic file (type jpg)
 
 <use figures/SDSS_120_LOW.jpg>
-Package pdftex.def Info: figures/SDSS_120_LOW.jpg used on input line 159.
+Package pdftex.def Info: figures/SDSS_120_LOW.jpg used on input line 144.
 (pdftex.def)             Requested size: 156.6016pt x 156.60672pt.
 
-<figures/DSS_120_BEST.jpg, id=155, 300.12125pt x 300.12125pt>
+<figures/DSS_120_BEST.jpg, id=169, 300.12125pt x 300.12125pt>
 File: figures/DSS_120_BEST.jpg Graphic file (type jpg)
 
 <use figures/DSS_120_BEST.jpg>
-Package pdftex.def Info: figures/DSS_120_BEST.jpg used on input line 160.
+Package pdftex.def Info: figures/DSS_120_BEST.jpg used on input line 145.
 (pdftex.def)             Requested size: 156.6016pt x 156.60432pt.
 
-<figures/2MASS_120_BEST.jpg, id=156, 211.79124pt x 211.79124pt>
+<figures/2MASS_120_BEST.jpg, id=170, 211.79124pt x 211.79124pt>
 File: figures/2MASS_120_BEST.jpg Graphic file (type jpg)
 
 <use figures/2MASS_120_BEST.jpg>
-Package pdftex.def Info: figures/2MASS_120_BEST.jpg used on input line 161.
+Package pdftex.def Info: figures/2MASS_120_BEST.jpg used on input line 146.
 (pdftex.def)             Requested size: 156.6016pt x 156.60672pt.
 
-<figures/SDSS_1746_LOW.jpg, id=157, 161.60374pt x 161.60374pt>
-File: figures/SDSS_1746_LOW.jpg Graphic file (type jpg)
+<figures/SDSS_1154_BEST.jpg, id=171, 176.66pt x 176.66pt>
+File: figures/SDSS_1154_BEST.jpg Graphic file (type jpg)
 
-<use figures/SDSS_1746_LOW.jpg>
-Package pdftex.def Info: figures/SDSS_1746_LOW.jpg used on input line 178.
-(pdftex.def)             Requested size: 104.3984pt x 104.39758pt.
+<use figures/SDSS_1154_BEST.jpg>
+Package pdftex.def Info: figures/SDSS_1154_BEST.jpg used on input line 162.
+(pdftex.def)             Requested size: 104.3984pt x 104.39832pt.
 
-<figures/DSS_1746_BEST.jpg, id=158, 297.11pt x 297.11pt>
-File: figures/DSS_1746_BEST.jpg Graphic file (type jpg)
+<figures/DSS_1154_BEST.jpg, id=172, 300.12125pt x 300.12125pt>
+File: figures/DSS_1154_BEST.jpg Graphic file (type jpg)
 
-<use figures/DSS_1746_BEST.jpg>
-Package pdftex.def Info: figures/DSS_1746_BEST.jpg used on input line 179.
-(pdftex.def)             Requested size: 104.3984pt x 104.39807pt.
- [5 <./figures/SDSS_1746_LOW.jpg> <./figures/DSS_1746_BEST.jpg>]
-Overfull \hbox (0.1393pt too wide) in paragraph at lines 210--211
+<use figures/DSS_1154_BEST.jpg>
+Package pdftex.def Info: figures/DSS_1154_BEST.jpg used on input line 163.
+(pdftex.def)             Requested size: 104.3984pt x 104.3983pt.
+ [5 <./figures/SDSS_1154_BEST.jpg> <./figures/DSS_1154_BEST.jpg>]
+Overfull \hbox (0.1393pt too wide) in paragraph at lines 193--194
 []\OT1/cmr/m/n/10 In the source con-fu-sion al-go-rithm, we store the galax-
  []
 
 
-Overfull \hbox (2.25034pt too wide) in paragraph at lines 211--212
+Overfull \hbox (2.25034pt too wide) in paragraph at lines 194--195
 \OT1/cmr/m/n/10 ter-mi-nates cor-rectly in such cases and wrote the prob-
  []
 
 [6 <./figures/SDSS_120_LOW.jpg> <./figures/DSS_120_BEST.jpg> <./figures/2MASS_1
 20_BEST.jpg>]
-Overfull \hbox (5.52605pt too wide) in paragraph at lines 218--226
+Overfull \hbox (5.52605pt too wide) in paragraph at lines 201--209
 []\OT1/cmr/m/n/10 The SDSS and DSS data prod-uct avail-able on the LCDM
  []
 
 
-Overfull \hbox (4.26436pt too wide) in paragraph at lines 218--226
+Overfull \hbox (4.26436pt too wide) in paragraph at lines 201--209
 []\OT1/cmr/m/n/10 We have pro-vided doc-u-men-ta-tion on GitHub that guides
  []
 
 
-Overfull \hbox (20.7485pt too wide) in paragraph at lines 218--226
+Overfull \hbox (20.7485pt too wide) in paragraph at lines 201--209
 \OT1/cmr/m/n/10 project repos-i-tory: []$\OT1/cmtt/m/n/10 https : / / github . 
 com / ProfessorBrunner /
  []
 
 
-Overfull \hbox (3.57176pt too wide) in paragraph at lines 229--232
+Overfull \hbox (3.57176pt too wide) in paragraph at lines 212--215
 \OT1/cmr/m/n/8 Foun-da-tion, the Par-tic-i-pat-ing In-sti-tu-tions, the Na-tion
 al Sci-ence Foun-
  []
 
 (./rc3_pipeline_v6.bbl [7]
-Underfull \hbox (badness 1062) in paragraph at lines 82--85
+Underfull \hbox (badness 1062) in paragraph at lines 92--95
 []\OT1/cmr/m/n/8 Skrutskie, M. F., Cutri, R. M., Stien-ing, R., Wein-berg,
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 236.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 219.
  [8
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 236.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 219.
  (./rc3_pipeline_v6.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 236.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 236.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 219.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 219.
 Package rerunfilecheck Info: File `rc3_pipeline_v6.out' has not changed.
-(rerunfilecheck)             Checksum: B1AF0C441CE33ECA9D7E642FDB1FC49F;1206.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 236.
+(rerunfilecheck)             Checksum: 64DD58FA961E386CEF469D182FCDFC6A;1408.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 219.
  ) 
 Here is how much of TeX's memory you used:
- 7365 strings out of 493117
- 111752 string characters out of 6135433
- 215515 words of memory out of 5000000
- 10688 multiletter control sequences out of 15000+600000
+ 7373 strings out of 493117
+ 111907 string characters out of 6135433
+ 215795 words of memory out of 5000000
+ 10695 multiletter control sequences out of 15000+600000
  8092 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,8n,38p,1374b,485s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -579,10 +562,10 @@ ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on rc3_pipeline_v6.pdf (8 pages, 745253 bytes).
+Output written on rc3_pipeline_v6.pdf (8 pages, 736574 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
- 236 compressed objects within 3 object streams
- 62 named destinations out of 1000 (max. 500000)
- 203 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 289 PDF objects out of 1000 (max. 8388607)
+ 248 compressed objects within 3 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 227 words of extra memory for PDF output out of 10000 (max. 10000000)
 
