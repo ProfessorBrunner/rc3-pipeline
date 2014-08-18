@@ -1,0 +1,11 @@
+Misc. stuff to note
+
+- Fig4 UML, words kind of squished,  goes in appendix? 
+- add Acknowledgement for your NSF grant thing?
+- Flowchart Image for algorthms : no caption is necessary ==> wasted space if made into figure?
+- Use consistent spelling: mosaicking
+
+
+- citation style is elsarticle-harv
+    - no longer using citet
+- add in DSS run information once it finishes running (query the .db)
