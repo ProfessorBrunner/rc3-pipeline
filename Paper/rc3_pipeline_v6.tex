@@ -1,6 +1,7 @@
 
 \documentclass[5p]{elsarticle}
 \usepackage[hypcap]{caption}
+\usepackage{float}
 \usepackage[hidelinks]{hyperref} 
 %\usepackage{natbib}
 \usepackage{natbib}
@@ -48,24 +49,29 @@ usage is still evident in literature. Selected galaxies or complete subsets are 
 There is an non-uniform update of the catalog after the catalog was publish, more accurate position was collected from whatever sources/data they had access to.
 The B2000 coordinates (FK4 frame) in the RC3 catalog are denoted with two different levels of accuracy: HH MM SS.s, DD MM SS for the positions that has been updated  (with accuracy of about 5-8 arcsec) and  HH MM.m, DD MM for galaxies whose positional accuracy remain  1-2 arcminutes in the original catalog.  In the latest version of the catalog (\citet{rc31991}), there remains 5492 RC3 galaxies that fall in the latter group.
 \subsection{Data}
-\begin{figure}[h]
-\centering
-	\includegraphics[width=0.15\textwidth]{figures/SDSS_120_LOW}
-	\includegraphics[width=0.15\textwidth]{figures/DSS_120_BEST}	
-	\includegraphics[width=0.15\textwidth]{figures/2MASS_120_BEST}
-	\caption{PGC120 mosaic using SDSS, DSS, 2MASS data }
-\end{figure}
+\begin{figure*}[!hbt]
+\center
+%\begin{table}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    ~                         & SDSS          & 2MASS              & POSS-II             \\ \hline
+    Imaging bands             & Optical g,r,i & Near-infared J,H,K & Optical R, B,IR     \\ \hline
+    Sky Coverage              & 35.28\%       & 99.998\%           & -----               \\ \hline
+    Resolution (arcsec/pixel) & 0.396         & 2.0                & 1.7                 \\ \hline
+    Imaging Technique         & CCD           & Infared array      & Photographic Plates \\ \hline
+    \end{tabular}
+%\end{table}
+\caption{Comparison of survey and telescope specifications }
+\end{figure*}
 	\subsubsection{SDSS}
-	SDSS is a optical 
-	2.5m telescope at the Apache Point Observatory in New Mexico. We use the imaging data from Data release 10 which is part of the SDSS-III. SDSS-III is dedicated to studying galaxy clustering by looking at signatures of Baryon Acoustic Oscillation,structure and history of the galaxy , and the population of exo-planets. Feeding the SDSS data into the mosaicking pipeline has several advantages over data from other surveys, 
-1) It is  one of the newest all-sky survey so has improved instrumentation and telescope compared to DPOSS. 
-2) (Not actually sure about this??) On a related note, the resolution of SDSS is better than 2MASS and DPOSS.  2MASS has a ``tile" size, each tile is larger than a field in DPOSS ,smaller than Photographic plates in , so each pixel represents ----degree, which is much larger than  SDSS's pixel size of ----. 
-
-(TALK ABOUT HOW SDSS IMAGING DATA IS PROCESSED; SEE PHOTOLITE PAPER LUTPON) 	 The SDSS data is pass through $\texttt{photo}$ pipeline, deblending, source , 
+	SDSS images is taken from a 	2.5m telescope at the Apache Point Observatory in New Mexico. We use the imaging data from Data release 10 which is part of the SDSS-III . SDSS-III is dedicated to studying galaxy clustering by looking at signatures of Baryon Acoustic Oscillation,structure and history of the galaxy , and the population of exo-planets. %Feeding the SDSS data into the mosaicking pipeline has several advantages over data from other surveys, 
+	 It is  one of the newest all-sky survey so has improved instrumentation and CCD photon detection has its obvious throughput advantages over photographic plates of DPOSS. In addition, the resolution of SDSS is better than 2MASS and DPOSS.  2MASS imaging data is consist of large tiles which  tends to smooth out imaging details of a galaxy (especially at its wings) as seen in \autoref{fig:comparison}.
+ The SDSS data is pass through $\texttt{photo}$ pipeline (\citet{photopaper}), which is responsible for source detection, deblending, model-fitting photometric calibration, and other image processing procedures. We record imaging quality information on the data product by using the $\texttt{clean}$ flag in SkyServer. For galaxy and other extended source, the $\texttt{clean}$ flag is defined from data masks with variables describing PSF magnitude error,  interpolation problem,  cosmic rays, undefined profile..etc. \footnote{http://skyserver.sdss3.org/dr10/en/help/cooking/general/flags6.aspx}
+	% clean photometry
 The data is queried using SkyServer through a SDSS Command Line Query Tool. Then the the calibrated, sky-subtracted corrected frame with the calibration meta-data ($\texttt{fpC}$) is retrieved in bulk from the Science Archive Server (SAS). 
 	\subsubsection{2MASS}
-	 The Two Micron All Sky Survey (2MASS; \citet{2mass}) is a infared survey in the J(1.25 $\mu$m), H(1.67 $\mu$m), and K(2.17 $\mu$m) bands. Data taken from two 1.3m telescope  covered 99.998\% of the sky where each overlapping``survey tile" is 6 degree long by 8.5 arcminute strip for telescope schedulling purposes. The raw data processed through the 2MASS Production Pipeline System produces astrometrucally and photometrically calibrated , and source extracted atlas images that we use as inputs for our mosaicing porgram. Since the RC3 catalog contains large galaxies, we narrowed down our imaging data search to  2MASS's  Extended Source Catalogs which contained only 1.6 million objects that are extended with respect to their instantaneous PSF. % instead of Point Source Catalog which contained 471 million identified sources. 
-	 Some of the RC3 galaxies (larger than 120" ) is contained in the 2MASS Large Galaxy Atalas, a subset of the Extended Source Catalog.	(Does 2MASS have more advantage in better seeing ``cooler" object that give off thermal radiation? ) The motivation in using 2MASS data is its large all-sky cover, however since each ``survey tile" is large, the imaging resolution is lower. 3) Also, multiband recombined color image for 2MASS is less of a ``true color" compared to SDSS. When mapping 2MASS's J,H,K band, the relative values show up (which is longest wavelength and shortest), so the contrast in feature is shown. But it is not true color.Since  SDSS is an optical survey, it obviously ``looks" much better than 2MASS's infrared data since mapping g,r,i band to R,G,B is approximately accurate in value. 
+	 The Two Micron All Sky Survey (2MASS; \citet{2mass}) is a infared survey in the near-infared J(1.25 $\mu$m), H(1.67 $\mu$m), and K$_s$(2.17 $\mu$m). Data taken from two 1.3m telescope  covered 99.998\% of the sky where each overlapping``survey tile" is 6 degree long by 8.5 arcminute strip for telescope schedulling purposes. The raw data processed through the 2MASS Production Pipeline System produces astrometrucally and photometrically calibrated , and source extracted atlas images that we use as inputs for our mosaicing porgram. Since the RC3 catalog contains large galaxies, we narrowed down our imaging data search to  2MASS's  Extended Source Catalogs which contained only 1.6 million objects that are extended with respect to their instantaneous PSF. % instead of Point Source Catalog which contained 471 million identified sources. 
+	 Some of the RC3 galaxies (larger than 120" ) is contained in the 2MASS Large Galaxy Atalas, a subset of the Extended Source Catalog.	(Does 2MASS have more advantage in better seeing ``cooler" object that give off thermal radiation? ) The motivation in using 2MASS data is its large all-sky cover, however since each ``survey tile" is large, the imaging resolution is lower.  Also, multiband recombined color image for 2MASS is less of a ``true color" compared to SDSS. When mapping 2MASS's J,H,K band, the relative values show up (which is longest wavelength and shortest), so the contrast in feature is shown. But it is not true color.Since  SDSS is an optical survey, it obviously ``looks" much better than 2MASS's infrared data since mapping g,r,i band to R,G,B is approximately accurate in value. 
 
 %	 - problem with low resolution large tile background
  - The benefit of smoother larger pixels (why?)
@@ -77,12 +83,6 @@ The data is queried using SkyServer through a SDSS Command Line Query Tool. Then
 	% The FITS images are simply cropouts of the photographic plateand the imaging data is from IRSA's  Gator program interface.	 
 \\
 \indent 
-\begin{figure}[h]
- \centering
-	\includegraphics[width=0.2\textwidth]{figures/SDSS_1746_LOW}
-	\includegraphics[width=0.2\textwidth]{figures/DSS_1746_BEST}	
-	\caption{PGC1746 mosaic using SDSS and DSS}
-\end{figure}
 
 Even though DSS has the advantage of a  greater sky coverage than SDSS, objects near the boundary on photographic plates suffers from distortion, [\# What is the name for this distortion effect?] which may result in inaccurate astrometry for those objects.	Another disadvantage of photographic plates is that it is much less sensitive to photons($\approx 1\%$ quantum efficiency) compared to  CCD  ($\approx 80\%$). However, this does not affect the mosaics as much because RC3 objects are bright. 
 	%SDSS imaging is also superior to DPOSS since its CCD-based imaging does not suffer from the same  boundary edge distortion typical artifact of photographic plate imaging.
@@ -154,7 +154,17 @@ Therefore, we compute all the possible distances between any two RC3 galaxies th
 	\paragraph{Catalog}
 	The $\texttt{Catalog}$ class contains a list of objects that lies inside the catalog. Although the use of the Catalog container class seem unnecessary, it enables a clear separation between basic mosaicking functionality for individual galaxies and for the entire catalog. This can be used to study some particular object, executed on all objects in a $\texttt{Catalog}$, or simply used for debugging purposes. This abstraction barrier ensures minimal changes to the code in both classes when an investigator decides to input data from a new survey in the future.
 \section{Results}
+\begin{figure*}[t!]
+\centering
+	\includegraphics[width=0.3\textwidth]{figures/SDSS_120_LOW}
+	\includegraphics[width=0.3\textwidth]{figures/DSS_120_BEST}	
+	\includegraphics[width=0.3\textwidth]{figures/2MASS_120_BEST}
+	\caption{PGC120 mosaic using SDSS, DSS, 2MASS data }
+	\label{fig:comparison}
+\end{figure*}
+
 \subsection{Result from SDSS/DPOSS run}
+
 \indent There are a total of 12512 RC3 galaxies within the SDSS footprint. The automated mosaicking pipeline was  successful for 90.22\% of the galaxies. 2446 RC3 galaxies is mosaiced using an updated position that was more than 1 arcminute off the values recorded in the RC3 catalog.  On ( bigdog specs)  machine, the program processes on average about 80 RC3 objects per hour using SDSS data.  %1.21 galaxies per minute, 
 The finished data product occupies 39 GB of diskspace. 
 \\
@@ -163,6 +173,12 @@ The finished data product occupies 39 GB of diskspace.
  For the DPOSS Run, there are a total of [*] galaxies within the POSS-II footprint.
  The automated mosaicking pipeline was  successful for[*] \% of the galaxies. 2446 RC3 galaxies is mosaiced using an updated position that was more than 1 arcminute off the values recorded in the RC3 catalog. The program processes on average about 18.6 galaxies per hour using SDSS data.  %1.21 galaxies per minute, 
 The finished data product occupies [*]GB of diskspace. 
+\begin{figure}[h]
+ \centering
+	\includegraphics[width=0.2\textwidth]{figures/SDSS_1746_LOW}
+	\includegraphics[width=0.2\textwidth]{figures/DSS_1746_BEST}	
+	\caption{PGC1746 mosaic using SDSS and DSS}
+\end{figure}
 
 	\subsection{Performance}	
 	\indent We accelerate the mosaicking process by performing the recursive algorithm on only a single band FITS file designated as $\texttt{best\_band}$, then mosacking all bands only once per object. For SDSS, we use the image obtained by the r band filter since transmission curve in \citet{edr} shows that r band has the highest quantum efficiency.	 For 2MASS, The $K_s$ band was chosen to be the $\texttt{best\_band}$ since it has the highest transmission as shown  in Figure 2 of \citet{2mass}.
