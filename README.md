@@ -5,7 +5,8 @@
 - SExtractor: Source extraction inside the positional update algorithm
 - STIFF: Generating color images
 - Python v2.7: other versions is fine but minor changes to the code may be necessary
-  ###Packages
+  
+  __Packages__
   - NumPy
   - AstroPy preferably v4 dev for the SkyCoord procedures in the source confusion algorithm, but other AstroPy v3.* is fine, I have included the patch as a comment inside rc3.py
   - sqlite3 : generates the searchable database. Not necessary for the mosaicing program to run.
