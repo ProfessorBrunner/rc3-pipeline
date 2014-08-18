@@ -49,6 +49,7 @@ There is an non-uniform update of the catalog after the catalog was publish, mor
 The B2000 coordinates (FK4 frame) in the RC3 catalog are denoted with two different levels of accuracy: HH MM SS.s, DD MM SS for the positions that has been updated  (with accuracy of about 5-8 arcsec) and  HH MM.m, DD MM for galaxies whose positional accuracy remain  1-2 arcminutes in the original catalog.  In the latest version of the catalog (\citet{rc31991}), there remains 5492 RC3 galaxies that fall in the latter group.
 \subsection{Data}
 \begin{figure}[h]
+\centering
 	\includegraphics[width=0.15\textwidth]{figures/SDSS_120_LOW}
 	\includegraphics[width=0.15\textwidth]{figures/DSS_120_BEST}	
 	\includegraphics[width=0.15\textwidth]{figures/2MASS_120_BEST}
@@ -77,6 +78,7 @@ The data is queried using SkyServer through a SDSS Command Line Query Tool. Then
 \\
 \indent 
 \begin{figure}[h]
+ \centering
 	\includegraphics[width=0.2\textwidth]{figures/SDSS_1746_LOW}
 	\includegraphics[width=0.2\textwidth]{figures/DSS_1746_BEST}	
 	\caption{PGC1746 mosaic using SDSS and DSS}
@@ -86,12 +88,16 @@ Even though DSS has the advantage of a  greater sky coverage than SDSS, objects 
 	%SDSS imaging is also superior to DPOSS since its CCD-based imaging does not suffer from the same  boundary edge distortion typical artifact of photographic plate imaging.
 	
 \section{Mosaic Pipeline and algorithms}
-	\subsection{Algorithm} 
+	\subsection{Algorithms}
+		\begin{figure}[h]
+		\includegraphics[width=0.5\textwidth]{figures/algorithm}
+	\end{figure}
+	\subsubsection{Positional Update} 
 	To address the problem of inaccurate positions discussed in \autoref{sec:position}, we develop an algorithm that first updates the position by finding the galaxy in the imaging data. An  $\texttt{RC3}$ object contains its The Catalogue of Principal Galaxies (PGC) number, updated and catalog ra,dec,radius for each galaxy in the RC3 catalog. Since every RC3 galaxy has a unique PGC number, we record  its PGC number in order to identify the RC3 galaxy of interest for cases of source confusion. The method $\texttt{source\_info}$ updates the position of individual RC3 objects by first creating a single band mosaic with a field of view 6 times the radius of the galaxy, then SExtractor detects all sources in the mosaic and select only the ones with a radius greater than 5.94 arcseconds.  If the mosaicking field is chosen correctly, then SExtractor's sky level estimation is fairly accurate.  Nevertheless, this size cut is large enough such that it eliminates most of stellar point sources and mistaken background noises  but retains the subset of RC2 galaxies inside the RC3 Catalog that are smaller than 1 arcminute as described in \citet{rc2}. 
 \\
 \indent If there are multiple galaxies in the field of view that satisfy this criteria, then it is passed into the source confusion algorithm to verify which one is the galaxy of interest. Then we record the single source of interest and generate mosaic FITS file for all bands and color images. If no sources are detected, then we mosaic  the single band FITS using a larger field of view. This is done recursively, while keeping track of the number of iterations in each recursive steps. The process is terminated at the 5th recursive step and generates a mosaic for each bands. Then we select mosaics from 3 imaging bands  and recombine them to make two  colored mosaic. One emphasizes on low surface structures  so that the halos around the galaxy can be seen; the other image is a poster/publication image that uses higher cuts on the background to ensure a clean contrasting image. 3 band passes is necessary for generating a colored image it enables (relative??) R,G,B mapping, also it is the number of imaging bands chosen by many surveys since it is the minimum number of bands required to distinguish the effects of interstellar extinction and distinguish stellar and extra-galactic population (\citet{2mass}).
  %The practical purpose of modularizing the algorithm in an object-oriented manner is to keep track of the number of iterations in the recursive steps.  
-	\subsection{Source Confusion}
+	\subsubsection{Source Confusion}
 		\begin{figure}[h]
 		\includegraphics[width=0.5\textwidth]{figures/navigator}
 		\caption{3 source confused RC3 Galaxies; Green marker denotes coordinates denoted in the RC3 catalog, red marker denotes coordinates updated by the algorithm}
@@ -108,20 +114,22 @@ Even though DSS has the advantage of a  greater sky coverage than SDSS, objects 
 %		\end{subfigure}		
 %
 %	\end{figure}
-\begin{figure}
-\begin{subfigure}{.3\textwidth}
+\begin{figure*}
+\centering
+\begin{subfigure}{.4\textwidth}
 \centering
   \includegraphics[width=.4\linewidth]{figures/PGC58b4SC}
   \caption{Before}
 \end{subfigure}%
-\begin{subfigure}{.3\textwidth}
+\hspace{-10pt}
+\begin{subfigure}{.4\textwidth}
 \centering
   \includegraphics[width=.4\linewidth]{figures/PGC58afterSC}
   \caption{After} 
 \end{subfigure}
 \caption{Using source confusion algorithm to generate mosaic centered at PGC58}
 \label{fig:SCdemo}
-\end{figure}
+\end{figure*}
 	%(One line intro about galaxies living close to each other==> galaxy cluster,gravity stuff?)
 \indent Large galaxies tends to form gravitationally bound structure known as galaxy clusters . The source confusion algorithm works on the assumption that the only galaxies that are large enough to cause source confusion also lie in the RC3 catalog, since the catalog is reasonably complete for galaxies having apparent diameters larger than 1 arcmin. First, the program retrieves a list of n number of RC3 galaxies that may lie in the field of view of the generated mosaic. The $\texttt{otherRC3}$ method in the $\texttt{Server}$ class queries this information using the Vizier Catalog. If this information is provided by a survey's query service (such as the RC3 Table in SDSS's SkyServer), it can be overridden. The goal is to match the results returned by the server with the list of n largest sources detected by SExtractor. 
 \\
@@ -132,11 +140,11 @@ Therefore, we compute all the possible distances between any two RC3 galaxies th
 %We incorporate our automated mosaic-making framework to a general pipeline
 %we designed a mosaicing pipeline that creates scientifically-calibrated mosaics, color-band images, as well as a set of updated positions, which can be easily adapted for existing surveys such as Two Micron All Sky Survey  (2MASS),The Palomar Digital Sky Survey (DPOSS), or future imaging data release from  Dark E
 %We desgined a mosaicking pipeline that can 
-	\subsection{Class Hierarchy}
+	\subsection{Pipeline}
 	\begin{figure}[h]
 		\includegraphics[width=0.5\textwidth]{figures/hierarchy}
 		\label{fig:hierarchy}
-		\caption{UML Class diagram for mosacking pipeline. Greyed out boxes are possible extensions of this pipeline}
+		\caption{UML Class diagram showing the relationships in the mosaicking pipeline. Grey-filled boxes shows possible extensions of this pipeline}
 	\end{figure}
  	The motivation behind building a class hierarchy is to establish a mosaicking pipeline for any given catalog and survey data. We identify the essential components required for mosaicking program to work. The relationship between these essential steps are reflected in our design of the abstract $\texttt{Survey}$,$\texttt{Catalog}$, and $\texttt{Server}$ classes. 
  		\paragraph{Server}
@@ -164,9 +172,10 @@ The finished data product occupies [*]GB of diskspace.
 
 
 		\subsection{Technical Details}
-		Due to the recent surge in popularity of Python in astronomy, we wrote the program in Python 2.7.6 so that the program's dependencies are more widely supported for extending its usage on future datasets. Most of the mosaic steps are done using IPAC's Montage  \cite{montage} mosaic engine along with the AstroPy Montage wrapper\footnote{\url{http://www.astropy.org/montage-wrapper/}} and the final colored image is created using Astromatic's STIFF v.2.4 \cite{stiff}. Our choice of the two program makes use of the best features from both programs. Montage creates scientifically-calibrated images by retaining the astrometry and photometry of input sources during image reprojection step. STIFF provides the flexibility of adjusting many variables for the final colored image, as well as automatically estimating upper and lower cuts on the dynamic range using statistics derived from a pixel histogram.  %The use of two different program in the mosaicking step is due to Montage's ability to create scientifically-calibrated mosaic FITS, but STIFF provided more flexible parameters for combining all bands into color images, so we get the best of both worlds. 	The STIFF setting needs to be adjusted for each survey depending on specs on the telescope's CCD dependent parameters such as imaging bands and best quality bands.  
+		Due to the recent rise in popularity of Python usage in astronomy, we wrote the program in Python 2.7.6 so that the program's dependencies are more widely supported for extending its usage on future datasets. Most of the mosaic steps are done using IPAC's Montage  \cite{montage} mosaic engine along with the AstroPy Montage wrapper\footnote{\url{http://www.astropy.org/montage-wrapper/}} and the final colored image is created using Astromatic's STIFF v.2.4 \cite{stiff}. Our choice of the two program makes use of the best features from both programs. Montage creates scientifically-calibrated images by retaining the astrometry and photometry of input sources during image reprojection step. STIFF provides the flexibility of adjusting many variables for the final colored image, as well as automatically estimating upper and lower cuts on the dynamic range using statistics derived from a pixel histogram.  %The use of two different program in the mosaicking step is due to Montage's ability to create scientifically-calibrated mosaic FITS, but STIFF provided more flexible parameters for combining all bands into color images, so we get the best of both worlds. 	The STIFF setting needs to be adjusted for each survey depending on specs on the telescope's CCD dependent parameters such as imaging bands and best quality bands.  
+Most of the program interface and query form is accessed by building the URL and parsing the resulting raw text/XML files downloaded by wget.
 The source extraction is done using SExtractor v.2.19.5 \cite{sextractor}. The resulting web search %\footnote{\url{http://lcdm.astro.illinois.edu/data/rc3/search.html}}
-database was created using the Python sqlite3 module and the web search interface was written with PHP.
+database was created using the Python sqlite3 module and the web search interface was written in PHP with interacting HTML elements.
 
 	\subsection{Known Errors}
 	Even though a series of exception handling and error prevention mechanisms were put in place,  there are still errors in the data product that we produced. Error flags were put inside the web search database denoting the errors described below.
@@ -190,12 +199,12 @@ database was created using the Python sqlite3 module and the web search interfac
 	 	\subsubsection{Other Errors}
 	 		Montage's background rectification module is not used in creating the FITS mosaics . Attempts were made in implementing these procedure, however it  is sometimes stuck in the step where the background model is applied to the projected images and  produces huge difference images files ($\approx$50GB) for reason that we have not figured out yet. This should not affect the astrometric quality of the data product. Sometimes scanlines may be seen as brightness differences in the SDSS mosaics, but the effect is much more severe and clear visible difference is  mostly  observed in the color images for 2MASS which manifests as completely different boundaries, this  will likely affect the photometric quality of the resulting 2MASS mosaics.
  \section{Conclusion}
-\indent Wide-area sky surveys are used to answer fundamental questions regarding large-scale structure and the cosmological history of the universe. The mosaicking procedures described in this paper provides a convenient way to generate mosaics for sky survey imaging data for a given catalog, or on a per-image basis. This can be easily adapted for future data to create the scientifically-calibrated FITS mosaics as well as colored images. 
+\indent Wide-area sky surveys are used to answer fundamental questions regarding large-scale structure and the cosmological history of the universe. The mosaicking pipeline described in this paper provides a convenient way to generate mosaics for sky survey imaging data for a given catalog, or on a per-image basis. This can be easily adapted for use on future data sets to create the scientifically-calibrated FITS mosaics as well as two colored images. We describe an algorithm that automatically updates the catalog using its inherently inaccurate positions and centers the galxy around the newly updated coordinate for generating the mosaic. We generate a set of data product that resulted from running the RC3 catalog through the mosaicking pipeline using  SDSS and DSS data and  made this publically available through a searchable web form.
 \\
 \indent Feeding in the new data enables a greater  sky coverage and higher resolution images of objects inside the catalog, which can result in better astrometric and photometric results.  In addition, the pipeline can also be extended for other astronomical catalog such as the Messier Catalog or NGC, as well as user-defined catalogs. An investigator may define their own catalog by imposing selection limits to study a type of objects of interest. A text file containing positions, radius, and unique identifier for each object can be used as input to the pipeline. The scientifically calibrated FITS images can be used as for individual studies, as well as used for improved astrometry in updating the catalog position values. The multi-band FITS mosaics can also be combined with the calibrated mosaics of different wavelengths into multi-band color images with mosaics from single/double band surveys such as POSS-I and GALEX , if their image sizes are adjusted to match.  %Can also do photometry to determine galaxy property 
 %Another possible usage is to
 \\
-\indent The SDSS and DSS data product avaliable on the LCDM website may also be useful  during  the target selection and commissioning stage of new surveying telescope such as the LSST and DECam. With the trend of future telescope having larger focal plane,, large nearby galaxies covered in the RC3 catalog needs to be properly masked to prevent the loss of imaging details from saturated CCDs. The updated RC3 coordinates tells us  which regions of the sky may be affected by these large galaxies, and the FITS files can be used to model-fit the galaxy's shape and light distribution. This information can also be used in selecting fiber location on spectroscopic targets that belong to the RC3 catalog. The FITS images can be used along with existing tools for scientific analysis, such as Astrometry.net(\citet{astrometry.net}) , SExtractor, APLpy(\citet{aplpy}). The program is designed such that other APIs such as HEASARC's SkyView, Aladin, and NED can easily be latched on.
+\indent The SDSS and DSS data product available on the LCDM website may also be useful  during  the target selection and commissioning stage of new surveying telescope such as the LSST and DECam. With the trend of future telescope having larger focal plane,, large nearby galaxies covered in the RC3 catalog needs to be properly masked to prevent the loss of imaging details from saturated CCDs. The updated RC3 coordinates tells us  which regions of the sky may be affected by these large galaxies, and the FITS files can be used to model-fit the galaxy's shape and light distribution. This information can also be used in selecting fiber location on spectroscopic targets that belong to the RC3 catalog. The FITS images can be used along with existing tools for scientific analysis, such as Astrometry.net(\citet{astrometry.net}) , SExtractor, APLpy(\citet{aplpy}). The program is designed such that other APIs such as HEASARC's SkyView, Aladin, and NED can easily be latched on.
 \\
 \indent We have provided documentation on GitHub  that guides investigators through the steps to adapting the pipeline for future imaging data.The source code and documentation for the pipeline described in this paper can be found in the project repository: \url{https://github.com/ProfessorBrunner/rc3-sdss}. The data product from the SDSS and DPOSS run is available via a search form at \url{http://lcdm.astro.illinois.edu/search.html}.
 
