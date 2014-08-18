@@ -5,7 +5,7 @@ class RC3Catalog(Catalog):
 	Class for RC3 Catalog objects
 	'''
 	def __init__(self):
-		self.name= 'Catalog'
+		self.name= 'RC3 Catalog'
 		self.frame= 'fk5'
 		self.equinox = 'J2000'
 		self.allObj=self._initAllObj()
@@ -37,6 +37,25 @@ class RC3Catalog(Catalog):
 					allObj.append(obj)
 		return allObj
 
+	def initSubset(self,file):
+	    '''
+	    Create a list of all objects inside a user-defined catalog
+	    '''
+	    from rc3 import RC3
+	    allObj=[]
+	    n = 0
+	    with open(file,'r') as f:
+	        for line in f:
+	            if (n>=1):
+	                new_ra = float(line.split()[5])
+	                new_dec = float(line.split()[6])
+	                radius = float(line.split()[3])/2. #radius = diameter/2
+	                pgc=int(line.split()[1])
+	                clean=True
+	                obj= RC3(new_ra,new_dec,radius,pgc)
+	                allObj.append(obj)
+	            n +=1
+	    return allObj
 
 	def mosaicAll(self,survey):
 		'''
@@ -66,5 +85,9 @@ class RC3Catalog(Catalog):
 				mosaicAll_error.write("{}       {}        {}        {} \n".format(str(obj.rc3_ra),str(obj.rc3_dec),str(obj.rc3_radius),str(obj.pgc)))
 				pass
 
-	def printAll(self):
-		pass
+	def __str__(self):
+		x = "["
+		for i in self.allObj:
+			x=x+","+ str(i)
+		x=x+"]"
+		return x

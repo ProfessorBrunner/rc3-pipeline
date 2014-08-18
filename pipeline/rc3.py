@@ -418,4 +418,7 @@ class RC3(RC3Catalog):
         os.system("rm stiff.xml")
         os.chdir("../")
         print ("Completed Mosaic")
+
+    def __str__(self):
+        return "<RC3Obj{}>".format(self.pgc)
   

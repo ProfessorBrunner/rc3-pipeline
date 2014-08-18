@@ -1,0 +1,18 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{The RC3 Catalog and Survey Data}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Positional Inaccuracy in RC3 Catalog}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Data}{section.2}% 4
+\BOOKMARK [3][-]{subsubsection.2.2.1}{SDSS}{subsection.2.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.2.2}{2MASS}{subsection.2.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.2.3}{POSS-II}{subsection.2.2}% 7
+\BOOKMARK [1][-]{section.3}{Mosaic Pipeline and algorithms}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Algorithm}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{Source Confusion}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.3}{Class Hierarchy}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{Results}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{Result from SDSS/DPOSS run}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.2}{Performance}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.3}{Technical Details}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.4}{Known Errors}{section.4}% 16
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Other Errors}{subsection.4.4}% 17
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 18

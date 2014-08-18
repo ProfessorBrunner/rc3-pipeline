@@ -1,50 +1,50 @@
 This is BibTeX, Version 0.99d (TeX Live 2014)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: rc3_pipeline_v6.aux
-The style file: abbrvnat.bst
+The style file: elsarticle-harv.bst
 Database file #1: bibtex_database.bib
 Warning--empty journal in efigi
 Warning--empty publisher in rc31991
 Warning--empty journal in edr
 You've used 14 entries,
-            2773 wiz_defined-function locations,
-            685 strings with 12540 characters,
-and the built_in function-call counts, 19481 in all, are:
-= -- 1324
-> -- 2710
-< -- 10
-+ -- 902
-- -- 888
-* -- 2123
-:= -- 3330
-add.period$ -- 47
+            2821 wiz_defined-function locations,
+            719 strings with 8392 characters,
+and the built_in function-call counts, 8855 in all, are:
+= -- 787
+> -- 687
+< -- 11
++ -- 254
+- -- 240
+* -- 877
+:= -- 1621
+add.period$ -- 46
 call.type$ -- 14
-change.case$ -- 334
+change.case$ -- 155
 chr.to.int$ -- 14
-cite$ -- 31
-duplicate$ -- 320
-empty$ -- 549
-format.name$ -- 906
-if$ -- 3708
+cite$ -- 17
+duplicate$ -- 287
+empty$ -- 478
+format.name$ -- 289
+if$ -- 1725
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 14
-newline$ -- 83
+newline$ -- 49
 num.names$ -- 62
-pop$ -- 677
+pop$ -- 164
 preamble$ -- 1
-purify$ -- 321
+purify$ -- 133
 quote$ -- 0
-skip$ -- 478
+skip$ -- 208
 stack$ -- 0
-substring$ -- 170
-swap$ -- 53
+substring$ -- 307
+swap$ -- 67
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 149
+type$ -- 123
 warning$ -- 3
-while$ -- 55
+while$ -- 56
 width$ -- 0
-write$ -- 196
+write$ -- 157
 (There were 3 warnings)
