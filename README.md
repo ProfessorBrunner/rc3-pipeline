@@ -1,4 +1,6 @@
-# Make Digital Images of RC3 galaxies by using SDSS data
+# Creating updated, scientifically-calibrated mosaics for the RC3 Catalogue
+The Third Reference Catalogue of Bright Galaxies (RC3) is a reasonably complete listing of 23,010 large, bright galaxies. Using the latest Sloan Digital Sky Survey’s Data Release 10 (SDSS DR10) data, we provide color composite images and scientifically-calibrated FITS mosaics in all SDSS imaging bands, for all the RC3 galaxies that lie within the survey’s footprint. To get a larger sky coverage, we then conduct the procedures on photographic plates taken by the Digitized Palomar Observatory Sky Survey (DPOSS) for the B, R, IR bands. Due to the positional inaccuracy inherent in the RC3 catalog, the mosaicking program uses a recursive algorithm for positional update first, then conduct the mosaicking procedure using IPAC’s Montage.The program is generalized into a pipeline, which can be easily extended to future survey data or other source catalogs.
+
 ## Software Dependencies
 - Montage : Stitches images togther
   - AstroPy Montage wrapper
