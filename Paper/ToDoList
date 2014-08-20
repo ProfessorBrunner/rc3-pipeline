@@ -10,7 +10,7 @@ Questions
 			- Catalog
 - Fig4 UML, words kind of squished,  goes in appendix? 
 - Flowchart Image for algorithms : no caption is necessary ==> wasted space if made into figure?
-- How to cite tools  that I don't use very often or refer to APIs as extensions to pipeline (ex. APLPy, Aladin,NED)?
+- How to cite tools  that I don't use very often or refer to APIs as extensions to pipeline (ex. APLPy,Astroquery, Aladin,NED)?
 	- simply footnote with project page url (footnote may get long), or cite their respective product release paper (no additional info was actually obtained from the paper)? 
 - Will add in DSS run information once it finishes running (by querying the db)
 
