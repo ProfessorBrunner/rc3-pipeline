@@ -1,0 +1,21 @@
+#   1 NUMBER                 Running object number                                     
+#   2 FLUX_RADIUS            Fraction-of-light radii                                    [pixel]
+#   3 ALPHA_J2000            Right ascension of barycenter (J2000)                      [deg]
+#   4 DELTA_J2000            Declination of barycenter (J2000)                          [deg]
+#   5 XMIN_IMAGE             Minimum x-coordinate among detected pixels                 [pixel]
+#   6 YMIN_IMAGE             Minimum y-coordinate among detected pixels                 [pixel]
+#   7 XMAX_IMAGE             Maximum x-coordinate among detected pixels                 [pixel]
+#   8 YMAX_IMAGE             Maximum y-coordinate among detected pixels                 [pixel]
+#   9 A_IMAGE                Profile RMS along major axis                               [pixel]
+#  10 B_IMAGE                Profile RMS along minor axis                               [pixel]
+         1      6.474   5.5131809 +22.4076484          1         55        104        115     9.982     5.344
+         2      1.448   5.4816181 +22.3850385        125          8        127         11     0.997     0.576
+         3     12.740   5.5129225 +22.3834534          8          1         43         11     4.931     2.520
+         4      6.873   5.5044735 +22.3832562         47          1         53          5     1.918     0.841
+         5      7.101   5.5177637 +22.3832995          1          1         24         14     2.869     2.645
+         6      5.088   5.4814814 +22.4027072        122         70        128         95     1.683     0.658
+         7     10.198   5.4818014 +22.4159194        115         82        128        128     5.926     2.740
+         8      3.459   5.5151571 +22.3887731         13         22         15         24     0.761     0.754
+         9      0.852   5.5103326 +22.4171447         29        124         32        127     0.839     0.784
+        10      0.645   5.4974080 +22.4084223         72         93         74         95     0.734     0.701
+        11      0.720   5.5054769 +22.4126415         45        108         48        110     0.787     0.722
