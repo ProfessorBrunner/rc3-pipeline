@@ -161,8 +161,8 @@ class RC3(RC3Catalog):
             os.chdir("../..")
             hdulist = pyfits.open(outfile_r)
 
-        hdulist[0].header['RA']=ra
-        hdulist[0].header['DEC']=dec
+        hdulist[0].header['RA']=float(ra)
+        hdulist[0].header['DEC']=float(dec)
         hdulist[0].header['RADIUS']=radius
         if (DEBUG):print ("Finished mosaic_band on {}".format(pgc))
         hdulist[0].header['PGC']=pgc

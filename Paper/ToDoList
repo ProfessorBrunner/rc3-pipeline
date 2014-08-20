@@ -1,4 +1,4 @@
-Misc. stuff to note
+Questions
 - Should empty sections be used for paper organization?
 	- For example in Section 3, nothing is inside Algorithm and Pipeline, only in subsubsections:
 		- Algorithm
@@ -10,10 +10,16 @@ Misc. stuff to note
 			- Catalog
 - Fig4 UML, words kind of squished,  goes in appendix? 
 - Flowchart Image for algorithms : no caption is necessary ==> wasted space if made into figure?
-- Use consistent spelling: mosaicking
-- How to cite tools  that I don't use very often or refer to API extensions to pipeline (ex. APLPy, Aladin,NED)?
+- How to cite tools  that I don't use very often or refer to APIs as extensions to pipeline (ex. APLPy, Aladin,NED)?
 	- simply footnote with project page url (footnote may get long), or cite their respective product release paper (no additional info was actually obtained from the paper)? 
-- Add Acknowledgement for your NSF grant thing?
-- (?)citation style is elsarticle-harv
-    - no longer using citet
-- add in DSS run information once it finishes running (query the .db)
+- Will add in DSS run information once it finishes running (by querying the db)
+
+
+
+Resolved Issues
+- Citation for this journal is done by (Greisen, 2003)
+	- use setcitestyle to prevent clashing 
+	- to remove the square bracket in year use \citealp instead
+- Use consistent spelling: mosaicking
+- modified Fig 2 so that markers are more easily seen
+- tried fitting necessary figures/tables into single column
