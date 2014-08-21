@@ -5,6 +5,7 @@
  <body>
  <?php
     $pgc = $_POST['pgc'];
+    echo $pgc;
 	echo "Search by PGC number </br>";
     $db = new PDO('sqlite:rc3.db');
 	//$query = "SELECT   PGC, rc3_ra,rc3_dec , rc3_radius,new_ra,new_dec,new_radius,ufits,gfits,rfits,ifits,zfits ,low,best ,in_SDSS_footprint,clean ,error FROM rc3 WHERE PGC= $pgc ";
