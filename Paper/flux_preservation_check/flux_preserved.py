@@ -1,14 +1,14 @@
 from sdss import SDSS
 from rc3 import *
 from skyserver import *
-with open("rc3_ra_dec_diameter_pgc.txt",'r') as f:
+with open("sample.txt",'r') as f:
 	mag_mosaic=[]
 	mag_rawdata = []
 	allObj=[]
 	n = 0
 	start=False
 	for line in f:
-		if (n<10):
+		if (n<100):
 			a = str(line)[0]
 	        # Useful for debugging purpose, put this in the rc3_ra_dec_pgc.txt to start from where you left off (when error)
 			if a[0] =="@": 
@@ -37,7 +37,7 @@ with open("rc3_ra_dec_diameter_pgc.txt",'r') as f:
 				rc3Obj.source_info(rfits,SDSS())
 				import os
 				#r_mosaic = "1412/SDSS_r_1412.fits"
-				os.system("sex {}".format(r_mosaic))
+				os.system("sextractor  {}".format(r_mosaic))
 				#Trying this on original data first to see if it matches what's inside FITS header
 				# os.system("sex frame-r-007917-3-0139.fits")
 				catalog = open("test.cat",'r')
@@ -52,7 +52,13 @@ with open("rc3_ra_dec_diameter_pgc.txt",'r') as f:
 				#print mag_lst
 				mag_rawdata.append(sum(mag_lst))
 
-				os.system("sex {}".format(r_mosaic))
+				print ("r_mosaic: {}".format(r_mosaic))
+				#os.system("sextractor {}".format(r_mosaic))
+				import glob
+				x= glob.glob("frame-*")
+				print (x)
+				print (x[0])
+				os.system("sextractor {}".format(x[0]))
 				catalog = open("test.cat",'r')
 				mag_lst = []    	
 				for line in catalog:
@@ -63,5 +69,8 @@ with open("rc3_ra_dec_diameter_pgc.txt",'r') as f:
 				        mag=float(line[10])*10**(9)
 				        mag_lst.append(mag)
 				mag_mosaic.append(sum(mag_lst))
+		os.system("rm frame-*")
+		print (mag_mosaic)
+		print (mag_rawdata)
 	print (mag_mosaic)
 	print (mag_rawdata)
