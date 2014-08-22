@@ -12,9 +12,9 @@ class Survey(object):
         self.pixel_size= -1
         self.data_server=self._initServer()
         # Mosaic Program Settings
-        self.sextractor_params={} 
-        self.montage_params={}
-        self.stiff_params={}
+        self.sextractor_params=""
+        self.montage_params=""
+        self.stiff_params=""
 
     def _initServer(self):
         #Type Dispatching
