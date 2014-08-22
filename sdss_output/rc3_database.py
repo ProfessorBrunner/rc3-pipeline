@@ -37,10 +37,10 @@ def dataEntry():
 					if (int(i.split()[4])==pgc):
 						source_confused=1
 			
-			with open("no_detected_rc3_candidate_nearby.txt")as detect:
+			with open("no_detected_rc3_candidate_nearby.txt")as det:
 				detect=1
-				for i in conf: 
-					if (int(i.split()[4])==pgc):
+				for i in det: 
+					if (int(i.split()[3])==pgc):
 						detect=0
 			# Updated Coordinate Information
 			with open("rc3_updated.txt")as new:
