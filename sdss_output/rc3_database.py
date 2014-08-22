@@ -50,6 +50,7 @@ def dataEntry():
 				new_radius= 0
 				for i in new: 
 					line = i.split()
+					#print line
 					if (int(line[5])==pgc):
 						new_ra =float(line[2])
 						new_dec = float(line[3])
@@ -92,11 +93,11 @@ def dataEntry():
 			# 4 = Montage image reprojection failure
 			# 5= msubimage failure (cropping image outside of image field)
 			error =0
-			with open("mosaicAll_error")as e:
-				for i in e: 
-					line = i.split()
-					if (int(line[3])==pgc):
-						error=1
+			#with open("mosaicAll_error")as e:
+			#	for i in e: 
+			#		line = i.split()
+			#		if (int(line[3])==pgc):
+			#			error=1
 
 			with open("stiff_error.txt")as e:
 				for i in e: 
@@ -107,11 +108,11 @@ def dataEntry():
 						low  =  "No TIFF generated"
 
 
-			with open("strange_error.txt")as e:
-				for i in e: 
-					line = i.split()
-					if (int(line[3])==pgc):
-						error=3
+			#with open("strange_error.txt")as e:
+			#	for i in e: 
+			#		line = i.split()
+			#		if (int(line[3])==pgc):
+			#			error=3
 
 			with open("failed_projection")as e:
 				for i in e: 
