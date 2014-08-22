@@ -60,7 +60,7 @@ def dataEntry():
 			#require new_ra,new_dec in their string form so that + and trailing 0 is not truncated
 			if (in_SDSS_footprint==1):
 				# Write only if covered by survey
-				loc = "/Volumes/data/rc3"
+				loc = "/data/rc3"
 				path = "{}/{}/{}/".format(loc,pgc,survey)
 				# Scientifically calibrated fits are named in form
 				#  "{}_{}_{}_{}.fits".format(survey.name,band,ra,dec)
