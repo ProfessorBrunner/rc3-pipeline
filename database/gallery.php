@@ -52,8 +52,8 @@ $n=0;
 for ($i = 0; $i < $count; $i++) {
     $fname = substr($files[$i],strlen($folder),strpos($files[$i], '.')-strlen($folder));
     $pgc = explode("_", $fname);
-    echo $pgc[1];
-    echo '<a href="pgc.php?pgc='.$pgc[1].'">'.$pgc[1].'</a>';
+    #echo $pgc[1];
+    #echo '<a href="pgc.php?pgc='.$pgc[1].'">'.$pgc[1].'</a>';
     if ($n>=4){ 
         echo '<td>'.$fname.'<a name="'.$i.'" href="pgc.php?pgc='.$pgc[1].'"><img src="'.$files[$i].'" /></a></td>';
         $n=0;
