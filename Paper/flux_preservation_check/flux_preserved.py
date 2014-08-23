@@ -46,6 +46,7 @@ with open("sample.txt",'r') as f:
 
 			print ("r_mosaic: {}".format(r_mosaic))
 			import glob
+			# Selecting any one raw data field, no need to sum together the flux from all fields
 			x= glob.glob("frame-*")
 			print (x)
 			print (x[0])
@@ -62,6 +63,7 @@ with open("sample.txt",'r') as f:
 			        mag=float(line[10])*10**(9)
 			        mag_lst.append(mag)
 			mag_mosaic.append(sum(mag_lst))
+		# remove all the data from so that glob doesn't detect previous data files in the next run
 		os.system("rm frame-*")
 		print (mag_mosaic)
 		print (mag_rawdata)
