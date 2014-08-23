@@ -45,12 +45,13 @@ with open("sample.txt",'r') as f:
 					mag=float(line[10])#*10**(9)
 					mag_lst.append(mag)
 			mag_rawdata.append(sum(mag_lst))
-
+			os.system("rm test.cat") #ensure no flow through
 			#Data after mosaicing
-                        rfits =rc3Obj.mosaic_band('r',rc3Obj.rc3_ra,rc3Obj.rc3_dec,3*rc3Obj.rc3_radius,rc3Obj.rc3_radius,rc3Obj.pgc,SDSS())
-                        rc3Obj.source_info(rfits,SDSS())
+			rfits =rc3Obj.mosaic_band('r',rc3Obj.rc3_ra,rc3Obj.rc3_dec,3*rc3Obj.rc3_radius,rc3Obj.rc3_radius,rc3Obj.pgc,SDSS())
+			rc3Obj.source_info(rfits,SDSS())
 			#Find total flux in mosaiced image
-			os.system("sextractor {0}/SDSS_r_{0}.fits".format(rc3Obj.pgc))
+			os.system("cp {0}/SDSS_r_{0}.fits .".format(rc3Obj.pgc))
+			os.system("sextractor SDSS_r_{0}.fits".format(rc3Obj.pgc))
 			catalog = open("test.cat",'r')
 			mag_lst_r = []    	
 			for line in catalog:
