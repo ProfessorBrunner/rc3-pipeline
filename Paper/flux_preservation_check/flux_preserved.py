@@ -37,10 +37,15 @@ with open("sample.txt",'r') as f:
 			os.system("sextractor  {}".format(x[0]))
 			# Find total flux in image of one field in the raw data 
 			catalog = open("test.cat",'r')
+			print ("here")
 			mag_lst = []    	
 			for line in catalog:
 				line = line.split()
-				if (line[0]!='#' and line[1]==new_ra and line[2]==new_dec):
+				print ("line1: ".format(line[2]))
+				print ("line2: ".format(line[3]))
+				print ("new_ra: ".format(new_ra))
+				print ("new_dec: ".format(new_dec))
+				if (line[0]!='#' and line[2]==new_ra and line[3]==new_dec):
 					#Verfiy that this is the source of interetest (already previously updated)
 					#We only obtain flux value for individual objects
 			    	#MAG_ISOCOR      Corrected isophotal magnitude                   [mag]
