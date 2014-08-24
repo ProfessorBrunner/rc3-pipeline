@@ -17,8 +17,8 @@ with open("sample.txt",'r') as f:
 			n +=1
 			ra = float(line.split()[0])
 			dec = float(line.split()[1])
-			new_ra = float(line.split()p[2])
-			new_dec = float(line.split()p[3])
+			new_ra = float(line.split()[2])
+			new_dec = float(line.split()[3])
 			radius = float(line.split()[4])
 			pgc=str(line.split()[5]).replace(' ', '')
 			clean=True
@@ -45,12 +45,17 @@ with open("sample.txt",'r') as f:
 				print ("line2: ".format(line[3]))
 				print ("new_ra: ".format(new_ra))
 				print ("new_dec: ".format(new_dec))
-				if (line[0]!='#' and line[2]==new_ra and line[3]==new_dec):
+				n=0
+				if (line[0]!='#' and n==0):
+					# selected in sample.txt no source confusion jsut largest source compare flux
+				 #and line[2]==new_ra and line[3]==new_dec):
+					n=n+1
 					#Verfiy that this is the source of interetest (already previously updated)
 					#We only obtain flux value for individual objects
 			    	#MAG_ISOCOR      Corrected isophotal magnitude                   [mag]
 			    	# in MGY conver to NMGY
 					mag=float(line[10])#*10**(9)
+					print mag
 					mag_lst.append(mag)
 
 			print (" mag_lst: "+str(mag_lst))
