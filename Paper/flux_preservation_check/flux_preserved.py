@@ -1,4 +1,3 @@
-
 from sdss import SDSS
 from rc3 import *
 from skyserver import *
@@ -39,26 +38,61 @@ with open("sample.txt",'r') as f:
 			catalog = open("test.cat",'r')
 			print ("here")
 			mag_lst = []    
-			n=0	
-			for line in catalog:
-				line = line.split()
-				print (line)
-				#print ("line1: {}".format(line[2]))
-				#print ("line2: {}".format(line[3]))
-				#print ("new_ra: {}".format(new_ra))
-				#print ("new_dec: {}".format(new_dec))
-				if (line[0]!='#' and n==0):
-					# selected in sample.txt no source confusion jsut largest source compare flux
-				 #and line[2]==new_ra and line[3]==new_dec):
-				#	n=n+1
-					#Verfiy that this is the source of interetest (already previously updated)
-					#We only obtain flux value for individual objects
-			    	#MAG_ISOCOR      Corrected isophotal magnitude                   [mag]
-			    	# in MGY conver to NMGY
-					mag=float(line[10])#*10**(9)
-					print "mag: {} ".format(mag)
-					mag_lst.append(mag)
-					break
+			# n=0	
+			# for line in catalog:
+			# 	line = line.split()
+			# 	print (line)
+			# 	#print ("line1: {}".format(line[2]))
+			# 	#print ("line2: {}".format(line[3]))
+			# 	#print ("new_ra: {}".format(new_ra))
+			# 	#print ("new_dec: {}".format(new_dec))
+			# 	if (line[0]!='#' and n==0):
+			# 		# selected in sample.txt no source confusion jsut largest source compare flux
+			# 	 #and line[2]==new_ra and line[3]==new_dec):
+			# 	#	n=n+1
+			# 		#Verfiy that this is the source of interetest (already previously updated)
+			# 		#We only obtain flux value for individual objects
+			#     	#MAG_ISOCOR      Corrected isophotal magnitude                   [mag]
+			#     	# in MGY conver to NMGY
+			# 		mag=float(line[10])#*10**(9)
+			# 		print "mag: {} ".format(mag)
+			# 		mag_lst.append(mag)
+			# 		break
+            # Creating a corresponding list of ra,dec
+            sextract_dict ={}
+            for line in catalog:
+                line = line.split()
+                if (line[0]!='#'):
+                    radius=np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2
+                    radius_list.append(radius)
+                    coord = np.array([float(line[2]),float(line[3])])
+                    sextract_dict[radius]=coord
+            if (DEBUG): print ("Radius: "+str(radius_list))
+            print ("Source is Obvious")
+            n=1 # Just keep the maximum radius
+            #Creating a list of radius
+            catalog = open("test.cat",'r')
+            radius = []
+            for line in catalog:
+                line = line.split()
+                if (line[0]!='#'):
+                    radius.append(np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2)
+            if (DEBUG):print (radius)
+            #special value reversed for empty list (no object detected by SExtractor)
+            catalog = open("test.cat",'r')
+            for i in catalog:
+                if(DEBUG) :print ("i : {}".format(i))
+                line = i.split()
+                if (DEBUG): ("line: {}".format(line))
+                if (line[0]!='#' ):
+                    #Pythagorean method
+                    radii = np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2
+                    if (radii==max(radius)):
+                        print ('Biggest Galaxy with radius {} pixels!'.format(str(radii)))
+                        mag=float(line[10])#*10**(9)
+                        print "mag: {} ".format(mag)
+						mag_lst.append(mag)
+                        break
 
 			print (" mag_lst: "+str(mag_lst))
 			mag_rawdata.append(sum(mag_lst))
