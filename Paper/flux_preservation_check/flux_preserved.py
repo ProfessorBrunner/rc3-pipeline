@@ -33,7 +33,8 @@ with open("sample.txt",'r') as f:
             print ("There are {} fields in this region".format(len(x)))
             if (len(x)==1):
 		print "only one field in region"
-		continue
+		#continue
+		
 	    print (x[0])
             import os
             os.system("sextractor  {}".format(x[0]))
