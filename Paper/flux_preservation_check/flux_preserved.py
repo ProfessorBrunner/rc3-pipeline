@@ -31,12 +31,14 @@ with open("sample.txt",'r') as f:
             x= glob.glob("frame-*")
             print (x)
             print ("There are {} fields in this region".format(len(x)))
-            print (x[0])
+            if (len(x)==1):
+		print "only one field in region"
+		continue
+	    print (x[0])
             import os
             os.system("sextractor  {}".format(x[0]))
             # Find total flux in image of one field in the raw data 
             catalog = open("test.cat",'r')
-            print ("here")
             mag_lst = []    
             # n=0   
             # for line in catalog:
@@ -58,15 +60,11 @@ with open("sample.txt",'r') as f:
             #       print "mag: {} ".format(mag)
             #       mag_lst.append(mag)
             #       break
-<<<<<<< HEAD
-            # Creating a corresponding list of ra,dec
-=======
             #Conduct pairwise comparison
             catalog = open("test.cat",'r')
             #Creating a list of radius
             radius_list = []    
 	    # Creating a corresponding list of ra,dec
->>>>>>> c6fad2e8c06d5f5c73992ecf13840324d8a00db0
             sextract_dict ={}
             for line in catalog:
                 line = line.split()
@@ -104,16 +102,6 @@ with open("sample.txt",'r') as f:
 
             print (" mag_lst: "+str(mag_lst))
             mag_rawdata.append(sum(mag_lst))
-<<<<<<< HEAD
-            #import time 
-	    #time.sleep(100)
-=======
-<<<<<<< HEAD
-=======
-            import time 
-	    time.sleep(100)
->>>>>>> c6fad2e8c06d5f5c73992ecf13840324d8a00db0
->>>>>>> c258e0add1efafab23725da1221035706c736dd0
             os.system("rm test.cat") #ensure no flow through
             #Data after mosaicing
             rfits =rc3Obj.mosaic_band('r',rc3Obj.rc3_ra,rc3Obj.rc3_dec,3*rc3Obj.rc3_radius,rc3Obj.rc3_radius,rc3Obj.pgc,SDSS())
@@ -131,12 +119,7 @@ with open("sample.txt",'r') as f:
             mag_mosaic.append(sum(mag_lst_r))
         # remove all the data from so that glob doesn't detect previous data files in the next run
         os.system("rm frame-*")
-        print (mag_mosaic)
-        print (mag_rawdata)
-    print (mag_mosaic)
-    print (mag_rawdata)
-<<<<<<< HEAD
-=======
-
->>>>>>> c6fad2e8c06d5f5c73992ecf13840324d8a00db0
-
+        print ("mag_mosaic= {}".format(mag_mosaic))
+        print ("mag_rawdata= {}".format(mag_rawdata))
+    print ("mag_mosaic= {}".format(mag_mosaic))
+    print ("mag_rawdata= {}".format(mag_rawdata))
