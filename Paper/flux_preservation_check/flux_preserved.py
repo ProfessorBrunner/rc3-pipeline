@@ -58,11 +58,15 @@ with open("sample.txt",'r') as f:
             #       print "mag: {} ".format(mag)
             #       mag_lst.append(mag)
             #       break
+<<<<<<< HEAD
+            # Creating a corresponding list of ra,dec
+=======
             #Conduct pairwise comparison
             catalog = open("test.cat",'r')
             #Creating a list of radius
             radius_list = []    
 	    # Creating a corresponding list of ra,dec
+>>>>>>> c6fad2e8c06d5f5c73992ecf13840324d8a00db0
             sextract_dict ={}
             for line in catalog:
                 line = line.split()
@@ -100,8 +104,16 @@ with open("sample.txt",'r') as f:
 
             print (" mag_lst: "+str(mag_lst))
             mag_rawdata.append(sum(mag_lst))
+<<<<<<< HEAD
             #import time 
 	    #time.sleep(100)
+=======
+<<<<<<< HEAD
+=======
+            import time 
+	    time.sleep(100)
+>>>>>>> c6fad2e8c06d5f5c73992ecf13840324d8a00db0
+>>>>>>> c258e0add1efafab23725da1221035706c736dd0
             os.system("rm test.cat") #ensure no flow through
             #Data after mosaicing
             rfits =rc3Obj.mosaic_band('r',rc3Obj.rc3_ra,rc3Obj.rc3_dec,3*rc3Obj.rc3_radius,rc3Obj.rc3_radius,rc3Obj.pgc,SDSS())
@@ -123,5 +135,8 @@ with open("sample.txt",'r') as f:
         print (mag_rawdata)
     print (mag_mosaic)
     print (mag_rawdata)
+<<<<<<< HEAD
+=======
 
+>>>>>>> c6fad2e8c06d5f5c73992ecf13840324d8a00db0
 
