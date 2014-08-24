@@ -100,8 +100,8 @@ with open("sample.txt",'r') as f:
 
             print (" mag_lst: "+str(mag_lst))
             mag_rawdata.append(sum(mag_lst))
-            import time 
-	    time.sleep(100)
+            #import time 
+	    #time.sleep(100)
             os.system("rm test.cat") #ensure no flow through
             #Data after mosaicing
             rfits =rc3Obj.mosaic_band('r',rc3Obj.rc3_ra,rc3Obj.rc3_dec,3*rc3Obj.rc3_radius,rc3Obj.rc3_radius,rc3Obj.pgc,SDSS())
