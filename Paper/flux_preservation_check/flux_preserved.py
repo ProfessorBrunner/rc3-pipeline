@@ -17,49 +17,51 @@ with open("sample.txt",'r') as f:
 			n +=1
 			ra = float(line.split()[0])
 			dec = float(line.split()[1])
-			radius = float(line.split()[2])/2. 
-			pgc=str(line.split()[3]).replace(' ', '')
+			new_ra = float(line.split()p[2])
+			new_dec = float(line.split()p[3])
+			radius = float(line.split()[4])
+			pgc=str(line.split()[5]).replace(' ', '')
 			clean=True
 			rc3Obj= RC3(ra,dec,radius,pgc)
 			ss = SkyServer()
 			info = ss.surveyFieldConverter(rc3Obj.rc3_ra,rc3Obj.rc3_dec,3*rc3Obj.rc3_radius)
-			print info
-			r_mosaic = ""
 			for i in info:
-				r_mosaic=ss.getData('r',i[0],i[1],i[2])
-                        import glob
-                        # Selecting any one raw data field, no need to sum together the flux from all fields
-                        x= glob.glob("frame-*")
-                        print (x)
-                        print (x[0])
+				ss.getData('r',i[0],i[1],i[2])
+			import glob
+            # Selecting any one raw data field, no need to sum together the flux from all fields
+			x= glob.glob("frame-*")
+			print (x)
+			print ("There are {} fields in this region".format(len(x)))
+			print (x[0])
 			import os
 			os.system("sextractor  {}".format(x[0]))
-			#Find total flux in image of one field in the raw data 
+			# Find total flux in image of one field in the raw data 
 			catalog = open("test.cat",'r')
 			mag_lst = []    	
 			for line in catalog:
 				line = line.split()
-				if (line[0]!='#'):
+				if (line[0]!='#' and line[1]==new_ra and line[2]==new_dec):
+					#Verfiy that this is the source of interetest (already previously updated)
+					#We only obtain flux value for individual objects
 			    	#MAG_ISOCOR      Corrected isophotal magnitude                   [mag]
 			    	# in MGY conver to NMGY
 					mag=float(line[10])#*10**(9)
 					mag_lst.append(mag)
+
+			print (" mag_lst: "+str(mag_lst))
 			mag_rawdata.append(sum(mag_lst))
 			os.system("rm test.cat") #ensure no flow through
 			#Data after mosaicing
 			rfits =rc3Obj.mosaic_band('r',rc3Obj.rc3_ra,rc3Obj.rc3_dec,3*rc3Obj.rc3_radius,rc3Obj.rc3_radius,rc3Obj.pgc,SDSS())
-			rc3Obj.source_info(rfits,SDSS())
+			rc3Obj.source_info(rfits,SDSS()) #Generate data product
 			#Find total flux in mosaiced image
 			os.system("cp {0}/SDSS_r_{0}.fits .".format(rc3Obj.pgc))
-			os.system("sextractor SDSS_r_{0}.fits".format(rc3Obj.pgc))
+			os.system("sextractor SDSS_r_{0}.fits".format(rc3Obj.pgc)) #run sextractor in the outer directory where the defaul.* files are stored
 			catalog = open("test.cat",'r')
 			mag_lst_r = []    	
 			for line in catalog:
 				line = line.split()
 				if (line[0]!='#'):
-			    	#MAG_ISOCOR Corrected isophotal magnitude [mag]
-			    	# in MGY convert to NMGY 
-			    	# this was actually not necessary if we are not looking at SDSS raw data's FITS header
 					mag_r=float(line[10])#*10**(9)
 					mag_lst_r.append(mag_r)
 			mag_mosaic.append(sum(mag_lst_r))
