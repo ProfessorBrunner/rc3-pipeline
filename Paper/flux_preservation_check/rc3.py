@@ -121,11 +121,11 @@ class RC3(RC3Catalog):
                     shutil.move(out+".fits","../..")
                     os.chdir("../../")
                     os.rename(out+".fits",outfile)
-                    os.system("rm -r {}".format(survey.best_band))
+                    #os.system("rm -r {}".format(survey.best_band))
                     return outfile
                 if (DEBUG):print (os.getcwd())
                 os.chdir("../../") #Get out of directory for that galaxy and move on
-                os.system("rm -r {}".format(survey.best_band))
+                #os.system("rm -r {}".format(survey.best_band))
                 if (DEBUG):print(os.getcwd())
                 failed_msubimage = open ("failed_msubimage","a")
                 failed_msubimage.write("{}     {}     {}     {} \n".format(str(ra),str(dec),str(radius),str(pgc)))
