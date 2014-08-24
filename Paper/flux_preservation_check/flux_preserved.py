@@ -41,10 +41,10 @@ with open("sample.txt",'r') as f:
 			mag_lst = []    	
 			for line in catalog:
 				line = line.split()
-				print ("line1: ".format(line[2]))
-				print ("line2: ".format(line[3]))
-				print ("new_ra: ".format(new_ra))
-				print ("new_dec: ".format(new_dec))
+				print ("line1: {}".format(line[2]))
+				print ("line2: {}".format(line[3]))
+				print ("new_ra: {}".format(new_ra))
+				print ("new_dec: {}".format(new_dec))
 				n=0
 				if (line[0]!='#' and n==0):
 					# selected in sample.txt no source confusion jsut largest source compare flux
@@ -55,7 +55,7 @@ with open("sample.txt",'r') as f:
 			    	#MAG_ISOCOR      Corrected isophotal magnitude                   [mag]
 			    	# in MGY conver to NMGY
 					mag=float(line[10])#*10**(9)
-					print mag
+					print "mag: ".format(mag)
 					mag_lst.append(mag)
 
 			print (" mag_lst: "+str(mag_lst))
