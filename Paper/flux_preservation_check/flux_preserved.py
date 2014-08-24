@@ -38,25 +38,27 @@ with open("sample.txt",'r') as f:
 			# Find total flux in image of one field in the raw data 
 			catalog = open("test.cat",'r')
 			print ("here")
-			mag_lst = []    	
+			mag_lst = []    
+			n=0	
 			for line in catalog:
 				line = line.split()
-				print ("line1: {}".format(line[2]))
-				print ("line2: {}".format(line[3]))
-				print ("new_ra: {}".format(new_ra))
-				print ("new_dec: {}".format(new_dec))
-				n=0
+				print (line)
+				#print ("line1: {}".format(line[2]))
+				#print ("line2: {}".format(line[3]))
+				#print ("new_ra: {}".format(new_ra))
+				#print ("new_dec: {}".format(new_dec))
 				if (line[0]!='#' and n==0):
 					# selected in sample.txt no source confusion jsut largest source compare flux
 				 #and line[2]==new_ra and line[3]==new_dec):
-					n=n+1
+				#	n=n+1
 					#Verfiy that this is the source of interetest (already previously updated)
 					#We only obtain flux value for individual objects
 			    	#MAG_ISOCOR      Corrected isophotal magnitude                   [mag]
 			    	# in MGY conver to NMGY
 					mag=float(line[10])#*10**(9)
-					print "mag: ".format(mag)
+					print "mag: {} ".format(mag)
 					mag_lst.append(mag)
+					break
 
 			print (" mag_lst: "+str(mag_lst))
 			mag_rawdata.append(sum(mag_lst))
