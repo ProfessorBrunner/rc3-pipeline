@@ -37,48 +37,11 @@ with open("sample.txt",'r') as f:
                 print (x[0])
                 import os
                 os.system("sextractor  {}".format(x[0]))
-                # Find total flux in image of one field in the raw data 
-                catalog = open("test.cat",'r')
-                mag_lst = []    
-                # n=0   
-                # for line in catalog:
-                #   line = line.split()
-                #   print (line)
-                #   #print ("line1: {}".format(line[2]))
-                #   #print ("line2: {}".format(line[3]))
-                #   #print ("new_ra: {}".format(new_ra))
-                #   #print ("new_dec: {}".format(new_dec))
-                #   if (line[0]!='#' and n==0):
-                #       # selected in sample.txt no source confusion jsut largest source compare flux
-                #    #and line[2]==new_ra and line[3]==new_dec):
-                #   #   n=n+1
-                #       #Verfiy that this is the source of interetest (already previously updated)
-                #       #We only obtain flux value for individual objects
-                #       #MAG_ISOCOR      Corrected isophotal magnitude                   [mag]
-                #       # in MGY conver to NMGY
-                #       mag=float(line[10])#*10**(9)
-                #       print "mag: {} ".format(mag)
-                #       mag_lst.append(mag)
-                #       break
-                #Conduct pairwise comparison
-                catalog = open("test.cat",'r')
-                #Creating a list of radius
-                radius_list = []    
-            # Creating a corresponding list of ra,dec
-                sextract_dict ={}
-                for line in catalog:
-                    line = line.split()
-                    if (line[0]!='#'):
-                        radius=np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2
-                        radius_list.append(radius)
-                        coord = np.array([float(line[2]),float(line[3])])
-                        sextract_dict[radius]=coord
-                if (DEBUG): print ("Radius: "+str(radius_list))
-                print ("Source is Obvious")
-                n=0 # Just keep the maximum radius
-                #Creating a list of radius
+                n=0 
+                mag_lst = []   
                 catalog = open("test.cat",'r')
                 #Select 5 random sources to test
+                coord = []
                 import random
                 for i in [random.randint(0,10) for i in range(5)]: 
                     for line in catalog:
@@ -88,28 +51,10 @@ with open("sample.txt",'r') as f:
                             ra = float(line[2])
                             dec = float(line[3])
                             mag=float(line[10])#*10**(9)
+                            coord.append([ra,dec])
                             mag_lst.append(mag)
                             break
-
-                #       radius.append(np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2)
-                # if (DEBUG):print (radius)
-                # #special value reversed for empty list (no object detected by SExtractor)
-                # catalog = open("test.cat",'r')
-                # for i in catalog:
-                #   if(DEBUG) :print ("i : {}".format(i))
-                #   line = i.split()
-                #   if (DEBUG): ("line: {}".format(line))
-                #   if (line[0]!='#' ):
-                #       #Pythagorean method
-                #       radii = np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2
-                #       if (radii==max(radius)):
-                #           print ('Biggest Galaxy with radius {} pixels!'.format(str(radii)))
-                #           mag=float(line[10])#*10**(9)
-                #           print "mag: {} ".format(mag)
-                #           mag_lst.append(mag)
-                #           break
-
-                print (" mag_lst: "+str(mag_lst))
+                print ("mag_lst: "+str(mag_lst))
                 mag_rawdata.append(sum(mag_lst))
                 os.system("rm test.cat") #ensure no flow through
                 #Data after mosaicing
@@ -122,11 +67,12 @@ with open("sample.txt",'r') as f:
                 mag_lst_r = []      
                 for line in catalog:
                     line = line.split()
-                    if (line[0]!='#' and float(line[2])==ra and float(line[3])):
-                        #should be detected again inside mosaiced image.
-                        print "match!"
-                        mag_r=float(line[10])#*10**(9)
-                        mag_lst_r.append(mag_r)
+                    for i in coord:
+                        if (line[0]!='#' and float(line[2])==i[0] and float(line[3])==i[1]):
+                            #should be detected again inside mosaiced image.
+                            print "match!"
+                            mag_r = float(line[10]) 
+                            mag_lst_r.append(mag_r)
                 mag_mosaic.append(sum(mag_lst_r))
             # remove all the data from so that glob doesn't detect previous data files in the next run
             os.system("rm frame-*")
