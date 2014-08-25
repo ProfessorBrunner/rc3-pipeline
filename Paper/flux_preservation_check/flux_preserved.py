@@ -80,7 +80,7 @@ with open("sample.txt",'r') as f:
                 catalog = open("test.cat",'r')
                 #Select 5 random sources to test
                 import random
-                for i in randint(0,10,5) :
+                for i in [random.randint(0,10) for i in range(5)]: 
                     for line in catalog:
                         line = line.split()
                         n=n+1
