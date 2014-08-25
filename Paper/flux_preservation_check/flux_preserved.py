@@ -75,30 +75,39 @@ with open("sample.txt",'r') as f:
     					sextract_dict[radius]=coord
     			if (DEBUG): print ("Radius: "+str(radius_list))
     			print ("Source is Obvious")
-    			n=1 # Just keep the maximum radius
+    			n=0 # Just keep the maximum radius
     			#Creating a list of radius
     			catalog = open("test.cat",'r')
-    			radius = []
-    			for line in catalog:
-    				line = line.split()
-    				if (line[0]!='#'):
-    					radius.append(np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2)
-    			if (DEBUG):print (radius)
-    			#special value reversed for empty list (no object detected by SExtractor)
-    			catalog = open("test.cat",'r')
-    			for i in catalog:
-    				if(DEBUG) :print ("i : {}".format(i))
-    				line = i.split()
-    				if (DEBUG): ("line: {}".format(line))
-    				if (line[0]!='#' ):
-    					#Pythagorean method
-    					radii = np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2
-    					if (radii==max(radius)):
-    						print ('Biggest Galaxy with radius {} pixels!'.format(str(radii)))
-    						mag=float(line[10])#*10**(9)
-    						print "mag: {} ".format(mag)
-    						mag_lst.append(mag)
-    						break
+                #Select 5 random sources to test
+                import random
+                for i in randint(0,10,5) :
+        			for line in catalog:
+        				line = line.split()
+                        n=n+1
+        				if (line[0]!='#' and n==i):
+                            ra = float(line[2])
+                            dec = float(line[3])
+                            mag=float(line[10])#*10**(9)
+                            mag_lst.append(mag)
+                            break
+
+    			# 		radius.append(np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2)
+    			# if (DEBUG):print (radius)
+    			# #special value reversed for empty list (no object detected by SExtractor)
+    			# catalog = open("test.cat",'r')
+    			# for i in catalog:
+    			# 	if(DEBUG) :print ("i : {}".format(i))
+    			# 	line = i.split()
+    			# 	if (DEBUG): ("line: {}".format(line))
+    			# 	if (line[0]!='#' ):
+    			# 		#Pythagorean method
+    			# 		radii = np.sqrt((float(line[6])-float(line[4]))**2+(float(line[7])-float(line[5]))**2)/2
+    			# 		if (radii==max(radius)):
+    			# 			print ('Biggest Galaxy with radius {} pixels!'.format(str(radii)))
+    			# 			mag=float(line[10])#*10**(9)
+    			# 			print "mag: {} ".format(mag)
+    			# 			mag_lst.append(mag)
+    			# 			break
 
     			print (" mag_lst: "+str(mag_lst))
     			mag_rawdata.append(sum(mag_lst))
@@ -113,7 +122,9 @@ with open("sample.txt",'r') as f:
     			mag_lst_r = []      
     			for line in catalog:
     				line = line.split()
-    				if (line[0]!='#'):
+    				if (line[0]!='#' and float(line[2])==ra and float(line[3])):
+                        #should be detected again inside mosaiced image.
+                        print "match!"
     					mag_r=float(line[10])#*10**(9)
     					mag_lst_r.append(mag_r)
     			mag_mosaic.append(sum(mag_lst_r))
