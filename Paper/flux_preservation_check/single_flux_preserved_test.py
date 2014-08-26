@@ -14,6 +14,7 @@ with open("single.txt",'r') as f:
             continue
         if (start):
             n +=1
+	    print (line.split())
             ra = float(line.split()[0])
             dec = float(line.split()[1])
             new_ra = float(line.split()[2])
