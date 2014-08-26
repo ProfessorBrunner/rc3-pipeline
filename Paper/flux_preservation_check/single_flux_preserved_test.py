@@ -35,7 +35,7 @@ with open("single.txt",'r') as f:
             else:    
                 print (x[0])
                 import os
-                os.system("sextractor -CATALOG NAME rawdata.cat -CHECKIMAGE NAME check_rawdata.fits {}".format(x[0]))
+                os.system("sextractor -CATALOG_NAME rawdata.cat -CHECKIMAGE_NAME check_rawdata.fits {}".format(x[0]))
                 k=-11 
                 mag_lst = []   
                 catalog = open("rawdata.cat",'r')
@@ -55,14 +55,14 @@ with open("single.txt",'r') as f:
                             mag_lst.append(mag)
                             break
                 print ("mag_lst: "+str(mag_lst))
-        		print ("coord: "+str(coord))
+        	print ("coord: "+str(coord))
                 mag_rawdata.append(sum(mag_lst))
                 #Data after mosaicing
                 rfits =rc3Obj.mosaic_band('r',rc3Obj.rc3_ra,rc3Obj.rc3_dec,3*rc3Obj.rc3_radius,rc3Obj.rc3_radius,rc3Obj.pgc,SDSS())
                 rc3Obj.source_info(rfits,SDSS()) #Generate data product
                 #Find total flux in mosaiced image
                 os.system("cp {0}/SDSS_r_{0}.fits .".format(rc3Obj.pgc))
-                os.system("sextractor  -CATALOG NAME mosaic.cat -CHECKIMAGE NAME check_mosaic.fitsSDSS_r_{0}.fits".format(rc3Obj.pgc)) #run sextractor in the outer directory where the defaul.* files are stored
+                os.system("sextractor  -CATALOG_NAME mosaic.cat -CHECKIMAGE_NAME check_mosaic.fits SDSS_r_{0}.fits".format(rc3Obj.pgc)) #run sextractor in the outer directory where the defaul.* files are stored
                 catalog = open("mosaic.cat",'r')
                 mag_lst_r = []      
                 for line in catalog:
