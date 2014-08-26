@@ -37,7 +37,7 @@ with open("sample.txt",'r') as f:
                 print (x[0])
                 import os
                 os.system("sextractor  {}".format(x[0]))
-                n=0 
+                k=-11 
                 mag_lst = []   
                 catalog = open("test.cat",'r')
                 #Select 5 random sources to test
@@ -46,15 +46,19 @@ with open("sample.txt",'r') as f:
                 for i in [random.randint(0,10) for i in range(5)]: 
                     for line in catalog:
                         line = line.split()
-                        n=n+1
-                        if (line[0]!='#' and n==i):
+                        k=k+1
+			print "i: {}".format(i)
+			#print "k: {}".format(k)
+                        if (line[0]!='#' and k==i):
                             ra = float(line[2])
                             dec = float(line[3])
                             mag=float(line[10])#*10**(9)
-                            coord.append([ra,dec])
+                            print ("[ra,dec]: {}".format([ra,dec]))
+			    coord.append([ra,dec])
                             mag_lst.append(mag)
                             break
                 print ("mag_lst: "+str(mag_lst))
+		print ("coord: "+str(coord))
                 mag_rawdata.append(sum(mag_lst))
                 os.system("rm test.cat") #ensure no flow through
                 #Data after mosaicing
@@ -68,6 +72,9 @@ with open("sample.txt",'r') as f:
                 for line in catalog:
                     line = line.split()
                     for i in coord:
+			print "i: {}".format(i) 
+			print "line2 : {} ".format(line[2])
+			print "line3 : {} ".format(line[3])
                         if (line[0]!='#' and float(line[2])==i[0] and float(line[3])==i[1]):
                             #should be detected again inside mosaiced image.
                             print "match!"
