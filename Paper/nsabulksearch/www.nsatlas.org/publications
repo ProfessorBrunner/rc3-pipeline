@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+
+<head>
+    <title>NASA-Sloan Atlas</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/admin.css"/>
+</head>
+<body>
+  <div id="header">
+  	<h1>
+  		NASA-Sloan Atlas
+	</h1>
+  </div>
+  <ul id="mainmenu">
+    <li class="first"><a href="/" class="">Home</a></li>
+    <li><a href="/data" class="">Data</a></li>
+    <li><a href="/getAtlas" class="">Search</a></li>
+    <li><a href="/documentation" class="">Documentation</a></li>
+    <li><a href="/caveats" class="">Caveats</a></li>
+    <li><a href="/publications" class="active">Publications</a></li>
+    <li><a href="/credits" class="">Credits</a></li>
+      <li id="login" class="loginlogout"><a href="/login">Login</a></li>
+  </ul>
+  <div id="content">
+<p> We have published a number of publications related to the
+NASA-Sloan Atlas and its precursors.</p>
+<ol>
+<li> <a href="http://adsabs.harvard.edu/abs/2011arXiv1108.3348Z">Zhu et
+al. (2011), <emph>Optical Properties of Host Galaxies of Extragalactic
+Nuclear Water Masers</emph>, submitted to ApJ</a></li>
+<li> <a href="http://adsabs.harvard.edu/abs/2011AJ....142...31B">Blanton et
+al. (2011), <emph>Improved Background Subtraction for the Sloan
+Digital Sky Survey Images</emph>, AJ, 142, 31</a></li>
+<li> <a href="http://adsabs.harvard.edu/abs/2010ApJ...722..491Z">Zhu et
+al. (2010), <emph>Stellar Populations of Elliptical Galaxies in the
+Local Universe</emph>, ApJ, 722, 491</a></li>
+<li> <a href="http://adsabs.harvard.edu/abs/2010ApJ...718..184C">Conroy et
+al. (2010), <emph>Dust Attenuation in Disk-dominated Galaxies:
+Evidence for the 2175 Å Dust Feature</emph>
+ApJ, 718, 184</a></li>
+<li> <a href="http://adsabs.harvard.edu/abs/2009ARA%26A..47..159B">Blanton
+&amp; Moustakas
+(2009), <emph>Physical Properties and Environments of Nearby
+Galaxies</emph>, ARAA, 41, 159
+</a></li>
+<li> <a href="http://adsabs.harvard.edu/abs/2009ApJ...691..394M">Maller et al.
+(2009), <emph>The Intrinsic Properties of SDSS Galaxies</emph>
+ApJ, 691, 394</a></li>
+</ol>
+    <!-- End of main_content -->
+<div id="footer">
+  <div class="clearingdiv"/>
+</div>
+  </div>
+</body>
+</html>
