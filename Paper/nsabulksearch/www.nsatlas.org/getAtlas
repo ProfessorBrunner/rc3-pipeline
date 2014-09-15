@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/style.css"/>
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/tables.css"/>
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/prospectus.css"/>
+	
+
+	<script type="text/javascript" src="/js/jquery.query.js">
+function dummy() { }
+</script>
+	<script type="text/javascript" src="/js/scroll.js">
+function dummy2() { }
+</script>
+<script>
+function setSearch() {
+	// reload the page, change search= to searchType
+	rads = document.formSelect.elements['formSelect'];
+	for (i in rads) {
+      if (rads[i].checked == true)
+			window.location.search = "?search=" + rads[i].value;
+	}
+}
+function setCutout() {
+	// reload the page, change cutoutType= to cutoutType
+	rads = document.formCutout.elements['formCutout'];
+	for (i in rads) {
+		if (rads[i].checked == true)
+			 window.location.search = jQuery.query.set("cutoutType", rads[i].value);
+	}
+}
+</script>
+	<title>
+		NASA-Sloan Atlas
+	</title>
+</head>
+<body>
+  <div id="header">
+  	<h1>
+  		NASA-Sloan Atlas
+	</h1>
+  </div>
+  <ul id="mainmenu">
+    <li class="first"><a href="/" class="">Home</a></li>
+    <li><a href="/data" class="">Data</a></li>
+    <li><a href="/getAtlas" class="">Search</a></li>
+    <li><a href="/documentation" class="">Documentation</a></li>
+    <li><a href="/caveats" class="">Caveats</a></li>
+    <li><a href="/publications" class="">Publications</a></li>
+    <li><a href="/credits" class="">Credits</a></li>
+      <li id="login" class="loginlogout"><a href="/login">Login</a></li>
+  </ul>
+  <div id="content">
+	<br/>
+		<table class="getForm">
+		  <tr>
+		<td>
+		<form name="formSelect">
+			<input type="radio" name="formSelect" onChange="setSearch();" value="nsaid" checked="true"/>
+			NSA ID<br/>
+			<input type="radio" name="formSelect" onChange="setSearch();" value="radec"/>
+			RA/Dec<br/>
+			<input type="radio" name="formSelect" onChange="setSearch();" value="name"/>
+			Name
+		</form>
+		</td>
+       <td>
+			<form action="getAtlas.html" method="get" id="nsaid">
+				<input type="hidden" name="search" value="nsaid"/>
+         <table class="getForm">
+          <tr>
+				   <td class="colored">NSA ID:</td>
+				   <td><input type="text" name="nsaID" size="15" id="nsaID" placeholder="e.g. 1960" value=""/></td>
+           </tr>
+           <tr>
+			      <td colspan="2" align="center">
+			 		    <input type="submit" name="submit_form" value="Submit"/>
+				     </td>
+           </tr>
+         </table>
+			</form>
+       </td>
+     </tr>
+		</table>
+    <!-- End of main_content -->
+<div id="footer">
+  <div class="clearingdiv"/>
+</div>
+  </div>
+</body>
+</html>

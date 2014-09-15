@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+
+<head>
+    <title>NASA-Sloan Atlas</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/admin.css"/>
+</head>
+<body>
+  <div id="header">
+  	<h1>
+  		NASA-Sloan Atlas
+	</h1>
+  </div>
+  <ul id="mainmenu">
+    <li class="first"><a href="/" class="">Home</a></li>
+    <li><a href="/data" class="">Data</a></li>
+    <li><a href="/getAtlas" class="">Search</a></li>
+    <li><a href="/documentation" class="">Documentation</a></li>
+    <li><a href="/caveats" class="">Caveats</a></li>
+    <li><a href="/publications" class="">Publications</a></li>
+    <li><a href="/credits" class="active">Credits</a></li>
+      <li id="login" class="loginlogout"><a href="/login">Login</a></li>
+  </ul>
+  <div id="content">
+<h2 id="team_credits">The Team</h2>
+<p>The NASA-Sloan Atlas was created by Michael Blanton, with extensive
+help and testing from Eyal Kazin, Guangtun Zhu, Adrian Price-Whelan,
+John Moustakas, Demitri Muna, Renbin Yan and Benjamin Weaver. Renbin
+Yan provided the detailed spectroscopic measurements for each SDSS
+spectrum. David Schiminovich kindle provided the input GALEX
+images. We thank Nikhil Padmanabhan, David Hogg, Doug Finkbeiner and
+David Schlegel for their work on SDSS image infrastructure.</p>
+<h2 id="funding_credits">Funding</h2>
+<p>Funding for the NASA-Sloan Atlas has been provided by the NASA
+Astrophysics Data Analysis Program (08-ADP08-0072) and the NSF (AST-1211644). </p>
+<h2 id="sdss_credits">SDSS credits</h2>
+<p>
+Funding for SDSS-III has been provided by the Alfred P. Sloan
+Foundation, the Participating Institutions, the National Science
+Foundation, and the U.S. Department of Energy. The SDSS-III web site
+is <a href="http://www.sdss3.org">http://www.sdss3.org</a>.</p>
+<p>
+SDSS-III is managed by the Astrophysical Research Consortium for the
+Participating Institutions of the SDSS-III Collaboration including the
+University of Arizona, the Brazilian Participation Group, Brookhaven
+National Laboratory, University of Cambridge, University of Florida,
+the French Participation Group, the German Participation Group, the
+Instituto de Astrofisica de Canarias, the Michigan State/Notre
+Dame/JINA Participation Group, Johns Hopkins University, Lawrence
+Berkeley National Laboratory, Max Planck Institute for Astrophysics,
+New Mexico State University, New York University, Ohio State
+University, Pennsylvania State University, University of Portsmouth,
+Princeton University, the Spanish Participation Group, University of
+Tokyo, University of Utah, Vanderbilt University, University of
+Virginia, University of Washington, and Yale University.</p>
+<h2 id="galex_credits">GALEX credits</h2>
+<p>The Galaxy Evolution Explorer (GALEX) is a NASA Small Explorer. The
+mission was developed in cooperation with the Centre National d'Etudes
+Spatiales of France and the Korean Ministry of Science and
+Technology.</p>
+    <!-- End of main_content -->
+<div id="footer">
+  <div class="clearingdiv"/>
+</div>
+  </div>
+</body>
+</html>

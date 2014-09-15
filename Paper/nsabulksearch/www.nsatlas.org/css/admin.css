@@ -1,0 +1,78 @@
+.admin_grid{
+    margin-top: 1em;
+    width: 400px;
+		background-color: #000;
+}
+.admin_grid img{
+    border: 0;
+    vertical-align: middle;
+		background-color: #000;
+}
+
+a.add_link, a.edit_link{
+    background-repeat: no-repeat;
+    padding-left: 20px;
+		background-color: #000;
+}
+a.add_link{
+    background-image: url('/images/add.png');
+		background-color: #000;
+}
+a.edit_link{
+    background-image: url('/images/pencil.png');
+		background-color: #000;
+}
+
+/* admin list view */
+.crud_table .grid {
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+		background-color: #000;
+}
+.crud_table .grid .odd{
+    background-color: #000;
+}
+.crud_table .grid .even{
+    background-color: #000;
+}
+.crud_table .grid th{
+    background: url("/images/menubg.png") no-repeat scroll -20px top transparent;
+    color: #fff;
+    font-weight: normal;
+    text-transform: capitalize;
+		background-color: #000;
+}
+.crud_table .grid td a{
+    color: #000000;
+		background-color: #000;
+}
+.crud_table .grid td.col_0 div{
+    float: left;
+		background-color: #000;
+}
+.crud_table .grid td.col_0 .edit_link, .crud_table .grid td.col_0 .delete-button{
+    display:block;
+    height:17px;
+    width:20px;
+    padding:0;
+    text-indent:-400px;
+    background-repeat: no-repeat;
+		background-color: #000;
+}
+.crud_table .grid td.col_0 .delete-button{
+    font-size: inherit;
+    background-image: url('/images/delete.png');
+    cursor: pointer;
+		background-color: #000;
+}
+
+/* admin add/edit view */
+.crud_edit label, .crud_add label{
+    font-size: 12px;
+		background-color: #000;
+}
+.crud_edit input, .crud_add input,
+.crud_edit select, .crud_add select{
+    width: 15em;
+		background-color: #000;
+}

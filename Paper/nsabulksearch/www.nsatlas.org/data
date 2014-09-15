@@ -1,0 +1,985 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+
+<head>
+    <title>NASA-Sloan Atlas</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/admin.css"/>
+</head>
+<body>
+  <div id="header">
+  	<h1>
+  		NASA-Sloan Atlas
+	</h1>
+  </div>
+  <ul id="mainmenu">
+    <li class="first"><a href="/" class="">Home</a></li>
+    <li><a href="/data" class="active">Data</a></li>
+    <li><a href="/getAtlas" class="">Search</a></li>
+    <li><a href="/documentation" class="">Documentation</a></li>
+    <li><a href="/caveats" class="">Caveats</a></li>
+    <li><a href="/publications" class="">Publications</a></li>
+    <li><a href="/credits" class="">Credits</a></li>
+      <li id="login" class="loginlogout"><a href="/login">Login</a></li>
+  </ul>
+  <div id="content">
+<p>
+The NASA-Sloan Atlas data is available in flat-file form, which we
+document and link to here. See the <a href="getAtlas">search</a> page
+for on-line searching and browsing of the galaxies.  See the <a href="documentation">documentation</a> for a more detailed description
+of our methods and the <a href="caveats">caveats</a> for a list of
+known problems. Below please find information about how to access the
+<a href="#images">FITS images</a>, the <a href="#nsa">data model</a>
+for the master file, some <a href="#sources">source catalog
+information</a>, and <a href="#release">release notes</a>.
+</p>
+<p>The current catalog can be obtained as single FITS format file (0.5
+Gb):</p>
+<center>
+ <a style="font-size:150%;" href="http://sdss.physics.nyu.edu/mblanton/v0/nsa_v0_1_2.fits">nsa_v0_1_2.fits</a>
+     (see <a href="#nsa">data model below</a>)
+</center>
+<p>Through this web site, registered users can make comments on
+particular entries, for example marking badly deblended cases or
+unusual galaxies. We provide you with an up-to-date <a href="http://www.sdss3.org/dr8/software/par.php">Yanny parameter
+file</a> version of these comments at the link below:</p>
+<center>
+ <a style="font-size:150%;" href="comments">nsa_comments.par</a>    
+(current version, subject to change)
+</center>
+<h3 id="images">FITS images</h3>
+<p>Given a catalog entry, it is possible to download the images used
+for their measurement. For each object, FITS format images can be
+retrieved at URLs following the pattern:</p>
+<pre>
+   http://sdss.physics.nyu.edu/mblanton/v0/detect/v0_1/[SUBDIR]/[IAUNAME]-[band].fits.gz  (full mosaic)
+   http://sdss.physics.nyu.edu/mblanton/v0/detect/v0_1/[SUBDIR]/atlases/[PID]/[IAUNAME]-parent-[PID].fits.gz (parent image)
+   http://sdss.physics.nyu.edu/mblanton/v0/detect/v0_1/[SUBDIR]/atlases/[PID]/[IAUNAME]-[PID]-atlas-[AID].fits.gz (child image)
+</pre>
+<p>The full mosaic for each band is a square mosaic centered around
+the catalog object center (RACAT, DECCAT in the master catalog); in
+this case "band" is one of "u", "g", "r", "i", "z", "fd", and
+"nd".</p>
+<p>The parent image is a cutout of that mosaic containing the galaxy
+and any of its close neighbors.  It has 14 HDU: the even HDU are the
+images in SDSS u, SDSS g, SDSS r, SDSS i, SDSS z, GALEX near UV, and
+GALEX far UV; the odd HDU are the inverse variances of the same.  The
+units are nanomaggies.</p>
+<p>The child image is the deblended child of the parent, used for the
+measurements in the catalog.  It has 7 HDU, one for each image in each
+band; the inverse variances used in the measurements are the same as
+for the parent.</p>
+<h3 id="nsa">Master catalog datamodel</h3>
+<table>
+<thead>
+<tr style="color:yellow;">
+<td><b>Column name</b></td>
+<td><b>Data type</b></td>
+<td><b>Units</b></td>
+<td><b>Description</b></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IAUNAME</td>
+<td>string</td>
+<td/>
+<td>IAU-style designation based on RA/Dec</td>
+</tr>
+<tr>
+<td>SUBDIR</td>
+<td>string</td>
+<td/>
+<td>Subdirectory for images in the 'detect' directory</td>
+</tr>
+<tr>
+<td>RA</td>
+<td>float64</td>
+<td>deg</td>
+<td>Right Ascension of measured object center (J2000)</td>
+</tr>
+<tr>
+<td>DEC</td>
+<td>float64</td>
+<td>deg</td>
+<td>Declination of measured object center (J2000)</td>
+</tr>
+<tr>
+<td>ISDSS</td>
+<td>int32</td>
+<td/>
+<td>Zero-indexed row of SDSS source file (-1 if no match)</td>
+</tr>
+<tr>
+<td>INED</td>
+<td>int32</td>
+<td/>
+<td>Zero-indexed row of NED source file (-1 if no match)</td>
+</tr>
+<tr>
+<td>ISIXDF</td>
+<td>int32</td>
+<td/>
+<td>Zero-indexed row of 6dFGRS source file (-1 if no match)</td>
+</tr>
+<tr>
+<td>IALFALFA</td>
+<td>int32</td>
+<td/>
+<td>Zero-indexed row of ALFALFA source file (-1 if no match)</td>
+</tr>
+<tr>
+<td>IZCAT</td>
+<td>int32</td>
+<td/>
+<td>Zero-indexed row of ZCAT source file (-1 if no match)</td>
+</tr>
+<tr>
+<td>ITWODF</td>
+<td>int32</td>
+<td/>
+<td>Zero-indexed row of 2dFGRS source file (-1 if no match)</td>
+</tr>
+<tr>
+<td>MAG</td>
+<td>float32</td>
+<td>mag</td>
+<td>Nominal B magnitude; not reliable, only used to set size of image for analysis</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>float32</td>
+<td/>
+<td>Heliocentric redshift</td>
+</tr>
+<tr>
+<td>ZSRC</td>
+<td>string</td>
+<td/>
+<td>Source of redshift determination (alfalfa, ned, sdss, sixdf, twodf, or zcat)</td>
+</tr>
+<tr>
+<td>SIZE</td>
+<td>float32</td>
+<td>deg</td>
+<td>Size of analyzed mosaics</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>int16</td>
+<td/>
+<td>SDSS drift scan run covering catalog position (RACAT, DECCAT)</td>
+</tr>
+<tr>
+<td>CAMCOL</td>
+<td>int8</td>
+<td/>
+<td>SDSS camcol covering catalog position (RACAT, DECCAT)</td>
+</tr>
+<tr>
+<td>FIELD</td>
+<td>int16</td>
+<td/>
+<td>SDSS field covering catalog position (RACAT, DECCAT)</td>
+</tr>
+<tr>
+<td>RERUN</td>
+<td>string</td>
+<td/>
+<td>Photometric rerun of SDSS used to determine SDSS coverage</td>
+</tr>
+<tr>
+<td>XPOS</td>
+<td>float32</td>
+<td>pix</td>
+<td>SDSS camera column of catalog position (RACAT, DECCAT)</td>
+</tr>
+<tr>
+<td>YPOS</td>
+<td>float32</td>
+<td>pix</td>
+<td>SDSS camera row of catalog position (RACAT, DECCAT)</td>
+</tr>
+<tr>
+<td>ZLG</td>
+<td>float32</td>
+<td/>
+<td>Local Group redshift (following Yahil et al. 1977)</td>
+</tr>
+<tr>
+<td>ZDIST</td>
+<td>float32</td>
+<td/>
+<td>Distance estimate using pecular velocity model of Willick et al. (1997); multiply by <var>c/H<sub>0</sub></var> for Mpc</td>
+</tr>
+<tr>
+<td>ZDIST_ERR</td>
+<td>float32</td>
+<td/>
+<td>Error estimate in distance</td>
+</tr>
+<tr>
+<td>NSAID</td>
+<td>int32</td>
+<td/>
+<td>unique ID within NSA catalog</td>
+</tr>
+<tr>
+<td>NMGY[7]</td>
+<td>float32</td>
+<td>nanomaggies</td>
+<td>Galactic-extinction corrected AB flux used for K-correction (from SERSICFLUX) in FNugriz</td>
+</tr>
+<tr>
+<td>NMGY_IVAR[7]</td>
+<td>float32</td>
+<td>nanomaggies<sup>-2</sup></td>
+<td>Inverse variances used for K-correction in FNugriz (includes error floors)</td>
+</tr>
+<tr>
+<td>OK</td>
+<td>int16</td>
+<td/>
+<td>1 if K-correction was performed, 0 if not (should all be 1)</td>
+</tr>
+<tr>
+<td>RNMGY[7]</td>
+<td>float32</td>
+<td>nanomaggies</td>
+<td>Reconstructed AB nanomaggies from K-correction fit</td>
+</tr>
+<tr>
+<td>ABSMAG[7]</td>
+<td>float32</td>
+<td>mag</td>
+<td>Absolute magnitude estimates for FNugriz from K-corrections (Ω<sub>m</sub>=0.3, Ω<sub>Λ</sub>=0.7, <var>h</var>=1)</td>
+</tr>
+<tr>
+<td>AMIVAR[7]</td>
+<td>float32</td>
+<td>mag<sup>-2</sup></td>
+<td>Inverse variance on absolute magnitudes in FNugriz</td>
+</tr>
+<tr>
+<td>EXTINCTION[7]</td>
+<td>float32</td>
+<td>mag</td>
+<td>Galactic extinction in FNugriz from Schlegel, Finkbeiner &amp; Davis (1997)</td>
+</tr>
+<tr>
+<td>KCORRECT[7]</td>
+<td>float32</td>
+<td>mag</td>
+<td>K-corrections used for absolute magnitudes in FNugriz</td>
+</tr>
+<tr>
+<td>KCOEFF[5]</td>
+<td>float32</td>
+<td/>
+<td>Coefficients of templates in K-correction fit (see Blanton &amp; Roweis 2007)</td>
+</tr>
+<tr>
+<td>MTOL[7]</td>
+<td>float32</td>
+<td>solar</td>
+<td>Mass-to-light ratio derived in K-correction for FNugriz</td>
+</tr>
+<tr>
+<td>B300</td>
+<td>float32</td>
+<td/>
+<td>Star-formation rate b-parameter (current over past average) for last 300 Myrs (from K-correction fit, use with caution)</td>
+</tr>
+<tr>
+<td>B1000</td>
+<td>float32</td>
+<td/>
+<td>Star-formation rate b-parameter (current over past average) for last 1 Gyrs (from K-correction fit, use with caution)</td>
+</tr>
+<tr>
+<td>METS</td>
+<td>float32</td>
+<td/>
+<td>Metallicity from K-correction fit (use with caution)</td>
+</tr>
+<tr>
+<td>MASS</td>
+<td>float32</td>
+<td><var>h<sup>-2</sup></var> solar masses</td>
+<td>Stellar mass from K-correction fit (use with caution)</td>
+</tr>
+<tr>
+<td>XCEN</td>
+<td>float64</td>
+<td>pix</td>
+<td>X centroid in child atlas image</td>
+</tr>
+<tr>
+<td>YCEN</td>
+<td>float64</td>
+<td>pix</td>
+<td>Y centroid in child atlas image</td>
+</tr>
+<tr>
+<td>NPROF[7]</td>
+<td>float32</td>
+<td/>
+<td>Number of measured azimuthally averaged profile bins in FNugriz</td>
+</tr>
+<tr>
+<td>PROFMEAN[7,15]</td>
+<td>float32</td>
+<td>nanomaggies per pixel</td>
+<td>Mean surface brightness in annuli in FNugriz (note that F and N have pixel size 1.5 arcsec, ugriz have pixel size 0.396 arcsec)</td>
+</tr>
+<tr>
+<td>PROFMEAN_IVAR[7,15]</td>
+<td>float32</td>
+<td>nanomaggies<sup>-2</sup></td>
+<td>Inverse variance of PROFMEAN in FNugriz</td>
+</tr>
+<tr>
+<td>QSTOKES[7,15]</td>
+<td>float32</td>
+<td/>
+<td>Q Stokes parameter in each annulus in FNugriz</td>
+</tr>
+<tr>
+<td>USTOKES[7,15]</td>
+<td>float32</td>
+<td/>
+<td>U Stokes parameter in each annulus in FNugriz</td>
+</tr>
+<tr>
+<td>BASTOKES[7,15]</td>
+<td>float32</td>
+<td/>
+<td>Axis ratio b/a derived from Stokes paramaters in each annulus in FNugriz</td>
+</tr>
+<tr>
+<td>PHISTOKES[7,15]</td>
+<td>float32</td>
+<td>deg</td>
+<td>Angle (E of N) derived from Stokes paramaters in each annulus in FNugriz</td>
+</tr>
+<tr>
+<td>PETROFLUX[7]</td>
+<td>float32</td>
+<td>nanomaggies</td>
+<td>Azimuthally-averaged SDSS-style Petrosian flux in FNugriz (GALEX-SDSS photometric systems)</td>
+</tr>
+<tr>
+<td>PETROFLUX_IVAR[7]</td>
+<td>float32</td>
+<td>nanomaggies<sup>-2</sup></td>
+<td>Inverse variance of PETROFLUX</td>
+</tr>
+<tr>
+<td>FIBERFLUX[7]</td>
+<td>float32</td>
+<td>nanomaggies</td>
+<td>Flux in 3-arcsec diameter aperture (not apodized) in FNugriz</td>
+</tr>
+<tr>
+<td>FIBERFLUX_IVAR[7]</td>
+<td>float32</td>
+<td>nanomaggies<sup>-2</sup></td>
+<td>Inverse variance of FIBERFLUX</td>
+</tr>
+<tr>
+<td>BA50</td>
+<td>float32</td>
+<td/>
+<td>Axis ratio b/a from Stokes parameters at 50% light radius</td>
+</tr>
+<tr>
+<td>PHI50</td>
+<td>float32</td>
+<td>deg</td>
+<td>Angle (E of N) from Stokes parameters at 50% light radius</td>
+</tr>
+<tr>
+<td>BA90</td>
+<td>float32</td>
+<td/>
+<td>Axis ratio b/a from Stokes parameters at 90% light radius</td>
+</tr>
+<tr>
+<td>PHI90</td>
+<td>float32</td>
+<td>deg</td>
+<td>Angle (E of N) from Stokes parameters at 90% light radius</td>
+</tr>
+<tr>
+<td>SERSICFLUX[7]</td>
+<td>float32</td>
+<td>nanomaggies</td>
+<td>2D Sersic fit flux in FNugriz (GALEX-SDSS photometric systems)</td>
+</tr>
+<tr>
+<td>SERSICFLUX_IVAR[7]</td>
+<td>float32</td>
+<td>nanomaggies<sup>-2</sup></td>
+<td>Inverse variance of SERSICFLUX</td>
+</tr>
+<tr>
+<td>SERSIC_N</td>
+<td>float32</td>
+<td/>
+<td>2D Sersic index from fit</td>
+</tr>
+<tr>
+<td>SERSIC_BA</td>
+<td>float32</td>
+<td/>
+<td>Axis ratio b/a from 2D Sersic fit</td>
+</tr>
+<tr>
+<td>SERSIC_PHI</td>
+<td>float32</td>
+<td>deg</td>
+<td>Angle (E of N) of major axis in 2D Sersic fit</td>
+</tr>
+<tr>
+<td>ASYMMETRY[7]</td>
+<td>float32</td>
+<td/>
+<td>Asymetry parameter in FNugriz</td>
+</tr>
+<tr>
+<td>CLUMPY[7]</td>
+<td>float32</td>
+<td/>
+<td>Clumpy parameter in FNugriz</td>
+</tr>
+<tr>
+<td>DFLAGS[7]</td>
+<td>float32</td>
+<td/>
+<td>Flags from measurement in each band (FNugriz)</td>
+</tr>
+<tr>
+<td>AID</td>
+<td>float32</td>
+<td/>
+<td>Child id within parent</td>
+</tr>
+<tr>
+<td>PID</td>
+<td>float32</td>
+<td/>
+<td>Parent id within mosaic for this object</td>
+</tr>
+<tr>
+<td>DVERSION</td>
+<td>float32</td>
+<td/>
+<td>Version of dimage used for measurement</td>
+</tr>
+<tr>
+<td>PROFTHETA[15]</td>
+<td>float32</td>
+<td>arcsec</td>
+<td>Outer radius of each measured annulus</td>
+</tr>
+<tr>
+<td>PETROTHETA</td>
+<td>float32</td>
+<td>arcsec</td>
+<td>Petrosian radius (derived from r band)</td>
+</tr>
+<tr>
+<td>PETROTH50</td>
+<td>float32</td>
+<td>arcsec</td>
+<td>Petrosian 50% light radius (derived from r band)</td>
+</tr>
+<tr>
+<td>PETROTH90</td>
+<td>float32</td>
+<td>arcsec</td>
+<td>Petrosian 90% light radius (derived from r band)</td>
+</tr>
+<tr>
+<td>SERSIC_TH50</td>
+<td>float32</td>
+<td>arcsec</td>
+<td>50% light radius of 2D Sersic fit (along major axis)</td>
+</tr>
+<tr>
+<td>OBJNO</td>
+<td>int32</td>
+<td/>
+<td>Index number for Renbin Yan fits to spectra (PLATE*1000+FIBERID)*100L+(MJD%100)</td>
+</tr>
+<tr>
+<td>PLATE</td>
+<td>int32</td>
+<td/>
+<td>SDSS plate number (0 if not observed)</td>
+</tr>
+<tr>
+<td>FIBERID</td>
+<td>int32</td>
+<td/>
+<td>SDSS fiber number (0 if not observed)</td>
+</tr>
+<tr>
+<td>MJD</td>
+<td>int32</td>
+<td/>
+<td>SDSS MJD of spectroscopic observation (0 if not observed)</td>
+</tr>
+<tr>
+<td>COEFF[7]</td>
+<td>float32</td>
+<td/>
+<td>Coefficients for spectroscopic continuum fit</td>
+</tr>
+<tr>
+<td>VDISP</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Velocity dispersion</td>
+</tr>
+<tr>
+<td>D4000</td>
+<td>float32</td>
+<td/>
+<td>D<sub>n</sub>4000 parameter (Balogh et al 1999)</td>
+</tr>
+<tr>
+<td>D4000ERR</td>
+<td>float32</td>
+<td/>
+<td>Error in D<sub>n</sub>4000 parameter</td>
+</tr>
+<tr>
+<td>FA</td>
+<td>float32</td>
+<td/>
+<td>A fraction in K+A fit</td>
+</tr>
+<tr>
+<td>FAERR</td>
+<td>float32</td>
+<td/>
+<td>error in A fraction in K+A fit</td>
+</tr>
+<tr>
+<td>S2FLUX</td>
+<td>float32</td>
+<td>10<sup>-17</sup> erg/s/cm<sup>2</sup></td>
+<td>[SII] 6716, 6731 flux</td>
+</tr>
+<tr>
+<td>S2FLUXERR</td>
+<td>float32</td>
+<td>10<sup>-17</sup> erg/s/cm<sup>2</sup></td>
+<td>Error in [SII] 6716, 6731 flux</td>
+</tr>
+<tr>
+<td>S2EW</td>
+<td>float32</td>
+<td/>
+<td>[SII] 6716, 6731 equivalent width</td>
+</tr>
+<tr>
+<td>S2EWERR</td>
+<td>float32</td>
+<td/>
+<td>Error in [SII] 6716, 6731 equivalent width</td>
+</tr>
+<tr>
+<td>S2VMEAS</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Gaussian σ for this line, corrected for instrumental broadening</td>
+</tr>
+<tr>
+<td>S2VMERR</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Error in Gaussian σ for this line, corrected for instrumental broadening</td>
+</tr>
+<tr>
+<td>S2RATIO</td>
+<td>float32</td>
+<td/>
+<td>flux ratio in [SII] doublet ([SII] 6731 / [SII] 6716)</td>
+</tr>
+<tr>
+<td>HAFLUX</td>
+<td>float32</td>
+<td>10<sup>-17</sup> erg/s/cm<sup>2</sup></td>
+<td>Hα flux</td>
+</tr>
+<tr>
+<td>HAFLUXERR</td>
+<td>float32</td>
+<td>10<sup>-17</sup> erg/s/cm<sup>2</sup></td>
+<td>Error in Hα flux</td>
+</tr>
+<tr>
+<td>HAEW</td>
+<td>float32</td>
+<td/>
+<td>Hα equivalent width</td>
+</tr>
+<tr>
+<td>HAEWERR</td>
+<td>float32</td>
+<td/>
+<td>Error in Hα equivalent width</td>
+</tr>
+<tr>
+<td>HAVMEAS</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Gaussian σ for this line, corrected for instrumental broadening</td>
+</tr>
+<tr>
+<td>HAVMERR</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Error in Gaussian σ for this line, corrected for instrumental broadening</td>
+</tr>
+<tr>
+<td>N2FLUX</td>
+<td>float32</td>
+<td>10<sup>-17</sup> erg/s/cm<sup>2</sup></td>
+<td>[NII] 6584 flux</td>
+</tr>
+<tr>
+<td>N2FLUXERR</td>
+<td>float32</td>
+<td>10<sup>-17</sup> erg/s/cm<sup>2</sup></td>
+<td>Error in [NII] 6584 flux</td>
+</tr>
+<tr>
+<td>N2EW</td>
+<td>float32</td>
+<td/>
+<td>[NII] 6584 equivalent width</td>
+</tr>
+<tr>
+<td>N2EWERR</td>
+<td>float32</td>
+<td/>
+<td>Error in [NII] 6584 equivalent width</td>
+</tr>
+<tr>
+<td>N2VMEAS</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Gaussian σ for this line, corrected for instrumental broadening</td>
+</tr>
+<tr>
+<td>N2VMERR</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Error in Gaussian σ for this line, corrected for instrumental broadening</td>
+</tr>
+<tr>
+<td>HBFLUX</td>
+<td>float32</td>
+<td>10<sup>-17</sup> erg/s/cm<sup>2</sup></td>
+<td>Hβ flux</td>
+</tr>
+<tr>
+<td>HBFLUXERR</td>
+<td>float32</td>
+<td>10<sup>-17</sup> erg/s/cm<sup>2</sup></td>
+<td>Error in Hβ flux</td>
+</tr>
+<tr>
+<td>HBEW</td>
+<td>float32</td>
+<td/>
+<td>Hβ equivalent width</td>
+</tr>
+<tr>
+<td>HBEWERR</td>
+<td>float32</td>
+<td/>
+<td>Error in Hβ equivalent width</td>
+</tr>
+<tr>
+<td>HBVMEAS</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Gaussian σ for this line, corrected for instrumental broadening</td>
+</tr>
+<tr>
+<td>HBVMERR</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Error in Gaussian σ for this line, corrected for instrumental broadening</td>
+</tr>
+<tr>
+<td>O1FLUX</td>
+<td>float32</td>
+<td>10<sup>-17</sup> erg/s/cm<sup>2</sup></td>
+<td>[OI] 6300 flux</td>
+</tr>
+<tr>
+<td>O1FLUXERR</td>
+<td>float32</td>
+<td>10<sup>-17</sup> erg/s/cm<sup>2</sup></td>
+<td>Error in [OI] 6300 flux</td>
+</tr>
+<tr>
+<td>O1EW</td>
+<td>float32</td>
+<td/>
+<td>[OI] 6300 equivalent width</td>
+</tr>
+<tr>
+<td>O1EWERR</td>
+<td>float32</td>
+<td/>
+<td>Error in [OI] 6300 equivalent width</td>
+</tr>
+<tr>
+<td>O1VMEAS</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Gaussian σ for this line, corrected for instrumental broadening</td>
+</tr>
+<tr>
+<td>O1VMERR</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Error in Gaussian σ for this line, corrected for instrumental broadening</td>
+</tr>
+<tr>
+<td>O2FLUX</td>
+<td>float32</td>
+<td>10<sup>-17</sup> erg/s/cm<sup>2</sup></td>
+<td>[OII] 3727 flux</td>
+</tr>
+<tr>
+<td>O2FLUXERR</td>
+<td>float32</td>
+<td>10<sup>-17</sup> erg/s/cm<sup>2</sup></td>
+<td>Error in [OII] 3727 flux</td>
+</tr>
+<tr>
+<td>O2EW</td>
+<td>float32</td>
+<td/>
+<td>[OII] 3727 equivalent width</td>
+</tr>
+<tr>
+<td>O2EWERR</td>
+<td>float32</td>
+<td/>
+<td>Error in [OII] 3727 equivalent width</td>
+</tr>
+<tr>
+<td>O2VMEAS</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Gaussian σ for this line, corrected for instrumental broadening</td>
+</tr>
+<tr>
+<td>O2VMERR</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Error in Gaussian σ for this line, corrected for instrumental broadening</td>
+</tr>
+<tr>
+<td>O3FLUX</td>
+<td>float32</td>
+<td>10<sup>-17</sup> erg/s/cm<sup>2</sup></td>
+<td>[OIII] 5007 flux</td>
+</tr>
+<tr>
+<td>O3FLUXERR</td>
+<td>float32</td>
+<td>10<sup>-17</sup> erg/s/cm<sup>2</sup></td>
+<td>Error in [OIII] 5007 flux</td>
+</tr>
+<tr>
+<td>O3EW</td>
+<td>float32</td>
+<td/>
+<td>[OIII] 5007 equivalent width</td>
+</tr>
+<tr>
+<td>O3EWERR</td>
+<td>float32</td>
+<td/>
+<td>Error in [OIII] 5007 equivalent width</td>
+</tr>
+<tr>
+<td>O3VMEAS</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Gaussian σ for this line, corrected for instrumental broadening</td>
+</tr>
+<tr>
+<td>O3VMERR</td>
+<td>float32</td>
+<td>km/s</td>
+<td>Error in Gaussian σ for this line, corrected for instrumental broadening</td>
+</tr>
+<tr>
+<td>AHGEW</td>
+<td>float32</td>
+<td/>
+<td>Hγ absorption equivalent width (no emission infill correction)</td>
+</tr>
+<tr>
+<td>AHGEWERR</td>
+<td>float32</td>
+<td/>
+<td>Error in Hγ absorption equivalent width</td>
+</tr>
+<tr>
+<td>AHDEW</td>
+<td>float32</td>
+<td/>
+<td>Hδ absorption equivalent width (no emission infill correction)</td>
+</tr>
+<tr>
+<td>AHDEWERR</td>
+<td>float32</td>
+<td/>
+<td>Error in Hδ absorption equivalent width</td>
+</tr>
+<tr>
+<td>NE3EW</td>
+<td>float32</td>
+<td/>
+<td>[NeIII] equivalent width</td>
+</tr>
+<tr>
+<td>NE3EWERR</td>
+<td>float32</td>
+<td/>
+<td>Error in [NeIII] equivalent width</td>
+</tr>
+<tr>
+<td>NE5EW</td>
+<td>float32</td>
+<td/>
+<td>[NeV] equivalent width</td>
+</tr>
+<tr>
+<td>NE5EWERR</td>
+<td>float32</td>
+<td/>
+<td>Error in [NeV] equivalent width</td>
+</tr>
+<tr>
+<td>AV</td>
+<td>float32</td>
+<td/>
+<td>A<sub>V</sub> assuming intrinsic Balmer decrement of 2.85, <var>R<sub>V</sub></var> = 3.1 and O'Donnell (1994) extinction</td>
+</tr>
+<tr>
+<td>S2NSAMP</td>
+<td>float32</td>
+<td/>
+<td>median signal-to-noise ratio per pixel between 3600 and 6900 A (restframe)</td>
+</tr>
+<tr>
+<td>RACAT</td>
+<td>float64</td>
+<td>deg</td>
+<td>Right Ascension of catalog object (J2000)</td>
+</tr>
+<tr>
+<td>DECCAT</td>
+<td>float64</td>
+<td>deg</td>
+<td>Declination of catalog object (J2000)</td>
+</tr>
+<tr>
+<td>ZSDSSLINE</td>
+<td>float32</td>
+<td/>
+<td>Redshift from emission lines</td>
+</tr>
+<tr>
+<td>SURVEY</td>
+<td>string</td>
+<td/>
+<td>Survey within SDSS of plate</td>
+</tr>
+<tr>
+<td>PROGRAMNAME</td>
+<td>string</td>
+<td/>
+<td>Program name of plate</td>
+</tr>
+<tr>
+<td>PLATEQUALITY</td>
+<td>string</td>
+<td/>
+<td>Quality of plate</td>
+</tr>
+<tr>
+<td>TILE</td>
+<td>int32</td>
+<td/>
+<td>Tile number of spectrum</td>
+</tr>
+<tr>
+<td>PLUG_RA</td>
+<td>float64</td>
+<td>deg</td>
+<td>Right Ascension of spectroscopic fiber (J2000)</td>
+</tr>
+<tr>
+<td>PLUG_DEC</td>
+<td>float64</td>
+<td>deg</td>
+<td>Declination of spectroscopic fiber (J2000)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sources">Source catalog information</h3>
+<p>Some ancillary information regarding the catalogs from which this
+sample is selected can be found here:</p>
+<ul>
+<li> <a href="http://www.sdss3.org/dr8">Sloan Digital Sky Server
+DR8</a> (see <a href="http://sdss.physics.nyu.edu/mblanton/v0/catalogs/sdss_atlas.fits">source data
+file</a>)</li>
+<li> <a href="http://nedwww.ipac.caltech.edu/">NASA Extragalactic Database</a> (see <a href="http://sdss.physics.nyu.edu/mblanton/v0/catalogs/sdss_atlas.fits">source data
+file</a>)</li>
+<li> <a href="http://www.aao.gov.au/local/www/6df/">Six-degree Field Galaxy Redshift Survey</a> (see <a href="http://sdss.physics.nyu.edu/mblanton/v0/catalogs/sixdf_atlas.fits">source data
+file</a>)</li>
+<li> <a href="http://msowww.anu.edu.au/2dFGRS/">Two-degree Field Galaxy Redshift Survey</a> (see <a href="http://sdss.physics.nyu.edu/mblanton/v0/catalogs/twodf_atlas.fits">source data
+file</a>)</li>
+<li> <a href="https://www.cfa.harvard.edu/~dfabricant/huchra/zcat/">ZCAT</a> (see <a href="http://sdss.physics.nyu.edu/mblanton/v0/catalogs/zcat_atlas.fits">source data
+file</a>)</li>
+<li> <a href="http://egg.astro.cornell.edu/index.php">ALFALFA</a> (see <a href="http://sdss.physics.nyu.edu/mblanton/v0/catalogs/alfalfa_atlas.fits">source data
+file</a>)</li>
+</ul>
+<h3 id="release">Release notes</h3>
+<p>The NSA version numbers are of the form "vN_M_P". In this scheme,
+"N" refers to the version of the source catalogs used.  All versions
+starting with vN will have consistent NSAID numbers. "M" refers to the
+version of the photometric analysis; for example, when a new set of
+imaging is included, M is incremented.  "P" refers to changes in
+derived data (K-corrections, line measurements, and the like).</p>
+<ul>
+<li><b>v0_1_2</b>: Current version, includes 3800 new objects
+accidentally trimmed in earlier versions (mostly fairly compact
+objects).</li>
+<li><b>v0_1_1</b>: Includes updated line measurements
+and corrections to the K-corrections.</li>
+<li><b>v0_1_0</b>: Added GALEX imaging analysis, corrected severe error in
+Sersic measurements.</li>
+<li><b>v0_0_0</b>: Original version with just SDSS data. </li>
+</ul>
+    <!-- End of main_content -->
+<div id="footer">
+  <div class="clearingdiv"/>
+</div>
+  </div>
+</body>
+</html>
