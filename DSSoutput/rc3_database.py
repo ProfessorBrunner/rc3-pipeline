@@ -4,10 +4,10 @@ import os
 conn = sqlite3.connect("rc3.db")
 c = conn.cursor()
 def tableCreate():
-	#this can only be done once
+	# this can only be done once
 	# create table and specify column, primary key is auto incremnting ID number
 	c.execute("CREATE TABLE rc3 (ID INT , PGC INT,rc3_ra REAL, rc3_dec REAL,rc3_radius REAL,new_ra REAL,new_dec REAL,new_radius REAL, b1 TEXT, r1 TEXT, b2 TEXT , ir2 TEXT, r2 TEXT, best TEXT, low TEXT,in_DSS_footprint BIT ,clean BIT, source_confused BIT, detect BIT,error INT,PRIMARY KEY(ID))")
-	#Using BIT to represent boolean 1=True and False = 0
+	# Using BIT to represent boolean 1=True and False = 0
 	
 def dataEntry():
 	survey = 'dss'
