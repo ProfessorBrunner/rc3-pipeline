@@ -5,8 +5,19 @@
  
     <body>
  	<!--Make sure that you are running this on http://localhost:8888/search.html and not the static file file:///Applications/MAMP/htdocs/search.htm so that the php variabel redirect works-->
-    <form action="pgc.php" target='_blank' method="get">
-    Search by PGC number :
+<h1> RC3 Galaxy Mosaic Search Database</h1>
+<p>The Third Reference Catalogue of Bright Galaxies (RC3) is a reasonably complete listing of 23,010 large, bright galaxies. Using the latest Sloan Digital Sky Survey's Data Release 10 (SDSS DR10) data, we provide color composite images and scientifically-calibrated FITS mosaics in all SDSS imaging bands, for all the RC3 galaxies that lie within the survey's footprint. To get a larger sky coverage, we then conduct the procedures on photographic plates taken by the Second Palomar Observatory Sky Survey (POSS-II) for the B, R, IR bands. Due to the positional inaccuracy inherent in the RC3 catalog, the mosaicking program uses a recursive algorithm for positional update first, then conduct the mosaicking procedure using IPAC's Montage.The program is generalized into a pipeline, which can be easily extended to future survey data or other source catalogs.</p>
+
+More information about the RC3 mosaicking pipeline is available on <a href ="https://github.com/ProfessorBrunner/rc3-pipeline">our GitHub repository</a>
+<br>Image Gallery of all the RC3 galaxies in the<a href ="http://lcdm.astro.illinois.edu/data/rc3/gallery.php"> SDSS DR10 <a> and <a href="http://lcdm.astro.illinois.edu/data/rc3/gallery_dss.php">DPOSS-II <a>footprint.
+<br/>
+<br/>
+    Choose a survey:
+   <form action="pgc.php" target='_blank' method="get">
+    <input type="radio" name="survey" value="sdss">SDSS<br>
+    <input type="radio" name="survey" value="dss">POSS-II
+   <br/>
+    Then Search by PGC number :
     <br/>
     <input type="text" name="pgc" />
     <br/>
@@ -14,7 +25,16 @@
     <br/>
     </form>
     <form action="region.php" target='_blank' method="post">
-    OR Search by coordinate around region (degrees): 
+<br/>    
+OR
+<br/>
+<br/>
+    Choose a survey:
+   <br/>
+     <input type="radio" name="survey" value="sdss">SDSS<br>
+    <input type="radio" name="survey" value="dss">POSS-II
+   <br/>
+    Then Search by coordinate around region (degrees): 
     <br/>
     ra: <input type="text" name="ra" />
     <br/>
