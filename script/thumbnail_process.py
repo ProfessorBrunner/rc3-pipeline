@@ -1,4 +1,4 @@
-#Keep only BEST images abd convert all TIFF color images to .gif
+#Keep only BEST images and convert all TIFF color images to .gif
 import os 
 import glob
 os.chdir("Mosaic")
