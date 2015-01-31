@@ -1,0 +1,14 @@
+#   1 NUMBER                 Running object number                                     
+#   2 FLUX_RADIUS            Fraction-of-light radii                                    [pixel]
+#   3 ALPHA_J2000            Right ascension of barycenter (J2000)                      [deg]
+#   4 DELTA_J2000            Declination of barycenter (J2000)                          [deg]
+#   5 XMIN_IMAGE             Minimum x-coordinate among detected pixels                 [pixel]
+#   6 YMIN_IMAGE             Minimum y-coordinate among detected pixels                 [pixel]
+#   7 XMAX_IMAGE             Maximum x-coordinate among detected pixels                 [pixel]
+#   8 YMAX_IMAGE             Maximum y-coordinate among detected pixels                 [pixel]
+#   9 A_IMAGE                Profile RMS along major axis                               [pixel]
+#  10 B_IMAGE                Profile RMS along minor axis                               [pixel]
+#  11 MAG_ISOCOR             Corrected isophotal magnitude                              [mag]
+         1     11.051   1.0617342 +22.5881982          1          1         42         52    10.994     6.998  -5.6919
+         2      0.957   1.0653221 +22.5858753          1          9          6         18     1.162     1.027  -4.5278
+         3      0.874   1.0498551 +22.5955479         53         48         55         50     0.771     0.659   0.5134

@@ -180,7 +180,7 @@ class RC3(RC3Catalog):
 
     def source_info(self,r_fits_filename,survey):
         '''
-        [ra,dec,margin,radius,pgc] ==> Is margin info necessary(?) YES
+        [ra,dec,margin,radius,pgc] ==> Is margin info necessary
         Input: Filename String of R band Mosaic fit file
         Returns the updated [ra,dec,margin,radius,pgc] info about the identified RC3 source as a list
         If no RC3 source is identified then ['@','@',margin_value,'@','@'] is returned
@@ -216,10 +216,10 @@ class RC3(RC3Catalog):
             if (DEBUG):print("Inside source_info , read from hdulist pgc= {}".format(pgc))
             if (DEBUG):print ("Inside source_info, read from self rc3 object pgc = {}".format(self.pgc))
             # Source Extraction
-            # Remember to switch to command "sextractor" for Ubuntu/ Linux, "sex" for Mac
+            # Remember to switch to command "sextractor" for Ubuntu/Linux, "sex" for Mac
             # Use this for Mac instead :
             # os.system("sex {} {}".format(survey.sextractor_params, file))
-            os.system("sex {} {}".format(survey.sextractor_params, file))
+            os.system("sextractor {} {}".format(survey.sextractor_params, file))
 
             # A list of other RC3 galaxies that lies in the field
             # In the case of source confusion, find all the rc3 that lies in the field.
