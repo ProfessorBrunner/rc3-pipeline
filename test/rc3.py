@@ -32,7 +32,7 @@ class RC3(RC3Catalog):
         self.new_ra='@'
         self.new_dec='@'
 
-    def mosaic_band(self,band,ra,dec,margin,radius,pgc,survey):
+    def mosaic_band(self,band,ra,dec,margin,radius,pgc,survey,_delete=True):
         '''
         Input: source info param
         Create a mosaic fit file for the specified band.
@@ -170,13 +170,16 @@ class RC3(RC3Catalog):
         hdulist[0].header['CLEAN']=clean
         hdulist[0].header['MARGIN']=margin
 
-        os.system("mkdir {}_data".format(pgc))
-        if (os.path.exists(outfile)):
-            os.system("rm "+ outfile)
-        hdulist.writeto(outfile)
-        if (os.path.exists(outfile_r)):
-            os.system("rm "+outfile_r)
-        # os.system("rm -r {}".format(band))
+        if (_delete):
+            if (os.path.exists(outfile)):
+                os.system("rm "+ outfile)
+            hdulist.writeto(outfile)
+            if (os.path.exists(outfile_r)):
+                os.system("rm "+outfile_r)
+            os.system("rm -r {}".format(band))
+        else:
+            print ("Don't delete  in the last step")
+            pass
         return outfile 
 
     def source_info(self,r_fits_filename,survey):
@@ -405,7 +408,7 @@ class RC3(RC3Catalog):
         os.chdir(filename)
         bands =survey.bands 
         for band in bands:
-            self.mosaic_band(band,ra,dec,margin,radius,pgc,survey)
+            self.mosaic_band(band,ra,dec,margin,radius,pgc,survey,_delete=False)
         # Poster/Publication type image
         os.system("stiff  {2}_{5}_{8}.fits  {2}_{4}_{8}.fits {2}_{3}_{8}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{8}_BEST.tiff {7}".format(ra,dec,survey.name,survey.color_bands[2],survey.color_bands[1],survey.color_bands[0],survey.name,survey.stiff_param_low,self.pgc))
         # Image for emphasizing low-surface sturcture
@@ -414,18 +417,10 @@ class RC3(RC3Catalog):
             stiff_error = open("../stiff_error.txt",'a') 
             stiff_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
         # Deletion done in each single mosaic_band , but not properly done if exited out of edge cases (ex. only single field in search region)
-        for band in bands:
-            os.system("rm -r {}".format(band))
+        # for band in bands:
+        #     os.system("rm -r {}".format(band))
         os.system("rm stiff.xml")
-        data_dir = "{}_data".format(pgc)
-        for band in bands:
-            shutil.move(band,data_dir)
         os.chdir("../")
-        # print("I am now here: ".format(os.getcwd()))
-        # if os.path.exists("r"):
-        #     os.system("rm -r r")
-        # if os.path.exists(data_dir):
-        #     os.system("rm -r {}".format(data_dir))
         print ("Completed Mosaic")
 
     def __str__(self):
