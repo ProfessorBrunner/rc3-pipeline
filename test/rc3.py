@@ -170,12 +170,15 @@ class RC3(RC3Catalog):
         hdulist[0].header['CLEAN']=clean
         hdulist[0].header['MARGIN']=margin
 
+        data_dir="{}_data".format(pgc)
+        os.system("mkdir {}".format(data_dir))
         if (os.path.exists(outfile)):
             os.system("rm "+ outfile)
         hdulist.writeto(outfile)
         if (os.path.exists(outfile_r)):
             os.system("rm "+outfile_r)
-        os.system("rm -r {}".format(band))
+        # os.system("rm -r {}".format(band))
+        shutil.move(band,data_dir)
         return outfile 
 
     def source_info(self,r_fits_filename,survey):
@@ -218,8 +221,8 @@ class RC3(RC3Catalog):
             # Source Extraction
             # Remember to switch to command "sextractor" for Ubuntu/ Linux, "sex" for Mac
             # Use this for Mac instead :
-            # os.system("sex {} {}".format(survey.sextractor_params, file))
-            os.system("sextractor {} {}".format(survey.sextractor_params, file))
+            os.system("sex {} {}".format(survey.sextractor_params, file))
+            # os.system("sextractor {} {}".format(survey.sextractor_params, file))
 
             # A list of other RC3 galaxies that lies in the field
             # In the case of source confusion, find all the rc3 that lies in the field.
@@ -412,11 +415,20 @@ class RC3(RC3Catalog):
         if (not(os.path.exists("stiff.xml"))):
             stiff_error = open("../stiff_error.txt",'a') 
             stiff_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
+
+        os.system("rm stiff.xml")
+        data_dir = "{}_data".format(pgc)
+        for band in bands:
+            shutil.move(band,data_dir)
+        os.chdir("../")
+        print("I am now here: ".format(os.getcwd()))
+        if os.path.exists("r"):
+            os.system("rm -r r")
+        if os.path.exists(data_dir):
+            os.system("rm -r {}".format(data_dir))
         # Deletion done in each single mosaic_band , but not properly done if exited out of edge cases (ex. only single field in search region)
         for band in bands:
             os.system("rm -r {}".format(band))
-        os.system("rm stiff.xml")
-        os.chdir("../")
         print ("Completed Mosaic")
 
     def __str__(self):

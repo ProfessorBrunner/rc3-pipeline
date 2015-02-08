@@ -37,7 +37,8 @@ with open("sample.txt",'r') as f:
             else:    
                 print (x[0])
                 import os
-                os.system("sextractor  {}".format(x[0]))
+                # os.system("sextractor  {}".format(x[0]))
+                os.system("sex {}".format(x[0]))
                 k=-11 
                 mag_lst = []   
                 catalog = open("test.cat",'r')

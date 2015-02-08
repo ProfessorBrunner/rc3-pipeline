@@ -1,15 +1,13 @@
-#   1 NUMBER                 Running object number                                     
-#   2 FLUX_RADIUS            Fraction-of-light radii                                    [pixel]
-#   3 ALPHA_J2000            Right ascension of barycenter (J2000)                      [deg]
-#   4 DELTA_J2000            Declination of barycenter (J2000)                          [deg]
-#   5 XMIN_IMAGE             Minimum x-coordinate among detected pixels                 [pixel]
-#   6 YMIN_IMAGE             Minimum y-coordinate among detected pixels                 [pixel]
-#   7 XMAX_IMAGE             Maximum x-coordinate among detected pixels                 [pixel]
-#   8 YMAX_IMAGE             Maximum y-coordinate among detected pixels                 [pixel]
-#   9 A_IMAGE                Profile RMS along major axis                               [pixel]
-#  10 B_IMAGE                Profile RMS along minor axis                               [pixel]
-#  11 MAG_ISOCOR             Corrected isophotal magnitude                              [mag]
-         1      5.946   1.0570415 +22.5902156          1          1         22         23     4.765     4.484  -2.8321
-         2      1.089   1.0447230 +22.5909218         46          8         49         11     0.935     0.880   0.7540
-         3      0.937   1.0458938 +22.5887589         41          1         46          3     1.080     0.626  -0.2592
-         4      1.045   1.0498620 +22.5955391         29         24         32         28     0.923     0.900   0.4976
+#   1 NUMBER          Running object number
+#   2 FLUX_RADIUS     Fraction-of-light radii                         [pixel]
+#   3 ALPHA_J2000     Right ascension of barycenter (J2000)           [deg]
+#   4 DELTA_J2000     Declination of barycenter (J2000)               [deg]
+#   5 XMIN_IMAGE      Minimum x-coordinate among detected pixels      [pixel]
+#   6 YMIN_IMAGE      Minimum y-coordinate among detected pixels      [pixel]
+#   7 XMAX_IMAGE      Maximum x-coordinate among detected pixels      [pixel]
+#   8 YMAX_IMAGE      Maximum y-coordinate among detected pixels      [pixel]
+#   9 A_IMAGE         Profile RMS along major axis                    [pixel]
+#  10 B_IMAGE         Profile RMS along minor axis                    [pixel]
+#  11 MAG_ISOCOR      Corrected isophotal magnitude                   [mag]
+         1      3.252   1.0546732 +22.5919860          1          1          9          7     2.190     1.370  -0.0215
+         2      1.032   1.0498621 +22.5955393         19         14         22         18     0.920     0.898   0.5238
