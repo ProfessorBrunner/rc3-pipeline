@@ -2,6 +2,7 @@
 # Running SExtractor on 
 # Checking Astrometry
 # Conduct all our analysis on r band
+#crash at '39718'
 import numpy as np
 import glob
 import os
@@ -110,8 +111,8 @@ for PGC in os.walk('.').next()[1][1:]:
         for j in input_within_region_with_mag:
             if i[0]==j[0]:
                 matched_mag_lst_input.append(j[2])
-
     plt.plot(matched_mag_lst_output,matched_mag_lst_input,'o')
+    os.chdir("../..")
 # plt.plot(-np.arange(10),-np.arange(10)) #Slope seems to be 1 but off by a constant offset
-    
-    plt.show()
+
+plt.show()
