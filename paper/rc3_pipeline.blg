@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: rc3_pipeline.aux
+The style file: elsarticle-harv.bst
+Database file #1: rc3_pipeline.bib
+Warning--empty journal in efigi
+Warning--empty publisher in rc31991
+Warning--can't use both author and editor fields in ngs-poss
+Warning--empty chapter and pages in ngs-poss
+Warning--can't use both author and editor fields in poss1
+Warning--empty chapter and pages in poss1
+Warning--empty journal in edr
+You've used 41 entries,
+            2821 wiz_defined-function locations,
+            864 strings with 22902 characters,
+and the built_in function-call counts, 45274 in all, are:
+= -- 3188
+> -- 5581
+< -- 27
++ -- 2090
+- -- 2046
+* -- 5197
+:= -- 8751
+add.period$ -- 131
+call.type$ -- 41
+change.case$ -- 893
+chr.to.int$ -- 40
+cite$ -- 48
+duplicate$ -- 799
+empty$ -- 1353
+format.name$ -- 2174
+if$ -- 8099
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 39
+newline$ -- 130
+num.names$ -- 174
+pop$ -- 890
+preamble$ -- 1
+purify$ -- 842
+quote$ -- 0
+skip$ -- 590
+stack$ -- 0
+substring$ -- 977
+swap$ -- 174
+text.length$ -- 13
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 360
+warning$ -- 7
+while$ -- 162
+width$ -- 0
+write$ -- 454
+(There were 7 warnings)

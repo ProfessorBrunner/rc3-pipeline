@@ -1,0 +1,433 @@
+\begin{thebibliography}{41}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem[{{Ahn} et~al.(2014){Ahn}, {Alexandroff}, {Allende Prieto}, {Anders},
+  {Anderson}, {Anderton}, {Andrews}, {Aubourg}, {Bailey}, {Bastien}, and
+  et~al.}]{dr10}
+{Ahn}, C.~P., {Alexandroff}, R., {Allende Prieto}, C., {Anders}, F.,
+  {Anderson}, S.~F., {Anderton}, T., {Andrews}, B.~H., {Aubourg}, {\'E}.,
+  {Bailey}, S., {Bastien}, F.~A., et~al., Apr. 2014. {The Tenth Data Release of
+  the Sloan Digital Sky Survey: First Spectroscopic Data from the SDSS-III
+  Apache Point Observatory Galactic Evolution Experiment}. The Astrophysical
+  Journal, Supplement 211, 17.
+
+\bibitem[{{Alexov} et~al.(2005){Alexov}, {Berriman}, {Chiu}, {Good}, {Jarrett},
+  {Kong}, {Laity}, {Monkewitz}, {Tahir-Kheli}, {Norton}, and {Zhang}}]{irsa}
+{Alexov}, A., {Berriman}, G.~B., {Chiu}, N.-M., {Good}, J.~C., {Jarrett},
+  T.~H., {Kong}, M., {Laity}, A.~C., {Monkewitz}, S.~M., {Tahir-Kheli}, N.~D.,
+  {Norton}, S.~W., {Zhang}, A., Dec. 2005. {The NASA/IPAC Infrared Science
+  Archive (IRSA): The Demo}. In: {Shopbell}, P., {Britton}, M., {Ebert}, R.
+  (Eds.), Astronomical Data Analysis Software and Systems XIV. Vol. 347 of
+  Astronomical Society of the Pacific Conference Series. p.~7.
+
+\bibitem[{{Astropy Collaboration} et~al.(2013){Astropy Collaboration},
+  {Robitaille}, {Tollerud}, {Greenfield}, {Droettboom}, {Bray}, {Aldcroft},
+  {Davis}, {Ginsburg}, {Price-Whelan}, {Kerzendorf}, {Conley}, {Crighton},
+  {Barbary}, {Muna}, {Ferguson}, {Grollier}, {Parikh}, {Nair}, {Unther},
+  {Deil}, {Woillez}, {Conseil}, {Kramer}, {Turner}, {Singer}, {Fox}, {Weaver},
+  {Zabalza}, {Edwards}, {Azalee Bostroem}, {Burke}, {Casey}, {Crawford},
+  {Dencheva}, {Ely}, {Jenness}, {Labrie}, {Lim}, {Pierfederici}, {Pontzen},
+  {Ptak}, {Refsdal}, {Servillat}, and {Streicher}}]{astropy}
+{Astropy Collaboration}, {Robitaille}, T.~P., {Tollerud}, E.~J., {Greenfield},
+  P., {Droettboom}, M., {Bray}, E., {Aldcroft}, T., {Davis}, M., {Ginsburg},
+  A., {Price-Whelan}, A.~M., {Kerzendorf}, W.~E., {Conley}, A., {Crighton}, N.,
+  {Barbary}, K., {Muna}, D., {Ferguson}, H., {Grollier}, F., {Parikh}, M.~M.,
+  {Nair}, P.~H., {Unther}, H.~M., {Deil}, C., {Woillez}, J., {Conseil}, S.,
+  {Kramer}, R., {Turner}, J.~E.~H., {Singer}, L., {Fox}, R., {Weaver}, B.~A.,
+  {Zabalza}, V., {Edwards}, Z.~I., {Azalee Bostroem}, K., {Burke}, D.~J.,
+  {Casey}, A.~R., {Crawford}, S.~M., {Dencheva}, N., {Ely}, J., {Jenness}, T.,
+  {Labrie}, K., {Lim}, P.~L., {Pierfederici}, F., {Pontzen}, A., {Ptak}, A.,
+  {Refsdal}, B., {Servillat}, M., {Streicher}, O., Oct. 2013. {Astropy: A
+  community Python package for astronomy}. Astronomy \& Astrophysics 558, A33.
+
+\bibitem[{{Baillard} et~al.(2011){Baillard}, {Bertin}, {de Lapparent},
+  {Fouqu{\'e}}, {Arnouts}, {Mellier}, {Pell{\'o}}, {Leborgne}, {Prugniel},
+  {Makarov}, {Makarova}, {McCracken}, {Bijaoui}, and {Tasca}}]{efigi}
+{Baillard}, A., {Bertin}, E., {de Lapparent}, V., {Fouqu{\'e}}, P., {Arnouts},
+  S., {Mellier}, Y., {Pell{\'o}}, R., {Leborgne}, J.-F., {Prugniel}, P.,
+  {Makarov}, D., {Makarova}, L., {McCracken}, H.~J., {Bijaoui}, A., {Tasca},
+  L., Aug. 2011. {The EFIGI catalogue of 4458 nearby galaxies with detailed
+  morphology} 532, A74.
+
+\bibitem[{{Bertin}(2012)}]{stiff}
+{Bertin}, E., Sep. 2012. {Displaying Digital Deep Sky Images}. In: {Ballester},
+  P., {Egret}, D., {Lorente}, N.~P.~F. (Eds.), Astronomical Data Analysis
+  Software and Systems XXI. Vol. 461 of Astronomical Society of the Pacific
+  Conference Series. p. 263.
+
+\bibitem[{{Bertin} and {Arnouts}(1996)}]{sextractor}
+{Bertin}, E., {Arnouts}, S., Jun. 1996. {SExtractor: Software for source
+  extraction.} Astronomy and Astrophysics Supplement 117, 393--404.
+
+\bibitem[{{Best} et~al.(1996){Best}, {Charlton}, and {Mayer-Kress}}]{best-rc3}
+{Best}, J.~S., {Charlton}, J.~C., {Mayer-Kress}, G., Jan. 1996. {Analysis of
+  Galaxy Morphology and Evolution Using the Pointwise Dimension}. The
+  Astrophysical Journal 456, 55.
+
+\bibitem[{{Blanton} et~al.(2011){Blanton}, {Kazin}, {Muna}, {Weaver}, and
+  {Price-Whelan}}]{nsa}
+{Blanton}, M.~R., {Kazin}, E., {Muna}, D., {Weaver}, B.~A., {Price-Whelan}, A.,
+  Jul. 2011. {Improved Background Subtraction for the Sloan Digital Sky Survey
+  Images}. The Astronomical Journal 142, 31.
+
+\bibitem[{{Blanton} et~al.(2005){Blanton}, {Schlegel}, {Strauss}, {Brinkmann},
+  {Finkbeiner}, {Fukugita}, {Gunn}, {Hogg}, {Ivezi{\'c}}, {Knapp}, {Lupton},
+  {Munn}, {Schneider}, {Tegmark}, and {Zehavi}}]{nyuvagc}
+{Blanton}, M.~R., {Schlegel}, D.~J., {Strauss}, M.~A., {Brinkmann}, J.,
+  {Finkbeiner}, D., {Fukugita}, M., {Gunn}, J.~E., {Hogg}, D.~W., {Ivezi{\'c}},
+  {\v Z}., {Knapp}, G.~R., {Lupton}, R.~H., {Munn}, J.~A., {Schneider}, D.~P.,
+  {Tegmark}, M., {Zehavi}, I., Jun. 2005. {New York University Value-Added
+  Galaxy Catalog: A Galaxy Catalog Based on New Public Surveys}. The
+  Astronomical Journal 129, 2562--2578.
+
+\bibitem[{{Bonnarel} et~al.(2000){Bonnarel}, {Fernique}, {Bienaym{\'e}},
+  {Egret}, {Genova}, {Louys}, {Ochsenbein}, {Wenger}, and {Bartlett}}]{aladin}
+{Bonnarel}, F., {Fernique}, P., {Bienaym{\'e}}, O., {Egret}, D., {Genova}, F.,
+  {Louys}, M., {Ochsenbein}, F., {Wenger}, M., {Bartlett}, J.~G., Apr. 2000.
+  {The ALADIN interactive sky atlas. A reference tool for identification of
+  astronomical sources}. Astronomy \& Astrophysics Supplament 143, 33--40.
+
+\bibitem[{{Budavari}(2004)}]{sqlclref}
+{Budavari}, T., 2004. Sdss command line query tool.
+  \url{http://cas.sdss.org/dr7/sp/help/download/sqlcl/}, {Last Accessed:
+  2014-09-22}.
+
+\bibitem[{{Corwin} et~al.(1994){Corwin}, {Buta}, and {de Vaucouleurs}}]{rc3-94}
+{Corwin}, Jr., H.~G., {Buta}, R.~J., {de Vaucouleurs}, G., Dec. 1994.
+  {Corrections and additions to the third reference catalogue of bright
+  galaxies}. The Astronomical Journal 108, 2128--2144.
+
+\bibitem[{{de Vaucouleurs} et~al.(1995){de Vaucouleurs}, {de Vaucouleurs},
+  {Corwin}, {Buta}, {Paturel}, and {Fouque}}]{rc3}
+{de Vaucouleurs}, G., {de Vaucouleurs}, A., {Corwin}, H.~G., {Buta}, R.~J.,
+  {Paturel}, G., {Fouque}, P., Feb. 1995. {Third Reference Cat. of Bright
+  Galaxies (RC3) (de Vaucouleurs+ 1991)}. VizieR Online Data Catalog 7155, 0.
+
+\bibitem[{{de Vaucouleurs} et~al.(1991){de Vaucouleurs}, {de Vaucouleurs},
+  {Corwin}, {Buta}, {Paturel}, and {Fouqu{\'e}}}]{rc31991}
+{de Vaucouleurs}, G., {de Vaucouleurs}, A., {Corwin}, Jr., H.~G., {Buta},
+  R.~J., {Paturel}, G., {Fouqu{\'e}}, P., 1991. {Third Reference Catalogue of
+  Bright Galaxies. Volume I: Explanations and references. Volume II: Data for
+  galaxies between 0$^{h}$ and 12$^{h}$. Volume III: Data for galaxies between
+  12$^{h}$ and 24$^{h}$.}
+
+\bibitem[{{de Vaucouleurs} et~al.(1976){de Vaucouleurs}, {de Vaucouleurs}, and
+  {Corwin}}]{rc2}
+{de Vaucouleurs}, G., {de Vaucouleurs}, A., {Corwin}, J.~R., 1976. {Second
+  reference catalogue of bright galaxies}. In: Second reference catalogue of
+  bright galaxies, 1976, Austin: University of Texas Press. p.~0.
+
+\bibitem[{{Dreyer}(1888)}]{ngccat}
+{Dreyer}, J.~L.~E., 1888. {A New General Catalogue of Nebul{\ae} and Clusters
+  of Stars, being the Catalogue of the late Sir John F. W. Herschel, Bart,
+  revised, corrected, and enlarged}. Memoirs of the Royal Astronomical Society
+  49, 1.
+
+\bibitem[{{Gal} et~al.(2004){Gal}, {de Carvalho}, {Odewahn}, {Djorgovski},
+  {Mahabal}, {Brunner}, and {Lopes}}]{dposs}
+{Gal}, R.~R., {de Carvalho}, R.~R., {Odewahn}, S.~C., {Djorgovski}, S.~G.,
+  {Mahabal}, A., {Brunner}, R.~J., {Lopes}, P.~A.~A., Dec. 2004. {The Digitized
+  Second Palomar Observatory Sky Survey (DPOSS). II. Photometric Calibration}.
+  The Astronomical Journal 128, 3082--3091.
+
+\bibitem[{{Gunn} et~al.(2006){Gunn}, {Siegmund}, {Mannery}, {Owen}, {Hull},
+  {Leger}, {Carey}, {Knapp}, {York}, {Boroski}, {Kent}, {Lupton}, {Rockosi},
+  {Evans}, {Waddell}, {Anderson}, {Annis}, {Barentine}, {Bartoszek}, {Bastian},
+  {Bracker}, {Brewington}, {Briegel}, {Brinkmann}, {Brown}, {Carr},
+  {Czarapata}, {Drennan}, {Dombeck}, {Federwitz}, {Gillespie}, {Gonzales},
+  {Hansen}, {Harvanek}, {Hayes}, {Jordan}, {Kinney}, {Klaene}, {Kleinman},
+  {Kron}, {Kresinski}, {Lee}, {Limmongkol}, {Lindenmeyer}, {Long}, {Loomis},
+  {McGehee}, {Mantsch}, {Neilsen}, {Neswold}, {Newman}, {Nitta}, {Peoples},
+  {Pier}, {Prieto}, {Prosapio}, {Rivetta}, {Schneider}, {Snedden}, and
+  {Wang}}]{sdss-tel}
+{Gunn}, J.~E., {Siegmund}, W.~A., {Mannery}, E.~J., {Owen}, R.~E., {Hull},
+  C.~L., {Leger}, R.~F., {Carey}, L.~N., {Knapp}, G.~R., {York}, D.~G.,
+  {Boroski}, W.~N., {Kent}, S.~M., {Lupton}, R.~H., {Rockosi}, C.~M., {Evans},
+  M.~L., {Waddell}, P., {Anderson}, J.~E., {Annis}, J., {Barentine}, J.~C.,
+  {Bartoszek}, L.~M., {Bastian}, S., {Bracker}, S.~B., {Brewington}, H.~J.,
+  {Briegel}, C.~I., {Brinkmann}, J., {Brown}, Y.~J., {Carr}, M.~A.,
+  {Czarapata}, P.~C., {Drennan}, C.~C., {Dombeck}, T., {Federwitz}, G.~R.,
+  {Gillespie}, B.~A., {Gonzales}, C., {Hansen}, S.~U., {Harvanek}, M., {Hayes},
+  J., {Jordan}, W., {Kinney}, E., {Klaene}, M., {Kleinman}, S.~J., {Kron},
+  R.~G., {Kresinski}, J., {Lee}, G., {Limmongkol}, S., {Lindenmeyer}, C.~W.,
+  {Long}, D.~C., {Loomis}, C.~L., {McGehee}, P.~M., {Mantsch}, P.~M.,
+  {Neilsen}, Jr., E.~H., {Neswold}, R.~M., {Newman}, P.~R., {Nitta}, A.,
+  {Peoples}, Jr., J., {Pier}, J.~R., {Prieto}, P.~S., {Prosapio}, A.,
+  {Rivetta}, C., {Schneider}, D.~P., {Snedden}, S., {Wang}, S.-i., Apr. 2006.
+  {The 2.5 m Telescope of the Sloan Digital Sky Survey}. The Astronomical
+  Journal 131, 2332--2359.
+
+\bibitem[{{Hogg} and {Blanton}(2006)}]{hbrc3}
+{Hogg}, D.~W., {Blanton}, M.~R., 2006. Sdss images of selected rc3 galaxies.
+  \url{http://cosmo.nyu.edu/hogg/rc3/}, {Last Accessed: 2014-09-17}.
+
+\bibitem[{{Ivezic} et~al.(2008){Ivezic}, {Tyson}, {Abel}, {Acosta}, {Allsman},
+  {AlSayyad}, {Anderson}, {Andrew}, {Angel}, {Angeli}, {Ansari}, {Antilogus},
+  {Arndt}, {Astier}, {Aubourg}, {Axelrod}, {Bard}, {Barr}, {Barrau},
+  {Bartlett}, {Bauman}, {Beaumont}, {Becker}, {Becla}, {Beldica}, {Bellavia},
+  {Blanc}, {Blandford}, {Bloom}, {Bogart}, {Borne}, {Bosch}, {Boutigny},
+  {Brandt}, {Brown}, {Bullock}, {Burchat}, {Burke}, {Cagnoli}, {Calabrese},
+  {Chandrasekharan}, {Chesley}, {Cheu}, {Chiang}, {Claver}, {Connolly}, {Cook},
+  {Cooray}, {Covey}, {Cribbs}, {Cui}, {Cutri}, {Daubard}, {Daues}, {Delgado},
+  {Digel}, {Doherty}, {Dubois}, {Dubois-Felsmann}, {Durech}, {Eracleous},
+  {Ferguson}, {Frank}, {Freemon}, {Gangler}, {Gawiser}, {Geary}, {Gee}, {Geha},
+  {Gibson}, {Gilmore}, {Glanzman}, {Goodenow}, {Gressler}, {Gris}, {Guyonnet},
+  {Hascall}, {Haupt}, {Hernandez}, {Hogan}, {Huang}, {Huffer}, {Innes},
+  {Jacoby}, {Jain}, {Jee}, {Jernigan}, {Jevremovic}, {Johns}, {Jones},
+  {Juramy-Gilles}, {Juric}, {Kahn}, {Kalirai}, {Kallivayalil}, {Kalmbach},
+  {Kantor}, {Kasliwal}, {Kessler}, {Kirkby}, {Knox}, {Kotov}, {Krabbendam},
+  {Krughoff}, {Kubanek}, {Kuczewski}, {Kulkarni}, {Lambert}, {Le Guillou},
+  {Levine}, {Liang}, {Lim}, {Lintott}, {Lupton}, {Mahabal}, {Marshall},
+  {Marshall}, {May}, {McKercher}, {Migliore}, {Miller}, {Mills}, {Monet},
+  {Moniez}, {Neill}, {Nief}, {Nomerotski}, {Nordby}, {O'Connor}, {Oliver},
+  {Olivier}, {Olsen}, {Ortiz}, {Owen}, {Pain}, {Peterson}, {Petry},
+  {Pierfederici}, {Pietrowicz}, {Pike}, {Pinto}, {Plante}, {Plate}, {Price},
+  {Prouza}, {Radeka}, {Rajagopal}, {Rasmussen}, {Regnault}, {Ridgway}, {Ritz},
+  {Rosing}, {Roucelle}, {Rumore}, {Russo}, {Saha}, {Sassolas}, {Schalk},
+  {Schindler}, {Schneider}, {Schumacher}, {Sebag}, {Sembroski}, {Seppala},
+  {Shipsey}, {Silvestri}, {Smith}, {Smith}, {Strauss}, {Stubbs}, {Sweeney},
+  {Szalay}, {Takacs}, {Thaler}, {Van Berg}, {Vanden Berk}, {Vetter}, {Virieux},
+  {Xin}, {Walkowicz}, {Walter}, {Wang}, {Warner}, {Willman}, {Wittman},
+  {Wolff}, {Wood-Vasey}, {Yoachim}, {Zhan}, and {for the LSST
+  Collaboration}}]{lsst}
+{Ivezic}, Z., {Tyson}, J.~A., {Abel}, B., {Acosta}, E., {Allsman}, R.,
+  {AlSayyad}, Y., {Anderson}, S.~F., {Andrew}, J., {Angel}, R., {Angeli}, G.,
+  {Ansari}, R., {Antilogus}, P., {Arndt}, K.~T., {Astier}, P., {Aubourg}, E.,
+  {Axelrod}, T., {Bard}, D.~J., {Barr}, J.~D., {Barrau}, A., {Bartlett}, J.~G.,
+  {Bauman}, B.~J., {Beaumont}, S., {Becker}, A.~C., {Becla}, J., {Beldica}, C.,
+  {Bellavia}, S., {Blanc}, G., {Blandford}, R.~D., {Bloom}, J.~S., {Bogart},
+  J., {Borne}, K., {Bosch}, J.~F., {Boutigny}, D., {Brandt}, W.~N., {Brown},
+  M.~E., {Bullock}, J.~S., {Burchat}, P., {Burke}, D.~L., {Cagnoli}, G.,
+  {Calabrese}, D., {Chandrasekharan}, S., {Chesley}, S., {Cheu}, E.~C.,
+  {Chiang}, J., {Claver}, C.~F., {Connolly}, A.~J., {Cook}, K.~H., {Cooray},
+  A., {Covey}, K.~R., {Cribbs}, C., {Cui}, W., {Cutri}, R., {Daubard}, G.,
+  {Daues}, G., {Delgado}, F., {Digel}, S., {Doherty}, P., {Dubois}, R.,
+  {Dubois-Felsmann}, G.~P., {Durech}, J., {Eracleous}, M., {Ferguson}, H.,
+  {Frank}, J., {Freemon}, M., {Gangler}, E., {Gawiser}, E., {Geary}, J.~C.,
+  {Gee}, P., {Geha}, M., {Gibson}, R.~R., {Gilmore}, D.~K., {Glanzman}, T.,
+  {Goodenow}, I., {Gressler}, W.~J., {Gris}, P., {Guyonnet}, A., {Hascall},
+  P.~A., {Haupt}, J., {Hernandez}, F., {Hogan}, C., {Huang}, D., {Huffer},
+  M.~E., {Innes}, W.~R., {Jacoby}, S.~H., {Jain}, B., {Jee}, J., {Jernigan},
+  J.~G., {Jevremovic}, D., {Johns}, K., {Jones}, R.~L., {Juramy-Gilles}, C.,
+  {Juric}, M., {Kahn}, S.~M., {Kalirai}, J.~S., {Kallivayalil}, N., {Kalmbach},
+  B., {Kantor}, J.~P., {Kasliwal}, M.~M., {Kessler}, R., {Kirkby}, D., {Knox},
+  L., {Kotov}, I., {Krabbendam}, V.~L., {Krughoff}, S., {Kubanek}, P.,
+  {Kuczewski}, J., {Kulkarni}, S., {Lambert}, R., {Le Guillou}, L., {Levine},
+  D., {Liang}, M., {Lim}, K., {Lintott}, C., {Lupton}, R.~H., {Mahabal}, A.,
+  {Marshall}, P., {Marshall}, S., {May}, M., {McKercher}, R., {Migliore}, M.,
+  {Miller}, M., {Mills}, D.~J., {Monet}, D.~G., {Moniez}, M., {Neill}, D.~R.,
+  {Nief}, J., {Nomerotski}, A., {Nordby}, M., {O'Connor}, P., {Oliver}, J.,
+  {Olivier}, S.~S., {Olsen}, K., {Ortiz}, S., {Owen}, R.~E., {Pain}, R.,
+  {Peterson}, J.~R., {Petry}, C.~E., {Pierfederici}, F., {Pietrowicz}, S.,
+  {Pike}, R., {Pinto}, P.~A., {Plante}, R., {Plate}, S., {Price}, P.~A.,
+  {Prouza}, M., {Radeka}, V., {Rajagopal}, J., {Rasmussen}, A., {Regnault}, N.,
+  {Ridgway}, S.~T., {Ritz}, S., {Rosing}, W., {Roucelle}, C., {Rumore}, M.~R.,
+  {Russo}, S., {Saha}, A., {Sassolas}, B., {Schalk}, T.~L., {Schindler}, R.~H.,
+  {Schneider}, D.~P., {Schumacher}, G., {Sebag}, J., {Sembroski}, G.~H.,
+  {Seppala}, L.~G., {Shipsey}, I., {Silvestri}, N., {Smith}, J.~A., {Smith},
+  R.~C., {Strauss}, M.~A., {Stubbs}, C.~W., {Sweeney}, D., {Szalay}, A.,
+  {Takacs}, P., {Thaler}, J.~J., {Van Berg}, R., {Vanden Berk}, D., {Vetter},
+  K., {Virieux}, F., {Xin}, B., {Walkowicz}, L., {Walter}, C.~W., {Wang},
+  D.~L., {Warner}, M., {Willman}, B., {Wittman}, D., {Wolff}, S.~C.,
+  {Wood-Vasey}, W.~M., {Yoachim}, P., {Zhan}, H., {for the LSST Collaboration},
+  May 2008. {LSST: from Science Drivers to Reference Design and Anticipated
+  Data Products}. ArXiv e-prints.
+
+\bibitem[{{Jacob} et~al.(2010){Jacob}, {Katz}, {Berriman}, {Good}, {Laity},
+  {Deelman}, {Kesselman}, {Singh}, {Su}, {Prince}, and {Williams}}]{montage}
+{Jacob}, J.~C., {Katz}, D.~S., {Berriman}, G.~B., {Good}, J., {Laity}, A.~C.,
+  {Deelman}, E., {Kesselman}, C., {Singh}, G., {Su}, M.-H., {Prince}, T.~A.,
+  {Williams}, R., May 2010. {Montage: a grid portal and software toolkit for
+  science-grade astronomical image mosaicking}. ArXiv e-prints.
+
+\bibitem[{{Knapen} et~al.(2000){Knapen}, {Shlosman}, and
+  {Peletier}}]{knapen-rc3}
+{Knapen}, J.~H., {Shlosman}, I., {Peletier}, R.~F., Jan. 2000. {A Subarcsecond
+  Resolution Near-Infrared Study of Seyfert and ``Normal'' Galaxies. II.
+  Morphology}. The Astrophysical Journal 529, 93--100.
+
+\bibitem[{{Lang} et~al.(2010){Lang}, {Hogg}, {Mierle}, {Blanton}, and
+  {Roweis}}]{astrometry.net}
+{Lang}, D., {Hogg}, D.~W., {Mierle}, K., {Blanton}, M., {Roweis}, S., May 2010.
+  {Astrometry.net: Blind Astrometric Calibration of Arbitrary Astronomical
+  Images}. The Astronomical Journal, Volume 139, Issue 5, pp. 1782-1800 (2010)
+  139, 1782--1800.
+
+\bibitem[{{Lasker} et~al.(1996){Lasker}, {Doggett}, {McLean}, {Sturch},
+  {Djorgovski}, {de Carvalho}, and {Reid}}]{dss}
+{Lasker}, B.~M., {Doggett}, J., {McLean}, B., {Sturch}, C., {Djorgovski}, S.,
+  {de Carvalho}, R.~R., {Reid}, I.~N., 1996. {The Palomar--ST ScI Digitized Sky
+  Survey (POSS--II): Preliminary Data Availability}. In: {Jacoby}, G.~H.,
+  {Barnes}, J. (Eds.), Astronomical Data Analysis Software and Systems V. Vol.
+  101 of Astronomical Society of the Pacific Conference Series. p.~88.
+
+\bibitem[{{Lupton} et~al.(2002){Lupton}, {Ivezic}, {Gunn}, {Knapp}, {Strauss},
+  and {Yasuda}}]{sdss-photo}
+{Lupton}, R.~H., {Ivezic}, Z., {Gunn}, J.~E., {Knapp}, G., {Strauss}, M.~A.,
+  {Yasuda}, N., Dec. 2002. {SDSS Imaging Pipelines}. In: {Tyson}, J.~A.,
+  {Wolff}, S. (Eds.), Survey and Other Telescope Technologies and Discoveries.
+  Vol. 4836 of Society of Photo-Optical Instrumentation Engineers (SPIE)
+  Conference Series. pp. 350--356.
+
+\bibitem[{{Martin} et~al.(2005){Martin}, {Fanson}, {Schiminovich}, {Morrissey},
+  {Friedman}, {Barlow}, {Conrow}, {Grange}, {Jelinsky}, {Milliard}, {Siegmund},
+  {Bianchi}, {Byun}, {Donas}, {Forster}, {Heckman}, {Lee}, {Madore}, {Malina},
+  {Neff}, {Rich}, {Small}, {Surber}, {Szalay}, {Welsh}, and {Wyder}}]{galex}
+{Martin}, D.~C., {Fanson}, J., {Schiminovich}, D., {Morrissey}, P., {Friedman},
+  P.~G., {Barlow}, T.~A., {Conrow}, T., {Grange}, R., {Jelinsky}, P.~N.,
+  {Milliard}, B., {Siegmund}, O.~H.~W., {Bianchi}, L., {Byun}, Y.-I., {Donas},
+  J., {Forster}, K., {Heckman}, T.~M., {Lee}, Y.-W., {Madore}, B.~F., {Malina},
+  R.~F., {Neff}, S.~G., {Rich}, R.~M., {Small}, T., {Surber}, F., {Szalay},
+  A.~S., {Welsh}, B., {Wyder}, T.~K., Jan. 2005. {The Galaxy Evolution
+  Explorer: A Space Ultraviolet Survey Mission}. The Astrophysical Journal,
+  Letters 619, L1--L6.
+
+\bibitem[{{Messier}(1781)}]{messcat}
+{Messier}, C., 1781. {Catalogue des N{\'e}buleuses \& des amas d'{\'E}toiles}.
+  Connoissance des Temps for 1784, 227--267.
+
+\bibitem[{{Minkowski} and {Abell}(1963{\natexlab{a}})}]{ngs-poss}
+{Minkowski}, R.~L., {Abell}, G.~O., 1963{\natexlab{a}}. {The National
+  Geographic Society-Palomar Observatory Sky Survey}. the University of Chicago
+  Press, p. 481.
+
+\bibitem[{{Minkowski} and {Abell}(1963{\natexlab{b}})}]{poss1}
+{Minkowski}, R.~L., {Abell}, G.~O., 1963{\natexlab{b}}. {The National
+  Geographic Society-Palomar Observatory Sky Survey}. the University of Chicago
+  Press, p. 481.
+
+\bibitem[{{Reid} et~al.(1991){Reid}, {Brewer}, {Brucato}, {McKinley}, {Maury},
+  {Mendenhall}, {Mould}, {Mueller}, {Neugebauer}, {Phinney}, {Sargent},
+  {Schombert}, and {Thicksten}}]{poss2}
+{Reid}, I.~N., {Brewer}, C., {Brucato}, R.~J., {McKinley}, W.~R., {Maury}, A.,
+  {Mendenhall}, D., {Mould}, J.~R., {Mueller}, J., {Neugebauer}, G., {Phinney},
+  J., {Sargent}, W.~L.~W., {Schombert}, J., {Thicksten}, R., Jul. 1991. {The
+  second Palomar Sky Survey}. Publications of the Astronomical Society of the
+  Pacific 103, 661--674.
+
+\bibitem[{{Robitaille}(2014)}]{montpy}
+{Robitaille}, T., 2014. The montage-wrapper github repository.
+  \url{https://github.com/astropy/montage-wrapper}, {Last Accessed:
+  2014-09-22}.
+
+\bibitem[{{Robitaille} and {Bressert}(2012)}]{aplpy}
+{Robitaille}, T., {Bressert}, E., 2012. {APLpy: Astronomical Plotting Library
+  in Python}. \url{http://aplpy.github.io}, {Last Accessed: 2014-08-15}.
+
+\bibitem[{{Rockosi} et~al.(2002){Rockosi}, {Gunn}, {Carr}, {Sekiguchi},
+  {Ivezic}, and {Munn}}]{sdss-camera}
+{Rockosi}, C.~M., {Gunn}, J.~E., {Carr}, M.~A., {Sekiguchi}, M., {Ivezic}, Z.,
+  {Munn}, J.~A., Dec. 2002. {Sloan Digital Sky Survey imaging camera: design
+  and performance}. In: {Tyson}, J.~A., {Wolff}, S. (Eds.), Survey and Other
+  Telescope Technologies and Discoveries. Vol. 4836 of Society of Photo-Optical
+  Instrumentation Engineers (SPIE) Conference Series. pp. 180--188.
+
+\bibitem[{{Shapley} and {Ames}(1932)}]{shapley-ames}
+{Shapley}, H., {Ames}, A., 1932. {A survey of the external galaxies brighter
+  than the thirteenth magnitude}. Annals of Harvard College Observatory 88,
+  41--76.
+
+\bibitem[{{Skrutskie} et~al.(2006){Skrutskie}, {Cutri}, {Stiening}, {Weinberg},
+  and {Schneider}}]{2mass}
+{Skrutskie}, M.~F., {Cutri}, R.~M., {Stiening}, R., {Weinberg}, M.~D.,
+  {Schneider}, Feb. 2006. {The Two Micron All Sky Survey (2MASS)}. The
+  Astronomical Journal 131, 1163--1183.
+
+\bibitem[{{Smithsonian Astrophysical Observatory}(2000)}]{ds9}
+{Smithsonian Astrophysical Observatory}, 2000. {SAOImage DS9: A utility for
+  displaying astronomical images in the X11 window environment}.
+  \url{http://ds9.si.edu}, last Accessed: 2014-10-15.
+
+\bibitem[{{Stoughton} and {Bernardi}(2002)}]{edr}
+{Stoughton}, C.~{Lupton}, R.~H., {Bernardi}, M. e.~a., Jan. 2002. {Sloan
+  Digital Sky Survey: Early Data Release} 123, 485--548.
+
+\bibitem[{{The Dark Energy Survey Collaboration}(2005)}]{des}
+{The Dark Energy Survey Collaboration}, Oct. 2005. {The Dark Energy Survey}.
+  ArXiv Astrophysics e-prints.
+
+\bibitem[{{Walton} et~al.(2011){Walton}, {Roberts}, {Mateos}, and
+  {Heard}}]{walton-rc3}
+{Walton}, D.~J., {Roberts}, T.~P., {Mateos}, S., {Heard}, V., Sep. 2011. {2XMM
+  ultraluminous X-ray source candidates in nearby galaxies}. Monthly Notices of
+  the Royal Astronomical Society 416, 1844--1861.
+
+\bibitem[{{Wright} et~al.(2010){Wright}, {Eisenhardt}, {Mainzer}, {Ressler},
+  {Cutri}, {Jarrett}, {Kirkpatrick}, {Padgett}, {McMillan}, {Skrutskie},
+  {Stanford}, {Cohen}, {Walker}, {Mather}, {Leisawitz}, {Gautier}, {McLean},
+  {Benford}, {Lonsdale}, {Blain}, {Mendez}, {Irace}, {Duval}, {Liu}, {Royer},
+  {Heinrichsen}, {Howard}, {Shannon}, {Kendall}, {Walsh}, {Larsen}, {Cardon},
+  {Schick}, {Schwalm}, {Abid}, {Fabinsky}, {Naes}, and {Tsai}}]{wise}
+{Wright}, E.~L., {Eisenhardt}, P.~R.~M., {Mainzer}, A.~K., {Ressler}, M.~E.,
+  {Cutri}, R.~M., {Jarrett}, T., {Kirkpatrick}, J.~D., {Padgett}, D.,
+  {McMillan}, R.~S., {Skrutskie}, M., {Stanford}, S.~A., {Cohen}, M., {Walker},
+  R.~G., {Mather}, J.~C., {Leisawitz}, D., {Gautier}, III, T.~N., {McLean}, I.,
+  {Benford}, D., {Lonsdale}, C.~J., {Blain}, A., {Mendez}, B., {Irace}, W.~R.,
+  {Duval}, V., {Liu}, F., {Royer}, D., {Heinrichsen}, I., {Howard}, J.,
+  {Shannon}, M., {Kendall}, M., {Walsh}, A.~L., {Larsen}, M., {Cardon}, J.~G.,
+  {Schick}, S., {Schwalm}, M., {Abid}, M., {Fabinsky}, B., {Naes}, L., {Tsai},
+  C.-W., Dec. 2010. {The Wide-field Infrared Survey Explorer (WISE): Mission
+  Description and Initial On-orbit Performance}. The Astronomical Journal 140,
+  1868--1881.
+
+\bibitem[{{York} et~al.(2000){York}, {Adelman}, {Anderson}, {Anderson},
+  {Annis}, {Bahcall}, {Bakken}, {Barkhouser}, {Bastian}, {Berman}, {Boroski},
+  {Bracker}, {Briegel}, {Briggs}, {Brinkmann}, {Brunner}, {Burles}, {Carey},
+  {Carr}, {Castander}, {Chen}, {Colestock}, {Connolly}, {Crocker}, {Csabai},
+  {Czarapata}, {Davis}, {Doi}, {Dombeck}, {Eisenstein}, {Ellman}, {Elms},
+  {Evans}, {Fan}, {Federwitz}, {Fiscelli}, {Friedman}, {Frieman}, {Fukugita},
+  {Gillespie}, {Gunn}, {Gurbani}, {de Haas}, {Haldeman}, {Harris}, {Hayes},
+  {Heckman}, {Hennessy}, {Hindsley}, {Holm}, {Holmgren}, {Huang}, {Hull},
+  {Husby}, {Ichikawa}, {Ichikawa}, {Ivezi{\'c}}, {Kent}, {Kim}, {Kinney},
+  {Klaene}, {Kleinman}, {Kleinman}, {Knapp}, {Korienek}, {Kron}, {Kunszt},
+  {Lamb}, {Lee}, {Leger}, {Limmongkol}, {Lindenmeyer}, {Long}, {Loomis},
+  {Loveday}, {Lucinio}, {Lupton}, {MacKinnon}, {Mannery}, {Mantsch}, {Margon},
+  {McGehee}, {McKay}, {Meiksin}, {Merelli}, {Monet}, {Munn}, {Narayanan},
+  {Nash}, {Neilsen}, {Neswold}, {Newberg}, {Nichol}, {Nicinski}, {Nonino},
+  {Okada}, {Okamura}, {Ostriker}, {Owen}, {Pauls}, {Peoples}, {Peterson},
+  {Petravick}, {Pier}, {Pope}, {Pordes}, {Prosapio}, {Rechenmacher}, {Quinn},
+  {Richards}, {Richmond}, {Rivetta}, {Rockosi}, {Ruthmansdorfer}, {Sandford},
+  {Schlegel}, {Schneider}, {Sekiguchi}, {Sergey}, {Shimasaku}, {Siegmund},
+  {Smee}, {Smith}, {Snedden}, {Stone}, {Stoughton}, {Strauss}, {Stubbs},
+  {SubbaRao}, {Szalay}, {Szapudi}, {Szokoly}, {Thakar}, {Tremonti}, {Tucker},
+  {Uomoto}, {Vanden Berk}, {Vogeley}, {Waddell}, {Wang}, {Watanabe},
+  {Weinberg}, {Yanny}, {Yasuda}, and {SDSS Collaboration}}]{sdsstech}
+{York}, D.~G., {Adelman}, J., {Anderson}, Jr., J.~E., {Anderson}, S.~F.,
+  {Annis}, J., {Bahcall}, N.~A., {Bakken}, J.~A., {Barkhouser}, R., {Bastian},
+  S., {Berman}, E., {Boroski}, W.~N., {Bracker}, S., {Briegel}, C., {Briggs},
+  J.~W., {Brinkmann}, J., {Brunner}, R., {Burles}, S., {Carey}, L., {Carr},
+  M.~A., {Castander}, F.~J., {Chen}, B., {Colestock}, P.~L., {Connolly}, A.~J.,
+  {Crocker}, J.~H., {Csabai}, I., {Czarapata}, P.~C., {Davis}, J.~E., {Doi},
+  M., {Dombeck}, T., {Eisenstein}, D., {Ellman}, N., {Elms}, B.~R., {Evans},
+  M.~L., {Fan}, X., {Federwitz}, G.~R., {Fiscelli}, L., {Friedman}, S.,
+  {Frieman}, J.~A., {Fukugita}, M., {Gillespie}, B., {Gunn}, J.~E., {Gurbani},
+  V.~K., {de Haas}, E., {Haldeman}, M., {Harris}, F.~H., {Hayes}, J.,
+  {Heckman}, T.~M., {Hennessy}, G.~S., {Hindsley}, R.~B., {Holm}, S.,
+  {Holmgren}, D.~J., {Huang}, C.-h., {Hull}, C., {Husby}, D., {Ichikawa},
+  S.-I., {Ichikawa}, T., {Ivezi{\'c}}, {\v Z}., {Kent}, S., {Kim}, R.~S.~J.,
+  {Kinney}, E., {Klaene}, M., {Kleinman}, A.~N., {Kleinman}, S., {Knapp},
+  G.~R., {Korienek}, J., {Kron}, R.~G., {Kunszt}, P.~Z., {Lamb}, D.~Q., {Lee},
+  B., {Leger}, R.~F., {Limmongkol}, S., {Lindenmeyer}, C., {Long}, D.~C.,
+  {Loomis}, C., {Loveday}, J., {Lucinio}, R., {Lupton}, R.~H., {MacKinnon}, B.,
+  {Mannery}, E.~J., {Mantsch}, P.~M., {Margon}, B., {McGehee}, P., {McKay},
+  T.~A., {Meiksin}, A., {Merelli}, A., {Monet}, D.~G., {Munn}, J.~A.,
+  {Narayanan}, V.~K., {Nash}, T., {Neilsen}, E., {Neswold}, R., {Newberg},
+  H.~J., {Nichol}, R.~C., {Nicinski}, T., {Nonino}, M., {Okada}, N., {Okamura},
+  S., {Ostriker}, J.~P., {Owen}, R., {Pauls}, A.~G., {Peoples}, J., {Peterson},
+  R.~L., {Petravick}, D., {Pier}, J.~R., {Pope}, A., {Pordes}, R., {Prosapio},
+  A., {Rechenmacher}, R., {Quinn}, T.~R., {Richards}, G.~T., {Richmond}, M.~W.,
+  {Rivetta}, C.~H., {Rockosi}, C.~M., {Ruthmansdorfer}, K., {Sandford}, D.,
+  {Schlegel}, D.~J., {Schneider}, D.~P., {Sekiguchi}, M., {Sergey}, G.,
+  {Shimasaku}, K., {Siegmund}, W.~A., {Smee}, S., {Smith}, J.~A., {Snedden},
+  S., {Stone}, R., {Stoughton}, C., {Strauss}, M.~A., {Stubbs}, C., {SubbaRao},
+  M., {Szalay}, A.~S., {Szapudi}, I., {Szokoly}, G.~P., {Thakar}, A.~R.,
+  {Tremonti}, C., {Tucker}, D.~L., {Uomoto}, A., {Vanden Berk}, D., {Vogeley},
+  M.~S., {Waddell}, P., {Wang}, S.-i., {Watanabe}, M., {Weinberg}, D.~H.,
+  {Yanny}, B., {Yasuda}, N., {SDSS Collaboration}, Sep. 2000. {The Sloan
+  Digital Sky Survey: Technical Summary}. The Astronomical Journal 120,
+  1579--1587.
+
+\end{thebibliography}

@@ -1,0 +1,22 @@
+#   1 NUMBER                 Running object number                                     
+#   2 FLUX_RADIUS            Fraction-of-light radii                                    [pixel]
+#   3 ALPHA_J2000            Right ascension of barycenter (J2000)                      [deg]
+#   4 DELTA_J2000            Declination of barycenter (J2000)                          [deg]
+#   5 XMIN_IMAGE             Minimum x-coordinate among detected pixels                 [pixel]
+#   6 YMIN_IMAGE             Minimum y-coordinate among detected pixels                 [pixel]
+#   7 XMAX_IMAGE             Maximum x-coordinate among detected pixels                 [pixel]
+#   8 YMAX_IMAGE             Maximum y-coordinate among detected pixels                 [pixel]
+#   9 A_IMAGE                Profile RMS along major axis                               [pixel]
+#  10 B_IMAGE                Profile RMS along minor axis                               [pixel]
+         1      2.714   0.1807720 +28.3960936         75         40         92         60     3.266     2.583
+         2      8.202   0.1955694 +28.4019997          1         22         68        123    11.480     9.251
+         3     10.396   0.1627028 +28.3878676        137          1        143         61    10.907     1.394
+         4      9.747   0.1835574 +28.4014633          1         40        127        127     9.472     7.647
+         5      1.215   0.1887458 +28.3820664         57          1         60          5     1.073     0.839
+         6      0.764   0.1711816 +28.4202136        114        139        115        141     0.673     0.466
+         7      0.984   0.1673597 +28.4043536        125         80        128         85     1.065     0.886
+         8      0.869   0.1653821 +28.4176063        131        129        135        132     0.983     0.897
+         9      0.942   0.1721114 +28.3891024        109         25        114         31     1.062     1.025
+        10      0.841   0.1835595 +28.3894654         73         27         77         31     0.954     0.905
+        11      0.870   0.1797242 +28.4200095         84        136         90        142     1.076     1.052
+        12      0.851   0.1667171 +28.3861315        127         15        131         19     0.942     0.923
