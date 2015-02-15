@@ -1,3 +1,4 @@
+#On bigdog point PATH to montage by `` export PATH=${PATH}:/data/small/des/montage/montage/Montage_v3.3/Montage/  ``
 from sdss import SDSS
 from rc3 import *
 from skyserver import *
@@ -31,10 +32,14 @@ with open("rc3_subsample.txt",'r') as f:
             x= glob.glob("frame-*")
             print (x)
             print ("There are {} fields in this region".format(len(x)))
-            if (len(x)==1):
-                print "only one field in region"
+            if (len(x)==0):
+                print "Does not lie in SDSS footprint"
+                continue
+            elif (len(x)==1):#we only want to test fields that require mosaicking.
+                print "only one field in region "
+                continue
             else:    
-                print (x[0])
+                # print (x[0])
                 import os
                 # os.system("sextractor  {}".format(x[0]))
                 os.system("sex {}".format(x[0]))

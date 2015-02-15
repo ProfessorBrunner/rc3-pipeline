@@ -14,6 +14,7 @@ class SkyServer(Server):
 
     def query(self,query):
         result = sqlcl.query(query).readlines()
+        print result
         data =[]
         count =0
         if (DEBUG): print (result)
