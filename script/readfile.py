@@ -15,7 +15,7 @@ for line in file('rc3.txt'):
     if line[172]!= ' ' : #everything except blank line should have decimal point
         rad = 10**(float(line[171:175]))
         ra = 15.*x + (y/4.) + (z/240.) #units of time 0-24 hr,=>degrees, every hour earth spins 15 deg  (4, 240 comes from expaned form from 3600)
-        diameter = rad*0.00166666667
+        diameter = rad*0.00166666667 # arcminute to degrees
         #print ('diameter: '+str(diameter) + "\n")
     dec = decval + (m/60.) + (n/3600.)
     if sign == '-':

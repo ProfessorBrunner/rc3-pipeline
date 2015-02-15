@@ -30,7 +30,7 @@ class RC3Catalog(Catalog):
 					n +=1
 					ra = float(line.split()[0])
 					dec = float(line.split()[1])
-					radius = float(line.split()[2])/2. #radius = diameter/2
+					radius = float(line.split()[2])/2. #radius = diameter/2 [in degrees]
 					pgc=str(line.split()[3]).replace(' ', '')
 					clean=True
 					obj= RC3(ra,dec,radius,pgc)
