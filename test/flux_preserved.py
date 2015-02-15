@@ -1,7 +1,7 @@
 from sdss import SDSS
 from rc3 import *
 from skyserver import *
-with open("sample.txt",'r') as f:
+with open("rc3_subsample.txt",'r') as f:
     mag_mosaic=[]
     mag_rawdata = []
     allObj=[]
@@ -16,11 +16,10 @@ with open("sample.txt",'r') as f:
             n +=1
             print (line.split())
             ra = float(line.split()[0])
-            dec = float(line.split()[1])
-            new_ra = float(line.split()[2])
-            new_dec = float(line.split()[3])
-            radius = float(line.split()[4])
-            pgc=str(line.split()[5]).replace(' ', '')
+            dec = float(line.split()[1]) 
+            radius = float(line.split()[2])
+            # pgc=str(line.split()[3]).replace(' ', '')
+            pgc = str(int(float(line.split()[3])))
             clean=True
             rc3Obj= RC3(ra,dec,radius,pgc)
             ss = SkyServer()
