@@ -178,7 +178,8 @@ class RC3(RC3Catalog):
                 os.system("rm "+outfile_r)
             os.system("rm -r {}".format(band))
         else:
-            print ("Don't delete  in the last step")
+            print ("Don't delete in the last step")
+            # os.system("rm -r {}".format(band))
             pass
         return outfile 
 
