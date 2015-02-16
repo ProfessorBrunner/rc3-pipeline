@@ -1,3 +1,4 @@
+#Change to "sextractor" command on UNIX machines
 #Analysis Script: 
 # Running SExtractor on 
 # Checking Astrometry
@@ -10,10 +11,11 @@ import shutil
 import matplotlib.pyplot as plt
 # PGC = 243
 for PGC in os.walk('.').next()[1][1:]:
+    print PGC
     for i in glob.glob("default.*"):
         shutil.copy(i,"{}/".format(PGC))
     os.chdir(str(PGC))
-    os.system("sex  SDSS_r_{}r.fits".format(PGC))
+    os.system("sextractor  SDSS_r_{}r.fits".format(PGC))
     os.rename("test.cat","output.cat") #rename it more appropriately as output catalog
     # with open("output.txt",'r') as f:
     #     for line in f:
@@ -24,7 +26,7 @@ for PGC in os.walk('.').next()[1][1:]:
         shutil.copy(i,"{}/".format("r"))
     os.chdir("r")
     all_r_input = glob.glob("raw/frame-*")
-    os.system("sex  {}".format(all_r_input[0]))
+    os.system("sextractor  {}".format(all_r_input[0]))
     os.rename("test.cat","input.cat")
 
     os.chdir("..")
@@ -41,8 +43,8 @@ for PGC in os.walk('.').next()[1][1:]:
             ra = float(line[2])
             dec = float(line[3])
             mag=float(line[10])#*10**(9)
-            print ("[ra,dec]: {}".format([ra,dec]))
-            print ("mag_isocorr: {}".format(mag))
+            # print ("[ra,dec]: {}".format([ra,dec]))
+            # print ("mag_isocorr: {}".format(mag))
             out_coord.append([ra,dec])
             out_mag_lst.append(mag)
     out_coord = np.array(out_coord)
@@ -52,7 +54,7 @@ for PGC in os.walk('.').next()[1][1:]:
 
     os.chdir("r")
     for r_band_inputs in all_r_input:
-        os.system("sex  {}".format(r_band_inputs))
+        os.system("sextractor  {}".format(r_band_inputs))
         os.rename("test.cat","input.cat")
         k=-11 
         mag_lst = []   
@@ -67,8 +69,8 @@ for PGC in os.walk('.').next()[1][1:]:
                 ra = float(line[2])
                 dec = float(line[3])
                 mag=float(line[10])#*10**(9)
-                print ("[ra,dec]: {}".format([ra,dec]))
-                print ("mag_isocorr: {}".format(mag))
+                # print ("[ra,dec]: {}".format([ra,dec]))
+                # print ("mag_isocorr: {}".format(mag))
                 coord.append([ra,dec])
                 mag_lst.append(mag)
                 # break
@@ -101,6 +103,11 @@ for PGC in os.walk('.').next()[1][1:]:
     # Matching coordinates with output magnitudes
     matched_coord=np.array(matched_coord)
     matched_mag_lst_output =[]
+    if len(matched_coord)==0:
+        print ("No matched sources for PGC {}".format(PGC))
+        os.getcwd()
+        os.chdir("../../")
+        continue
     for i in matched_coord[::,0]:
         for j in out_coord_mag:
             if i[0]==j[0]:
@@ -113,6 +120,13 @@ for PGC in os.walk('.').next()[1][1:]:
                 matched_mag_lst_input.append(j[2])
     plt.plot(matched_mag_lst_output,matched_mag_lst_input,'o')
     os.chdir("../..")
+    with open("input_mag","a") as in_file:
+        # np.savetxt(mag_file,(matched_mag_lst_input,matched_mag_lst_output))
+        np.savetxt(in_file,matched_mag_lst_input)
+    with open("output_mag","a") as out_file:
+        np.savetxt(out_file,matched_mag_lst_output)
+    # np.savetxt("input_output_mag",)
+
 # plt.plot(-np.arange(10),-np.arange(10)) #Slope seems to be 1 but off by a constant offset
 
-plt.show()
+# plt.show()
