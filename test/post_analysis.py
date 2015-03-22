@@ -9,7 +9,6 @@ import glob
 import os
 import shutil
 import matplotlib.pyplot as plt
-# PGC = 243
 for PGC in os.walk('.').next()[1][1:]:
     print PGC
     for i in glob.glob("default.*"):
