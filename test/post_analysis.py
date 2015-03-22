@@ -113,6 +113,7 @@ for PGC in os.walk('.').next()[1][1:]:
                 matched_mag_lst_output.append(j[2])
     # Matching coordinates with input magnitudes
     matched_mag_lst_input =[]
+
     for i in matched_coord[::,1]:
         for j in input_within_region_with_mag:
             if i[0]==j[0]:
