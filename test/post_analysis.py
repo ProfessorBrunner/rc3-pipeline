@@ -14,7 +14,7 @@ for PGC in os.walk('.').next()[1][1:]:
     for i in glob.glob("default.*"):
         shutil.copy(i,"{}/".format(PGC))
     os.chdir(str(PGC))
-    os.system("sex  SDSS_r_{}r.fits".format(PGC))
+    os.system("sextractor  SDSS_r_{}r.fits".format(PGC))
     os.rename("test.cat","output.cat") #rename it more appropriately as output catalog
     # with open("output.txt",'r') as f:
     #     for line in f:
@@ -25,7 +25,7 @@ for PGC in os.walk('.').next()[1][1:]:
         shutil.copy(i,"{}/".format("r"))
     os.chdir("r")
     all_r_input = glob.glob("raw/frame-*")
-    os.system("sex  {}".format(all_r_input[0]))
+    os.system("sextractor  {}".format(all_r_input[0]))
     os.rename("test.cat","input.cat")
 
     os.chdir("..")
@@ -53,7 +53,7 @@ for PGC in os.walk('.').next()[1][1:]:
 
     os.chdir("r")
     for r_band_inputs in all_r_input:
-        os.system("sex  {}".format(r_band_inputs))
+        os.system("sextractor  {}".format(r_band_inputs))
         os.rename("test.cat","input.cat")
         k=-11 
         mag_lst = []   
@@ -110,6 +110,8 @@ for PGC in os.walk('.').next()[1][1:]:
     for i in matched_coord[::,0]:
         for j in out_coord_mag:
             if i[0]==j[0]:
+		print "out matched_coord",i 
+		print "out_coord_mag", j
                 matched_mag_lst_output.append(j[2])
     # Matching coordinates with input magnitudes
     matched_mag_lst_input =[]
@@ -117,6 +119,8 @@ for PGC in os.walk('.').next()[1][1:]:
     for i in matched_coord[::,1]:
         for j in input_within_region_with_mag:
             if i[0]==j[0]:
+                print "in  matched_coord",i
+                print "in_coord_mag", j
                 matched_mag_lst_input.append(j[2])
     plt.plot(matched_mag_lst_output,matched_mag_lst_input,'o')
     os.chdir("../..")
