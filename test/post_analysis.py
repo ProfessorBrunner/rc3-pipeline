@@ -55,7 +55,8 @@ for PGC in os.walk('.').next()[1][1:]:
     for r_band_inputs in all_r_input:
         os.system("sextractor  {}".format(r_band_inputs))
         os.rename("test.cat","input.cat")
-        k=-11 
+        k=-11
+	mag_rad_lst = [] 
         mag_lst = []   
         catalog = open("input.cat",'r')
         #Select 5 random sources to test
@@ -68,10 +69,12 @@ for PGC in os.walk('.').next()[1][1:]:
                 ra = float(line[2])
                 dec = float(line[3])
                 mag=float(line[10])#*10**(9)
+		radius = float(line[1])
                 # print ("[ra,dec]: {}".format([ra,dec]))
                 # print ("mag_isocorr: {}".format(mag))
                 coord.append([ra,dec])
                 mag_lst.append(mag)
+		mag_rad_lst.append([mag,radius])
                 # break
         import numpy as np
         coord = np.array(coord)
@@ -119,16 +122,51 @@ for PGC in os.walk('.').next()[1][1:]:
     for i in matched_coord[::,1]:
         for j in input_within_region_with_mag:
             if i[0]==j[0]:
-		print "matched_coord: ",i
-		print "input_within_region_with_mag:",j
+#		print "matched_coord: ",i
+#		print "input_within_region_with_mag:",j
                 matched_mag_lst_input.append(j)
     #plt.plot(matched_mag_lst_output,matched_mag_lst_input,'o')
     os.chdir("../..")
-    with open("input_mag","a") as in_file:
-        # np.savetxt(mag_file,(matched_mag_lst_input,matched_mag_lst_output))
-        np.savetxt(in_file,matched_mag_lst_input)
-    with open("output_mag","a") as out_file:
-        np.savetxt(out_file,matched_mag_lst_output)
+    print "matched_mag_lst_input: ", matched_mag_lst_input
+    print "matched_mag_lst_output: ", matched_mag_lst_output 
+    print "mag_rad_lst:", mag_rad_lst
+
+    
+    #Matching up radius and magnitude using mag_rad_lst so that we can also store it into the output files
+    write_in_input = []
+    for  j in matched_mag_lst_input:
+	for i in mag_rad_lst:
+		if i[0] == j[2]:
+			print "matched!"
+			j = list(j)
+			# since the mags are only 5 decimal point, there is sometime the weird error where you.
+			# have more than one sources with the same mags, which means that the same j would 
+			#appeind different corresponding radius values twice, resulting in a list of length 5
+			# So this results in an numpy array that is not rectangular (sort of like a gnomon)
+			# http://stackoverflow.com/questions/10920318/numpy-beginner-writing-an-array-using-numpy-savetxt			 # This would stil be a valid array but just not a legal 2D array so then this is why
+			# numpy.savetxt is not okay with taking this in and writing it in the textfile. 
+			if len(j)==3:
+				j.append(i[1])
+  			print "j: ",j 
+   			#write_in_input.append(np.array(j,dtype='float64'))
+			write_in_input.append(j)
+#    print "afterwards:", matched_mag_lst_input
+#    print "afterwards:" , write_in_input
+    print "matched_mag_lst_output:", matched_mag_lst_output
+    write_in_input=np.array(write_in_input)
+    print "afterwards:" , write_in_input
+   
+    print "size!:" 
+    print len(matched_mag_lst_output)
+    print write_in_input.shape[0]
+    if len(matched_mag_lst_output) ==write_in_input.shape[0]:
+        with open("input_mag","a") as in_file:
+            # np.savetxt(mag_file,(matched_mag_lst_input,matched_mag_lst_output))
+       	    np.savetxt(in_file,write_in_input)
+	    #np.savetxt(in_file,np.array([[1,2],[3,4]]))
+        with open("output_mag","a") as out_file:
+	    # you don't actually need to write this for the output since they are matched, also you can't because no mag_rad_lst written in in the beginning
+            np.savetxt(out_file,matched_mag_lst_output)
     os.system("mv {} ../500finished_post_analysis".format(PGC))    
 #shutil.move(PGC,"finished_post_analysis/")
     # np.savetxt("input_output_mag",)
