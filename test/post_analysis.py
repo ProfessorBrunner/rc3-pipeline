@@ -9,7 +9,9 @@ import glob
 import os
 import shutil
 import matplotlib.pyplot as plt
+import astropy.io.fits as pf
 # PGC = 243
+NUM_EDGE_REJECT = 0 #number of sources rejected because it lied too close to the boundary
 for PGC in os.walk('.').next()[1][1:]:
     print "PGC: {}".format(PGC)
     for i in glob.glob("default.*"):
@@ -32,21 +34,35 @@ for PGC in os.walk('.').next()[1][1:]:
     os.chdir("..")
     k=-11 
     out_mag_lst = []   
+   
+
+    # For Boundary source detection
+    print os.getcwd()
+    x = pf.getdata("check.fits")# Don't flip the array for this analysis, we don't need it to be north up
+    width = x.shape[0] #all the output mosaics that I have cropped are squares 
+    # Load in data  
     catalog = open("output.cat",'r')
-    #Select 5 random sources to test
     out_coord = []
-    # import random
-    # for i in [random.randint(0,10) for i in range(5)]: 
     for line in catalog:
         line = line.split()
         if (line[0]!='#'):
             ra = float(line[2])
             dec = float(line[3])
             mag=float(line[10])#*10**(9)
-            # print ("[ra,dec]: {}".format([ra,dec]))
-            # print ("mag_isocorr: {}".format(mag))
-            out_coord.append([ra,dec])
-            out_mag_lst.append(mag)
+	    radius  = float(line[1]) # Estimate: Object are not circular
+	    xmin = float(line[4])
+            ymin = float(line[5])
+            xmax = float(line[6])
+            ymax = float(line[7])
+            xi = float(line[8])
+            yi = float(line[9])
+            # Boundary Source Rejection
+            if ((xmin-radius)<=0 ) or ((ymin-radius)<=0) or ((xmax+radius)>=width)or ((ymax+radius)>=width):
+                #print ("Source is out of bounds: Source Rejected")
+		NUM_EDGE_REJECT +=1
+            else:
+	        out_coord.append([ra,dec])
+                out_mag_lst.append(mag)
     out_coord = np.array(out_coord)
     out_ra_lst = out_coord[::,0]
     out_dec_lst = out_coord[::,1]
@@ -167,7 +183,8 @@ for PGC in os.walk('.').next()[1][1:]:
         with open("output_mag","a") as out_file:
 	    # you don't actually need to write this for the output since they are matched, also you can't because no mag_rad_lst written in in the beginning
             np.savetxt(out_file,matched_mag_lst_output)
-    os.system("mv {} ../500finished_post_analysis".format(PGC))    
+    os.system("mv {} ../500finished_post_analysis".format(PGC))   
+    print "NUM_EDGE_REJECT: ",NUM_EDGE_REJECT 
 #shutil.move(PGC,"finished_post_analysis/")
     # np.savetxt("input_output_mag",)
 
