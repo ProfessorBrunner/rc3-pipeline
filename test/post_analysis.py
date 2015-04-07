@@ -5,6 +5,7 @@
 # Conduct all our analysis on r band
 #crash at '39718'
 import numpy as np
+from astropy.io import fits
 import glob
 import os
 import shutil
@@ -28,6 +29,17 @@ for PGC in os.walk('.').next()[1][1:]:
         shutil.copy(i,"{}/".format("r"))
     os.chdir("r")
     all_r_input = glob.glob("raw/frame-*")
+    f=all_r_input[0]
+    ImageData, ImageHdr = fits.getdata(f, 0, header=True)
+    for i in  ['NMGY','NMGYIVAR','EXPTIME','BZERO','BSCALE','SOFTBIAS','BUNIT','FLAVOR','OBSERVER','OBJECT','DRIFT','TIMESYS','RUN','FRAME','CCDLOC','STRIPE','STRIP','ORIGIN','TELESCOP','SCDMETHD','SCDWIDTH','SCDDECMF','SCDOFSET','SCDDYNTH','SCDSTTHL','SCDSTTHR','SCDREDSZ','SCDSKYL','SCDSKYR','COMMENT','VERSIDL','VERSUTIL','VERSPOP','PCALIB','PSKY','RERUN','HISTORY','COMMENT','CAMROW','BADLINES','EQUINOX','FILTER','CAMCOL','VERSION','DERV_VER','ASTR_VER','ASTRO_ID','BIAS_ID','FRAME_ID','KO_VER','PS_ID','ATVSN','FOCUS','DATE-OBS','TAIHMS','SYS_SCN','EQNX_SCN','NODE','INCL','XBORE','YBORE','SYSTEM','CCDMODE','C_OBS','COLBIN','ROWBIN','DAVERS','RADECSYS','SPA','IPA','IPARATE','AZ','ALT','TAI','SPA','IPA','IPARATE','AZ','ALT']:
+        try: 
+            ImageHdr.remove(i) 
+            print "Removed ",i
+        except(ValueError):
+#             print "Ignore ",i
+            pass
+    print "Writing to",f
+    fits.writeto(f,ImageData,ImageHdr,clobber=True)
     os.system("sextractor  {}".format(all_r_input[0]))
     os.rename("test.cat","input.cat")
 
