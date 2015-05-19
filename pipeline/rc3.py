@@ -47,12 +47,10 @@ class RC3(RC3Catalog):
         if (DEBUG) : print ("Querying data that lies inside margin")
         print (ra,dec,margin)
         result = survey.data_server.surveyFieldConverter(float(ra),float(dec),float(margin))
-        print "passed"
         clean_result = survey.data_server.surveyFieldConverter(float(ra),float(dec),float(margin),True)
         clean = True
         print ("result: "+str(result))
         print ("clean_result: "+str(clean_result))
-        print "passed"
         
         if (len(result)!=len(clean_result)and band=='u'):
             # Only print this once in the u band. 
@@ -74,6 +72,9 @@ class RC3(RC3Catalog):
         os.chdir(band)
         os.mkdir ("raw")
         os.mkdir ("projected")
+        os.mkdir ("diff_dir")
+        os.mkdir ("corr_dir")
+
         os.chdir("raw")
         if (DEBUG): print ("Retrieving data from server for "+ band +"band")
         out=""
@@ -140,7 +141,8 @@ class RC3(RC3Catalog):
             os.chdir("../..")
         else:
             montage.mImgtbl("raw","images.tbl")
-            montage.mHdr(str(ra)+" "+str(dec),margin,out+".hdr")
+            # montage.mHdr(str(ra)+" "+str(dec),margin,out+".hdr")
+            montage.mMakeHdr("images.tbl",out+".hdr")
             if (DEBUG): print ("Reprojecting images")
             os.chdir("raw")
             if (DEBUG):print(os.getcwd())
@@ -154,13 +156,22 @@ class RC3(RC3Catalog):
                 return -1 # masking with special value reserved for not in survey footprint galaxies
             os.chdir("..")
             montage.mImgtbl("projected","pimages.tbl")
-            os.chdir("projected")
-            montage.mAdd("../pimages.tbl","../"+out+".hdr","{}_{}.fits".format(survey.name,out))
+            #os.chdir("projected")
+            #montage.mAdd("../pimages.tbl","../"+out+".hdr","{}_{}.fits".format(survey.name,out))
             #<Insert Background Rectification procedure here>
+            montage.mOverlaps("images.tbl","diff.tbl")
+            montage.mDiffExec("diff.tbl", out+".hdr", "diff_dir")
+            #mFitExec(diffs_table, fits_table, diff_dir)
+            montage.mFitExec("diff.tbl", "fits.tbl",  "diff_dir")
+            #mBgModel(images_table, fits_table)
+            montage.mBgModel("images.tbl", "fits.tbl","corr.tbl")
+            montage.mBgExec("images.tbl", "corr.tbl","corr_dir")
+            montage.mAdd("images.tbl", out+".hdr", "{}_{}.fits".format(survey.name,out))
+            #<END background procedures>
             montage.mSubimage("{}_{}.fits".format(survey.name,out),outfile_r,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
             shutil.move(outfile_r,os.getcwd()[:-11] )#if change to :-11 then move out of u,g,r,i,z directory, may be more convenient for mJPEG
             if (DEBUG) : print ("Completed Mosaic for " + band)
-            os.chdir("../..")
+            os.chdir("../")
             hdulist = pyfits.open(outfile_r)
 
         hdulist[0].header['RA']=float(ra)
