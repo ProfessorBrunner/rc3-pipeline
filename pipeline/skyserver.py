@@ -56,14 +56,15 @@ class SkyServer(Server):
     	'''
         query = "SELECT distinct rc3.pgc,rc3.ra,rc3.dec FROM PhotoObj as po JOIN RC3 as rc3 ON rc3.objid = po.objid  WHERE po.ra between {0}-{2} and  {0}+{2} and po.dec between {1}-{2} and  {1}+{2}".format(str(ra),str(dec),str(margin))
         return self.query(query)
-        
-    def surveyFieldConverter(self,ra,dec,margin,need_clean=False):
-    	'''
-    	Given ra,dec ,return a list of run camcol field for the given ra,dec
-    	'''
+            
+    def surveyFieldConverter(self,ra,dec,margin,need_clean=False,debug=False):
+        '''
+        Given ra,dec ,return a list of run camcol field for the given ra,dec
+        '''
         if (need_clean):
             query = "SELECT distinct run,camcol,field FROM PhotoObj WHERE  CLEAN =1 and ra between {0}-{2} and  {0}+{2}and dec between {1}-{2} and  {1}+{2}".format(str(ra),str(dec),str(margin))
         else:
             query = "SELECT distinct run,camcol,field FROM PhotoObj WHERE  ra between {0}-{2} and  {0}+{2}and dec between {1}-{2} and  {1}+{2}".format(str(ra),str(dec),str(margin))
+        if (debug):
+            print query
         return self.query(query)
-

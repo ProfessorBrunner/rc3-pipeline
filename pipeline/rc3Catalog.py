@@ -49,7 +49,7 @@ class RC3Catalog(Catalog):
 	            if (n>=1):
 	                new_ra = float(line.split()[5])
 	                new_dec = float(line.split()[6])
-	                radius = float(line.split()[3])/2. #radius = diameter/2
+	                radius = float(line.split()[4])/2. #radius = diameter/2
 	                pgc=int(line.split()[1])
 	                clean=True
 	                obj= RC3(new_ra,new_dec,radius,pgc)
@@ -67,6 +67,7 @@ class RC3Catalog(Catalog):
 		updated.write("ra       dec         new_ra      new_dec         radius \n")
 		for obj in self.allObj:
 			print("Working on PGC{}, at({} , {})".format(str(obj.pgc), str(obj.rc3_ra),str(obj.rc3_dec)))
+			print str(obj.rc3_radius)
 			try:
 				rfits=obj.mosaic_band(survey.best_band,obj.rc3_ra,obj.rc3_dec,3*obj.rc3_radius,obj.rc3_radius,obj.pgc,survey)
 				if(rfits!=-1): #Special value for outside footprint or error, no rfits produced

@@ -14,7 +14,7 @@ import fnmatch
 import numpy as np
 import heapq
 import time
-DEBUG=False
+DEBUG=True
 
 class RC3(RC3Catalog):
     '''
@@ -47,10 +47,12 @@ class RC3(RC3Catalog):
         if (DEBUG) : print ("Querying data that lies inside margin")
         print (ra,dec,margin)
         result = survey.data_server.surveyFieldConverter(float(ra),float(dec),float(margin))
+        print "passed"
         clean_result = survey.data_server.surveyFieldConverter(float(ra),float(dec),float(margin),True)
         clean = True
-        if (DEBUG):print ("result: "+str(result))
-        if (DEBUG):print ("clean_result: "+str(clean_result))
+        print ("result: "+str(result))
+        print ("clean_result: "+str(clean_result))
+        print "passed"
         
         if (len(result)!=len(clean_result)and band=='u'):
             # Only print this once in the u band. 
@@ -219,7 +221,7 @@ class RC3(RC3Catalog):
             # Remember to switch to command "sextractor" for Ubuntu/Linux, "sex" for Mac
             # Use this for Mac instead :
             # os.system("sex {} {}".format(survey.sextractor_params, file))
-            os.system("sextractor {} {}".format(survey.sextractor_params, file))
+            os.system("sex {} {}".format(survey.sextractor_params, file))
 
             # A list of other RC3 galaxies that lies in the field
             # In the case of source confusion, find all the rc3 that lies in the field.
