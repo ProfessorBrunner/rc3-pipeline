@@ -2,7 +2,7 @@ import os
 from rc3 import RC3
 from rc3Catalog import RC3Catalog
 subset = RC3Catalog()
-subsetlst= subset.initSubset("catalogSubset.txt")
+subsetlst= subset.initSubset("rc3_subsample.txt")
 subset.allObj = subsetlst
 from sdss import SDSS
 sdss = SDSS()

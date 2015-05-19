@@ -47,12 +47,16 @@ class RC3Catalog(Catalog):
 	    with open(file,'r') as f:
 	        for line in f:
 	            if (n>=1):
-	                new_ra = float(line.split()[5])
-	                new_dec = float(line.split()[6])
-	                radius = float(line.split()[4])/2. #radius = diameter/2
-	                pgc=int(line.split()[1])
+	                # new_ra = float(line.split()[5])
+	                # new_dec = float(line.split()[6])
+	                # radius = float(line.split()[4])/2. #radius = diameter/2
+	                # pgc=int(line.split()[1])
+	                ra = float(line.split()[0])
+	                dec = float(line.split()[1])
+	                radius = float(line.split()[2])/2. #radius = diameter/2
+	                pgc=int(float(line.split()[3]))
 	                clean=True
-	                obj= RC3(new_ra,new_dec,radius,pgc)
+	                obj= RC3(ra,dec,radius,pgc)
 	                allObj.append(obj)
 	            n +=1
 	    return allObj
