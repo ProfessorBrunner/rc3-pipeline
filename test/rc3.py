@@ -68,12 +68,16 @@ class RC3(RC3Catalog):
                 print ( "Complete Query. These data lies within margin: ")
                 print (result)
 
+
         os.mkdir(band)
         os.chdir(band)
-        os.mkdir ("raw")
-        os.mkdir ("projected")
-        os.chdir("raw")
+        os.mkdir ("rawdir")
+        os.mkdir ("projdir")
+        os.mkdir ("diffdir")
+        os.mkdir ("corrdir")
+        os.mkdir("final")
         if (DEBUG): print ("Retrieving data from server for "+ band +"band")
+        os.chdir("rawdir")
         out=""
         # Raw Imaging Data naming
         for i in result :  
@@ -103,7 +107,7 @@ class RC3(RC3Catalog):
         if (len(result)==1):
             #With header info, len of processed result list is 1 if there is only 1 field lying in the margin, simply do mSubImage without mosaicing
             print ("Only one field in region of interest")
-            os.chdir("raw")
+            os.chdir("rawdir")
             if (DEBUG):print ("m:{}".format(margin))
             try:
                 if (DEBUG):print ("2m:{}".format(2*margin))
@@ -137,28 +141,33 @@ class RC3(RC3Catalog):
             shutil.move(outfile,"../..")
             os.chdir("../..")
         else:
-            montage.mImgtbl("raw","images.tbl")
-            montage.mHdr(str(ra)+" "+str(dec),margin,out+".hdr")
+            imgtbl="images-rawdir.tbl"
+            hdr="template.hdr"
+            montage.mImgtbl("rawdir",imgtbl)
+            # montage.mHdr(str(ra)+" "+str(dec),margin,out+".hdr")
+            montage.mMakeHdr(imgtbl,hdr)
             if (DEBUG): print ("Reprojecting images")
-            os.chdir("raw")
             if (DEBUG):print(os.getcwd())
-            montage.mProjExec("../images.tbl","../"+out+".hdr","../projected", "../stats.tbl")#,debug=True) 
-            if os.listdir("../projected") == []: 
+            montage.mProjExec(imgtbl,hdr,"projdir", "stats.tbl",raw_dir="rawdir")#,debug=True) 
+            if os.listdir("projdir") == []: 
                 print "Projection Failed. No projected images produced. Skip to the next galaxy" 
-                os.chdir("../../") #Get out of directory for that galaxy and move on
+                os.chdir("../") #Get out of directory for that galaxy and move on
                 os.system("rm -r {}".format(survey.best_band))
                 failed_projection = open ("failed_projection","a")
                 failed_projection.write("{}     {}     {}     {} \n".format(str(ra),str(dec),str(radius),str(pgc)))
                 return -1 # masking with special value reserved for not in survey footprint galaxies
-            os.chdir("..")
-            montage.mImgtbl("projected","pimages.tbl")
-            os.chdir("projected")
-            montage.mAdd("../pimages.tbl","../"+out+".hdr","{}_{}.fits".format(survey.name,out))
-            #<Insert Background Rectification procedure here>
-            montage.mSubimage("{}_{}.fits".format(survey.name,out),outfile_r,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
-            shutil.move(outfile_r,os.getcwd()[:-11] )#if change to :-11 then move out of u,g,r,i,z directory, may be more convenient for mJPEG
+            # os.chdir("..")
+            # montage.mImgtbl("projected","pimages.tbl")
+            # os.chdir("projected")
+            # montage.mAdd("../pimages.tbl","../"+out+".hdr","{}_{}.fits".format(survey.name,out))
+            # #<Insert Background Rectification procedure here>
+            # montage.mSubimage("{}_{}.fits".format(survey.name,out),outfile_r,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
+            # shutil.move(outfile_r,os.getcwd()[:-11] )#if change to :-11 then move out of u,g,r,i,z directory, may be more convenient for mJPEG
+            os.system("mImgtbl projdir images.tbl; mOverlaps images.tbl diffs.tbl;mDiffExec -p projdir diffs.tbl template.hdr diffdir;mFitExec diffs.tbl fits.tbl diffdir; mBgModel images.tbl fits.tbl corrections.tbl; mBgExec -p projdir images.tbl corrections.tbl corrdir; mAdd -p corrdir images.tbl template.hdr mosaic.fits; mJPEG -gray mosaic.fits 0s max gaussian-log -out mosaic.jpg")
+            montage.mSubimage("mosaic.fits" ,"mosaic.fits",ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
+            shutil.move("mosaic.fits","../{}".format(outfile_r))#if change to :-11 then move out of u,g,r,i,z directory, may be more convenient for mJPEG
             if (DEBUG) : print ("Completed Mosaic for " + band)
-            os.chdir("../..")
+            os.chdir("../")
             hdulist = pyfits.open(outfile_r)
 
         hdulist[0].header['RA']=ra
