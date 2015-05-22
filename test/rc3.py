@@ -67,8 +67,8 @@ class RC3(RC3Catalog):
             if (DEBUG): 
                 print ( "Complete Query. These data lies within margin: ")
                 print (result)
-
-
+	if (os.path.exists("r")):
+            os.system("rm -r r")
         os.mkdir(band)
         os.chdir(band)
         os.mkdir ("rawdir")
@@ -232,7 +232,7 @@ class RC3(RC3Catalog):
             # Source Extraction
             # Remember to switch to command "sextractor" for Ubuntu/ Linux, "sex" for Mac
             # Use this for Mac instead :
-            os.system("sex {} {}".format(survey.sextractor_params, file))
+            os.system("sextractor {} {}".format(survey.sextractor_params, file))
             # os.system("sextractor {} {}".format(survey.sextractor_params, file))
 
             # A list of other RC3 galaxies that lies in the field
@@ -383,6 +383,8 @@ class RC3(RC3Catalog):
                     print ("rc3: {} , updated: {} ".format(rc3_radius,radii))
                     updated.write("{}       {}       {}       {}       {}       {} \n".format(rc3_ra,rc3_dec,new_ra,new_dec,radii, self.pgc))
                     print ("Mosaic_all on {} ".format(self.pgc))
+		    #For photometric analysis, I only need to look at r band .
+		    #self.mosaic_band(survey.best_band,new_ra,new_dec,margin,radii,self.pgc,survey)
 		    self.mosaic_all_bands(new_ra,new_dec,margin,radii,self.pgc,survey)
                     return [float(new_ra),float(new_dec),margin,radii,self.pgc] 
                     # margin was already set as 3*rc3_radius during the first run
@@ -416,20 +418,21 @@ class RC3(RC3Catalog):
     	else:
     		filename = str(pgc)
         os.chdir(filename)
-        bands =survey.bands 
-        for band in bands:
+        #bands =survey.bands 
+        bands=['r'] #Speedup photometric ananlysis
+	for band in bands:
             self.mosaic_band(band,ra,dec,margin,radius,pgc,survey,_delete=False)
         # Poster/Publication type image
-        os.system("stiff  {2}_{5}_{8}.fits  {2}_{4}_{8}.fits {2}_{3}_{8}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{8}_BEST.tiff {7}".format(ra,dec,survey.name,survey.color_bands[2],survey.color_bands[1],survey.color_bands[0],survey.name,survey.stiff_param_low,self.pgc))
+        #os.system("stiff  {2}_{5}_{8}.fits  {2}_{4}_{8}.fits {2}_{3}_{8}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{8}_BEST.tiff {7}".format(ra,dec,survey.name,survey.color_bands[2],survey.color_bands[1],survey.color_bands[0],survey.name,survey.stiff_param_low,self.pgc))
         # Image for emphasizing low-surface sturcture
-        os.system("stiff  {2}_{5}_{8}.fits  {2}_{4}_{8}.fits {2}_{3}_{8}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{8}_LOW.tiff  {7}".format(ra,dec,survey.name,survey.color_bands[2],survey.color_bands[1],survey.color_bands[0],survey.name,survey.stiff_param_best,self.pgc)) 
-        if (not(os.path.exists("stiff.xml"))):
-            stiff_error = open("../stiff_error.txt",'a') 
-            stiff_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
+        #os.system("stiff  {2}_{5}_{8}.fits  {2}_{4}_{8}.fits {2}_{3}_{8}.fits  -c {6}.conf  -OUTFILE_NAME  {2}_{8}_LOW.tiff  {7}".format(ra,dec,survey.name,survey.color_bands[2],survey.color_bands[1],survey.color_bands[0],survey.name,survey.stiff_param_best,self.pgc)) 
+        #if (not(os.path.exists("stiff.xml"))):
+        #    stiff_error = open("../stiff_error.txt",'a') 
+         #   stiff_error.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
         # Deletion done in each single mosaic_band , but not properly done if exited out of edge cases (ex. only single field in search region)
         # for band in bands:
         #     os.system("rm -r {}".format(band))
-        os.system("rm stiff.xml")
+        #os.system("rm stiff.xml")
         os.chdir("../")
         print ("Completed Mosaic")
 

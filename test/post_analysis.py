@@ -28,17 +28,17 @@ for PGC in os.walk('.').next()[1][1:]:
     for i in glob.glob("default.*"):
         shutil.copy(i,"{}/".format("r"))
     os.chdir("r")
-    all_r_input = glob.glob("raw/frame-*")
+    all_r_input = glob.glob("rawdir/frame-*")
     f=all_r_input[0]
     ImageData, ImageHdr = fits.getdata(f, 0, header=True)
     for i in  ['NMGY','NMGYIVAR','EXPTIME','BZERO','BSCALE','SOFTBIAS','BUNIT','FLAVOR','OBSERVER','OBJECT','DRIFT','TIMESYS','RUN','FRAME','CCDLOC','STRIPE','STRIP','ORIGIN','TELESCOP','SCDMETHD','SCDWIDTH','SCDDECMF','SCDOFSET','SCDDYNTH','SCDSTTHL','SCDSTTHR','SCDREDSZ','SCDSKYL','SCDSKYR','COMMENT','VERSIDL','VERSUTIL','VERSPOP','PCALIB','PSKY','RERUN','HISTORY','COMMENT','CAMROW','BADLINES','EQUINOX','FILTER','CAMCOL','VERSION','DERV_VER','ASTR_VER','ASTRO_ID','BIAS_ID','FRAME_ID','KO_VER','PS_ID','ATVSN','FOCUS','DATE-OBS','TAIHMS','SYS_SCN','EQNX_SCN','NODE','INCL','XBORE','YBORE','SYSTEM','CCDMODE','C_OBS','COLBIN','ROWBIN','DAVERS','RADECSYS','SPA','IPA','IPARATE','AZ','ALT','TAI','SPA','IPA','IPARATE','AZ','ALT']:
         try: 
             ImageHdr.remove(i) 
-            print "Removed ",i
+            #print "Removed ",i
         except(ValueError):
 #             print "Ignore ",i
             pass
-    print "Writing to",f
+    #print "Writing to",f
     fits.writeto(f,ImageData,ImageHdr,clobber=True)
     os.system("sextractor  {}".format(all_r_input[0]))
     os.rename("test.cat","input.cat")
@@ -49,7 +49,7 @@ for PGC in os.walk('.').next()[1][1:]:
    
 
     # For Boundary source detection
-    print os.getcwd()
+    #print os.getcwd()
     x = pf.getdata("check.fits")# Don't flip the array for this analysis, we don't need it to be north up
     width = x.shape[0] #all the output mosaics that I have cropped are squares 
     # Load in data  
@@ -69,6 +69,8 @@ for PGC in os.walk('.').next()[1][1:]:
             xi = float(line[8])
             yi = float(line[9])
             # Boundary Source Rejection
+	    # Cutting away even more boundary sources by increasing size of "radius" margin
+ 	    radius=2*radius
             if ((xmin-radius)<=0 ) or ((ymin-radius)<=0) or ((xmax+radius)>=width)or ((ymax+radius)>=width):
                 #print ("Source is out of bounds: Source Rejected")
 		NUM_EDGE_REJECT +=1
@@ -187,10 +189,11 @@ for PGC in os.walk('.').next()[1][1:]:
     print "size!:" 
     print len(matched_mag_lst_output)
     print write_in_input.shape[0]
-    if len(matched_mag_lst_output) ==write_in_input.shape[0]:
+    #if len(matched_mag_lst_output) ==write_in_input.shape[0]:
+    if len(matched_mag_lst_output) == len(matched_mag_lst_input):
         with open("input_mag","a") as in_file:
             # np.savetxt(mag_file,(matched_mag_lst_input,matched_mag_lst_output))
-       	    np.savetxt(in_file,write_in_input)
+       	    np.savetxt(in_file,matched_mag_lst_input)
 	    #np.savetxt(in_file,np.array([[1,2],[3,4]]))
         with open("output_mag","a") as out_file:
 	    # you don't actually need to write this for the output since they are matched, also you can't because no mag_rad_lst written in in the beginning
