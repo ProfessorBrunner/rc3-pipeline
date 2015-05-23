@@ -196,7 +196,7 @@ for PGC in os.walk('.').next()[1][1:]:
         with open("output_mag","a") as out_file:
 	    # you don't actually need to write this for the output since they are matched, also you can't because no mag_rad_lst written in in the beginning
             np.savetxt(out_file,matched_mag_lst_output)
-    os.system("mv {} ../2000finished_post_analysis".format(PGC))  
+#    os.system("mv {} ../2000finished_post_analysis".format(PGC))  
 #    print matched_mag_lst_input
     matched_mag_lst_output=np.array(matched_mag_lst_output)
     matched_mag_lst_input=np.array(matched_mag_lst_input)
@@ -211,15 +211,20 @@ for PGC in os.walk('.').next()[1][1:]:
     #Doing post processing on this data:
     if (len(matched_mag_lst_output[::,2])==len(matched_mag_lst_input[::,2])):
     	rms = np.sqrt((matched_mag_lst_output[::,2]-matched_mag_lst_input[::,2])**2)
-    	print rms
+    	#print rms
     	mega_rms.append(rms)
     	mega_in.append(matched_mag_lst_output[::,2])
     	idx = np.where(rms>1.5)[0]
 	if (len(idx)!=0):
-	    print "Outlier at count: "
-	    print NUM_SOURCES+idx
+	    print "outliers rms: {}".format(rms[idx])
+	    print "outlier's output mag: {}".format(matched_mag_lst_output[::,2][idx])
+	#if (len(idx)!=0):
+	#    print "Outlier at count: "
+	#    print NUM_SOURCES+idx
 	    # Rejecting Boundary Sources (More Stringent Criteria)
-        catalog = open("output.cat",'r')
+        print os.getcwd()
+	os.chdir(PGC)
+	catalog = open("output.cat",'r')
         mag_of_sources_that_lie_too_close_to_boundary = []
         for line in catalog:
             line = line.split()
@@ -241,14 +246,19 @@ for PGC in os.walk('.').next()[1][1:]:
                     #print ("Source is out of bounds: Source Rejected")
                     NUM_EDGE_REJECT +=1
                     mag_of_sources_that_lie_too_close_to_boundary.append(mag)
-        print mag_of_sources_that_lie_too_close_to_boundary
-        for i in matched_mag_lst_output[::,2]: 
+        print "too close: "
+	print mag_of_sources_that_lie_too_close_to_boundary
+        for i in matched_mag_lst_output[::,2][idx]:
+	    #print "i,j:{},{}".format(i,j) 
             for j in mag_of_sources_that_lie_too_close_to_boundary:
-                if i==j:
-                    print Rejected boundary sources
-                else:
-                    print "Outlier is not boundary sources. Is it a wrongly deblended RC3 galaxy?"
+            	#print "i,j:{},{}".format(i,j)
+		if i==j:
+                    print "Rejected boundary sources on second level!"
+		else:
+                    print "Slipping through. Outlier is not boundary sources. Is it a wrongly deblended RC3 galaxy?"
 
     #Desired idx for non outlier pairs.
+	os.chdir("..")
+	os.system("mv {} ../2000finished_post_analysis".format(PGC))
 
 	#NUM_SOURCES = NUM_SOURCES+len(rms)
