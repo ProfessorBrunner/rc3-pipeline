@@ -218,28 +218,37 @@ for PGC in os.walk('.').next()[1][1:]:
 	if (len(idx)!=0):
 	    print "Outlier at count: "
 	    print NUM_SOURCES+idx
-	# Rejecting Boundary Sources (More Stringent Criteria)
+	    # Rejecting Boundary Sources (More Stringent Criteria)
+        catalog = open("output.cat",'r')
+        mag_of_sources_that_lie_too_close_to_boundary = []
+        for line in catalog:
+            line = line.split()
+            if (line[0]!='#'):
+                ra = float(line[2])
+                dec = float(line[3])
+                mag=float(line[10])#*10**(9)
+                radius  = float(line[1]) # Estimate: Object are not circular
+                xmin = float(line[4])
+                ymin = float(line[5])
+                xmax = float(line[6])
+                ymax = float(line[7])
+                xi = float(line[8])
+                yi = float(line[9])
+                # Boundary Source Rejection
+                # Cutting away even more boundary sources by increasing size of "radius" margin
+                radius=4*radius # Object are not circular so they might be cut off on boundary but not registered on the first pass
+                if ((xmin-radius)<=0 ) or ((ymin-radius)<=0) or ((xmax+radius)>=width)or ((ymax+radius)>=width):
+                    #print ("Source is out of bounds: Source Rejected")
+                    NUM_EDGE_REJECT +=1
+                    mag_of_sources_that_lie_too_close_to_boundary.append(mag)
+        print mag_of_sources_that_lie_too_close_to_boundary
+        for i in matched_mag_lst_output[::,2]: 
+            for j in mag_of_sources_that_lie_too_close_to_boundary:
+                if i==j:
+                    print Rejected boundary sources
+                else:
+                    print "Outlier is not boundary sources. Is it a wrongly deblended RC3 galaxy?"
 
-    catalog = open("output.cat",'r')
-    out_coord = []
-    for line in catalog:
-        line = line.split()
-        if (line[0]!='#'):
-            ra = float(line[2])
-            dec = float(line[3])
-            mag=float(line[10])#*10**(9)
-            radius  = float(line[1]) # Estimate: Object are not circular
-            xmin = float(line[4])
-            ymin = float(line[5])
-            xmax = float(line[6])
-            ymax = float(line[7])
-            xi = float(line[8])
-            yi = float(line[9])
-            # Boundary Source Rejection
-            # Cutting away even more boundary sources by increasing size of "radius" margin
-            radius=radius
-            if ((xmin-radius)<=0 ) or ((ymin-radius)<=0) or ((xmax+radius)>=width)or ((ymax+radius)>=width):
-                #print ("Source is out of bounds: Source Rejected")
-                NUM_EDGE_REJECT +=1
- 
-	NUM_SOURCES = NUM_SOURCES+len(rms)
+    #Desired idx for non outlier pairs.
+
+	#NUM_SOURCES = NUM_SOURCES+len(rms)
