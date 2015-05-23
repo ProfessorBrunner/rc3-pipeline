@@ -14,6 +14,7 @@ import astropy.io.fits as pf
 # PGC = 243
 mega_rms=[]
 mega_in=[]
+NUM_SOURCES=0 #Number Count of sources actually written into the input and output mag
 NUM_EDGE_REJECT = 0 #number of sources rejected because it lied too close to the boundary
 for PGC in os.walk('.').next()[1][1:]:
     print "PGC: {}".format(PGC)
@@ -67,7 +68,7 @@ for PGC in os.walk('.').next()[1][1:]:
             yi = float(line[9])
             # Boundary Source Rejection
 	    # Cutting away even more boundary sources by increasing size of "radius" margin
- 	    radius=2*radius
+ 	    radius=radius
             if ((xmin-radius)<=0 ) or ((ymin-radius)<=0) or ((xmax+radius)>=width)or ((ymax+radius)>=width):
                 #print ("Source is out of bounds: Source Rejected")
 		NUM_EDGE_REJECT +=1
@@ -214,4 +215,31 @@ for PGC in os.walk('.').next()[1][1:]:
     	mega_rms.append(rms)
     	mega_in.append(matched_mag_lst_output[::,2])
     	idx = np.where(rms>1.5)[0]
-    	print rms[idx]
+	if (len(idx)!=0):
+	    print "Outlier at count: "
+	    print NUM_SOURCES+idx
+	# Rejecting Boundary Sources (More Stringent Criteria)
+
+    catalog = open("output.cat",'r')
+    out_coord = []
+    for line in catalog:
+        line = line.split()
+        if (line[0]!='#'):
+            ra = float(line[2])
+            dec = float(line[3])
+            mag=float(line[10])#*10**(9)
+            radius  = float(line[1]) # Estimate: Object are not circular
+            xmin = float(line[4])
+            ymin = float(line[5])
+            xmax = float(line[6])
+            ymax = float(line[7])
+            xi = float(line[8])
+            yi = float(line[9])
+            # Boundary Source Rejection
+            # Cutting away even more boundary sources by increasing size of "radius" margin
+            radius=radius
+            if ((xmin-radius)<=0 ) or ((ymin-radius)<=0) or ((xmax+radius)>=width)or ((ymax+radius)>=width):
+                #print ("Source is out of bounds: Source Rejected")
+                NUM_EDGE_REJECT +=1
+ 
+	NUM_SOURCES = NUM_SOURCES+len(rms)
