@@ -188,14 +188,14 @@ for PGC in os.walk('.').next()[1][1:]:
 #    print len(matched_mag_lst_output)
 #    print write_in_input.shape[0]
     #if len(matched_mag_lst_output) ==write_in_input.shape[0]:
-    if len(matched_mag_lst_output) == len(matched_mag_lst_input):
-        with open("input_mag","a") as in_file:
+    #if len(matched_mag_lst_output) == len(matched_mag_lst_input):
+    #    with open("input_mag","a") as in_file:
             # np.savetxt(mag_file,(matched_mag_lst_input,matched_mag_lst_output))
-       	    np.savetxt(in_file,matched_mag_lst_input)
+   #    	    np.savetxt(in_file,matched_mag_lst_input)
 	    #np.savetxt(in_file,np.array([[1,2],[3,4]]))
-        with open("output_mag","a") as out_file:
+    #    with open("output_mag","a") as out_file:
 	    # you don't actually need to write this for the output since they are matched, also you can't because no mag_rad_lst written in in the beginning
-            np.savetxt(out_file,matched_mag_lst_output)
+     #       np.savetxt(out_file,matched_mag_lst_output)
 #    os.system("mv {} ../2000finished_post_analysis".format(PGC))  
 #    print matched_mag_lst_input
     matched_mag_lst_output=np.array(matched_mag_lst_output)
@@ -246,19 +246,28 @@ for PGC in os.walk('.').next()[1][1:]:
                     #print ("Source is out of bounds: Source Rejected")
                     NUM_EDGE_REJECT +=1
                     mag_of_sources_that_lie_too_close_to_boundary.append(mag)
-        print "too close: "
-	print mag_of_sources_that_lie_too_close_to_boundary
+        #print "too close: "
+	#print mag_of_sources_that_lie_too_close_to_boundary
+	print "before: ", len(matched_mag_lst_output)
         for i in matched_mag_lst_output[::,2][idx]:
 	    #print "i,j:{},{}".format(i,j) 
             for j in mag_of_sources_that_lie_too_close_to_boundary:
             	#print "i,j:{},{}".format(i,j)
 		if i==j:
                     print "Rejected boundary sources on second level!"
-		else:
-                    print "Slipping through. Outlier is not boundary sources. Is it a wrongly deblended RC3 galaxy?"
+		    print np.where(matched_mag_lst_output[::,2]==j)[0][0]
+		    matched_mag_lst_output =np.delete(matched_mag_lst_output,np.where(matched_mag_lst_output[::,2]==j)[0][0],0)
+	print "after: ", len(matched_mag_lst_output)
+	#print matched_mag_lst_output
+		#else:
+                 #   print "Slipping through. Outlier is not boundary sources. Is it a wrongly deblended RC3 galaxy?"
 
     #Desired idx for non outlier pairs.
 	os.chdir("..")
 	os.system("mv {} ../2000finished_post_analysis".format(PGC))
 
-	#NUM_SOURCES = NUM_SOURCES+len(rms)
+	if len(matched_mag_lst_output) == len(matched_mag_lst_input):
+	    with open("input_mag","a") as in_file:
+                np.savetxt(in_file,matched_mag_lst_input)
+            with open("output_mag","a") as out_file:
+            	np.savetxt(out_file,matched_mag_lst_output)
