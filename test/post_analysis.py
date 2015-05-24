@@ -214,7 +214,7 @@ for PGC in os.walk('.').next()[1][1:]:
     	#print rms
     	mega_rms.append(rms)
     	mega_in.append(matched_mag_lst_output[::,2])
-    	idx = np.where(rms>1.5)[0]
+    	idx = np.where(rms>1.0)[0]
 	if (len(idx)!=0):
 	    print "outliers rms: {}".format(rms[idx])
 	    print "outlier's output mag: {}".format(matched_mag_lst_output[::,2][idx])
@@ -222,10 +222,13 @@ for PGC in os.walk('.').next()[1][1:]:
 	#    print "Outlier at count: "
 	#    print NUM_SOURCES+idx
 	    # Rejecting Boundary Sources (More Stringent Criteria)
+	x = pf.getdata("check.fits")# Don't flip the array for this analysis, we don't need it to be north up
+    	width = x.shape[0]
         print os.getcwd()
 	os.chdir(PGC)
 	catalog = open("output.cat",'r')
         mag_of_sources_that_lie_too_close_to_boundary = []
+	mag_of_sources_that_lie_too_close_to_RC3=[]
         for line in catalog:
             line = line.split()
             if (line[0]!='#'):
@@ -242,10 +245,20 @@ for PGC in os.walk('.').next()[1][1:]:
                 # Boundary Source Rejection
                 # Cutting away even more boundary sources by increasing size of "radius" margin
                 radius=4*radius # Object are not circular so they might be cut off on boundary but not registered on the first pass
+		rc3_data = np.loadtxt("../rc3_ra_dec_diameter_pgc.txt")
+		_dummy =np.where(rc3_data[::,3]==float(PGC))[0][0]
+		rc3_radius = rc3_data[::,2][_dummy]
+		#d2RC3 tells you how far away this source object is from the RC3 galaxy.
+		d2RC3 = np.sqrt((rc3_data[::,0][_dummy]-ra)**2+(rc3_data[::,1][_dummy]-dec)**2)
+		#print d2RC3
+		#print rc3_radius
                 if ((xmin-radius)<=0 ) or ((ymin-radius)<=0) or ((xmax+radius)>=width)or ((ymax+radius)>=width):
                     #print ("Source is out of bounds: Source Rejected")
                     NUM_EDGE_REJECT +=1
                     mag_of_sources_that_lie_too_close_to_boundary.append(mag)
+		elif (d2RC3<rc3_radius):
+		    mag_of_sources_that_lie_too_close_to_RC3.append(mag)
+#		    print ("Source is too close to a RC3, Deblending issue")
         #print "too close: "
 	#print mag_of_sources_that_lie_too_close_to_boundary
 	print "before: ", len(matched_mag_lst_output)
@@ -255,14 +268,22 @@ for PGC in os.walk('.').next()[1][1:]:
             	#print "i,j:{},{}".format(i,j)
 		if i==j:
                     print "Rejected boundary sources on second level!"
-		    print np.where(matched_mag_lst_output[::,2]==j)[0][0]
-		    matched_mag_lst_output =np.delete(matched_mag_lst_output,np.where(matched_mag_lst_output[::,2]==j)[0][0],0)
+		    _idx= np.where(matched_mag_lst_output[::,2]==j)[0][0]
+		    matched_mag_lst_output =np.delete(matched_mag_lst_output,_idx,0)
+		    matched_mag_lst_input =np.delete(matched_mag_lst_input,_idx,0)
+	    for k in mag_of_sources_that_lie_too_close_to_RC3:
+                #print "i,j:{},{}".format(i,j)
+                if i==k:
+                    print ("Source is too close to a RC3, Deblending issue")
+		    _idx= np.where(matched_mag_lst_output[::,2]==j)[0][0]
+                    matched_mag_lst_output =np.delete(matched_mag_lst_output,_idx,0)
+                    matched_mag_lst_input =np.delete(matched_mag_lst_input,_idx,0)
 	print "after: ", len(matched_mag_lst_output)
-	#print matched_mag_lst_output
-		#else:
-                 #   print "Slipping through. Outlier is not boundary sources. Is it a wrongly deblended RC3 galaxy?"
+	print "after: ", len(matched_mag_lst_input)
 
-    #Desired idx for non outlier pairs.
+        #"Slipping through. Outlier is not boundary sources. Is it a wrongly deblended RC3 galaxy?"
+  		
+    	#Desired idx for non outlier pairs.
 	os.chdir("..")
 	os.system("mv {} ../2000finished_post_analysis".format(PGC))
 
