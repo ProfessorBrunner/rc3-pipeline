@@ -275,7 +275,7 @@ for PGC in os.walk('.').next()[1][1:]:
                 #print "i,j:{},{}".format(i,j)
                 if i==k:
                     print ("Source is too close to a RC3, Deblending issue")
-		    _idx= np.where(matched_mag_lst_output[::,2]==j)[0][0]
+		    _idx= np.where(matched_mag_lst_output[::,2]==k)[0][0]
                     matched_mag_lst_output =np.delete(matched_mag_lst_output,_idx,0)
                     matched_mag_lst_input =np.delete(matched_mag_lst_input,_idx,0)
 	print "after: ", len(matched_mag_lst_output)
