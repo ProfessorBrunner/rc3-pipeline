@@ -16,7 +16,10 @@ mega_rms=[]
 mega_in=[]
 NUM_SOURCES=0 #Number Count of sources actually written into the input and output mag
 NUM_EDGE_REJECT = 0 #number of sources rejected because it lied too close to the boundary
+NUM_RC3_REJECT=0
 for PGC in os.walk('.').next()[1][1:]:
+    if PGC=="r": 
+	continue
     print "PGC: {}".format(PGC)
     for i in glob.glob("default.*"):
         shutil.copy(i,"{}/".format(PGC))
@@ -71,7 +74,8 @@ for PGC in os.walk('.').next()[1][1:]:
  	    radius=radius
             if ((xmin-radius)<=0 ) or ((ymin-radius)<=0) or ((xmax+radius)>=width)or ((ymax+radius)>=width):
                 #print ("Source is out of bounds: Source Rejected")
-		NUM_EDGE_REJECT +=1
+		pass
+		#NUM_EDGE_REJECT +=1
             else:
 	        out_coord.append([ra,dec])
                 out_mag_lst.append(mag)
@@ -137,7 +141,10 @@ for PGC in os.walk('.').next()[1][1:]:
   #      print ("No matched sources for PGC {}".format(PGC))
         #print(os.getcwd())
 	os.chdir("../../")
-	os.system("mv {} ../2000no_matched/".format(PGC))
+        if os.path.exists("../2000no_matched/{}/".format(PGC)):
+             os.system("rm -r {}/".format(PGC))
+        else:
+             os.system("mv {} ../2000no_matched/".format(PGC))
         continue
     for i in matched_coord[::,0]:
         for j in out_coord_mag:
@@ -254,7 +261,7 @@ for PGC in os.walk('.').next()[1][1:]:
 		#print rc3_radius
                 if ((xmin-radius)<=0 ) or ((ymin-radius)<=0) or ((xmax+radius)>=width)or ((ymax+radius)>=width):
                     #print ("Source is out of bounds: Source Rejected")
-                    NUM_EDGE_REJECT +=1
+                    #NUM_EDGE_REJECT +=1
                     mag_of_sources_that_lie_too_close_to_boundary.append(mag)
 		elif (d2RC3<rc3_radius):
 		    mag_of_sources_that_lie_too_close_to_RC3.append(mag)
@@ -268,6 +275,7 @@ for PGC in os.walk('.').next()[1][1:]:
             	#print "i,j:{},{}".format(i,j)
 		if i==j:
                     print "Rejected boundary sources on second level!"
+		    NUM_EDGE_REJECT=NUM_EDGE_REJECT+1
 		    _idx= np.where(matched_mag_lst_output[::,2]==j)[0][0]
 		    matched_mag_lst_output =np.delete(matched_mag_lst_output,_idx,0)
 		    matched_mag_lst_input =np.delete(matched_mag_lst_input,_idx,0)
@@ -275,6 +283,7 @@ for PGC in os.walk('.').next()[1][1:]:
                 #print "i,j:{},{}".format(i,j)
                 if i==k:
                     print ("Source is too close to a RC3, Deblending issue")
+		    NUM_RC3_REJECT=NUM_RC3_REJECT+1
 		    _idx= np.where(matched_mag_lst_output[::,2]==k)[0][0]
                     matched_mag_lst_output =np.delete(matched_mag_lst_output,_idx,0)
                     matched_mag_lst_input =np.delete(matched_mag_lst_input,_idx,0)
@@ -285,10 +294,15 @@ for PGC in os.walk('.').next()[1][1:]:
   		
     	#Desired idx for non outlier pairs.
 	os.chdir("..")
-	os.system("mv {} ../2000finished_post_analysis".format(PGC))
+        if os.path.exists("../2000finished_post_analysis/{}/".format(PGC)):
+             os.system("rm -r {}/".format(PGC))
+        else:
+             os.system("mv {} ../2000finished_post_analysis/".format(PGC))	
 
 	if len(matched_mag_lst_output) == len(matched_mag_lst_input):
 	    with open("input_mag","a") as in_file:
                 np.savetxt(in_file,matched_mag_lst_input)
             with open("output_mag","a") as out_file:
             	np.savetxt(out_file,matched_mag_lst_output)
+	print "NUM_RC3_REJECT: ",NUM_RC3_REJECT
+	print "NUM_EDGE_REJECT: ",NUM_EDGE_REJECT

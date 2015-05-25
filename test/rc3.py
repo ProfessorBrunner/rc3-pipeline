@@ -385,7 +385,7 @@ class RC3(RC3Catalog):
                     print ("Mosaic_all on {} ".format(self.pgc))
 		    #For photometric analysis, I only need to look at r band .
 		    #self.mosaic_band(survey.best_band,new_ra,new_dec,margin,radii,self.pgc,survey)
-		    if (not (os.path.exists(self.pgc))):
+		    if (not (os.path.exists(str(self.pgc)))):
 			self.mosaic_all_bands(new_ra,new_dec,margin,radii,self.pgc,survey)
                     return [float(new_ra),float(new_dec),margin,radii,self.pgc] 
                     # margin was already set as 3*rc3_radius during the first run
