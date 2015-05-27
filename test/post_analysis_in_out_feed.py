@@ -11,6 +11,7 @@ import os
 import shutil
 import matplotlib.pyplot as plt
 import astropy.io.fits as pf
+import montage_wrapper as montage
 # PGC = 243
 mega_rms=[]
 mega_in=[]
@@ -24,28 +25,20 @@ for PGC in os.walk('.').next()[1][1:]:
     for i in glob.glob("default.*"):
         shutil.copy(i,"{}/".format(PGC))
     os.chdir(str(PGC))
-    os.system("sextractor  SDSS_r_{}r.fits".format(PGC))
-    os.rename("test.cat","output.cat") #rename it more appropriately as output catalog
-
-    for i in glob.glob("default.*"):
-        shutil.copy(i,"{}/".format("r"))
     os.chdir("r")
     all_r_input = glob.glob("rawdir/frame-*")
     f=all_r_input[0]
-   # print "Removing Photometric information from header"
+    rc3_data = np.loadtxt("../../rc3_ra_dec_diameter_pgc.txt")
+    _dummy =np.where(rc3_data[::,3]==float(PGC))[0][0]
+    rc3_ra = rc3_data[::,0][_dummy]
+    rc3_dec = rc3_data[::,1][_dummy] #Note these aren't the newly updated ones
     ImageData, ImageHdr = fits.getdata(f, 0, header=True)
     for i in  ['NMGY','NMGYIVAR','EXPTIME','BZERO','BSCALE','SOFTBIAS','BUNIT','FLAVOR','OBSERVER','OBJECT','DRIFT','TIMESYS','RUN','FRAME','CCDLOC','STRIPE','STRIP','ORIGIN','TELESCOP','SCDMETHD','SCDWIDTH','SCDDECMF','SCDOFSET','SCDDYNTH','SCDSTTHL','SCDSTTHR','SCDREDSZ','SCDSKYL','SCDSKYR','COMMENT','VERSIDL','VERSUTIL','VERSPOP','PCALIB','PSKY','RERUN','HISTORY','COMMENT','CAMROW','BADLINES','EQUINOX','FILTER','CAMCOL','VERSION','DERV_VER','ASTR_VER','ASTRO_ID','BIAS_ID','FRAME_ID','KO_VER','PS_ID','ATVSN','FOCUS','DATE-OBS','TAIHMS','SYS_SCN','EQNX_SCN','NODE','INCL','XBORE','YBORE','SYSTEM','CCDMODE','C_OBS','COLBIN','ROWBIN','DAVERS','RADECSYS','SPA','IPA','IPARATE','AZ','ALT','TAI','SPA','IPA','IPARATE','AZ','ALT']:
         try: 
             ImageHdr.remove(i) 
-            #print "Removed ",i
         except(ValueError):
-#             print "Ignore ",i
             pass
-    #print "Writing to",f
     fits.writeto(f,ImageData,ImageHdr,clobber=True)
-    os.system("sextractor  {}".format(all_r_input[0]))
-    os.rename("test.cat","input.cat")
-
     os.chdir("..")
     k=-11 
     out_mag_lst = []   
@@ -252,8 +245,8 @@ for PGC in os.walk('.').next()[1][1:]:
                 # Boundary Source Rejection
                 # Cutting away even more boundary sources by increasing size of "radius" margin
                 radius=4*radius # Object are not circular so they might be cut off on boundary but not registered on the first pass
-		rc3_data = np.loadtxt("../rc3_ra_dec_diameter_pgc.txt")
-		_dummy =np.where(rc3_data[::,3]==float(PGC))[0][0]
+		# rc3_data = np.loadtxt("../rc3_ra_dec_diameter_pgc.txt")
+		# _dummy =np.where(rc3_data[::,3]==float(PGC))[0][0]
 		rc3_radius = rc3_data[::,2][_dummy]
 		#d2RC3 tells you how far away this source object is from the RC3 galaxy.
 		d2RC3 = np.sqrt((rc3_data[::,0][_dummy]-ra)**2+(rc3_data[::,1][_dummy]-dec)**2)
@@ -294,10 +287,10 @@ for PGC in os.walk('.').next()[1][1:]:
   		
     	#Desired idx for non outlier pairs.
 	os.chdir("..")
-        if os.path.exists("../2000finished_post_analysis_test/{}/".format(PGC)):
+        if os.path.exists("../2000finished_post_analysis/{}/".format(PGC)):
              os.system("rm -r {}/".format(PGC))
         else:
-             os.system("mv {} ../2000finished_post_analysis_test/".format(PGC))	
+             os.system("mv {} ../2000finished_post_analysis/".format(PGC))	
 
 	if len(matched_mag_lst_output) == len(matched_mag_lst_input):
 	    with open("input_mag","a") as in_file:

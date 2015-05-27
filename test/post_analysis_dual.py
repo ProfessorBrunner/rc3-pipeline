@@ -11,7 +11,7 @@ import os
 import shutil
 import matplotlib.pyplot as plt
 import astropy.io.fits as pf
-
+import montage_wrapper as montage
 # PGC = 243
 mega_rms=[]
 mega_in=[]
@@ -37,14 +37,15 @@ for PGC in os.walk('.').next()[1][1:]:
     all_r_input = glob.glob("rawdir/frame-*")
     f=all_r_input[0]
     # print "Removing Photometric information from header"
-    rc3_data = np.loadtxt("../rc3_ra_dec_diameter_pgc.txt")
+    rc3_data = np.loadtxt("../../rc3_ra_dec_diameter_pgc.txt")
     _dummy =np.where(rc3_data[::,3]==float(PGC))[0][0]
     rc3_ra = rc3_data[::,0][_dummy]
     rc3_dec = rc3_data[::,1][_dummy] #Note these aren't the newly updated ones
-    montage.mSubimage("r/rawdir/{}".format(f), "cropped.fits",rc3_ra,rc3_dec,xsize)
-    img2 = pyfits.open("cropped.fits")[0].data
+    montage.mSubimage("{}".format(f), "../cropped.fits",rc3_ra,rc3_dec,xsize)
+    img2 = pyfits.open("../cropped.fits")[0].data
     if (img2.shape[1]!=img.shape[1]):
-        print img.shape[1],img2.shape[1]
+    
+	print "Size is different: ",img.shape[1],img2.shape[1]
         continue # go onto the next one
     ImageData, ImageHdr = fits.getdata(f, 0, header=True)
     for i in  ['NMGY','NMGYIVAR','EXPTIME','BZERO','BSCALE','SOFTBIAS','BUNIT','FLAVOR','OBSERVER','OBJECT','DRIFT','TIMESYS','RUN','FRAME','CCDLOC','STRIPE','STRIP','ORIGIN','TELESCOP','SCDMETHD','SCDWIDTH','SCDDECMF','SCDOFSET','SCDDYNTH','SCDSTTHL','SCDSTTHR','SCDREDSZ','SCDSKYL','SCDSKYR','COMMENT','VERSIDL','VERSUTIL','VERSPOP','PCALIB','PSKY','RERUN','HISTORY','COMMENT','CAMROW','BADLINES','EQUINOX','FILTER','CAMCOL','VERSION','DERV_VER','ASTR_VER','ASTRO_ID','BIAS_ID','FRAME_ID','KO_VER','PS_ID','ATVSN','FOCUS','DATE-OBS','TAIHMS','SYS_SCN','EQNX_SCN','NODE','INCL','XBORE','YBORE','SYSTEM','CCDMODE','C_OBS','COLBIN','ROWBIN','DAVERS','RADECSYS','SPA','IPA','IPARATE','AZ','ALT','TAI','SPA','IPA','IPARATE','AZ','ALT']:
