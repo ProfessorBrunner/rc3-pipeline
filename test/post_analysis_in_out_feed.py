@@ -78,8 +78,8 @@ for PGC in os.walk('.').next()[1][1:]:
     
     os.chdir("r")
     for r_band_inputs in all_r_input:
-        os.system("sextractor  {}".format(r_band_inputs))
-        os.rename("test.cat","input.cat")
+        #os.system("sextractor  {}".format(r_band_inputs))
+        #os.rename("test.cat","input.cat")
         k=-11
 	mag_rad_lst = [] 
         mag_lst = []   

@@ -41,11 +41,13 @@ for PGC in os.walk('.').next()[1][1:]:
     _dummy =np.where(rc3_data[::,3]==float(PGC))[0][0]
     rc3_ra = rc3_data[::,0][_dummy]
     rc3_dec = rc3_data[::,1][_dummy] #Note these aren't the newly updated ones
-    montage.mSubimage("{}".format(f), "../cropped.fits",rc3_ra,rc3_dec,xsize)
+    try:
+        montage.mSubimage("{}".format(f), "../cropped.fits",rc3_ra,rc3_dec,xsize)        
+    except MontageError as e:
+        continue
     img2 = pyfits.open("../cropped.fits")[0].data
     if (img2.shape[1]!=img.shape[1]):
-    
-	print "Size is different: ",img.shape[1],img2.shape[1]
+        print "Size is different: ",img.shape[1],img2.shape[1]
         continue # go onto the next one
     ImageData, ImageHdr = fits.getdata(f, 0, header=True)
     for i in  ['NMGY','NMGYIVAR','EXPTIME','BZERO','BSCALE','SOFTBIAS','BUNIT','FLAVOR','OBSERVER','OBJECT','DRIFT','TIMESYS','RUN','FRAME','CCDLOC','STRIPE','STRIP','ORIGIN','TELESCOP','SCDMETHD','SCDWIDTH','SCDDECMF','SCDOFSET','SCDDYNTH','SCDSTTHL','SCDSTTHR','SCDREDSZ','SCDSKYL','SCDSKYR','COMMENT','VERSIDL','VERSUTIL','VERSPOP','PCALIB','PSKY','RERUN','HISTORY','COMMENT','CAMROW','BADLINES','EQUINOX','FILTER','CAMCOL','VERSION','DERV_VER','ASTR_VER','ASTRO_ID','BIAS_ID','FRAME_ID','KO_VER','PS_ID','ATVSN','FOCUS','DATE-OBS','TAIHMS','SYS_SCN','EQNX_SCN','NODE','INCL','XBORE','YBORE','SYSTEM','CCDMODE','C_OBS','COLBIN','ROWBIN','DAVERS','RADECSYS','SPA','IPA','IPARATE','AZ','ALT','TAI','SPA','IPA','IPARATE','AZ','ALT']:
