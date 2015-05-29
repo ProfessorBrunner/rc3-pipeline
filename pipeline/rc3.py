@@ -15,7 +15,6 @@ import numpy as np
 import heapq
 import time
 DEBUG=True
-
 class RC3(RC3Catalog):
     '''
     RC3 Class is the core mosaicing class. Each RC3 galaxy is represented by an RC3 object.
@@ -106,7 +105,7 @@ class RC3(RC3Catalog):
         if (len(result)==1):
             #With header info, len of processed result list is 1 if there is only 1 field lying in the margin, simply do mSubImage without mosaicing
             print ("Only one field in region of interest")
-            os.chdir("raw")
+            os.chdir("rawdir")
             if (DEBUG):print ("m:{}".format(margin))
             try:
                 if (DEBUG):print ("2m:{}".format(2*margin))
@@ -157,8 +156,15 @@ class RC3(RC3Catalog):
                 failed_projection.write("{}     {}     {}     {} \n".format(str(ra),str(dec),str(radius),str(pgc)))
                 return -1 # masking with special value reserved for not in survey footprint galaxies
             print ("Bash")
-            os.system("bash ../mosaic.sh")
-            #os.chdir("..")
+	    print os.getcwd()
+	    print os.getcwd()[-3:]
+	    if os.getcwd()[-4:-2]==str(pgc):
+	    #try:
+                os.system("bash ../../mosaic.sh")
+            else:
+	    #except montage.status.MontageError:
+		os.system("bash ../mosaic.sh")
+	    #os.chdir("..")
             # montage.mImgtbl("projdir",imgtbl)
             # #os.chdir("projected")
             # #montage.mAdd("../pimages.tbl","../"+out+".hdr","{}_{}.fits".format(survey.name,out))
@@ -248,7 +254,7 @@ class RC3(RC3Catalog):
             # Remember to switch to command "sextractor" for Ubuntu/Linux, "sex" for Mac
             # Use this for Mac instead :
             # os.system("sex {} {}".format(survey.sextractor_params, file))
-            os.system("sex {} {}".format(survey.sextractor_params, file))
+            os.system("sextractor  {} {}".format(survey.sextractor_params, file))
 
             # A list of other RC3 galaxies that lies in the field
             # In the case of source confusion, find all the rc3 that lies in the field.
