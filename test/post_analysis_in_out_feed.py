@@ -73,6 +73,7 @@ for PGC in os.walk('.').next()[1][1:]:
 	        out_coord.append([ra,dec])
                 out_mag_lst.append(mag)
     out_coord = np.array(out_coord)
+    #print out_coord
     out_ra_lst = out_coord[::,0]
     out_dec_lst = out_coord[::,1]
     
@@ -130,6 +131,7 @@ for PGC in os.walk('.').next()[1][1:]:
     # Matching coordinates with output magnitudes
     matched_coord=np.array(matched_coord)
     matched_mag_lst_output =[]
+    # print matched_coord
     if len(matched_coord)==0:
   #      print ("No matched sources for PGC {}".format(PGC))
         #print(os.getcwd())
@@ -222,10 +224,12 @@ for PGC in os.walk('.').next()[1][1:]:
 	#    print "Outlier at count: "
 	#    print NUM_SOURCES+idx
 	    # Rejecting Boundary Sources (More Stringent Criteria)
+	    print os.getcwd()
+	    os.chdir(PGC)
 	x = pf.getdata("check.fits")# Don't flip the array for this analysis, we don't need it to be north up
     	width = x.shape[0]
         print os.getcwd()
-	os.chdir(PGC)
+	
 	catalog = open("output.cat",'r')
         mag_of_sources_that_lie_too_close_to_boundary = []
 	mag_of_sources_that_lie_too_close_to_RC3=[]
@@ -299,3 +303,4 @@ for PGC in os.walk('.').next()[1][1:]:
             	np.savetxt(out_file,matched_mag_lst_output)
 	print "NUM_RC3_REJECT: ",NUM_RC3_REJECT
 	print "NUM_EDGE_REJECT: ",NUM_EDGE_REJECT
+    break
