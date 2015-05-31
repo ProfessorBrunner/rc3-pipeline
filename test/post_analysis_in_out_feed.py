@@ -297,9 +297,9 @@ for PGC in os.walk('.').next()[1][1:]:
              os.system("mv {} ../2000finished_post_analysis/".format(PGC))	
 
 	if len(matched_mag_lst_output) == len(matched_mag_lst_input):
-	    with open("input_mag","a") as in_file:
+	    with open("input_mag_dual","a") as in_file:
                 np.savetxt(in_file,matched_mag_lst_input)
-            with open("output_mag","a") as out_file:
+            with open("output_mag_dual","a") as out_file:
             	np.savetxt(out_file,matched_mag_lst_output)
 	print "NUM_RC3_REJECT: ",NUM_RC3_REJECT
 	print "NUM_EDGE_REJECT: ",NUM_EDGE_REJECT
