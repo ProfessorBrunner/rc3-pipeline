@@ -15,6 +15,7 @@ import numpy as np
 import heapq
 import time
 DEBUG=True
+MAC = True #True for SExtractor on Mac; False for other (Linux) distributions
 class RC3(RC3Catalog):
     '''
     RC3 Class is the core mosaicing class. Each RC3 galaxy is represented by an RC3 object.
@@ -30,8 +31,7 @@ class RC3(RC3Catalog):
         #updated positions
         self.new_ra='@'
         self.new_dec='@'
-
-    def mosaic_band(self,band,ra,dec,margin,radius,pgc,survey):
+    def mosaic_band(self,band,ra,dec,margin,radius,pgc,survey,remove_bkgrd=False):
         '''
         Input: source info param
         Create a mosaic fit file for the specified band.
@@ -70,9 +70,10 @@ class RC3(RC3Catalog):
         os.chdir(band)
         os.mkdir ("rawdir")
         os.mkdir ("projdir")
-        os.mkdir ("diffdir")
-        os.mkdir ("corrdir")
-        os.mkdir("final")
+        if (remove_bkgrd):
+            os.mkdir ("diffdir")
+            os.mkdir ("corrdir")
+            # os.mkdir("final")
 
         if (DEBUG): print ("Retrieving data from server for "+ band +"band")
         os.chdir("rawdir")
@@ -155,44 +156,24 @@ class RC3(RC3Catalog):
                 failed_projection = open ("failed_projection","a")
                 failed_projection.write("{}     {}     {}     {} \n".format(str(ra),str(dec),str(radius),str(pgc)))
                 return -1 # masking with special value reserved for not in survey footprint galaxies
-            print ("Bash")
-	    print os.getcwd()
-	    print os.getcwd()[-3:]
-	    if os.getcwd()[-4:-2]==str(pgc):
-	    #try:
-                os.system("bash ../../mosaic.sh")
+            if (remove_bkgrd): 
+                if (DEBUG): print "Calling the bash script containing Montage routines to rectify the background" 
+                if os.getcwd()[-4:-2]==str(pgc):
+                    os.system("bash ../../mosaic.sh")
+                else:
+                    os.system("bash ../mosaic.sh")
+                print "mSubimage"
+                montage.mSubimage("mosaic.fits" ,"mosaic.fits",ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
+                shutil.move("mosaic.fits","../{}".format(outfile_r))#if change to :-11 then move out of u,g,r,i,z directory, may be more convenient for mJPEG
+                if (DEBUG) : print ("Completed Mosaic for " + band)
             else:
-	    #except montage.status.MontageError:
-		os.system("bash ../mosaic.sh")
-	    #os.chdir("..")
-            # montage.mImgtbl("projdir",imgtbl)
-            # #os.chdir("projected")
-            # #montage.mAdd("../pimages.tbl","../"+out+".hdr","{}_{}.fits".format(survey.name,out))
-            # #<Insert Background Rectification procedure here>
-            # if(DEBUG): print ("Starting Background Rectification")
-            # difftbl="diffs.tbl"
-            # fitstbl="fits.tbl"
-            # corrtbl="corrections.tbl"
-            # montage.mOverlaps(imgtbl,difftbl)
-            # montage.mDiffExec(difftbl, hdr, "diffdir",proj_dir="projdir")
-            # #mFitExec(diffs_table, fits_table, diff_dir)
-            # if(DEBUG): print ("Determining Fitting Coefficients")
-            # montage.mFitExec(difftbl,fitstbl,  difftbl)
-            # #mBgModel(images_table, fits_table)
-            # if(DEBUG): print ("Modelling Background")
-            # montage.mImgtbl("projdir",imgtbl)
-            # montage.mBgModel(imgtbl, fitstbl,corrtbl)
-            # if(DEBUG): print ("Background Exec")
-            # os.system("mBgExec -p projdir images.tbl corrections.tbl corrdir")
-            #montage.mBgExec(imgtbl, corrtbl,"corrdir",proj_dir="projdir",debug=True)
-            # if(DEBUG): print ("CoAddition of Corrected Images")
-            # montage.mAdd(imgtbl,hdr, "{}_{}.fits".format(survey.name,out),img_dir="corrdir")
-            # #<END background procedures>
-            # montage.mSubimage("{}_{}cut.fits".format(survey.name,out),outfile_r,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
-            print "mSubimage"
-            montage.mSubimage("mosaic.fits" ,"mosaic.fits",ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
-            shutil.move("mosaic.fits","../{}".format(outfile_r))#if change to :-11 then move out of u,g,r,i,z directory, may be more convenient for mJPEG
-            if (DEBUG) : print ("Completed Mosaic for " + band)
+                montage.mImgtbl("projdir","pimages.tbl")
+                os.chdir("projdir")
+                montage.mAdd("../pimages.tbl","../"+hdr,"{}_{}.fits".format(survey.name,out))
+                montage.mSubimage("{}_{}.fits".format(survey.name,out),outfile_r,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
+                shutil.move(outfile_r,"../../{}".format(outfile_r) )#if change to :-11 then move out of u,g,r,i,z directory, may be more convenient for mJPEG
+                if (DEBUG) : print ("Completed Mosaic for " + band)
+                os.chdir("..")
             os.chdir("../")
             hdulist = pyfits.open(outfile_r)
 
@@ -254,7 +235,13 @@ class RC3(RC3Catalog):
             # Remember to switch to command "sextractor" for Ubuntu/Linux, "sex" for Mac
             # Use this for Mac instead :
             # os.system("sex {} {}".format(survey.sextractor_params, file))
-            os.system("sextractor  {} {}".format(survey.sextractor_params, file))
+            # os.chdir("..")
+            if(MAC):
+                os.system("sex  {} {}".format(survey.sextractor_params, file))
+            else:
+                os.system("sextractor  -c ../{} {}".format(survey.sextractor_params, file))
+            # shutil.move("test.cat","r")
+            # os.chdir("r")
 
             # A list of other RC3 galaxies that lies in the field
             # In the case of source confusion, find all the rc3 that lies in the field.
@@ -410,7 +397,7 @@ class RC3(RC3Catalog):
                     # all additional mosaicking steps shoudl be 1.5 times this 
                     #else: radii =@ if all SExtracted radius is <15 
             print ("No detected RC3 sources in image. Mosaic using a larger margin")
-            r_mosaic_filename = self.mosaic_band(survey.best_band,rc3_ra,rc3_dec,1.5*margin,rc3_radius,self.pgc,survey)
+            r_mosaic_filename = self.mosaic_band(survey.best_band,rc3_ra,rc3_dec,1.5*margin,rc3_radius,self.pgc,survey,remove_bkgrd=False)
             self.source_info(r_mosaic_filename,survey)
             return ['@','@',1.5*margin,'@','@']
         else : # no detection since exceed num_iteration
