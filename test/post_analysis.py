@@ -221,7 +221,7 @@ for PGC in os.walk('.').next()[1][1:]:
     	#print rms
     	mega_rms.append(rms)
     	mega_in.append(matched_mag_lst_output[::,2])
-    	idx = np.where(rms>1.0)[0]
+    	idx = np.where(rms>0.1)[0]
 	if (len(idx)!=0):
 	    print "outliers rms: {}".format(rms[idx])
 	    print "outlier's output mag: {}".format(matched_mag_lst_output[::,2][idx])
