@@ -43,12 +43,25 @@ for PGC in os.walk('.').next()[1][1:]:
     rc3_dec = rc3_data[::,1][_dummy] #Note these aren't the newly updated ones
     try:
         montage.mSubimage("{}".format(f), "../cropped.fits",rc3_ra,rc3_dec,xsize)        
-    except MontageError as e:
-        continue
-    img2 = pyfits.open("../cropped.fits")[0].data
-    if (img2.shape[1]!=img.shape[1]):
-        print "Size is different: ",img.shape[1],img2.shape[1]
-        continue # go onto the next one
+    except montage.status.MontageError as e:
+	try:
+	    print "Second try"
+            montage.mSubimage("{}".format(all_r_input[1]), "../cropped.fits",rc3_ra,rc3_dec,xsize)
+	except montage.status.MontageError as e:
+	    print "Still bad"
+       	    os.chdir("../../")
+	    os.system("mv {}/ ../bad_dual_mode".format(PGC))
+	    continue
+    img2 = pf.open("../cropped.fits")[0].data
+    print img2
+    try:
+	if (img2.shape[1]!=img.shape[1]):
+            print "Size is different: ",img.shape[1],img2.shape[1]
+	    os.chdir("../../")
+            continue # go onto the next one
+    except (AttributeError) as e:
+	os.chdir("../../")
+	continue
     ImageData, ImageHdr = fits.getdata(f, 0, header=True)
     for i in  ['NMGY','NMGYIVAR','EXPTIME','BZERO','BSCALE','SOFTBIAS','BUNIT','FLAVOR','OBSERVER','OBJECT','DRIFT','TIMESYS','RUN','FRAME','CCDLOC','STRIPE','STRIP','ORIGIN','TELESCOP','SCDMETHD','SCDWIDTH','SCDDECMF','SCDOFSET','SCDDYNTH','SCDSTTHL','SCDSTTHR','SCDREDSZ','SCDSKYL','SCDSKYR','COMMENT','VERSIDL','VERSUTIL','VERSPOP','PCALIB','PSKY','RERUN','HISTORY','COMMENT','CAMROW','BADLINES','EQUINOX','FILTER','CAMCOL','VERSION','DERV_VER','ASTR_VER','ASTRO_ID','BIAS_ID','FRAME_ID','KO_VER','PS_ID','ATVSN','FOCUS','DATE-OBS','TAIHMS','SYS_SCN','EQNX_SCN','NODE','INCL','XBORE','YBORE','SYSTEM','CCDMODE','C_OBS','COLBIN','ROWBIN','DAVERS','RADECSYS','SPA','IPA','IPARATE','AZ','ALT','TAI','SPA','IPA','IPARATE','AZ','ALT']:
         try: 
