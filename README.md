@@ -22,4 +22,5 @@ Here are [some notes](https://github.com/dorislee0309/workarea-rc3-project/wiki/
 - [User-defined sub-catalogs](http://nbviewer.ipython.org/github/ProfessorBrunner/rc3-pipeline/blob/master/Documentation/User-defined%20catalog%20%20example.ipynb)
 - [Creating your own Survey Class](http://nbviewer.ipython.org/github/ProfessorBrunner/rc3-pipeline/blob/master/Documentation/Creating%20Your%20own%20Survey%20Class.ipynb)
 - [Post-processing procedures](http://nbviewer.ipython.org/github/ProfessorBrunner/rc3-pipeline/blob/master/Documentation/Post-processing%20procedures.ipynb)
+- [Known Error Conditions](http://nbviewer.ipython.org/github/ProfessorBrunner/rc3-pipeline/blob/master/Documentation/Known%20Error%20Conditions.ipynb)
 - [Helpful Tips](http://nbviewer.ipython.org/github/ProfessorBrunner/rc3-pipeline/blob/master/Documentation/Helpful%20Tips.ipynb)
