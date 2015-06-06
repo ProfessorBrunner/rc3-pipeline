@@ -1,0 +1,23 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Data}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{The RC3 Catalog}{section.2}% 3
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Updating the RC3 Astrometry}{subsection.2.1}% 4
+\BOOKMARK [2][-]{subsection.2.2}{SDSS}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.3}{POSS-II}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Mosaic Pipeline and algorithms}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Algorithm Enhancements}{section.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Positional Update}{subsection.3.1}% 9
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Source Confusion}{subsection.3.1}% 10
+\BOOKMARK [2][-]{subsection.3.2}{Pipeline}{section.3}% 11
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Server}{subsection.3.2}% 12
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Catalog Objects}{subsection.3.2}% 13
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Catalog}{subsection.3.2}% 14
+\BOOKMARK [1][-]{section.4}{Results}{}% 15
+\BOOKMARK [2][-]{subsection.4.1}{Mosaicking Results}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.2}{Pipeline Performance}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.3}{Technical Details}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.4}{Science Quality of Output Mosaic}{section.4}% 19
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Astrometric Preservation}{subsection.4.4}% 20
+\BOOKMARK [2][-]{subsection.4.5}{Photometric Preservation}{section.4}% 21
+\BOOKMARK [2][-]{subsection.4.6}{Known Error Conditions }{section.4}% 22
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 23

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  15 OCT 2014 12:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  5 JUN 2015 20:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -209,96 +209,177 @@ LaTeX Font Info:    Overwriting symbol font `largesymbolsA' in version `bold'
 (Font)                  U/txexa/m/n --> U/txexa/bx/n on input line 129.
 LaTeX Info: Redefining \not on input line 1043.
 )
+(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen119
+\Hy@linkcounter=\count98
+\Hy@pagecounter=\count99
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count100
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count101
+
 (/usr/local/texlive/2014/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-) (./rc3_pipeline.aux)
+)
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen120
+\Fld@menulength=\count102
+\Field@Width=\dimen121
+\Fld@charsize=\dimen122
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count103
+\c@Item=\count104
+\c@Hfootnote=\count105
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count106
+\c@bookmark@seq@number=\count107
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip47
+)
+(./rc3_pipeline.aux)
 \openout1 = `rc3_pipeline.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 5.
-LaTeX Font Info:    Try loading font information for OML+txmi on input line 5.
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 6.
+LaTeX Font Info:    Try loading font information for OML+txmi on input line 6.
+
 (/usr/local/texlive/2014/texmf-dist/tex/latex/txfonts/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 5.
-LaTeX Font Info:    Try loading font information for OMS+txsy on input line 5.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 6.
+LaTeX Font Info:    Try loading font information for OMS+txsy on input line 6.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/txfonts/omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 5.
-LaTeX Font Info:    Try loading font information for OMX+txex on input line 5.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 6.
+LaTeX Font Info:    Try loading font information for OMX+txex on input line 6.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/txfonts/omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 5.
-LaTeX Font Info:    Try loading font information for U+txexa on input line 5.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 6.
+LaTeX Font Info:    Try loading font information for U+txexa on input line 6.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/txfonts/utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Try loading font information for OT1+txr on input line 5.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 6.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/txfonts/ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
 )
 (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count98
-\scratchdimen=\dimen119
+\scratchcounter=\count108
+\scratchdimen=\dimen123
 \scratchbox=\box30
-\nofMPsegments=\count99
-\nofMParguments=\count100
+\nofMPsegments=\count109
+\nofMParguments=\count110
 \everyMPshowfont=\toks18
-\MPscratchCnt=\count101
-\MPscratchDim=\dimen120
-\MPnumerator=\count102
-\makeMPintoPDFobject=\count103
+\MPscratchCnt=\count111
+\MPscratchDim=\dimen124
+\MPnumerator=\count112
+\makeMPintoPDFobject=\count113
 \everyMPtoPDFconversion=\toks19
-) (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+) (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
-
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-))
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
-
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
+)
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
@@ -344,7 +425,26 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+\AtBeginShipoutBox=\box31
+Package hyperref Info: Link coloring OFF on input line 6.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count114
+)
+LaTeX Info: Redefining \ref on input line 6.
+LaTeX Info: Redefining \pageref on input line 6.
+LaTeX Info: Redefining \nameref on input line 6.
+
+(./rc3_pipeline.out) (./rc3_pipeline.out)
+\@outlinefile=\write4
+\openout4 = `rc3_pipeline.out'.
+
 LaTeX Font Info:    Try loading font information for U+txmia on input line 18.
+
 (/usr/local/texlive/2014/texmf-dist/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
@@ -394,17 +494,19 @@ Overfull \hbox (5.484pt too wide) in paragraph at lines 33--34
 
 ]
 Overfull \hbox (1.86003pt too wide) in paragraph at lines 37--38
-\OT1/txr/m/n/12 imag-ing data re-lease (DR10;  Ahn et al., 2014), which
+\OT1/txr/m/n/12 imag-ing data re-lease (DR10;  []Ahn et al.[], []2014[]), which
+
  []
 
 
 Overfull \hbox (1.88399pt too wide) in paragraph at lines 37--38
-\OT1/txr/m/n/12 Sky Sur-vey (POSS-II; Reid et al., 1991). Our pipeline
+\OT1/txr/m/n/12 Sky Sur-vey (POSS-II; []Reid et al.[], []1991[]). Our pipeline
  []
 
 
 Overfull \hbox (27.13199pt too wide) in paragraph at lines 37--38
-\OT1/txr/m/n/12 tion, 2005) or the Large Syn-op-tic Sur-vey Tele-scope (LSST;
+\OT1/txr/m/n/12 tion[], []2005[]) or the Large Syn-op-tic Sur-vey Tele-scope (L
+SST;
  []
 
 LaTeX Font Info:    Try loading font information for OMS+txr on input line 43.
@@ -415,13 +517,13 @@ LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <12> not available
 (Font)              Font shape `OMS/txsy/m/n' tried instead on input line 43.
 
 Overfull \hbox (2.064pt too wide) in paragraph at lines 47--48
-\OT1/txr/m/n/12 vard Sur-vey of Ex-ter-nal Galax-ies (Shap-ley and Ames,
+\OT1/txr/m/n/12 vard Sur-vey of Ex-ter-nal Galax-ies ([]Shap-ley and Ames[],
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 49--49
-[][]$\OT1/cmtt/m/n/10 http : / / vizier . u-[]strasbg . fr / viz-[]bin / VizieR
- ?
+[][][][]$\OT1/cmtt/m/n/10 http : / / vizier . u-[]strasbg . fr / viz-[]bin / Vi
+zieR ?
  []
 
 [2]
@@ -431,7 +533,8 @@ Overfull \hbox (12.16801pt too wide) in paragraph at lines 51--52
 
 
 Overfull \hbox (6.156pt too wide) in paragraph at lines 51--52
-\OT1/txr/m/n/12 clus-ter-ing stud-ies (e.g., Best et al., 1996; Knapen et al.,
+\OT1/txr/m/n/12 clus-ter-ing stud-ies (e.g., []Best et al.[], []1996[]; []Knape
+n et al.[],
  []
 
 
@@ -451,7 +554,8 @@ Overfull \hbox (1.248pt too wide) in paragraph at lines 74--75
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 76--76
-[][]$\OT1/cmtt/m/n/10 http : / / skyserver . sdss3 . org / dr10 / en / help /
+[][][][]$\OT1/cmtt/m/n/10 http : / / skyserver . sdss3 . org / dr10 / en / help
+ /
  []
 
 
@@ -471,7 +575,7 @@ Overfull \hbox (20.92479pt too wide) in paragraph at lines 79--80
 
 
 Overfull \hbox (37.75124pt too wide) in paragraph at lines 79--80
-\OT1/txr/m/n/12 Ob-ser-va-tory Sky Sur-vey (NGS-POSS or POSS-I; Minkowski
+\OT1/txr/m/n/12 Ob-ser-va-tory Sky Sur-vey (NGS-POSS or POSS-I; []Minkowski
  []
 
 
@@ -481,7 +585,8 @@ Overfull \hbox (5.79597pt too wide) in paragraph at lines 79--80
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 81--81
-[][]$\OT1/cmtt/m/n/10 http : / / irsa . ipac . caltech . edu / applications /
+[][][][]$\OT1/cmtt/m/n/10 http : / / irsa . ipac . caltech . edu / applications
+ /
  []
 
 
@@ -512,8 +617,8 @@ Overfull \hbox (8.46883pt too wide) in paragraph at lines 88--89
 
 
 Overfull \hbox (37.23601pt too wide) in paragraph at lines 88--89
-\OT1/txr/m/n/12 source tools: mon-tage (Ja-cob et al., 2010) and STIFF (Bertin,
-
+\OT1/txr/m/n/12 source tools: mon-tage ([]Ja-cob et al.[], []2010[]) and STIFF 
+([]Bertin[],
  []
 
 
@@ -522,7 +627,7 @@ Overfull \hbox (13.71602pt too wide) in paragraph at lines 90--91
 
  []
 
-<figures/algorithm.png, id=20, 711.65875pt x 940.51375pt>
+<figures/algorithm.png, id=242, 711.65875pt x 940.51375pt>
 File: figures/algorithm.png Graphic file (type png)
 
 <use figures/algorithm.png>
@@ -557,14 +662,14 @@ Overfull \hbox (2.77199pt too wide) in paragraph at lines 100--101
  []
 
 [4] [5 <./figures/algorithm.png>]
-<figures/PGC58b4SC.jpg, id=29, 61.22874pt x 61.22874pt>
+<figures/PGC58b4SC.jpg, id=269, 61.22874pt x 61.22874pt>
 File: figures/PGC58b4SC.jpg Graphic file (type jpg)
 
 <use figures/PGC58b4SC.jpg>
 Package pdftex.def Info: figures/PGC58b4SC.jpg used on input line 116.
 (pdftex.def)             Requested size: 117.45319pt x 117.45691pt.
 
-<figures/PGC58afterSC.jpg, id=30, 143.53625pt x 143.53625pt>
+<figures/PGC58afterSC.jpg, id=270, 143.53625pt x 143.53625pt>
 File: figures/PGC58afterSC.jpg Graphic file (type jpg)
 
 <use figures/PGC58afterSC.jpg>
@@ -585,7 +690,7 @@ Overfull \hbox (7.3648pt too wide) in paragraph at lines 124--125
 []\OT1/txr/m/n/12 The al-go-rithm we de-vel-oped to over-come this chal-
  []
 
-<figures/navigator.png, id=31, 636.6987pt x 565.1514pt>
+<figures/navigator.png, id=275, 636.6987pt x 565.1514pt>
 File: figures/navigator.png Graphic file (type png)
 
 <use figures/navigator.png>
@@ -602,7 +707,7 @@ Overfull \hbox (5.61601pt too wide) in paragraph at lines 136--137
 \OT1/txr/m/n/12 low-ing sub-sec-tions, we dis-cuss sev-eral of these classes
  []
 
-<figures/hierarchy.jpg, id=36, 667.49374pt x 804.00375pt>
+<figures/hierarchy.jpg, id=284, 667.49374pt x 804.00375pt>
 File: figures/hierarchy.jpg Graphic file (type jpg)
 
 <use figures/hierarchy.jpg>
@@ -633,7 +738,7 @@ Overfull \hbox (6.60002pt too wide) in paragraph at lines 153--154
 
 [7 <./figures/hierarchy.jpg>]
 Overfull \hbox (1.65599pt too wide) in paragraph at lines 155--156
-\OT1/txr/m/n/12 specific imag-ing by fol-low-ing the guide-lines in Bertin
+\OT1/txr/m/n/12 specific imag-ing by fol-low-ing the guide-lines in []Bertin[]
  []
 
 
@@ -641,14 +746,14 @@ Overfull \hbox (10.22083pt too wide) in paragraph at lines 159--160
 []\OT1/txr/m/n/12 The sim-plest ab-stract class con-tained in the pipeline
  []
 
-<figures/DSS_120_BEST.jpg, id=41, 300.12125pt x 300.12125pt>
+<figures/DSS_120_BEST.jpg, id=302, 300.12125pt x 300.12125pt>
 File: figures/DSS_120_BEST.jpg Graphic file (type jpg)
 
 <use figures/DSS_120_BEST.jpg>
 Package pdftex.def Info: figures/DSS_120_BEST.jpg used on input line 165.
 (pdftex.def)             Requested size: 208.79681pt x 208.80118pt.
 
-<figures/SDSS_120_LOW.jpg, id=42, 211.79124pt x 211.79124pt>
+<figures/SDSS_120_LOW.jpg, id=303, 211.79124pt x 211.79124pt>
 File: figures/SDSS_120_LOW.jpg Graphic file (type jpg)
 
 <use figures/SDSS_120_LOW.jpg>
@@ -658,14 +763,14 @@ Package pdftex.def Info: figures/SDSS_120_LOW.jpg used on input line 166.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/DSS_1154_BEST.jpg, id=43, 300.12125pt x 300.12125pt>
+<figures/DSS_1154_BEST.jpg, id=304, 300.12125pt x 300.12125pt>
 File: figures/DSS_1154_BEST.jpg Graphic file (type jpg)
 
 <use figures/DSS_1154_BEST.jpg>
 Package pdftex.def Info: figures/DSS_1154_BEST.jpg used on input line 173.
 (pdftex.def)             Requested size: 208.79681pt x 208.80118pt.
 
-<figures/SDSS_1154_BEST.jpg, id=44, 176.66pt x 176.66pt>
+<figures/SDSS_1154_BEST.jpg, id=305, 176.66pt x 176.66pt>
 File: figures/SDSS_1154_BEST.jpg Graphic file (type jpg)
 
 <use figures/SDSS_1154_BEST.jpg>
@@ -705,139 +810,148 @@ Overfull \hbox (24.97202pt too wide) in paragraph at lines 195--196
 \OT1/txr/m/n/12 Python pro-gram-ming lan-guage, we de-vel-oped our pipeline
  []
 
-
+[9 <./figures/DSS_1154_BEST.jpg> <./figures/SDSS_1154_BEST.jpg>]
 Overfull \hbox (1.59602pt too wide) in paragraph at lines 197--198
 \OT1/txr/m/n/12 ing the im-age re-pro-jec-tion. Our choice was also aided
  []
 
 
 Overfull \hbox (8.15857pt too wide) in paragraph at lines 197--198
-\OT1/txr/m/n/12 SDSS and POSS-II im-age data sets (Ja-cob et al., 2010).
+\OT1/txr/m/n/12 SDSS and POSS-II im-age data sets ([]Ja-cob et al.[], []2010[])
+.
  []
 
-[9 <./figures/DSS_1154_BEST.jpg> <./figures/SDSS_1154_BEST.jpg>]
+
 Overfull \hbox (5.68727pt too wide) in paragraph at lines 199--200
-\OT1/txr/m/n/12 tool writ-ten by Bu-davari (2004) to sub-mit SQL queries
+\OT1/txr/m/n/12 tool writ-ten by []Bu-davari[] ([]2004[]) to sub-mit SQL querie
+s
  []
 
 
-Overfull \hbox (1.12975pt too wide) in paragraph at lines 219--220
+Overfull \hbox (1.12975pt too wide) in paragraph at lines 223--224
 []\OT1/cmtt/m/n/12 mosaicAll \OT1/txr/m/n/12 er-ror is a gen-eral er-ror that i
 s raised
  []
 
 
-Overfull \hbox (14.50673pt too wide) in paragraph at lines 221--222
+Overfull \hbox (14.50673pt too wide) in paragraph at lines 225--226
 \OT1/txr/m/n/12 composite im-age. On oc-ca-sion, a color-composite
  []
 
 
-Overfull \hbox (3.1667pt too wide) in paragraph at lines 225--226
+Overfull \hbox (3.1667pt too wide) in paragraph at lines 229--230
 \OT1/txr/m/n/12 com-plete suc-cess-fully and the de-bug state-ments
  []
 
 
-Overfull \hbox (0.11874pt too wide) in paragraph at lines 225--226
+Overfull \hbox (0.11874pt too wide) in paragraph at lines 229--230
 \OT1/txr/m/n/12 ce-dures ter-mi-nate cor-rectly for these cases, and
  []
 
 
-Overfull \hbox (64.80875pt too wide) in paragraph at lines 225--226
+Overfull \hbox (64.80875pt too wide) in paragraph at lines 229--230
 \OT1/txr/m/n/12 we de-note the prob-lem-atic galaxy as a \OT1/cmtt/m/n/12 faile
 d[]projection\OT1/txr/m/n/12 ,
  []
 
-
-Overfull \hbox (1.54973pt too wide) in paragraph at lines 228--229
+[10]
+Overfull \hbox (1.54973pt too wide) in paragraph at lines 232--233
 []$[]$ \OT1/txr/m/n/12 crops a fin-ished mo-saic to the spec-
  []
 
 
-Overfull \hbox (11.83072pt too wide) in paragraph at lines 228--229
+Overfull \hbox (11.83072pt too wide) in paragraph at lines 232--233
 \OT1/txr/m/n/12 are crop-ping to a square im-age, the mar-gin should
  []
 
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 234--234
-[][]$\OT1/cmtt/m/n/10 http : / / github . com / ProfessorBrunner /
+
+Underfull \hbox (badness 10000) in paragraph at lines 238--238
+[][][][]$\OT1/cmtt/m/n/10 http : / / github . com / ProfessorBrunner /
  []
 
 
-Overfull \hbox (24.33601pt too wide) in paragraph at lines 234--235
+Overfull \hbox (24.33601pt too wide) in paragraph at lines 238--239
 \OT1/txr/m/n/12 be adapted to work with fu-ture data to cre-ate scientifically-
 
  []
 
 
-Overfull \hbox (0.76802pt too wide) in paragraph at lines 236--237
+Underfull \hbox (badness 10000) in paragraph at lines 240--240
+[][][][]$\OT1/cmtt/m/n/10 http : / / lcdm . astro . illinois . edu / data / rc3
+ /
+ []
+
+
+Overfull \hbox (0.76802pt too wide) in paragraph at lines 240--241
 \OT1/txr/m/n/12 demon-strate the ef-fi-cacy of this new pipeline, we gen-
  []
 
 
-Overfull \hbox (3.39598pt too wide) in paragraph at lines 236--237
+Overfull \hbox (3.39598pt too wide) in paragraph at lines 240--241
 \OT1/txr/m/n/12 ages of galax-ies in the RC3 cat-a-log by us-ing the SDSS
  []
 
 
-Overfull \hbox (5.91602pt too wide) in paragraph at lines 238--239
+Overfull \hbox (5.91602pt too wide) in paragraph at lines 242--243
 \OT1/txr/m/n/12 source cat-a-log or the con-struc-tion of po-ten-tially higher
  []
 
 
-Overfull \hbox (6.21603pt too wide) in paragraph at lines 238--239
+Overfull \hbox (6.21603pt too wide) in paragraph at lines 242--243
 \OT1/txr/m/n/12 tain-ing source po-si-tions, source radii, and unique iden-
  []
 
 
-Overfull \hbox (1.32004pt too wide) in paragraph at lines 238--239
+Overfull \hbox (1.32004pt too wide) in paragraph at lines 242--243
 \OT1/txr/m/n/12 ti-fier for each source, which can sub-se-quently be used
  []
 
 
-Overfull \hbox (33.69601pt too wide) in paragraph at lines 240--242
-\OT1/txr/m/n/12 so-nian As-tro-phys-i-cal Ob-ser-va-tory, 2000), Al-ladin (Bonn
-arel
+Overfull \hbox (34.47601pt too wide) in paragraph at lines 244--246
+\OT1/txr/m/n/12 so-nian As-tro-phys-i-cal Ob-ser-va-tory[], []2000[]), Al-ladin
+ ([]Bonnarel
  []
 
 
-Overfull \hbox (4.23601pt too wide) in paragraph at lines 240--242
-\OT1/txr/m/n/12 et al., 2000), or APLpy (Ro-bitaille and Bressert, 2012)
+Overfull \hbox (4.23601pt too wide) in paragraph at lines 244--246
+\OT1/txr/m/n/12 et al.[], []2000[]), or APLpy ([]Ro-bitaille and Bressert[], []
+2012[])
  []
 
 [11]
-Overfull \hbox (3.86008pt too wide) in paragraph at lines 252--253
+Overfull \hbox (3.86008pt too wide) in paragraph at lines 256--257
 \OT1/txr/m/n/10 the French Par-tic-i-pa-tion Group, the Ger-man Par-tic-i-pa-ti
 on Group,
  []
 
 
-Overfull \hbox (6.90005pt too wide) in paragraph at lines 252--253
+Overfull \hbox (6.90005pt too wide) in paragraph at lines 256--257
 \OT1/txr/m/n/10 ver-sity, Uni-ver-sity of Portsmouth, Prince-ton Uni-ver-sity, 
 the Span-
  []
 
 
-Overfull \hbox (4.02007pt too wide) in paragraph at lines 252--253
+Overfull \hbox (4.02007pt too wide) in paragraph at lines 256--257
 \OT1/txr/m/n/10 ish Par-tic-i-pa-tion Group, Uni-ver-sity of Tokyo, Uni-ver-sit
 y of Utah,
  []
 
 
-Overfull \hbox (7.52005pt too wide) in paragraph at lines 252--253
+Overfull \hbox (7.52005pt too wide) in paragraph at lines 256--257
 \OT1/txr/m/n/10 Van-der-bilt Uni-ver-sity, Uni-ver-sity of Vir-ginia, Uni-ver-s
 ity of Wash-
  []
 
 (./rc3_pipeline.bbl [12]
 Underfull \hbox (badness 7851) in paragraph at lines 94--97
-\OT1/cmtt/m/n/10 cas . sdss . org / dr7 / sp / help / download / sqlcl/$\OT1/tx
-r/m/n/10 , Last
+\OT1/cmtt/m/n/10 cas . sdss . org / dr7 / sp / help / download / sqlcl/$[]\OT1/
+txr/m/n/10 , Last
  []
 
 [13]
 Underfull \hbox (badness 10000) in paragraph at lines 312--315
-\OT1/cmtt/m/n/10 https : / / github . com / astropy / montage-[]wrapper$\OT1/tx
-r/m/n/10 ,
+[]$\OT1/cmtt/m/n/10 https : / / github . com / astropy / montage-[]wrapper$[]\O
+T1/txr/m/n/10 ,
  []
 
 
@@ -846,28 +960,40 @@ Underfull \hbox (badness 2443) in paragraph at lines 340--343
 
  []
 
-) [14] (./rc3_pipeline.aux) ) 
+[14])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 261.
+ [15
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 261.
+ (./rc3_pipeline.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 261.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 261.
+Package rerunfilecheck Info: File `rc3_pipeline.out' has not changed.
+(rerunfilecheck)             Checksum: C2134498B6A38A9B8747680A845F61BA;1506.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 261.
+ ) 
 Here is how much of TeX's memory you used:
- 3621 strings out of 493117
- 48580 string characters out of 6135433
- 129290 words of memory out of 5000000
- 6982 multiletter control sequences out of 15000+600000
+ 7192 strings out of 493117
+ 102697 string characters out of 6135433
+ 209636 words of memory out of 5000000
+ 10427 multiletter control sequences out of 15000+600000
  40134 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,9n,34p,2117b,347s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvip
-s/base/8r.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmtt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmtt12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/txfonts/rtxm
-i.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb><
-/usr/local/texlive/2014/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/lo
-cal/texlive/2014/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texliv
-e/2014/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/tex
-mf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on rc3_pipeline.pdf (14 pages, 619581 bytes).
+ 34i,9n,34p,2117b,524s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/te
+xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2014/tex
+mf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2014/texmf-dist
+/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
+e1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/tim
+es/utmri8a.pfb>
+Output written on rc3_pipeline.pdf (15 pages, 631664 bytes).
 PDF statistics:
- 95 PDF objects out of 1000 (max. 8388607)
- 59 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 465 PDF objects out of 1000 (max. 8388607)
+ 423 compressed objects within 5 object streams
+ 106 named destinations out of 1000 (max. 500000)
+ 230 words of extra memory for PDF output out of 10000 (max. 10000000)
 
