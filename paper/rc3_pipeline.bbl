@@ -1,4 +1,4 @@
-\begin{thebibliography}{41}
+\begin{thebibliography}{42}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -125,6 +125,25 @@
   of Stars, being the Catalogue of the late Sir John F. W. Herschel, Bart,
   revised, corrected, and enlarged}. Memoirs of the Royal Astronomical Society
   49, 1.
+
+\bibitem[{{Evans} et~al.(2010){Evans}, {Primini}, {Glotfelty}, {Anderson},
+  {Bonaventura}, {Chen}, {Davis}, {Doe}, {Evans}, {Fabbiano}, {Galle}, {Gibbs},
+  {Grier}, {Hain}, {Hall}, {Harbo}, {(Helen He}, {Houck}, {Karovska},
+  {Kashyap}, {Lauer}, {McCollough}, {McDowell}, {Miller}, {Mitschang},
+  {Morgan}, {Mossman}, {Nichols}, {Nowak}, {Plummer}, {Refsdal}, {Rots},
+  {Siemiginowska}, {Sundheim}, {Tibbetts}, {Van Stone}, {Winkelman}, and
+  {Zografou}}]{chandra}
+{Evans}, I.~N., {Primini}, F.~A., {Glotfelty}, K.~J., {Anderson}, C.~S.,
+  {Bonaventura}, N.~R., {Chen}, J.~C., {Davis}, J.~E., {Doe}, S.~M., {Evans},
+  J.~D., {Fabbiano}, G., {Galle}, E.~C., {Gibbs}, II, D.~G., {Grier}, J.~D.,
+  {Hain}, R.~M., {Hall}, D.~M., {Harbo}, P.~N., {(Helen He}, X., {Houck},
+  J.~C., {Karovska}, M., {Kashyap}, V.~L., {Lauer}, J., {McCollough}, M.~L.,
+  {McDowell}, J.~C., {Miller}, J.~B., {Mitschang}, A.~W., {Morgan}, D.~L.,
+  {Mossman}, A.~E., {Nichols}, J.~S., {Nowak}, M.~A., {Plummer}, D.~A.,
+  {Refsdal}, B.~L., {Rots}, A.~H., {Siemiginowska}, A., {Sundheim}, B.~A.,
+  {Tibbetts}, M.~S., {Van Stone}, D.~W., {Winkelman}, S.~L., {Zografou}, P.,
+  Jul. 2010. {The Chandra Source Catalog}. The Astrophysical Journal,
+  Supplement 189, 37--82.
 
 \bibitem[{{Gal} et~al.(2004){Gal}, {de Carvalho}, {Odewahn}, {Djorgovski},
   {Mahabal}, {Brunner}, and {Lopes}}]{dposs}
