@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  12 JUN 2015 07:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  15 JUN 2015 10:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -477,15 +477,15 @@ Overfull \hbox (8.17201pt too wide) in paragraph at lines 31--32
 \OT1/txr/m/n/12 tains 23,011 galax-ies with an ap-par-ent di-am-e-ter greater
  []
 
+
+Overfull \hbox (3.40802pt too wide) in paragraph at lines 33--34
+\OT1/txr/m/n/12 NASA-Sloan At-las[][][], has been un-der-taken to con-struct
+ []
+
 [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Overfull \hbox (2.952pt too wide) in paragraph at lines 35--37
-\OT1/txr/m/n/12 ded-i-cated study that uni-formly mo-saic all 230,11 RC3
- []
-
-
 Overfull \hbox (4.0193pt too wide) in paragraph at lines 35--37
 \OT1/txr/m/n/12 sources with up-dated as-trom-e-try. As the SDSS project
  []
@@ -551,12 +551,17 @@ zieR ?
  []
 
 
-Overfull \hbox (12.16801pt too wide) in paragraph at lines 59--60
+Overfull \hbox (0.528pt too wide) in paragraph at lines 57--58
+\OT1/txr/m/n/12 the 1993 ver-sion 3.9b of the RC3 cat-a-log. Un-til 2011,
+ []
+
+
+Overfull \hbox (12.16801pt too wide) in paragraph at lines 59--61
 \OT1/txr/m/n/12 as-tro-phys-i-cal stud-ies of quasars and X-ray sources (e.g.,
  []
 
 
-Overfull \hbox (6.156pt too wide) in paragraph at lines 59--60
+Overfull \hbox (6.156pt too wide) in paragraph at lines 59--61
 \OT1/txr/m/n/12 clus-ter-ing stud-ies (e.g., []Best et al.[], []1996[]; []Knape
 n et al.[],
  []
@@ -652,7 +657,7 @@ Overfull \hbox (13.71602pt too wide) in paragraph at lines 98--99
 
  []
 
-<figures/algorithm.png, id=261, 711.65875pt x 940.51375pt>
+<figures/algorithm.png, id=262, 711.65875pt x 940.51375pt>
 File: figures/algorithm.png Graphic file (type png)
 
 <use figures/algorithm.png>
@@ -701,20 +706,20 @@ Overfull \hbox (2.40002pt too wide) in paragraph at lines 120--121
 \OT1/txr/m/n/12 rithm, stan-dard mosi-ack-ing pro-ce-dure will not be able
  []
 
-<figures/PGC58b4SC.jpg, id=280, 61.22874pt x 61.22874pt>
+<figures/PGC58b4SC.jpg, id=281, 61.22874pt x 61.22874pt>
 File: figures/PGC58b4SC.jpg Graphic file (type jpg)
 
 <use figures/PGC58b4SC.jpg>
 Package pdftex.def Info: figures/PGC58b4SC.jpg used on input line 125.
 (pdftex.def)             Requested size: 117.45319pt x 117.45691pt.
 
-<figures/PGC58afterSC.jpg, id=281, 143.53625pt x 143.53625pt>
+<figures/PGC58afterSC.jpg, id=282, 143.53625pt x 143.53625pt>
 File: figures/PGC58afterSC.jpg Graphic file (type jpg)
 
 <use figures/PGC58afterSC.jpg>
 Package pdftex.def Info: figures/PGC58afterSC.jpg used on input line 126.
 (pdftex.def)             Requested size: 117.45319pt x 117.45517pt.
- [6]
+
 Overfull \hbox (1.704pt too wide) in paragraph at lines 131--132
 \OT1/txr/m/n/12 galax-ies are of-ten phys-i-cally lo-cated near other galax-
  []
@@ -724,12 +729,12 @@ Overfull \hbox (5.61598pt too wide) in paragraph at lines 131--132
 \OT1/txr/m/n/12 that any galaxy large enough to cause con-fu-sion would
  []
 
-
+[6]
 Overfull \hbox (7.3648pt too wide) in paragraph at lines 133--134
 []\OT1/txr/m/n/12 The al-go-rithm we de-vel-oped to over-come this chal-
  []
 
-<figures/navigator.png, id=290, 636.6987pt x 565.1514pt>
+<figures/navigator.png, id=291, 636.6987pt x 565.1514pt>
 File: figures/navigator.png Graphic file (type png)
 
 <use figures/navigator.png>
@@ -749,7 +754,7 @@ Overfull \hbox (5.61601pt too wide) in paragraph at lines 145--146
  []
 
 [7 <./figures/PGC58b4SC.jpg> <./figures/PGC58afterSC.jpg> <./figures/navigator.
-png>] <figures/hierarchy.jpg, id=301, 667.49374pt x 804.00375pt>
+png>] <figures/hierarchy.jpg, id=303, 667.49374pt x 804.00375pt>
 File: figures/hierarchy.jpg Graphic file (type jpg)
 
 <use figures/hierarchy.jpg>
@@ -776,23 +781,18 @@ Overfull \hbox (6.60002pt too wide) in paragraph at lines 163--164
  []
 
 [8 <./figures/hierarchy.jpg>]
-Overfull \hbox (1.65599pt too wide) in paragraph at lines 165--166
-\OT1/txr/m/n/12 specific imag-ing by fol-low-ing the guide-lines in []Bertin[]
- []
-
-
 Overfull \hbox (10.22083pt too wide) in paragraph at lines 169--170
 []\OT1/txr/m/n/12 The sim-plest ab-stract class con-tained in the pipeline
  []
 
-<figures/DSS_120_BEST.jpg, id=318, 300.12125pt x 300.12125pt>
+<figures/DSS_120_BEST.jpg, id=319, 300.12125pt x 300.12125pt>
 File: figures/DSS_120_BEST.jpg Graphic file (type jpg)
 
 <use figures/DSS_120_BEST.jpg>
 Package pdftex.def Info: figures/DSS_120_BEST.jpg used on input line 175.
 (pdftex.def)             Requested size: 208.79681pt x 208.80118pt.
 
-<figures/SDSS_120_LOW.jpg, id=319, 211.79124pt x 211.79124pt>
+<figures/SDSS_120_LOW.jpg, id=320, 211.79124pt x 211.79124pt>
 File: figures/SDSS_120_LOW.jpg Graphic file (type jpg)
 
 <use figures/SDSS_120_LOW.jpg>
@@ -802,14 +802,14 @@ Package pdftex.def Info: figures/SDSS_120_LOW.jpg used on input line 176.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/DSS_1154_BEST.jpg, id=320, 300.12125pt x 300.12125pt>
+<figures/DSS_1154_BEST.jpg, id=321, 300.12125pt x 300.12125pt>
 File: figures/DSS_1154_BEST.jpg Graphic file (type jpg)
 
 <use figures/DSS_1154_BEST.jpg>
 Package pdftex.def Info: figures/DSS_1154_BEST.jpg used on input line 183.
 (pdftex.def)             Requested size: 208.79681pt x 208.80118pt.
 
-<figures/SDSS_1154_BEST.jpg, id=321, 176.66pt x 176.66pt>
+<figures/SDSS_1154_BEST.jpg, id=322, 176.66pt x 176.66pt>
 File: figures/SDSS_1154_BEST.jpg Graphic file (type jpg)
 
 <use figures/SDSS_1154_BEST.jpg>
@@ -866,7 +866,7 @@ Overfull \hbox (5.68727pt too wide) in paragraph at lines 210--211
 s
  []
 
-<figures/astrometry.png, id=352, 569.12625pt x 390.45876pt>
+<figures/astrometry.png, id=353, 569.12625pt x 390.45876pt>
 File: figures/astrometry.png Graphic file (type png)
 
 <use figures/astrometry.png>
@@ -900,7 +900,7 @@ Overfull \hbox (0.79129pt too wide) in paragraph at lines 224--225
 \OT1/txr/m/n/12 data and mo-saick-ing neigh-bor-ing fields, the PSF vari-
  []
 
-<figures/outlier_rejection.png, id=356, 563.9469pt x 475.7775pt>
+<figures/outlier_rejection.png, id=357, 563.9469pt x 475.7775pt>
 File: figures/outlier_rejection.png Graphic file (type png)
 
 <use figures/outlier_rejection.png>
@@ -927,7 +927,7 @@ Overfull \hbox (14.112pt too wide) in paragraph at lines 233--234
 \OT1/txr/m/n/12 edges will con-tribute less flux to the SExtractor-detected
  []
 
-<figures/photo_preserved.png, id=366, 512.91624pt x 383.4325pt>
+<figures/photo_preserved.png, id=367, 512.91624pt x 383.4325pt>
 File: figures/photo_preserved.png Graphic file (type png)
 
 <use figures/photo_preserved.png>
@@ -944,7 +944,7 @@ Overfull \hbox (8.72403pt too wide) in paragraph at lines 245--246
  []
 
 [12 <./figures/outlier_rejection.png> <./figures/photo_preserved.png>]
-<figures/histo_rms.png, id=379, 517.935pt x 380.42125pt>
+<figures/histo_rms.png, id=380, 517.935pt x 380.42125pt>
 File: figures/histo_rms.png Graphic file (type png)
 
 <use figures/histo_rms.png>
@@ -1062,11 +1062,9 @@ Underfull \hbox (badness 2443) in paragraph at lines 359--362
 
  []
 
-[16])
+)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 276.
- [17
-
-]
+ [16]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 276.
  (./rc3_pipeline.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 276.
@@ -1076,13 +1074,13 @@ Package rerunfilecheck Info: File `rc3_pipeline.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 276.
  ) 
 Here is how much of TeX's memory you used:
- 7226 strings out of 493117
- 103436 string characters out of 6135433
- 210135 words of memory out of 5000000
+ 7225 strings out of 493117
+ 103429 string characters out of 6135433
+ 209230 words of memory out of 5000000
  10454 multiletter control sequences out of 15000+600000
  40134 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,9n,34p,2117b,526s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,9n,34p,2117b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/te
 xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/tex
@@ -1092,10 +1090,10 @@ mf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2014/texmf-dist
 /fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
 e1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/tim
 es/utmri8a.pfb>
-Output written on rc3_pipeline.pdf (17 pages, 774051 bytes).
+Output written on rc3_pipeline.pdf (16 pages, 773826 bytes).
 PDF statistics:
- 494 PDF objects out of 1000 (max. 8388607)
- 442 compressed objects within 5 object streams
- 109 named destinations out of 1000 (max. 500000)
+ 491 PDF objects out of 1000 (max. 8388607)
+ 440 compressed objects within 5 object streams
+ 108 named destinations out of 1000 (max. 500000)
  250 words of extra memory for PDF output out of 10000 (max. 10000000)
 
