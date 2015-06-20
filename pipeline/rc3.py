@@ -443,4 +443,3 @@ class RC3(RC3Catalog):
 
     def __str__(self):
         return "<RC3Obj{}>".format(self.pgc)
-  

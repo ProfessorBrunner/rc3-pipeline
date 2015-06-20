@@ -1,0 +1,16 @@
+#PBS -q regular
+# Setting number of cores multiples of 24 (since 24 cores per NUMA node) 
+#PBS -l mppwidth=1
+#PBS -l walltime=336:00:00
+#PBS -N RC3
+#PBS -e test.$PBS_JOBID.err
+#PBS -o test.$PBS_JOBID.out
+#PBS -A m2218
+source /project/projectdirs/cmb/modules/hpcports_NERSC.sh
+hpcports shared_gnu
+module load astromatic-hpcp
+module load python
+module swap PrgEnv-intel PrgEnv-gnu
+cd /global/scratch2/sd/dorislee/rc3-pipeline/pipeline
+#aprun -n 1  /project/projectdirs/astro250/doris/ramses/trunk/ramses/bin/ramses2d_mhd_otpatch ../orszag-tang.nml
+python bulk_run.py
