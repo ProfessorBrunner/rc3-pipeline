@@ -57,7 +57,7 @@ class RC3Catalog(Catalog):
 	            n +=1
 	    return allObj
 
-	def mosaicAll(self,survey):
+	def mosaicAll(self,survey,enable_mpi=False):
 		'''
 		survey : Survey object
 		Produce all band FITS files and color mosaic for every objects inside the Catalog that lies within the footprint of the given survey
@@ -69,9 +69,9 @@ class RC3Catalog(Catalog):
 			print("Working on PGC{}, at({} , {})".format(str(obj.pgc), str(obj.rc3_ra),str(obj.rc3_dec)))
 			print str(obj.rc3_radius)
 			try:
-				rfits=obj.mosaic_band(survey.best_band,obj.rc3_ra,obj.rc3_dec,3*obj.rc3_radius,obj.rc3_radius,obj.pgc,survey)
+				rfits=obj.mosaic_band(survey.best_band,obj.rc3_ra,obj.rc3_dec,3*obj.rc3_radius,obj.rc3_radius,obj.pgc,survey,enable_mpi=True)
 				if(rfits!=-1): #Special value for outside footprint or error, no rfits produced
-					obj.source_info(rfits,survey)
+					obj.source_info(rfits,survey,enable_mpi=True)
 			except(AssertionError):
 				print("Something went wrong in mosaicing PGC {}".format(str(obj.pgc)))
 				if (not (os.path.exists("rc3Catalog.py"))):
