@@ -442,5 +442,4 @@ class RC3(RC3Catalog):
         print ("Completed Mosaic")
 
     def __str__(self):
-        return "<RC3Obj{}>".format(self.pgc)
-  
+        return "<RC3Obj{}>".format(self.pgc)i
