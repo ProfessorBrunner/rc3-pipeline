@@ -31,7 +31,7 @@ class RC3(RC3Catalog):
         #updated positions
         self.new_ra='@'
         self.new_dec='@'
-    def mosaic_band(self,band,ra,dec,margin,radius,pgc,survey,remove_bkgrd=False,enable_mpi=False):
+    def mosaic_band(self,band,ra,dec,margin,radius,pgc,survey,remove_bkgrd=False):
         '''
         Input: source info param
         Create a mosaic fit file for the specified band.
@@ -148,7 +148,7 @@ class RC3(RC3Catalog):
             if (DEBUG): print ("Reprojecting images")
             # os.chdir("rawdir")
             if (DEBUG):print(os.getcwd())
-            montage.mProjExec(imgtbl,hdr,"projdir", "stats.tbl",raw_dir="rawdir", mpi=enable_mpi,debug=True) 
+            montage.mProjExec(imgtbl,hdr,"projdir", "stats.tbl",raw_dir="rawdir")#, mpi=enable_mpi,debug=True) 
             if os.listdir("projdir") == []: 
                 print "Projection Failed. No projected images produced. Skip to the next galaxy" 
                 os.chdir("../") #Get out of directory for that galaxy and move on
@@ -169,7 +169,7 @@ class RC3(RC3Catalog):
             else:
                 montage.mImgtbl("projdir","pimages.tbl")
                 os.chdir("projdir")
-                montage.mAdd("../pimages.tbl","../"+hdr,"{}_{}.fits".format(survey.name,out), mpi=enable_mpi)
+                montage.mAdd("../pimages.tbl","../"+hdr,"{}_{}.fits".format(survey.name,out))#, mpi=enable_mpi)
                 montage.mSubimage("{}_{}.fits".format(survey.name,out),outfile_r,ra,dec,2*margin) # mSubImage takes xsize which should be twice the margin (margin measures center to edge of image)
                 shutil.move(outfile_r,"../../{}".format(outfile_r) )#if change to :-11 then move out of u,g,r,i,z directory, may be more convenient for mJPEG
                 if (DEBUG) : print ("Completed Mosaic for " + band)
@@ -194,7 +194,7 @@ class RC3(RC3Catalog):
         os.system("rm -r {}".format(band))
         return outfile 
 
-    def source_info(self,r_fits_filename,survey,enable_mpi=False):
+    def source_info(self,r_fits_filename,survey):
         '''
         [ra,dec,margin,radius,pgc] ==> Is margin info necessary
         Input: Filename String of R band Mosaic fit file
@@ -404,7 +404,7 @@ class RC3(RC3Catalog):
             no_detection = open("../no_detected_rc3_candidate_nearby.txt",'a')
             no_detection.write("{}       {}        {}        {} \n".format(self.rc3_ra,self.rc3_dec,self.rc3_radius,self.pgc))
 
-    def mosaic_all_bands(self,ra,dec,margin,radius,pgc,survey,enable_mpi=False):
+    def mosaic_all_bands(self,ra,dec,margin,radius,pgc,survey):
         '''
         Input
         Creates u,g,r,i,z fit file mosaic and g,r,i color images.
