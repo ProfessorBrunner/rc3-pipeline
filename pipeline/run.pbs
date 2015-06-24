@@ -1,7 +1,7 @@
 #PBS -q regular
 # Setting number of cores multiples of 24 (since 24 cores per NUMA node) 
 #PBS -l mppwidth=1
-#PBS -l walltime=24:00:00
+#PBS -l walltime=48:00:00
 #PBS -N RC3
 #PBS -e test.$PBS_JOBID.err
 #PBS -o test.$PBS_JOBID.out
