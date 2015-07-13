@@ -3,9 +3,9 @@ import sys
 for arg in sys.argv: 
     nproc=arg
 nproc = int(nproc)
-print "#PBS -q thruput"
-print "#PBS -l mppwidth=1"
-print "#PBS -l walltime=168:00:00"
+#print "#PBS -q thruput"
+print "#PBS -q serial"
+print "#PBS -l walltime=48:00:00"
 print "#PBS -N RC3_RUN{}".format(nproc)
 print "#PBS -e test.$PBS_JOBID.err"
 print "#PBS -o test.$PBS_JOBID.out"
@@ -14,5 +14,5 @@ print "source /project/projectdirs/cmb/modules/hpcports_NERSC.sh"
 print "hpcports shared_gnu"
 print "module load astromatic-hpcp"
 print "module load python"
-print "cd $GSCRATCH/rc3/RUN{}".format(nproc)
-print "aprun -n 1 python bulk_run.py" 
+print "cd $GSCRATCH/rc3_short/RUN{}".format(nproc)
+print "python bulk_run.py" 
