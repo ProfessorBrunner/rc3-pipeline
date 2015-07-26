@@ -21,50 +21,81 @@
 	    echo "<td>rc3_ra</td>";
 	    echo "<td>rc3_dec</td>";
 	    echo "<td>rc3_radius</td>";
-	    echo "<td>new_ra</td>";
-	    echo "<td>new_dec</td>";
-	    echo "<td>clean</td>";
-	    echo "<td>error</td>";
-	    echo "<td>in SDSS footprint</td>";
+
+            while($row = $result->fetchObject())
+            { 
+	    if (htmlspecialchars($row->in_SDSS_footprint)=="1"){
+		echo "<td>new_ra</td>";
+		echo "<td>new_dec</td>";
+	   	echo "<td>clean</td>";
+	    	echo "<td>error</td>";
+	    	echo "<td>in SDSS footprint</td>";
+	    }
 	    echo "</tr>";
-	    while($row = $result->fetchObject())
-	    {  
 			    
 		echo "<tr>";
 		echo " <td>".htmlspecialchars($row->PGC)."</td>";
 		echo " <td>".htmlspecialchars($row->rc3_ra)."</td>";
 		echo " <td>".htmlspecialchars($row->rc3_dec)."</td>";
 		echo " <td>".htmlspecialchars($row->rc3_radius)."</td>";
-		echo " <td>".htmlspecialchars($row->new_ra)."</td>";
-		echo " <td>".htmlspecialchars($row->new_dec)."</td>";
-		echo " <td>".htmlspecialchars($row->clean)."</td>";
-		echo " <td>".htmlspecialchars($row->error)."</td>";
-		echo " <td>".htmlspecialchars($row->in_SDSS_footprint)."</td>";
+		if (htmlspecialchars($row->in_SDSS_footprint)=="1"){
+			echo " <td>".htmlspecialchars($row->new_ra)."</td>";
+			echo " <td>".htmlspecialchars($row->new_dec)."</td>";
+			echo " <td>".htmlspecialchars($row->clean)."</td>";
+			echo " <td>".htmlspecialchars($row->error)."</td>";
+			echo " <td>".htmlspecialchars($row->in_SDSS_footprint)."</td>";
+		}
 		echo "</tr>";
-		echo "<table>";
-		echo "</br> Downloads </br>";
-		echo "<br><table style='width:300px' border='1' cellpadding='10px'>  ";
-		echo "<tr>";
-		echo "<td>ufits</td>";
-		echo "<td>gfits</td>";
-		echo "<td>rfits</td>";
-		echo "<td>ifits</td>";
-		echo "<td>zfits</td>";
-                echo "<td>Low surface structure image</td>";
-                echo "<td>Poster image</td>";
-		echo "</tr>";
-		echo "<tr>";
-		echo "<td><a href='".htmlspecialchars($row->ufits)."'download='".htmlspecialchars($row->ufits)."' target='_blank'>".explode("/", htmlspecialchars($row->ufits))[5]."</a></td>";
-		echo "<td><a href='".htmlspecialchars($row->gfits)."'download='".htmlspecialchars($row->gfits)."' target='_blank'>".explode("/", htmlspecialchars($row->gfits))[5]."</a></td>";
-		echo "<td><a href='".htmlspecialchars($row->rfits)."'download='".htmlspecialchars($row->rfits)."' target='_blank'>".explode("/", htmlspecialchars($row->rfits))[5]."</a></td>";
-		echo "<td><a href='".htmlspecialchars($row->ifits)."'download='".htmlspecialchars($row->ifits)."' target='_blank'>".explode("/", htmlspecialchars($row->ifits))[5]."</a></td>";        
-		echo "<td><a href='".htmlspecialchars($row->zfits)."'download='".htmlspecialchars($row->zfits)."' target='_blank'>".explode("/", htmlspecialchars($row->zfits))[5]."</a></td>";
+		if (htmlspecialchars($row->in_SDSS_footprint)=="1"){
+			echo "<table>";
+			echo "</br> Downloads </br>";
+			echo "<br><table style='width:300px' border='1' cellpadding='10px'>  ";
+			echo "<tr>";
+			echo "<td>ufits</td>";
+			echo "<td>gfits</td>";
+			echo "<td>rfits</td>";
+			echo "<td>ifits</td>";
+			echo "<td>zfits</td>";
+               		echo "<td>Low surface structure image</td>";
+       	 	        echo "<td>Poster image</td>";
+			echo "</tr>";
+			echo "<tr>";
+			echo "<td><a href='".htmlspecialchars($row->ufits)."'download='".htmlspecialchars($row->ufits)."' target='_blank'>".explode("/", htmlspecialchars($row->ufits))[5]."</a></td>";
+			echo "<td><a href='".htmlspecialchars($row->gfits)."'download='".htmlspecialchars($row->gfits)."' target='_blank'>".explode("/", htmlspecialchars($row->gfits))[5]."</a></td>";
+			echo "<td><a href='".htmlspecialchars($row->rfits)."'download='".htmlspecialchars($row->rfits)."' target='_blank'>".explode("/", htmlspecialchars($row->rfits))[5]."</a></td>";
+			echo "<td><a href='".htmlspecialchars($row->ifits)."'download='".htmlspecialchars($row->ifits)."' target='_blank'>".explode("/", htmlspecialchars($row->ifits))[5]."</a></td>";        
+			echo "<td><a href='".htmlspecialchars($row->zfits)."'download='".htmlspecialchars($row->zfits)."' target='_blank'>".explode("/", htmlspecialchars($row->zfits))[5]."</a></td>";
 echo "<td><a href='".htmlspecialchars($row->low)."'download='".htmlspecialchars($row->low)."' target='_blank'>".explode("/", htmlspecialchars($row->low))[5]."</a></td>";
-                echo "<td><a href='".htmlspecialchars($row->best)."'download='".htmlspecialchars($row->best)."' target='_blank'>".explode("/", htmlspecialchars($row->best))[5]."</a></td>";
-		echo "</tr>";
+               		 echo "<td><a href='".htmlspecialchars($row->best)."'download='".htmlspecialchars($row->best)."' target='_blank'>".explode("/", htmlspecialchars($row->best))[5]."</a></td>";
+			echo "</tr>";
+			echo "</table>";
+		}
+		else{
+			echo "<p><b>This RC3 galaxy does not lie in the SDSS footprint, using POSS-II survey option instead.</b></p>";
+		}
+		//echo "<table>";
 
+		//echo "<table>";
+                //echo "</br> Science-Quality Images </br>";
+                //echo "<br><table style='width:300px' border='1' cellpadding='10px'>  ";
+                //echo "<tr>";
+                //echo "<td>ufits</td>";
+                //echo "<td>gfits</td>";
+                //echo "<td>rfits</td>";
+                //echo "<td>ifits</td>";
+                //echo "<td>zfits</td>";
+		//echo "</tr>";
+		//echo "<tr>";
+                //echo "<td><a href='".htmlspecialchars($row->ufits)."'download='".htmlspecialchars($row->ufits)."' target='_blank'>".explode("/", htmlspecialchars($row->ufits))[5]."</a></td>";
+                //echo "<td><a href='".htmlspecialchars($row->gfits)."'download='".htmlspecialchars($row->gfits)."' target='_blank'>".explode("/", htmlspecialchars($row->gfits))[5]."</a></td>";
+                //echo "<td><a href='".htmlspecialchars($row->rfits)."'download='".htmlspecialchars($row->rfits)."' target='_blank'>".explode("/", htmlspecialchars($row->rfits))[5]."</a></td>";
+                //echo "<td><a href='".htmlspecialchars($row->ifits)."'download='".htmlspecialchars($row->ifits)."' target='_blank'>".explode("/", htmlspecialchars($row->ifits))[5]."</a></td>";
+                //echo "<td><a href='".htmlspecialchars($row->zfits)."'download='".htmlspecialchars($row->zfits)."' target='_blank'>".explode("/", htmlspecialchars($row->zfits))[5]."</a></td>";
+                //echo "</tr>";
+                //echo "<table>";
+
+		;
 	    }
-	    echo "<table>";
    }
   else if ($survey=="dss"){
 	echo "Search by PGC number </br>";
