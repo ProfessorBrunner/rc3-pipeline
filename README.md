@@ -14,7 +14,7 @@ The Third Reference Catalogue of Bright Galaxies (RC3) is a reasonably complete 
   - sqlite3 : generates the searchable database. Not necessary for the mosaicing program to run.
   - Astroquery
 
-Here are some notes that I made on installing these dependencies software on [MacOSx]((https://github.com/dorislee0309/workarea-rc3-project/wiki/Installation-on-Factory-Resetted-Mac-OSx-Mavericks))  or on the [NERSC Machines] (https://github.com/ProfessorBrunner/rc3-pipeline/wiki/Installing-dependencies-on-NERSC-Machines)
+Here are some notes that I made on installing these dependencies software on [MacOSx](https://github.com/dorislee0309/workarea-rc3-project/wiki/Installation-on-Factory-Resetted-Mac-OSx-Mavericks)  or on the [NERSC Machines] (https://github.com/ProfessorBrunner/rc3-pipeline/wiki/Installing-dependencies-on-NERSC-Machines)
 ##Documentation
 - [Class Information](http://nbviewer.ipython.org/github/ProfessorBrunner/rc3-pipeline/blob/master/Documentation/Class%20Information.ipynb)
 - [SDSS Example](http://nbviewer.ipython.org/github/ProfessorBrunner/rc3-pipeline/blob/master/Documentation/SDSS%20Example.ipynb)
